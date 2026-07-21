@@ -24,18 +24,32 @@ beepwear/
 └─ content/                 Original copy: policies, about, warranty, FAQ, guides
 ```
 
-## Build phases
+## How this project is run
 
-| Phase | Scope | Status |
-|-------|-------|--------|
-| 1 | Brand identity + design system + child-theme foundation | in progress |
-| 2 | Header, mega menu, footer, homepage sections | planned |
-| 3 | WooCommerce: shop, product, cart, checkout styling + flows | planned |
-| 4 | Structured data (JSON-LD), SEO, sitemap, Open Graph | planned |
-| 5 | Original content: policies, about, warranty, FAQ, buying guides | planned |
-| 6 | Google Merchant Center product feed + compliance pass | planned |
-| 7 | Performance, accessibility (WCAG), QA checklist | planned |
-| 8 | Hostinger deployment runbook | planned |
+BeepWear follows the operating model in **`docs/PROJECT-GOVERNANCE.md`**: a 15-milestone
+plan, six review gates (Design, SEO, Accessibility, Performance, Merchant Center, QA)
+that every deliverable must clear, and a milestone sign-off log in **`docs/REVIEW-LOG.md`**.
+The next milestone doesn't begin until the previous one is signed off.
+
+## Milestones
+
+| # | Milestone | Status |
+|---|-----------|--------|
+| 1 | Project Planning | ✅ complete |
+| 2 | Brand Identity | ✅ complete (logo concepts pending) |
+| 3 | Architecture | 🟡 in progress |
+| 4 | Homepage | ⬜ planned |
+| 5 | Navigation (header, mega menu, footer) | ⬜ planned |
+| 6 | Collections | ⬜ planned |
+| 7 | Product Pages | ⬜ planned |
+| 8 | Checkout | ⬜ planned |
+| 9 | Policies | ⬜ planned |
+| 10 | Customer Account | ⬜ planned |
+| 11 | SEO | ⬜ planned |
+| 12 | Merchant Center Audit | ⬜ planned |
+| 13 | Testing | ⬜ planned |
+| 14 | Deployment | ⬜ planned |
+| 15 | Launch | ⬜ planned |
 
 ## Environment note
 
