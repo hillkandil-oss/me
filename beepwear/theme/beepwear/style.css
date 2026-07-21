@@ -1,0 +1,180 @@
+/*
+Theme Name: BeepWear
+Theme URI: https://beepwear.com
+Description: BeepWear — luxury watch boutique. Child theme of Hello Elementor implementing the BeepWear design system (see docs/BRAND.md). WooCommerce-ready, accessibility- and performance-minded.
+Author: BeepWear
+Version: 0.1.0
+Template: hello-elementor
+Requires at least: 6.4
+Requires PHP: 8.0
+Text Domain: beepwear
+*/
+
+/* ============================================================
+   BeepWear design system — implements docs/BRAND.md
+   Fonts are self-hosted; see assets/fonts + DEPLOY-RUNBOOK.md.
+   ============================================================ */
+
+@font-face{
+  font-family:"Cormorant Garamond"; font-style:normal; font-weight:300 600;
+  font-display:swap; src:url("assets/fonts/cormorant-garamond.woff2") format("woff2");
+}
+@font-face{
+  font-family:"Jost"; font-style:normal; font-weight:300 600;
+  font-display:swap; src:url("assets/fonts/jost.woff2") format("woff2");
+}
+
+:root{
+  /* color */
+  --bw-ink:#16130E;
+  --bw-porcelain:#F4F0E8;
+  --bw-porcelain-2:#EAE4D8;
+  --bw-champagne:#C1A05A;
+  --bw-bronze:#7C6230;
+  --bw-stone:#6B665C;
+  --bw-line:rgba(22,19,14,.14);
+  --bw-line-inv:rgba(244,240,232,.16);
+  --bw-ok:#3F7A52; --bw-warn:#B4791F; --bw-err:#A23A2E;
+
+  /* type */
+  --font-display:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --font-body:"Jost",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --fs-display:clamp(44px,7vw,96px);
+  --fs-h1:clamp(34px,4.5vw,60px);
+  --fs-h2:clamp(26px,3vw,40px);
+  --fs-h3:clamp(20px,2vw,26px);
+  --fs-body:clamp(16px,1.05vw,18px);
+  --fs-small:14px;
+  --fs-label:12px;
+
+  /* space */
+  --sp-1:8px; --sp-2:16px; --sp-3:24px; --sp-4:40px;
+  --sp-5:64px; --sp-6:96px; --sp-7:128px;
+  --maxw:1240px; --measure:68ch;
+  --section-y:clamp(64px,10vw,128px);
+  --radius:0;
+
+  /* motion */
+  --ease:cubic-bezier(.16,.9,.28,1);
+  --dur:260ms;
+}
+
+/* ---- base ---- */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bw-porcelain); color:var(--bw-ink);
+  font-family:var(--font-body); font-size:var(--fs-body); line-height:1.6;
+  font-weight:400; -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+::selection{background:var(--bw-champagne); color:var(--bw-ink)}
+img{max-width:100%; height:auto; display:block}
+
+h1,h2,h3,h4{
+  font-family:var(--font-display); font-weight:500; line-height:1.1;
+  letter-spacing:.005em; text-wrap:balance; margin:0 0 .4em;
+}
+h1{font-size:var(--fs-h1)} h2{font-size:var(--fs-h2)} h3{font-size:var(--fs-h3)}
+p{margin:0 0 1em; max-width:var(--measure)}
+a{color:var(--bw-bronze); text-decoration:none; transition:color var(--dur) var(--ease)}
+a:hover{color:var(--bw-ink)}
+
+/* utility labels / eyebrows */
+.bw-eyebrow,.bw-label{
+  font-family:var(--font-body); font-size:var(--fs-label); font-weight:500;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--bw-stone);
+}
+.bw-display{font-family:var(--font-display); font-size:var(--fs-display);
+  font-weight:400; line-height:1.02; letter-spacing:.004em}
+
+/* layout helpers */
+.bw-container{width:100%; max-width:var(--maxw); margin-inline:auto;
+  padding-inline:clamp(20px,5vw,48px)}
+.bw-section{padding-block:var(--section-y)}
+.bw-hr{height:1px; background:var(--bw-line); border:0; margin:0}
+
+/* prices — tabular alignment */
+.price,.woocommerce-Price-amount,.amount{font-variant-numeric:tabular-nums}
+
+/* ---- buttons ---- */
+.bw-btn,
+.woocommerce a.button,.woocommerce button.button,
+.woocommerce .button,.woocommerce #respond input#submit,
+.wp-block-button__link{
+  display:inline-flex; align-items:center; justify-content:center; gap:.6em;
+  font-family:var(--font-body); font-size:var(--fs-small); font-weight:500;
+  letter-spacing:.1em; text-transform:uppercase;
+  padding:16px 30px; border-radius:var(--radius);
+  background:var(--bw-ink); color:var(--bw-porcelain);
+  border:1px solid var(--bw-ink); cursor:pointer;
+  transition:background var(--dur) var(--ease),color var(--dur) var(--ease),
+             border-color var(--dur) var(--ease);
+}
+.bw-btn:hover,
+.woocommerce a.button:hover,.woocommerce button.button:hover,
+.woocommerce .button:hover,.woocommerce #respond input#submit:hover,
+.wp-block-button__link:hover{
+  background:transparent; color:var(--bw-ink); border-color:var(--bw-ink);
+}
+.bw-btn--ghost{
+  background:transparent; color:var(--bw-ink); border-color:var(--bw-line);
+}
+.bw-btn--ghost:hover{border-color:var(--bw-ink); background:transparent}
+
+/* focus visibility (accessibility) */
+a:focus-visible,button:focus-visible,input:focus-visible,
+select:focus-visible,textarea:focus-visible,.bw-btn:focus-visible{
+  outline:2px solid var(--bw-champagne); outline-offset:3px;
+}
+
+/* ---- WooCommerce: product loop / grid ---- */
+.woocommerce ul.products{display:grid; gap:clamp(24px,3vw,44px);
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); margin:0; padding:0; list-style:none}
+.woocommerce ul.products li.product{margin:0; text-align:left}
+.woocommerce ul.products li.product a img{
+  aspect-ratio:1/1; object-fit:cover; margin-bottom:var(--sp-2);
+  transition:transform 600ms var(--ease); background:var(--bw-porcelain-2)}
+.woocommerce ul.products li.product:hover a img{transform:scale(1.03)}
+.woocommerce ul.products li.product .woocommerce-loop-product__title{
+  font-family:var(--font-display); font-size:var(--fs-h3); font-weight:500;
+  padding:0; margin:0 0 .2em}
+.woocommerce ul.products li.product .price{
+  color:var(--bw-stone); font-size:var(--fs-small); font-weight:400}
+.woocommerce ul.products li.product .button{margin-top:var(--sp-2)}
+
+/* ---- WooCommerce: single product ---- */
+.woocommerce div.product .product_title{font-size:var(--fs-h1)}
+.woocommerce div.product p.price,.woocommerce div.product span.price{
+  color:var(--bw-ink); font-size:var(--fs-h3); font-weight:400}
+.woocommerce div.product .woocommerce-tabs ul.tabs{border:0}
+.woocommerce .woocommerce-message,
+.woocommerce .woocommerce-info{border-top-color:var(--bw-champagne)}
+
+/* ---- forms / checkout ---- */
+.woocommerce form .form-row input.input-text,
+.woocommerce form .form-row textarea,
+.woocommerce form .form-row select,
+input[type=text],input[type=email],input[type=tel],input[type=search],
+select,textarea{
+  font-family:var(--font-body); font-size:var(--fs-body); color:var(--bw-ink);
+  background:#fff; border:1px solid var(--bw-line); border-radius:2px;
+  padding:12px 14px; transition:border-color var(--dur) var(--ease)}
+input:focus,select:focus,textarea:focus{border-color:var(--bw-ink)}
+
+/* ---- reveal-on-scroll (JS adds .is-in) ---- */
+.bw-reveal{opacity:0; transform:translateY(12px);
+  transition:opacity 700ms var(--ease),transform 700ms var(--ease)}
+.bw-reveal.is-in{opacity:1; transform:none}
+
+/* ---- dark section ---- */
+.bw-onDark{background:var(--bw-ink); color:var(--bw-porcelain)}
+.bw-onDark h1,.bw-onDark h2,.bw-onDark h3{color:var(--bw-porcelain)}
+.bw-onDark a{color:var(--bw-champagne)}
+.bw-onDark .bw-hr{background:var(--bw-line-inv)}
+
+@media (prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important}
+  .bw-reveal{opacity:1; transform:none; transition:none}
+  .woocommerce ul.products li.product:hover a img{transform:none}
+}
