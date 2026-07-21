@@ -174,6 +174,22 @@ homepage preview. Rendered and screenshotted desktop (mega open) + mobile (drawe
 **Carried to build-time:** assemble in Elementor Theme Builder per the guide; populate the
 Brands mega once real brand partnerships exist.
 
+### Parts 8–10 integrated — content, Merchant Center, SEO spec-of-record
+
+- **`docs/CONTENT-STRATEGY.md`** (Part 8) — tone, page copy plan, policies list, categorized
+  FAQ, buying-guide slate with word targets, journal + article template, newsletter/error/
+  email copy, content quality review gate.
+- **`content/about.md`** (Part 8) — first real page copy, original + honest (no fabricated
+  history; owner facts flagged `[confirm: …]`), with internal links.
+- **`docs/MERCHANT-CENTER.md`** (Part 9) — legitimacy signals, product-data rules, feed spec
+  + identifiers guardrail, structured data, sitemaps/robots/GSC/GA4, CWV, and the M12
+  PASS/WARNING/BLOCKER pre-launch audit matrix + post-launch monitoring.
+- **`docs/SEO-STRATEGY.md`** (Part 10) — Rank Math config, hierarchy/URLs, titles/meta,
+  headings, keyword-by-intent, page-type SEO, image SEO, internal linking, breadcrumbs,
+  schema, sitemaps/canonicals/indexing/404, performance/mobile, i18n-gated, audits.
+
+These are spec-of-record for M9 (content/policies), M11 (SEO), M12 (Merchant Center).
+
 ### PM brief — Milestone 6 (Collections: shop, category, brand, collection, search) · next
 
 ```
