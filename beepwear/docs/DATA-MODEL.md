@@ -31,16 +31,31 @@ Style
 ├─ Chronograph
 ├─ Pilot / Aviator
 ├─ Field
-└─ GMT / Travel
+├─ GMT / Travel
+├─ Skeleton
+└─ Moonphase
 
-Editorial
+Accessories
+├─ Replacement Straps
+├─ Watch Boxes
+├─ Travel Cases
+└─ Care Products
+
+Editorial (rule-driven surfaces, not core classification)
 ├─ New Arrivals
 ├─ Best Sellers
+├─ Limited Editions
 └─ Gifts
 ```
 
-A product may sit in one gender + one or more style categories. "Editorial" categories
-are merchandising surfaces populated by rules, not core classification.
+A product may sit in one gender + one or more style categories. "Editorial" categories are
+merchandising surfaces populated by rules.
+
+**Movement-based collections** (Automatic, Quartz, Mechanical) are **not** separate
+categories — `movement` is already a global attribute (§4). Their landing pages
+(`/automatic-watches/`, etc.) are attribute-driven collection pages, avoiding duplicate
+taxonomy. Same for material/complication collections. Create only categories that map to
+products actually offered (Part 5).
 
 ## 3. Brand (`brand` taxonomy)
 
@@ -98,3 +113,34 @@ Minimal, per the "no unnecessary tech" rule:
   accurate short description, and a GTIN when one exists.
 - No fabricated specs, reviews, ratings, or certifications.
 - Prices and availability on the page must match the feed exactly.
+
+## 8. Product specification fields (PDP)
+
+The PDP renders a specifications table from these fields (Part 5). Global attributes
+(§4) drive filtering; the remaining descriptive fields are stored as product custom fields
+(a "Specifications" field group) so they display consistently without polluting the filter
+UI. Only populate a field when the value is accurate — omit rather than guess.
+
+| Field | Source | Notes |
+|-------|--------|-------|
+| Brand | `brand` taxonomy | Required |
+| Model | product title / field | |
+| Reference Number | custom field | Manufacturer reference |
+| Movement Type | `pa_movement` | Filterable |
+| Movement Origin | custom field | **Only if accurate** |
+| Case Material | `pa_case-material` | Filterable |
+| Case Diameter | `pa_case-size` | Filterable |
+| Case Thickness | custom field | mm |
+| Lug Width | custom field | mm |
+| Crystal Type | `pa_crystal` | |
+| Water Resistance | `pa_water-resistance` | Filterable |
+| Dial Color | `pa_dial-color` | Filterable / variation axis |
+| Bezel Material | custom field | |
+| Strap Material | `pa_strap-material` | Filterable / variation axis |
+| Clasp Type | custom field | |
+| Power Reserve | custom field | If applicable (mechanical) |
+| Weight | custom field | grams |
+| Warranty | custom field / global | e.g., store/manufacturer term |
+| Country of Manufacture | custom field | **Only if accurate** |
+
+"What's included" (box, papers, extra strap, tools) is a separate PDP field group.

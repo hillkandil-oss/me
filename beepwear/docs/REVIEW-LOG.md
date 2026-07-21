@@ -103,21 +103,44 @@ reopening sign-off (additive, no contradictions):
   (2FA, DB-prefix, disable file editing, secure REST) and logging/monitoring specified in
   `ARCHITECTURE.md` for execution in M14.
 
+### M5 addendum — Part 5 page inventory integrated
+
+Master Prompt Part 5 (complete site/page structure) captured as the build backbone:
+
+- **`docs/PAGE-INVENTORY.md`** — every required page with sections, content source, and
+  owner milestone: global chrome, the 15-section homepage order, commerce templates
+  (shop/category/brand directory + brand/collection/PDP/cart/checkout/order/account/
+  wishlist/search), content pages (about/support/contact/journal + article template),
+  legal + customer-policy + trust pages, buying guides, categorized FAQ, error/empty
+  states, internal-linking rules, and the pre-launch structure-review checklist.
+- **`DATA-MODEL.md`** — categories expanded (Accessories: straps/boxes/cases/care;
+  Skeleton/Moonphase styles; Limited Editions as editorial); movement collections kept
+  attribute-driven (no duplicate taxonomy); added §8 **product specification fields** for
+  the PDP (reference, movement origin, case thickness, lug width, bezel, clasp, power
+  reserve, weight, country — accuracy-gated), mapping to attributes vs custom fields.
+- **Nav reconciled** — Part 5's 12-item primary nav grouped into a clean top bar + mega
+  menu (`INFORMATION-ARCHITECTURE.md §1`); full set in the footer.
+
 ### PM brief — Milestone 4 (Homepage) · next
 
 ```
-Objectives   Design and build the BeepWear homepage — the brand thesis — as an Elementor
-             page plus the child-theme sections/CSS it depends on.
-Tasks        1. Wireframe the homepage section stack (hero, featured collections, brand
-                strip, editorial feature, trust/service band, journal teaser, newsletter).
-             2. Write original hero + section copy (Content lens).
-             3. Build sections as child-theme CSS + an Elementor build guide.
-             4. Prepare Higgsfield hero/editorial image prompts (no product misrepresentation).
-             5. Supply real subset woff2 fonts so type renders as designed.
-Dependencies BRAND.md, ARCHITECTURE.md, DATA-MODEL.md (done); fonts (this milestone).
-Risks        Hero imagery not yet produced → design with art-directed placeholders +
-             documented prompts; swap real assets before launch.
-Deliverables docs/ELEMENTOR-BUILD-GUIDE.md (homepage), content/homepage.md, homepage CSS,
-             docs/IMAGE-PROMPTS.md (hero/editorial).
-Acceptance   Passes all six gates; renders premium on mobile/desktop; no placeholder copy.
+Objectives   Build the BeepWear homepage — the 15-section stack (PAGE-INVENTORY §B) — as
+             an Elementor page plus the child-theme sections/CSS and original copy it needs.
+Tasks        1. Wireframe the 15 sections in order (hero → featured collections → featured
+                brands → best sellers → new arrivals → staff picks → why BeepWear →
+                editorial banner → testimonials → latest articles → newsletter → footer).
+             2. Write original hero + section copy in BeepWear voice (Content lens).
+             3. Build reusable sections as child-theme CSS + template-parts + an Elementor
+                build guide; Woo-driven rails (best sellers / new arrivals) documented.
+             4. Higgsfield prompts for hero + editorial banner (no product misrepresentation).
+             5. Supply real subset woff2 (Cormorant Garamond + Manrope) so type renders true.
+             6. Announcement bar as an admin-configurable theme feature.
+Dependencies BRAND.md, ARCHITECTURE.md, DATA-MODEL.md, PAGE-INVENTORY.md (done); fonts.
+Risks        Hero/editorial imagery not yet produced → design with art-directed placeholders
+             + documented prompts; swap real assets before launch. Testimonials/ratings show
+             only when genuine — omit until real reviews exist.
+Deliverables docs/ELEMENTOR-BUILD-GUIDE.md (homepage), content/homepage.md, homepage CSS +
+             template-parts, docs/IMAGE-PROMPTS.md, announcement-bar feature.
+Acceptance   Passes all six gates; premium on mobile/desktop; no placeholder copy; no
+             fabricated trust signals; every section links onward (internal-linking rules).
 ```

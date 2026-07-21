@@ -32,9 +32,15 @@ Home (/)
 └─ Account / Cart / Checkout / Wishlist       (Woo + wishlist plugin)
 ```
 
-**Header nav:** Shop · Collections · Brands · Journal · About · (Search · Account ·
-Wishlist · Cart icons). **Mega menu** on Shop/Collections/Brands. **Footer** carries the
-full map including policies.
+**Primary nav (Part 5 full set):** Home · Shop · Brands · Collections · Accessories ·
+New Arrivals · Best Sellers · Limited Editions · Journal · About · Support · Contact.
+
+**Header reconciliation (keep it uncluttered):** the top bar shows the primary anchors —
+**Shop · Brands · Collections · Journal · About · Support** — plus the Search / Account /
+Wishlist / Cart icons. The merchandising links (Accessories, New Arrivals, Best Sellers,
+Limited Editions) live inside the **Shop/Collections mega menu**, and Contact sits under
+Support. Every item is one click from the header; the full set appears in the footer.
+**Mega menu** on Shop / Collections / Brands.
 
 ## 2. URL structure
 
