@@ -261,21 +261,36 @@ specs), PDP section of `docs/ELEMENTOR-BUILD-GUIDE.md`. Rendered desktop + mobil
 specs from verified values only; Product schema `gtin`/`mpn` only when real; reviews appear
 only from confirmed purchases.
 
-### PM brief — Milestone 8 (Checkout: cart, checkout, order confirmation) · next
+## Milestone 8 — Checkout · ✅ signed off
+
+**Deliverables:** `preview/cart.html`, `preview/checkout.html`,
+`preview/order-confirmation.html`, and the Checkout section of `ELEMENTOR-BUILD-GUIDE.md`.
+
+| Gate | Result | Notes |
+|------|--------|-------|
+| Design | ✅ | Cohesive with the store; roomy, calm; consistent order-summary card across cart → checkout → confirmation. |
+| SEO | ✅ | Cart/checkout/account `noindex` (per spec); confirmation mirrors Woo endpoint. |
+| Accessibility | ✅ | Labelled fields, keyboard radios/steppers, focus states, terms checkbox with visible label. |
+| Performance | ✅ | Minimal checkout header; excluded from full-page cache (documented). |
+| Merchant Center | ✅ | Secure-checkout messaging; consistent totals; PCI gateway note; no dark-pattern urgency. |
+| QA | ✅ | Verified; numbered steps clear; empty-cart state specified. |
+
+**Carried to build-time:** configure Stripe/PayPal official gateways; wire real shipping/tax;
+brand the transactional emails. Checkout stays on Woo's native flow (never rebuilt).
+
+### PM brief — Milestone 9 (Policies & core content) · next
 
 ```
-Objectives   Style and document the WooCommerce cart → checkout → order-confirmation flow
-             per PAGE-INVENTORY §C and PRODUCT-EXPERIENCE, keeping Woo's secure native flow.
-Tasks        1. Cart: line items, qty, coupon, shipping estimate, subtotal/tax/total,
-                continue-shopping, checkout, trust info.
-             2. Checkout: guest/login, billing/shipping, shipping + payment method, order
-                summary, coupon, terms, privacy notice, secure-checkout messaging.
-             3. Order confirmation: number, items, billing/shipping, est. delivery, support.
-             4. Empty-cart state; visual preview + build-guide section.
-Dependencies design system, Woo (deploy); payment gateways configured on host.
-Risks        Never rebuild checkout in Elementor — style Woo's flow (security/update safety).
-Deliverables preview/cart-checkout, build-guide section.
-Acceptance   Six gates; simple/secure checkout; HTTPS; no distractions; accurate totals.
+Objectives   Write the complete legal + customer-policy + trust page content (original,
+             honest) per CONTENT-STRATEGY.md and the Merchant Center transparency rules.
+Tasks        1. Legal: Privacy, Cookie, Terms, Accessibility, Disclaimer, IP notice.
+             2. Customer policies: Shipping, Returns, Refund, Warranty, Payment, Cancellation.
+             3. Trust: Authenticity Guarantee, Why Buy, Quality Assurance.
+             4. Contact + Support hub copy; categorized FAQ.
+Dependencies CONTENT-STRATEGY, MERCHANT-CENTER; owner business facts ([confirm: …]).
+Risks        Policies must reflect real operations — flag owner-provided facts, never fabricate.
+Deliverables content/policies/*.md, content/faq.md, content/contact.md.
+Acceptance   Content quality gate + MC content check; footer-linked; no placeholders.
 ```
 
 ```

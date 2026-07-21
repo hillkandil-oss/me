@@ -74,7 +74,7 @@ Documentation → Approval → Deployment.
 | 5 | Navigation (header, mega menu, mobile, footer) | ✅ complete |
 | 6 | Collections (shop + category pages) | ✅ complete |
 | 7 | Product Pages (PDP) | ✅ complete |
-| 8 | Checkout | ⬜ planned |
+| 8 | Checkout | ✅ complete |
 | 9 | Policies | ⬜ planned |
 | 10 | Customer Account | ⬜ planned |
 | 11 | SEO | ⬜ planned |

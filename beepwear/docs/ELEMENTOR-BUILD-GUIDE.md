@@ -175,3 +175,39 @@ PDP with unverified specs, invented identifiers, or fabricated reviews.
 - PDP SEO: unique title (`{Brand} {Model} | BeepWear`), unique meta, clean
   `/product/{slug}/` URL, descriptive image alt/filenames, internal links to brand, category,
   and the relevant buying guide.
+
+---
+
+# Checkout: Cart, Checkout, Order Confirmation (Milestone 8)
+
+Reference designs: `preview/cart.html`, `preview/checkout.html`,
+`preview/order-confirmation.html`. **Style WooCommerce's own cart/checkout — never rebuild
+it in Elementor.** Security and update-safety depend on using Woo's native flow; the child
+theme only restyles it to the design system.
+
+## Cart
+
+Line items (image, brand, model, variant, qty stepper, remove), coupon field, order-summary
+card (subtotal, shipping, estimated tax, total), Proceed to Checkout, Continue Shopping, and
+a small trust list. Empty-cart state per `INFORMATION-ARCHITECTURE.md §5`.
+
+## Checkout
+
+Simple, distraction-free: **minimal header** (logo + "Secure Checkout", no nav). Numbered
+steps — Contact · Shipping address · Shipping method · Payment — with a sticky Order Summary,
+Terms acceptance, Privacy notice, secure-checkout messaging, and Place Order. Guest checkout
++ account login. Payment note: PCI-compliant gateway, encrypted, card details never stored.
+Keep it HTTPS and free of upsell clutter.
+
+## Order confirmation
+
+Success check + "Thank you for your order," order number, Shipping-to + Estimated-delivery
+cards, order summary (items, totals), and support/continue-shopping. Mirrors the Woo
+`order-received` endpoint.
+
+## Build notes
+
+- Configure gateways with **official plugins** (Stripe/PayPal) — never a custom card handler.
+- Cart/checkout/account excluded from full-page cache and set `noindex` (SEO/robots).
+- Transactional emails (order/shipping/delivery confirmations) styled to brand — see
+  `CONTENT-STRATEGY.md` (`content/emails/`), owner M8/M10.
