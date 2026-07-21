@@ -66,6 +66,24 @@ surfacing → M12. All tracked; none block M3 architecture sign-off.
 **Acceptance met:** taxonomy locked; every planned page (M4–M10) maps to a template in
 `ARCHITECTURE.md §2`; plugin stack chosen with rationale; open items assigned.
 
+### M3 addendum — Part 3 standards integrated
+
+Development standards from Master Prompt Part 3 folded into the architecture without
+reopening sign-off (additive, no contradictions):
+
+- **Modular theme structure** — `functions.php` refactored to a thin bootstrap loading
+  `/inc` modules (`setup`, `enqueue`, `woocommerce`, `schema`); `/template-parts` and
+  `/templates` scaffolded per the required folder layout. All PHP re-linted clean. v0.2.0.
+- **Information architecture** — `docs/INFORMATION-ARCHITECTURE.md`: site map, clean URL
+  scheme, header/mega-menu/footer nav, search, faceted filters + sort, on-brand error/
+  empty states, breadcrumb/internal-linking rules. Filter URLs `noindex` + canonical to
+  base archive (duplicate-content guard).
+- **Plugin list reconciled** — added Google Site Kit, WP Mail SMTP, Redirection, Broken
+  Link Checker; documented why no separate image-optimization plugin (LiteSpeed covers it).
+- **Standards adopted** — WordPress Coding Standards / PSR where applicable; security
+  (2FA, DB-prefix, disable file editing, secure REST) and logging/monitoring specified in
+  `ARCHITECTURE.md` for execution in M14.
+
 ### PM brief — Milestone 4 (Homepage) · next
 
 ```

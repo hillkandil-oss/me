@@ -16,7 +16,8 @@ owns (Elementor Pro, WooCommerce) over adding new plugins.
 
 | Plugin | Purpose | Rationale |
 |--------|---------|-----------|
-| **Rank Math SEO** | Titles, meta, canonicals, sitemaps, Open Graph, breadcrumbs, schema | Robust, WooCommerce-aware, Merchant-friendly rich results |
+| **Rank Math SEO** | Titles, meta, canonicals, sitemaps, Open Graph/Twitter, breadcrumbs, schema | Robust, WooCommerce-aware, Merchant-friendly rich results |
+| **Google Site Kit** | Search Console, Analytics (GA4), PageSpeed insights in wp-admin | Official Google integration; indexing/CWV visibility for the SEO milestone |
 
 **Schema de-duplication decision:** Rank Math owns Product/Breadcrumb schema in
 production. Set `BEEPWEAR_EMIT_SCHEMA` to **false** in the child theme so the two don't
@@ -31,6 +32,10 @@ emit duplicate JSON-LD. The theme's built-in Organization/WebSite/Product schema
 
 (If the host is not LiteSpeed: WP Rocket + ShortPixel as the equivalent pair.)
 
+**No separate image-optimization plugin:** LiteSpeed Cache already handles WebP/AVIF
+conversion, compression, and lazy-load — adding a second image plugin would duplicate
+function, against the plugin policy. AVIF where the browser supports it, WebP otherwise.
+
 ## Merchant Center & Ads
 
 | Plugin | Purpose | Rationale |
@@ -43,6 +48,14 @@ emit duplicate JSON-LD. The theme's built-in Organization/WebSite/Product schema
 |--------|---------|-----------|
 | **Complianz** (GDPR/CCPA) | Cookie consent + privacy/consent management | Required for EU markets and a Merchant Center trust signal |
 | **Wordfence Security** | Firewall, malware scan, login protection | WordPress hardening (M14) |
+
+## Deliverability & operations
+
+| Plugin | Purpose | Rationale |
+|--------|---------|-----------|
+| **WP Mail SMTP** | Authenticated transactional email (order confirmations, account, contact) | WordPress' default `mail()` lands in spam; reliable order/account email is a Merchant Center trust + CX requirement |
+| **Redirection** | 301 redirect management, 404 monitoring | Preserve link equity on URL changes; catch broken paths (SEO milestone) |
+| **Broken Link Checker (cloud engine)** | Detect broken internal/external links | QA/SEO hygiene; use the cloud-scanning mode so scans don't tax the server |
 
 ## Customer experience
 
