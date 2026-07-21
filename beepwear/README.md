@@ -50,7 +50,7 @@ The next milestone doesn't begin until the previous one is signed off.
 | 4 | Homepage | ✅ complete |
 | 5 | Navigation (header, mega menu, footer) | ✅ complete |
 | 6 | Collections | ✅ complete |
-| 7 | Product Pages | ⬜ planned |
+| 7 | Product Pages | ✅ complete |
 | 8 | Checkout | ⬜ planned |
 | 9 | Policies | ⬜ planned |
 | 10 | Customer Account | ⬜ planned |

@@ -138,3 +138,40 @@ recommendations, related collections, educational content.
 WooCommerce search template: search term, result count, product results (same card),
 suggested categories/articles, and a helpful **no-results** state (popular brands + shop
 link) — never a dead end (`INFORMATION-ARCHITECTURE.md §3`).
+
+---
+
+# Product Page / PDP (Milestone 7)
+
+Reference design: `preview/product.html`. Built as an Elementor Pro **Single Product**
+Theme Builder template; dynamic fields bind to WooCommerce product data. Never publish a
+PDP with unverified specs, invented identifiers, or fabricated reviews.
+
+## Layout (14 blocks, per PRODUCT-EXPERIENCE.md §2)
+
+1. **Breadcrumb** (Home / Shop / Category / Product) → `BreadcrumbList` schema.
+2. **Gallery** — thumbnail rail + main image; Woo gallery zoom/lightbox/slider (enabled in
+   `inc/setup.php`); optional video/360°. Images must depict the actual product.
+3. **Summary** — brand eyebrow, model (H1), reference + variant, price, availability
+   indicator (green in-stock dot), short description, **highlights** list, **variation
+   selectors** (strap, dial → update image/price/SKU/availability), quantity, **Add to Bag**,
+   Wishlist, Compare, trust row, payment marks.
+4. **Info tabs** — Description (original prose) · **Specifications table** (fields from
+   `DATA-MODEL.md §8`) · **What's Included** · Shipping & Returns · Warranty. Tabs in
+   Elementor; keyboard accessible.
+5. **Shipping / Returns / Warranty** summary cards, each linking to the full policy.
+6. **Reviews** — genuine only; the empty state states plainly that BeepWear never publishes
+   fabricated testimonials. Shows stars/text/date/verified indicator once real reviews exist.
+7. **Product FAQ** accordion → `FAQPage` schema.
+8. **Related products** + **Recently viewed**.
+
+## Data & schema
+
+- Specs render from a "Specifications" custom-field group + global attributes; **omit any
+  field without a verified value** (accuracy rule).
+- **Product schema:** name, sku, brand, `gtin`/`mpn` **only when real**, description, image,
+  `offers` (price, priceCurrency, availability, url). Rank Math owns it in prod; theme JSON-LD
+  (`inc/schema.php`) is the fallback.
+- PDP SEO: unique title (`{Brand} {Model} | BeepWear`), unique meta, clean
+  `/product/{slug}/` URL, descriptive image alt/filenames, internal links to brand, category,
+  and the relevant buying guide.

@@ -243,7 +243,40 @@ collection, and search variations). Rendered desktop + mobile.
 filter plugin (per `PLUGINS.md`); brand/collection pages add original content blocks;
 search-results template + no-results state.
 
-### PM brief — Milestone 7 (Product Pages / PDP) · next
+## Milestone 7 — Product Pages (PDP) · ✅ signed off
+
+**Deliverables:** `preview/product.html` (full 14-block PDP with original sample copy +
+specs), PDP section of `docs/ELEMENTOR-BUILD-GUIDE.md`. Rendered desktop + mobile.
+
+| Gate | Result | Notes |
+|------|--------|-------|
+| Design | ✅ | Gallery + dial-motif placeholder, variation chips, spec table, tabs, related/recently-viewed; premium and on-system. |
+| SEO | ✅ | Breadcrumb, `{Brand} {Model} | BeepWear` title, unique meta, spec/description content, internal links; Product schema spec'd. |
+| Accessibility | ✅ | Keyboard chips/qty, `:focus`, `<details>` FAQ, in-stock conveyed by text + dot (not color alone), alt text at build. |
+| Performance | ✅ | Single template; images lazy at build; no CLS in preview. |
+| Merchant Center | ✅ | **Empty reviews state states no fabricated testimonials;** specs accuracy-gated; identifiers only when real; price/availability shown consistently. |
+| QA | ✅ | Verified 1280px + 390px (gallery/summary stack, tabs stack); no horizontal scroll. |
+
+**Carried to build-time:** bind to real product data + authorized photography; populate
+specs from verified values only; Product schema `gtin`/`mpn` only when real; reviews appear
+only from confirmed purchases.
+
+### PM brief — Milestone 8 (Checkout: cart, checkout, order confirmation) · next
+
+```
+Objectives   Style and document the WooCommerce cart → checkout → order-confirmation flow
+             per PAGE-INVENTORY §C and PRODUCT-EXPERIENCE, keeping Woo's secure native flow.
+Tasks        1. Cart: line items, qty, coupon, shipping estimate, subtotal/tax/total,
+                continue-shopping, checkout, trust info.
+             2. Checkout: guest/login, billing/shipping, shipping + payment method, order
+                summary, coupon, terms, privacy notice, secure-checkout messaging.
+             3. Order confirmation: number, items, billing/shipping, est. delivery, support.
+             4. Empty-cart state; visual preview + build-guide section.
+Dependencies design system, Woo (deploy); payment gateways configured on host.
+Risks        Never rebuild checkout in Elementor — style Woo's flow (security/update safety).
+Deliverables preview/cart-checkout, build-guide section.
+Acceptance   Six gates; simple/secure checkout; HTTPS; no distractions; accurate totals.
+```
 
 ```
 Objectives   Build the single-product template per PRODUCT-EXPERIENCE.md §2 (14 blocks).
