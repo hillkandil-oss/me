@@ -201,6 +201,17 @@ These are spec-of-record for M9 (content/policies), M11 (SEO), M12 (Merchant Cen
 - **Palette conflict flagged & resolved:** Part 11's "Deep Navy" palette is an *example*;
   Part 4's Black/White/Gold (already built) remains authoritative — noted in the doc.
 
+### Parts 12–13 integrated — workflow, QA & operations
+
+- **`docs/DEPLOY-RUNBOOK.md`** (Part 12) — Hostinger environment setup, configuration,
+  backups, staging→production deployment process (pre/post checks), domain + Merchant
+  Center gating, rollback. Fills the doc referenced across the project.
+- **`docs/OPERATIONS.md`** (Parts 12–13) — git workflow, testing strategy, pre-deploy QA
+  checklist, monitoring + daily/weekly/monthly/quarterly maintenance, change management,
+  incident response, multi-agent operating model + decision framework, automation
+  guardrails, reporting dashboard, continuous-improvement loop + success metrics.
+- **`CHANGELOG.md`** — seeded with milestone history.
+
 ### PM brief — Milestone 6 (Collections: shop, category, brand, collection, search) · next
 
 ```
