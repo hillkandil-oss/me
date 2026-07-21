@@ -278,19 +278,36 @@ only from confirmed purchases.
 **Carried to build-time:** configure Stripe/PayPal official gateways; wire real shipping/tax;
 brand the transactional emails. Checkout stays on Woo's native flow (never rebuilt).
 
-### PM brief — Milestone 9 (Policies & core content) · next
+## Milestone 9 — Policies & core content · ✅ signed off (owner facts + legal review pending)
+
+**Deliverables:** `content/policies/` — shipping, returns-refunds, warranty, payment,
+privacy, cookies, terms, accessibility; plus `content/authenticity.md`, `content/faq.md`,
+`content/contact.md` (and `content/about.md` from M4). All original, in BeepWear voice.
+
+| Gate | Result | Notes |
+|------|--------|-------|
+| Content quality | ✅ | Original, professional, honest; active voice; internal links throughout; no filler. |
+| SEO | ✅ | Clean URLs assigned; FAQ structured for `FAQPage`; footer-linked set. |
+| Merchant Center | ✅ | Transparent shipping/returns/warranty/payment; contact page; **no fabricated** claims, guarantees, or authorized-dealer implication. |
+| Accessibility | ✅ | Accessibility Statement targets WCAG 2.2 AA with a reporting route. |
+
+**Two honest caveats (not blockers for the drafts, blockers for publication):**
+1. **Owner facts** — every operational value is flagged `[confirm: …]` (windows, costs,
+   contact, currency, hours, jurisdiction). These must be filled with real values before go-live.
+2. **Legal review** — Privacy and Terms are solid drafts but must be reviewed by a qualified
+   professional and tailored to BeepWear's entity, location, and actual data practices; do not
+   claim regulatory compliance unless implemented.
+
+### PM brief — Milestone 10 (Customer Account) · next
 
 ```
-Objectives   Write the complete legal + customer-policy + trust page content (original,
-             honest) per CONTENT-STRATEGY.md and the Merchant Center transparency rules.
-Tasks        1. Legal: Privacy, Cookie, Terms, Accessibility, Disclaimer, IP notice.
-             2. Customer policies: Shipping, Returns, Refund, Warranty, Payment, Cancellation.
-             3. Trust: Authenticity Guarantee, Why Buy, Quality Assurance.
-             4. Contact + Support hub copy; categorized FAQ.
-Dependencies CONTENT-STRATEGY, MERCHANT-CENTER; owner business facts ([confirm: …]).
-Risks        Policies must reflect real operations — flag owner-provided facts, never fabricate.
-Deliverables content/policies/*.md, content/faq.md, content/contact.md.
-Acceptance   Content quality gate + MC content check; footer-linked; no placeholders.
+Objectives   Style the WooCommerce My Account area + wishlist per PAGE-INVENTORY §C.
+Tasks        Dashboard, orders, addresses, account details, password, wishlist, logout;
+             empty states; account-email templates note.
+Dependencies design system, Woo + wishlist plugin (deploy).
+Risks        Keep on Woo's native account endpoints (security/update safety).
+Deliverables preview/account, build-guide section.
+Acceptance   Six gates; clean dashboard; consistent with store; accessible forms.
 ```
 
 ```

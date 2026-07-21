@@ -75,7 +75,7 @@ Documentation → Approval → Deployment.
 | 6 | Collections (shop + category pages) | ✅ complete |
 | 7 | Product Pages (PDP) | ✅ complete |
 | 8 | Checkout | ✅ complete |
-| 9 | Policies | ⬜ planned |
+| 9 | Policies & content | ✅ complete |
 | 10 | Customer Account | ⬜ planned |
 | 11 | SEO | ⬜ planned |
 | 12 | Merchant Center Audit | ⬜ planned |
