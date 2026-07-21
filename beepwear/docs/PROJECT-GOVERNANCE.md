@@ -69,7 +69,7 @@ Documentation → Approval → Deployment.
 |---|-----------|--------|
 | 1 | Project Planning (governance, plan, workflow) | ✅ complete |
 | 2 | Brand Identity (`BRAND.md`, logo concepts) | ✅ complete (logo concepts pending) |
-| 3 | Architecture (child theme, data model, plugin list) | 🟡 in progress |
+| 3 | Architecture (child theme, data model, plugin list) | ✅ complete |
 | 4 | Homepage | ⬜ planned |
 | 5 | Navigation (header, mega menu, mobile, footer) | ⬜ planned |
 | 6 | Collections (shop + category pages) | ⬜ planned |

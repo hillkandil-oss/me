@@ -37,7 +37,7 @@ The next milestone doesn't begin until the previous one is signed off.
 |---|-----------|--------|
 | 1 | Project Planning | ✅ complete |
 | 2 | Brand Identity | ✅ complete (logo concepts pending) |
-| 3 | Architecture | 🟡 in progress |
+| 3 | Architecture | ✅ complete |
 | 4 | Homepage | ⬜ planned |
 | 5 | Navigation (header, mega menu, footer) | ⬜ planned |
 | 6 | Collections | ⬜ planned |
