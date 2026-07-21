@@ -18,44 +18,48 @@ existing brand's design, assets, or content.
 
 ## 2. Color
 
-A warm-neutral foundation with a single restrained metallic accent. Gold is the one
-luxury signal — used sparingly, never as fill.
+Classic luxury: **Luxury Black · Pure White · Champagne Gold** (Master Prompt Part 4).
+White/off-white grounds carry the space; black carries text and structure; gold is the
+single accent — used sparingly for rules, hovers, and small marks, never as a text fill.
 
 | Token | Hex | Role |
 |-------|-----|------|
-| `--bw-ink` | `#16130E` | Primary text, dark sections — a warm espresso-black, not pure black |
-| `--bw-porcelain` | `#F4F0E8` | Primary background — warm porcelain |
-| `--bw-porcelain-2` | `#EAE4D8` | Secondary surface, hairline fills |
-| `--bw-champagne` | `#C1A05A` | Accent — muted champagne gold, used for rules, hovers, small marks |
-| `--bw-bronze` | `#7C6230` | Deep metallic — used on porcelain for links/emphasis where champagne lacks contrast |
-| `--bw-stone` | `#6B665C` | Muted text, captions, metadata |
-| `--bw-line` | `rgba(22,19,14,.14)` | Hairline dividers on light |
-| `--bw-line-inv` | `rgba(244,240,232,.16)` | Hairline dividers on dark |
+| `--bw-black` | `#141310` | Luxury Black — primary text, dark sections (a hair warm, not flat #000) |
+| `--bw-white` | `#FFFFFF` | Pure White — primary background |
+| `--bw-offwhite` | `#F7F6F3` | Off White — alternating/soft sections |
+| `--bw-light` | `#EFEEEA` | Very Light Gray — image beds, fills |
+| `--bw-champagne` | `#C2A15C` | Champagne Gold — accent (rules, hovers, marks) |
+| `--bw-champagne-deep` | `#9C7E3E` | Darker gold — link hover / gold text on white |
+| `--bw-charcoal` | `#3A3733` | Charcoal Gray — secondary text |
+| `--bw-stone` | `#6E6A61` | Muted text, captions, metadata |
+| `--bw-silver` | `#C9C6BF` | Soft Silver — hairlines, disabled, ghost borders |
+| `--bw-line` | `rgba(20,19,16,.12)` | Hairline dividers on light |
 
-**Accessibility:** body text is always `--bw-ink` on `--bw-porcelain`
-(contrast ≈ 13:1). Champagne gold **never** carries body text on light — for links/
-emphasis on porcelain use `--bw-bronze` (contrast ≈ 4.7:1). Champagne is reserved for
-large type, rules, and interactive states where it passes as a non-text or large-text
-element.
+**Semantic** (checkout/forms/states, separate from the accent, per Part 4):
+Error — Elegant Crimson `#B23A48`; Success — Deep Emerald `#1E6B4F`;
+Warning — Warm Amber `#C58A1E`; Information — Royal Blue `#2E4A8B`.
 
-Semantic (checkout/forms, separate from the accent): success `#3F7A52`,
-warning `#B4791F`, error `#A23A2E`.
+**Accessibility:** body text is `--bw-black` on white/off-white (contrast ≈ 15:1).
+Champagne gold `#C2A15C` **never** carries body text on white (≈ 2.4:1 — fails). For gold-
+toned text or links on white, use `--bw-champagne-deep` (≈ 4.6:1). Bright champagne is
+reserved for large display type, hairlines, focus rings, and non-text marks. On black,
+champagne is legible for links and accents.
 
 ## 3. Typography
 
-A high-contrast display serif against a geometric grotesque — a couture pairing, not
-the Inter/Space-Grotesk default.
+A high-contrast display serif against a clean grotesque (Master Prompt Part 4 pairing).
 
 - **Display — Cormorant Garamond** (serif). Headlines, product names, section titles.
   Used large, light-to-medium weight, tight leading, generous letter-spacing on caps.
-- **Body / UI — Jost** (geometric sans). Paragraphs, navigation, buttons, prices,
-  labels. Even, quiet, modern.
-- **Utility — Jost, uppercase, tracked** for eyebrows, labels, and metadata. No
+- **Body / UI — Manrope** (grotesque sans). Paragraphs, navigation, buttons, prices,
+  labels. Even, modern, highly readable. (Part 4 allowed Inter or Manrope; Manrope chosen
+  for a touch more character while staying neutral.)
+- **Utility — Manrope, uppercase, tracked** for eyebrows, labels, and metadata. No
   separate mono; prices use `font-variant-numeric: tabular-nums`.
 
 Self-host both (woff2) for performance — see the deploy runbook. Fallbacks:
 `Cormorant Garamond → Georgia, 'Times New Roman', serif`;
-`Jost → ui-sans-serif, system-ui, sans-serif`.
+`Manrope → ui-sans-serif, system-ui, sans-serif`.
 
 ### Type scale (fluid, `clamp`)
 
@@ -76,10 +80,27 @@ Body line-height `1.6`; headings `1.1` with `text-wrap: balance`.
 - Base unit **8px**; spacing scale `8 / 16 / 24 / 40 / 64 / 96 / 128`.
 - Content max-width **1240px**; text measure capped near **68ch**.
 - Section vertical rhythm: `clamp(64px, 10vw, 128px)`.
-- **Corners: square.** `--radius: 0`. Luxury here is sharp and precise; the only
-  softening is on form controls (`2px`).
+- **Corners:** cards, sections, and images are **square** (`--radius: 0`) — sharp and
+  precise; **buttons and inputs are softly rounded** (`--radius-sm: 4px`, per Part 4).
 - Dividers are **hairlines** (`1px`, `--bw-line`), never heavy borders.
 - Generous gutters; let products breathe — the grid is the luxury.
+
+### Buttons (Part 4)
+
+Three variants, all `4px` radius, uppercase Manrope, `.08em` tracking, `200–320ms` hover.
+- **Primary** — black fill, white text; hover inverts to outline (transparent + black text/border).
+- **Secondary** — white fill, black border/text; hover fills black with white text.
+- **Ghost** — transparent, thin silver border; hover darkens the border to black.
+
+### Cards
+
+Product card: square image on `--bw-light`, subtle `scale(1.03)` hover; brand eyebrow,
+model in Cormorant, price in muted stone; wishlist + quick-view on hover; sale badge is a
+small black pill (`onsale`). Ratings shown **only** when genuine reviews exist.
+
+### Icons
+
+Thin line style, consistent stroke and size, professional — no filled/cartoon icons.
 
 ## 5. Motion
 

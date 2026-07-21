@@ -42,7 +42,7 @@ add_action( 'wp_enqueue_scripts', 'beepwear_enqueue_assets', 20 );
  */
 function beepwear_preload_fonts() {
 	$base = get_stylesheet_directory_uri() . '/assets/fonts/';
-	foreach ( array( 'cormorant-garamond.woff2', 'jost.woff2' ) as $font ) {
+	foreach ( array( 'cormorant-garamond.woff2', 'manrope.woff2' ) as $font ) {
 		printf(
 			'<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n",
 			esc_url( $base . $font )

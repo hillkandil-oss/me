@@ -30,6 +30,25 @@ sequenced. Met.
 **Action item → M2b:** deliver logo concepts + favicon/app icons (currently referenced
 by JSON-LD but not yet designed).
 
+### M2 revision — Part 4 design system (client-pinned)
+
+Master Prompt Part 4 pinned specifics that override the initial creative choices; the
+brief's own words win. Design system realigned and reimplemented (theme v0.3.0):
+
+- **Palette** → Luxury Black `#141310` · Pure White · Champagne Gold `#C2A15C`, with
+  charcoal/stone/silver supporting and off-white/light-gray grounds. Replaces the earlier
+  warm-porcelain ground. Named semantic colors adopted (crimson/emerald/amber/royal blue).
+- **Body type** → Manrope (was Jost); display stays Cormorant Garamond. Font references,
+  preload, and README updated.
+- **Buttons** → three variants (primary/secondary/ghost) with `4px` radius per Part 4;
+  cards/images stay square.
+- **Contrast re-audit** — bright champagne fails as text on white (≈2.4:1); rule updated to
+  use `--bw-champagne-deep` (≈4.6:1) for gold text/links on white, bright gold for large/
+  non-text only. Design + Accessibility gates re-pass.
+
+Component specs (cards, header, trust band, footer, mega menu) captured in BRAND.md and
+built in M4/M5.
+
 ---
 
 ## Milestone 3 — Architecture · ✅ signed off (open items owned by later milestones)
