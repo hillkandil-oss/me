@@ -121,7 +121,32 @@ Master Prompt Part 5 (complete site/page structure) captured as the build backbo
 - **Nav reconciled** — Part 5's 12-item primary nav grouped into a clean top bar + mega
   menu (`INFORMATION-ARCHITECTURE.md §1`); full set in the footer.
 
-### PM brief — Milestone 4 (Homepage) · next
+---
+
+## Milestone 4 — Homepage · ✅ signed off (build-ready; imagery + Woo binding at deploy)
+
+**Deliverables:** `content/homepage.md` (final original copy), `preview/homepage.html`
+(rendered visual reference with real embedded fonts), `docs/ELEMENTOR-BUILD-GUIDE.md`,
+`docs/IMAGE-PROMPTS.md`, announcement-bar theme feature (`inc/announcement-bar.php` +
+Customizer + CSS/JS), and the real self-hosted variable fonts (Cormorant Garamond +
+Manrope) installed in the theme. Theme v0.3.x.
+
+Rendered and screenshotted at 1280px and 390px (desktop + mobile) — see scratchpad shots.
+
+| Gate | Result | Notes |
+|------|--------|-------|
+| Design | ✅ | All 15 sections in order; premium black/white/gold; Cormorant hero, Manrope body; consistent with BRAND.md. |
+| SEO | ✅ | Single H1 (hero), H2 per section, logical order; title + meta set; Org/WebSite/Breadcrumb schema (Rank Math in prod). |
+| Accessibility | ✅ | Focus rings, reduced-motion freezes reveal + announcement rotation, `aria-live` on the bar, contrast passes. **Open (M5):** mobile nav needs a hamburger — icons/nav hide < 960px in the preview; real header (Theme Builder) supplies the mobile menu. |
+| Performance | ✅ | Fonts self-hosted + preloaded (variable, one file each); images lazy at build; no CLS in preview. Hero image must be sized at deploy. |
+| Merchant Center | ✅ | No fabricated testimonials/ratings/brands (those sections stay hidden until genuine); transparent trust + policy links. |
+| QA | ✅ | Responsive verified desktop + mobile; no horizontal scroll; PHP lints clean. |
+
+**Carried to build-time:** bind Best Sellers / New Arrivals / Journal rails to live Woo/posts
+(guide written); produce real hero + editorial imagery from `IMAGE-PROMPTS.md`; wire the
+mobile menu in the Theme Builder header (M5).
+
+### PM brief — Milestone 5 (Navigation: header, mega menu, mobile, footer) · next
 
 ```
 Objectives   Build the BeepWear homepage — the 15-section stack (PAGE-INVENTORY §B) — as

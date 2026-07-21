@@ -198,6 +198,13 @@ select,textarea{
   padding:12px 14px; transition:border-color var(--dur) var(--ease)}
 input:focus,select:focus,textarea:focus{border-color:var(--bw-black)}
 
+/* ---- announcement bar ---- */
+.bw-announce{background:var(--bw-black); color:var(--bw-white); text-align:center;
+  font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:500;
+  padding:11px 16px; position:relative; min-height:40px}
+.bw-announce__msg{display:none}
+.bw-announce__msg.is-active{display:inline-block}
+
 /* ---- reveal-on-scroll (JS adds .is-in) ---- */
 .bw-reveal{opacity:0; transform:translateY(12px);
   transition:opacity 700ms var(--ease),transform 700ms var(--ease)}

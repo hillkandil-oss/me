@@ -30,9 +30,10 @@ function beepwear_require( $module ) {
 array_map(
 	'beepwear_require',
 	array(
-		'setup',        // Theme supports + WooCommerce declaration.
-		'enqueue',      // Styles, script, font preload.
-		'woocommerce',  // Storefront presentation tweaks.
-		'schema',       // JSON-LD structured data (fallback).
+		'setup',            // Theme supports + WooCommerce declaration.
+		'enqueue',          // Styles, script, font preload.
+		'announcement-bar', // Admin-configurable announcement bar.
+		'woocommerce',      // Storefront presentation tweaks.
+		'schema',           // JSON-LD structured data (fallback).
 	)
 );

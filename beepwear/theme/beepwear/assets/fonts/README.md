@@ -1,10 +1,11 @@
-# Fonts (self-hosted)
+# Fonts (self-hosted, installed)
 
-Place woff2 files here, named exactly as referenced in `style.css` / `inc/enqueue.php`:
+Variable woff2 files, referenced by `style.css` / `inc/enqueue.php`:
 
-- `cormorant-garamond.woff2` — display serif (weights 300–600, variable or subset)
-- `manrope.woff2` — body/UI sans (weights 300–700, variable or subset)
+- `cormorant-garamond.woff2` — display serif, variable (weights 300–600). ✅ present
+- `manrope.woff2` — body/UI sans, variable (weights 300–700). ✅ present
 
-Download from Google Fonts and convert/subset to woff2 (latin + latin-ext).
-Self-hosting (not the Google CDN) is required for performance and privacy.
-See `docs/DEPLOY-RUNBOOK.md`.
+Both are the latin-subset variable fonts from Google Fonts (SIL Open Font License),
+self-hosted for performance and privacy (no Google CDN calls). To refresh or add more
+subsets (e.g. latin-ext, cyrillic), re-export from Google Fonts and replace in place —
+the `@font-face` weight ranges already cover the full axis.

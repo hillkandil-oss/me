@@ -23,6 +23,22 @@
     items.forEach(function (el) { io.observe(el); });
   }
 
-  if (document.readyState !== "loading") initReveal();
-  else document.addEventListener("DOMContentLoaded", initReveal);
+  // Announcement bar: rotate messages. Frozen (shows first only) if reduced-motion.
+  function initAnnounce() {
+    var bar = document.querySelector(".bw-announce");
+    if (!bar) return;
+    var msgs = bar.querySelectorAll(".bw-announce__msg");
+    if (msgs.length < 2 || reduce) return;
+    var speed = (parseInt(bar.getAttribute("data-speed"), 10) || 4) * 1000;
+    var i = 0;
+    setInterval(function () {
+      msgs[i].classList.remove("is-active");
+      i = (i + 1) % msgs.length;
+      msgs[i].classList.add("is-active");
+    }, speed);
+  }
+
+  function init() { initReveal(); initAnnounce(); }
+  if (document.readyState !== "loading") init();
+  else document.addEventListener("DOMContentLoaded", init);
 })();

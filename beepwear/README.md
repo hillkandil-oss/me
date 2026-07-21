@@ -21,8 +21,13 @@ beepwear/
 │  ├─ BRAND.md              Visual identity: palette, type, spacing, voice
 │  ├─ ELEMENTOR-BUILD-GUIDE.md   Page-by-page build instructions for Elementor Pro
 │  └─ DEPLOY-RUNBOOK.md     Hostinger + WooCommerce + Merchant Center setup
-└─ content/                 Original copy: policies, about, warranty, FAQ, guides
+├─ content/                 Original copy: homepage, policies, about, FAQ, guides
+└─ preview/                 Rendered static HTML references (design proofs), e.g. homepage
 ```
+
+> `preview/homepage.html` is a self-contained visual reference of the approved homepage
+> design (real fonts embedded). It is a design proof for the Elementor build — not the
+> production page, which is assembled in WordPress/Elementor per `docs/ELEMENTOR-BUILD-GUIDE.md`.
 
 ## How this project is run
 
@@ -38,7 +43,7 @@ The next milestone doesn't begin until the previous one is signed off.
 | 1 | Project Planning | ✅ complete |
 | 2 | Brand Identity | ✅ complete (logo concepts pending) |
 | 3 | Architecture | ✅ complete |
-| 4 | Homepage | ⬜ planned |
+| 4 | Homepage | ✅ complete |
 | 5 | Navigation (header, mega menu, footer) | ⬜ planned |
 | 6 | Collections | ⬜ planned |
 | 7 | Product Pages | ⬜ planned |
