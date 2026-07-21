@@ -211,3 +211,35 @@ cards, order summary (items, totals), and support/continue-shopping. Mirrors the
 - Cart/checkout/account excluded from full-page cache and set `noindex` (SEO/robots).
 - Transactional emails (order/shipping/delivery confirmations) styled to brand — see
   `CONTENT-STRATEGY.md` (`content/emails/`), owner M8/M10.
+
+---
+
+# Customer Account & Wishlist (Milestone 10)
+
+Reference design: `preview/account.html`. **Style WooCommerce's native My Account
+endpoints** (`/my-account/…`) — never rebuild them; the child theme restyles the account
+templates to the design system. Account/cart/checkout stay `noindex` and out of full-page cache.
+
+## My Account
+
+- **Sidebar nav** — Dashboard, Orders (count), Wishlist (count), Addresses, Account Details,
+  Password, Log out. Active item filled black with a gold count.
+- **Dashboard** — welcome band + stat cards (orders / wishlist / addresses) + recent-orders table.
+- **Orders** — table with order #, date, **status pill** (Processing / In transit / Delivered
+  — state conveyed by label + dot, not colour alone), total, View.
+- **Addresses** — shipping + billing cards with Edit.
+- **Account details** — first/last name, email, and a separate **Password** change screen.
+- **Downloads** — only if digital products are ever sold (hidden otherwise).
+- **Log out.**
+
+## Wishlist
+
+TI WooCommerce Wishlist (per `PLUGINS.md`), styled to match: saved-product cards with
+**Move to cart** and **Remove**; optional **Share**. Empty state per
+`INFORMATION-ARCHITECTURE.md §5` (link to Shop).
+
+## Build notes
+
+- Login / register / lost-password use Woo's forms, restyled; keep validation + nonces intact.
+- Account emails (welcome, verification, password reset) branded — `content/emails/` (M8/M10).
+- Forms: labelled fields, visible focus, accessible error messages.

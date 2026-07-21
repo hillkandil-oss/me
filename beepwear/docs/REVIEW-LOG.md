@@ -298,16 +298,43 @@ privacy, cookies, terms, accessibility; plus `content/authenticity.md`, `content
    professional and tailored to BeepWear's entity, location, and actual data practices; do not
    claim regulatory compliance unless implemented.
 
-### PM brief — Milestone 10 (Customer Account) · next
+## Milestone 10 — Customer Account · ✅ signed off
+
+**Deliverables:** `preview/account.html` (dashboard, sidebar nav with counts, stat cards,
+recent-orders table with status pills, addresses, account-details form) and the Account
+section of `ELEMENTOR-BUILD-GUIDE.md`.
+
+| Gate | Result | Notes |
+|------|--------|-------|
+| Design | ✅ | Consistent with the store; calm dashboard; status pills styled with the semantic tokens. |
+| SEO | ✅ | Account endpoints `noindex` (documented). |
+| Accessibility | ✅ | Labelled form fields, focus states, order status by label + dot (not colour alone), keyboard nav. |
+| Performance | ✅ | Native Woo endpoints restyled; excluded from cache. |
+| Merchant Center | ✅ | Standard account UX; no misleading elements. |
+| QA | ✅ | Verified desktop + mobile (orders table reflows to stacked rows; sidebar stacks). |
+
+**Carried to build-time:** restyle Woo account templates + TI Wishlist on the live install;
+brand account emails; keep Woo form validation/nonces intact.
+
+---
+
+## Page builds complete (M4–M10)
+
+Every customer-facing template now exists as a design-true, on-system preview:
+homepage · navigation · category/PLP · product (PDP) · cart · checkout · order
+confirmation · account. Plus the full policy/content library (M9). The project now shifts
+from **building** to **optimizing, validating, and deploying** on the live host.
+
+### PM brief — Milestone 11 (SEO implementation) · next
 
 ```
-Objectives   Style the WooCommerce My Account area + wishlist per PAGE-INVENTORY §C.
-Tasks        Dashboard, orders, addresses, account details, password, wishlist, logout;
-             empty states; account-email templates note.
-Dependencies design system, Woo + wishlist plugin (deploy).
-Risks        Keep on Woo's native account endpoints (security/update safety).
-Deliverables preview/account, build-guide section.
-Acceptance   Six gates; clean dashboard; consistent with store; accessible forms.
+Objectives   Execute SEO-STRATEGY.md on the live site: Rank Math config, titles/meta per
+             template, schema validation, sitemaps, canonicals, robots, image SEO, internal
+             linking, Search Console.
+Dependencies live WordPress + Rank Math + Site Kit (deploy); content (done).
+Risks        Runs on live install — this repo carries the theme schema + the strategy/checklist.
+Deliverables SEO config checklist executed; Rich Results + sitemap verified in Search Console.
+Acceptance   SEO review gate; valid schema; indexable public pages; noindex on cart/checkout/account.
 ```
 
 ```
