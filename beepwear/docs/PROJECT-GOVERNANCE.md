@@ -71,7 +71,7 @@ Documentation → Approval → Deployment.
 | 2 | Brand Identity (`BRAND.md`, logo concepts) | ✅ complete (logo concepts pending) |
 | 3 | Architecture (child theme, data model, plugin list) | ✅ complete |
 | 4 | Homepage | ✅ complete |
-| 5 | Navigation (header, mega menu, mobile, footer) | ⬜ planned |
+| 5 | Navigation (header, mega menu, mobile, footer) | ✅ complete |
 | 6 | Collections (shop + category pages) | ⬜ planned |
 | 7 | Product Pages (PDP) | ⬜ planned |
 | 8 | Checkout | ⬜ planned |

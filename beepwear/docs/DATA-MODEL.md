@@ -76,6 +76,7 @@ clean.
 | `case-size` | 34mm, 36mm, 38mm, 40mm, 42mm, 44mm | Filter (fit), spec |
 | `dial-color` | Black, White, Blue, Silver, Green, Champagne | Filter, variation axis |
 | `strap-material` | Leather, Steel Bracelet, Rubber, NATO, Mesh | Filter, variation axis |
+| `band-color` | Black, Brown, Tan, Silver, Gold, Blue | Filter, variation axis |
 | `water-resistance` | 30m, 50m, 100m, 200m, 300m+ | Filter (use case), spec |
 | `crystal` | Sapphire, Mineral, Acrylic | Spec, trust signal |
 | `features` | Date, Chronograph, GMT, Moonphase, Skeleton | Filter, spec |
@@ -91,8 +92,12 @@ Minimal, per the "no unnecessary tech" rule:
 
 - **Blog / Journal** → native `post` with a `Journal` category and sub-categories for
   **Buying Guides**, **Watch Care**, **Brand Stories**. No CPT needed.
-- **No custom CPTs** for now. Collections/lookbooks are Elementor landing pages driven by
-  category/brand queries. Revisit only if editorial needs outgrow pages.
+- **`collection` taxonomy** (product taxonomy) → for **named** collections (Heritage,
+  Executive, Everyday, Gift, Limited Edition). Products are assigned terms so collection
+  pages populate dynamically. Rule-based collections (New Arrivals = recent, Best Sellers =
+  sales) stay query-driven and need no term.
+- **No custom CPTs** for now. Collection/brand pages are Elementor templates driven by
+  taxonomy/query. Revisit only if editorial needs outgrow pages.
 
 ## 6. Attribute → Merchant Center feed mapping (preview; finalized in M12)
 

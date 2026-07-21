@@ -146,7 +146,50 @@ Rendered and screenshotted at 1280px and 390px (desktop + mobile) — see scratc
 (guide written); produce real hero + editorial imagery from `IMAGE-PROMPTS.md`; wire the
 mobile menu in the Theme Builder header (M5).
 
-### PM brief — Milestone 5 (Navigation: header, mega menu, mobile, footer) · next
+### Part 7 integrated — product-experience spec-of-record (owners M6/M7)
+
+- **`docs/PRODUCT-EXPERIENCE.md`** — catalog structure, full PDP layout (14 blocks),
+  category/brand/collection page layouts, variations, filter/sort/search, inventory,
+  recommendations/cross-sells/up-sells/comparison, image standards, and the per-product +
+  Merchant Center review checklists.
+- **`DATA-MODEL.md`** — added `band-color` attribute and a `collection` taxonomy for named
+  collections; feed mapping already covers gtin/mpn/condition/shipping/tax.
+- Milestone order unchanged: M5 (Navigation) is the next build — it gates the catalog pages.
+
+## Milestone 5 — Navigation · ✅ signed off
+
+**Deliverables:** `preview/nav.html` (header + mega menu + mobile drawer, real fonts),
+`docs/ELEMENTOR-BUILD-GUIDE.md` header/mega/mobile/footer section. Footer built in the M4
+homepage preview. Rendered and screenshotted desktop (mega open) + mobile (drawer open).
+
+| Gate | Result | Notes |
+|------|--------|-------|
+| Design | ✅ | Sticky white header, gold-accent logo; mega organized By Gender/Style/Movement/Shop + featured card; clean mobile drawer. On-system throughout. |
+| SEO | ✅ | Nav links map to clean URLs; footer carries full map; no orphan links. |
+| Accessibility | ✅ | Resolves the M4 open item — mobile hamburger drawer with search, ≥44px targets, focus-trap + overlay close; mega opens on hover **and** keyboard focus with `aria-expanded`. |
+| Performance | ✅ | CSS-only mega (no heavy JS); drawer is a light toggle. |
+| Merchant Center | ✅ | Brands shown only when real; policies reachable from footer (transparency). |
+| QA | ✅ | Verified 1280px + 390px; no horizontal scroll. |
+
+**Carried to build-time:** assemble in Elementor Theme Builder per the guide; populate the
+Brands mega once real brand partnerships exist.
+
+### PM brief — Milestone 6 (Collections: shop, category, brand, collection, search) · next
+
+```
+Objectives   Build the browse layer per PRODUCT-EXPERIENCE.md — shop archive, category,
+             brand, and collection templates + search results, all inheriting the system.
+Tasks        1. Style the Woo shop/category archive (hero, filter sidebar, sort, grid,
+                pagination, SEO intro, FAQ, related) via child theme + Elementor templates.
+             2. Brand + collection page templates (original content blocks).
+             3. Faceted filters mapped to attributes/taxonomy; filter URLs noindex+canonical.
+             4. Search results + no-results suggestions.
+             5. Visual preview (category/PLP) + build guide section.
+Dependencies DATA-MODEL, INFORMATION-ARCHITECTURE, PRODUCT-EXPERIENCE (done); Woo at deploy.
+Risks        Filter plugin choice affects UX/perf — evaluate vs plugin policy before adding.
+Deliverables category preview, build-guide section, filter/sort config notes.
+Acceptance   Passes six gates; premium PLP; filters accessible; no duplicate-content indexing.
+```
 
 ```
 Objectives   Build the BeepWear homepage — the 15-section stack (PAGE-INVENTORY §B) — as

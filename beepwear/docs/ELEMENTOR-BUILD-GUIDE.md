@@ -51,3 +51,41 @@ Alternate section backgrounds white / off-white (`.bw-section--soft`) for rhythm
 - No testimonials/ratings/brands shown unless genuine.
 - Mobile: categories/products 2-up, bands stack, tap targets ≥ 44px, no horizontal scroll.
 - Title + meta description set (content file); Rank Math schema on.
+
+---
+
+# Header, Mega Menu, Mobile & Footer (Milestone 5)
+
+Built in **Elementor Pro Theme Builder** as site-wide Header and Footer templates (display
+condition: Entire Site). Reference design: `preview/nav.html` (desktop mega + mobile drawer).
+
+## Header
+
+- **Container:** sticky, white background, `1px` hairline bottom border, 78px tall; logo left,
+  nav center, icons right (Search · Wishlist · Account · Cart). Logo is "Beep" + gold "Wear".
+- **Sticky effect:** Elementor motion → sticky on scroll; keep it solid (not transparent) for
+  legibility over light pages; announcement bar (theme Customizer) sits above it.
+- **Icons:** thin-line style, consistent size; Cart shows live count.
+
+## Mega menu
+
+Use Elementor Pro's **Mega Menu** (or a Nav Menu with a full-width dropdown). Structure for
+**Shop** (four columns): *By Gender* (Men/Women/Unisex) + *Accessories*; *By Style* (Dress,
+Sports, Diver, Chronograph, Pilot, GMT, Skeleton, Moonphase); *By Movement* (Automatic,
+Quartz, Mechanical) + *Shop* (New Arrivals, Best Sellers, Limited Editions, Sale); and a dark
+**Featured** promo card linking to a collection. Mirror the pattern for **Collections** and
+**Brands** (brand list + "View all brands").
+- Open on hover (desktop) and focus (keyboard); `aria-expanded` on the trigger.
+- Links map to the clean URLs in `INFORMATION-ARCHITECTURE.md §2`.
+
+## Mobile menu
+
+Elementor's mobile menu / off-canvas drawer (< 960px): hamburger opens a left drawer with a
+search field, expandable Shop/Brands/Collections sections, the full nav list, and an
+Account/Wishlist/Cart footer row. Tap targets ≥ 44px; drawer traps focus; overlay closes it.
+
+## Footer (built in M4 preview; formalize here)
+
+Five columns — brand blurb · Shop · Customer Service · Company · Legal — over a dark ground,
+then a bottom bar with copyright + accepted payment marks. Include newsletter, social, and
+business info. Matches `preview/homepage.html` footer. All links resolve (no dead links).
