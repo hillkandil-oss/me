@@ -89,3 +89,52 @@ Account/Wishlist/Cart footer row. Tap targets ≥ 44px; drawer traps focus; over
 Five columns — brand blurb · Shop · Customer Service · Company · Legal — over a dark ground,
 then a bottom bar with copyright + accepted payment marks. Include newsletter, social, and
 business info. Matches `preview/homepage.html` footer. All links resolve (no dead links).
+
+---
+
+# Collections: Shop, Category, Brand, Collection, Search (Milestone 6)
+
+Reference design: `preview/category.html`. Built as Elementor Pro **Theme Builder**
+templates over WooCommerce archives, inheriting the design system. One template pattern
+serves shop/category; brand and collection are variations with an extra content block.
+
+## Products Archive template (shop + category)
+
+Display condition: Products archive + `product_cat`. Structure, top to bottom:
+1. **Breadcrumb** (Rank Math) → `BreadcrumbList` schema.
+2. **Category hero** — eyebrow + H1 (category name) + SEO description (unique per category,
+   editable in the term description / an ACF-style field).
+3. **Toolbar** — result count · sort (Featured, Newest, Price ↑/↓, Best Selling, Highest
+   Rated) · mobile "Filters" button.
+4. **Layout** — filter sidebar + product grid.
+   - **Filters** (faceted): Brand, Movement, Case material, Case size, Dial color, Water
+     resistance, Price, Availability (+ Band material/color, Style, Collection where useful).
+     Use a filter plugin evaluated against `PLUGINS.md`; filter URLs `noindex,follow` +
+     canonical to base archive.
+   - **Grid** — WooCommerce Products widget styled by `.woocommerce ul.products` (theme):
+     3-up desktop, 2-up mobile; card = image (badge + wishlist), brand eyebrow, model
+     (Cormorant), price. Sale/New/Limited badges via `.bw-badge`/`onsale`.
+5. **Pagination.**
+6. **Buying-guide band** — links the category to the relevant guide (internal linking).
+7. **FAQ** — accordion (category-appropriate) → `FAQPage` schema.
+8. **Related collections** + **newsletter**.
+
+Avoid thin, grid-only category pages — the hero description, buying-guide band, and FAQ
+carry the SEO content (`SEO-STRATEGY.md §6`).
+
+## Brand template
+
+Same archive base filtered to a `brand` term, plus original brand content blocks: history,
+philosophy, signature collections, featured products, buying advice, FAQ, related articles.
+All copy original (`content/brands/{brand}.md`).
+
+## Collection template
+
+Same base for a `collection` term, plus overview, curated featured products, buying
+recommendations, related collections, educational content.
+
+## Search results
+
+WooCommerce search template: search term, result count, product results (same card),
+suggested categories/articles, and a helpful **no-results** state (popular brands + shop
+link) — never a dead end (`INFORMATION-ARCHITECTURE.md §3`).

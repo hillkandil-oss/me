@@ -222,7 +222,44 @@ These are spec-of-record for M9 (content/policies), M11 (SEO), M12 (Merchant Cen
   Hostinger + Google access).
 - Confirms the milestone sequence and quality standards already in force; no conflicts.
 
-### PM brief — Milestone 6 (Collections: shop, category, brand, collection, search) · next
+## Milestone 6 — Collections · ✅ signed off
+
+**Deliverables:** `preview/category.html` (category/PLP template — breadcrumb, hero + SEO
+description, sort, faceted filter sidebar, product grid with badges + wishlist, pagination,
+buying-guide band, FAQ accordion, related collections, newsletter, footer), and the
+Collections section of `docs/ELEMENTOR-BUILD-GUIDE.md` (shop/category template + brand,
+collection, and search variations). Rendered desktop + mobile.
+
+| Gate | Result | Notes |
+|------|--------|-------|
+| Design | ✅ | Premium PLP; consistent with home/nav; badges via `.bw-badge`/`onsale`; Cormorant model names, tabular prices. |
+| SEO | ✅ | Breadcrumb + unique hero description + buying-guide band + FAQ (avoids thin grid pages); filter URLs planned `noindex`+canonical. |
+| Accessibility | ✅ | Checkable filters with labels, keyboard-operable sort, FAQ via native `<details>`, focus states; mobile Filters button for the drawer. |
+| Performance | ✅ | CSS grid, lazy images at build, no layout shift in preview. |
+| Merchant Center | ✅ | Accurate availability filter; no fake ratings; brand facets only for real brands. |
+| QA | ✅ | Verified 1280px + 390px (2-up grid, sidebar → Filters button); no horizontal scroll. |
+
+**Carried to build-time:** assemble as Woo archive Theme Builder templates; choose the
+filter plugin (per `PLUGINS.md`); brand/collection pages add original content blocks;
+search-results template + no-results state.
+
+### PM brief — Milestone 7 (Product Pages / PDP) · next
+
+```
+Objectives   Build the single-product template per PRODUCT-EXPERIENCE.md §2 (14 blocks).
+Tasks        1. Gallery + summary (brand, model, ref, price, availability, variations,
+                qty, add-to-cart, wishlist, compare).
+             2. Highlights, original description, specifications table (DATA-MODEL §8),
+                what's-included, shipping/returns/warranty summaries, payment methods.
+             3. Related + recently-viewed; genuine-reviews block (hidden until real); FAQ.
+             4. Product schema (brand/sku/gtin when real, offers, availability), breadcrumbs.
+             5. Visual PDP preview + build-guide section.
+Dependencies DATA-MODEL, PRODUCT-EXPERIENCE, design system (done); real product data at deploy.
+Risks        No real product/photography yet → preview uses clearly-placeholder imagery;
+             specs/identifiers must be verified before publishing any real PDP.
+Deliverables preview/product.html, build-guide PDP section, sample PDP copy.
+Acceptance   Six gates; premium PDP; valid schema; no invented specs/identifiers/reviews.
+```
 
 ```
 Objectives   Build the browse layer per PRODUCT-EXPERIENCE.md — shop archive, category,
