@@ -190,6 +190,17 @@ Brands mega once real brand partnerships exist.
 
 These are spec-of-record for M9 (content/policies), M11 (SEO), M12 (Merchant Center).
 
+### Part 11 integrated — component library (owner: design system, all milestones)
+
+- **`docs/COMPONENT-LIBRARY.md`** — global-token → Elementor-global mapping, full component
+  inventory (buttons, forms + input states, cards, badges, alerts, gallery, accordion, tabs,
+  modals, empty/loading states, micro-interactions), reusable-template list with where-used,
+  and the Design QA checklist.
+- **Theme v0.4.0** — added shadow tokens (`--shadow-sm/md/lg/hover`) and reusable `.bw-badge`
+  + `.bw-alert` component styles (alerts convey state via a dot, not color alone). PHP lints clean.
+- **Palette conflict flagged & resolved:** Part 11's "Deep Navy" palette is an *example*;
+  Part 4's Black/White/Gold (already built) remains authoritative — noted in the doc.
+
 ### PM brief — Milestone 6 (Collections: shop, category, brand, collection, search) · next
 
 ```

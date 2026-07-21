@@ -3,7 +3,7 @@ Theme Name: BeepWear
 Theme URI: https://beepwear.com
 Description: BeepWear — luxury watch boutique. Child theme of Hello Elementor implementing the BeepWear design system (see docs/BRAND.md). WooCommerce-ready, accessibility- and performance-minded.
 Author: BeepWear
-Version: 0.3.0
+Version: 0.4.0
 Template: hello-elementor
 Requires at least: 6.4
 Requires PHP: 8.0
@@ -71,6 +71,12 @@ Text Domain: beepwear
   /* ---- radius: sharp cards, softly-rounded controls ---- */
   --radius:0;          /* cards, sections, images */
   --radius-sm:4px;     /* buttons, inputs (Part 4: rounded corners) */
+
+  /* ---- shadows: subtle, used sparingly ---- */
+  --shadow-sm:0 1px 2px rgba(20,19,16,.06);
+  --shadow-md:0 6px 16px -8px rgba(20,19,16,.18);
+  --shadow-lg:0 24px 40px -24px rgba(20,19,16,.28);
+  --shadow-hover:0 12px 28px -12px rgba(20,19,16,.22);
 
   /* ---- motion ---- */
   --ease:cubic-bezier(.16,.9,.28,1);
@@ -204,6 +210,33 @@ input:focus,select:focus,textarea:focus{border-color:var(--bw-black)}
   padding:11px 16px; position:relative; min-height:40px}
 .bw-announce__msg{display:none}
 .bw-announce__msg.is-active{display:inline-block}
+
+/* ---- badges (use sparingly) ---- */
+.bw-badge{display:inline-flex; align-items:center; gap:.4em;
+  font-family:var(--font-body); font-size:11px; font-weight:600; letter-spacing:.1em;
+  text-transform:uppercase; line-height:1; padding:6px 11px; border-radius:var(--radius-sm);
+  background:var(--bw-black); color:var(--bw-white)}
+.bw-badge--new{background:var(--bw-champagne-deep)}
+.bw-badge--limited{background:var(--bw-black); box-shadow:inset 0 0 0 1px var(--bw-champagne)}
+.bw-badge--sale{background:var(--bw-error)}
+.bw-badge--oos{background:transparent; color:var(--bw-stone); box-shadow:inset 0 0 0 1px var(--bw-silver)}
+.bw-badge--preorder{background:var(--bw-info)}
+.bw-badge--featured{background:transparent; color:var(--bw-black); box-shadow:inset 0 0 0 1px var(--bw-black)}
+
+/* ---- alerts ---- */
+.bw-alert{display:flex; gap:.7em; align-items:flex-start;
+  padding:14px 16px; border-radius:var(--radius-sm); font-size:var(--fs-small);
+  border:1px solid var(--bw-line); border-left-width:3px; background:var(--bw-offwhite)}
+.bw-alert--success{border-left-color:var(--bw-success)}
+.bw-alert--info{border-left-color:var(--bw-info)}
+.bw-alert--warning{border-left-color:var(--bw-warning)}
+.bw-alert--error{border-left-color:var(--bw-error)}
+/* icon dot conveys state in addition to color (not color alone) */
+.bw-alert::before{content:""; width:8px; height:8px; border-radius:50%; margin-top:6px; flex:0 0 auto; background:var(--bw-stone)}
+.bw-alert--success::before{background:var(--bw-success)}
+.bw-alert--info::before{background:var(--bw-info)}
+.bw-alert--warning::before{background:var(--bw-warning)}
+.bw-alert--error::before{background:var(--bw-error)}
 
 /* ---- reveal-on-scroll (JS adds .is-in) ---- */
 .bw-reveal{opacity:0; transform:translateY(12px);
