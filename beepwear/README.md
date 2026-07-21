@@ -29,6 +29,10 @@ beepwear/
 > design (real fonts embedded). It is a design proof for the Elementor build — not the
 > production page, which is assembled in WordPress/Elementor per `docs/ELEMENTOR-BUILD-GUIDE.md`.
 
+**Top-level status & acceptance:** see **`docs/MASTER-BLUEPRINT.md`** — the phase→milestone
+map with live status, acceptance criteria, launch gate, and business-provided items that
+gate publication.
+
 ## How this project is run
 
 BeepWear follows the operating model in **`docs/PROJECT-GOVERNANCE.md`**: a 15-milestone

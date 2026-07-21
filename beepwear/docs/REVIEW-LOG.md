@@ -212,6 +212,16 @@ These are spec-of-record for M9 (content/policies), M11 (SEO), M12 (Merchant Cen
   guardrails, reporting dashboard, continuous-improvement loop + success metrics.
 - **`CHANGELOG.md`** — seeded with milestone history.
 
+### Part 14 integrated — master execution blueprint & acceptance
+
+- **`docs/MASTER-BLUEPRINT.md`** — top-level definition of done: Part 14's 9-phase order
+  mapped to the 15 milestones with **live status**, acceptance criteria per area, the
+  launch-readiness PASS/WARNING/BLOCKER gate, master completion checklist, long-term
+  roadmap, and the explicit list of **business-provided items** that gate publication
+  (real brands, business facts, product data + photography, payment/shipping details,
+  Hostinger + Google access).
+- Confirms the milestone sequence and quality standards already in force; no conflicts.
+
 ### PM brief — Milestone 6 (Collections: shop, category, brand, collection, search) · next
 
 ```
