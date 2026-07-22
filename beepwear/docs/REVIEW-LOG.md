@@ -27,8 +27,7 @@ sequenced. Met.
 | Merchant Center | ✅ | Imagery rule bars AI images as primary product photos. |
 | QA | ✅ | Tokens are internally consistent with `style.css`. |
 
-**Action item → M2b:** deliver logo concepts + favicon/app icons (currently referenced
-by JSON-LD but not yet designed).
+**Action item → M2b:** ✅ **done** — logo concepts + favicon delivered (see M2b entry below).
 
 ### M2 revision — Part 4 design system (client-pinned)
 
@@ -375,6 +374,15 @@ details, Hostinger + Google access, legal review). Documentation + deployment pl
 The remaining blockers are business inputs and live-site execution — not design or code.
 
 ---
+
+## Milestone 2b — Logo & favicon · ✅ signed off
+
+**Deliverables:** `preview/logo.html` (concepts) and theme SVGs — `beepwear-wordmark.svg`,
+`beepwear-mark.svg` (watch-dial mark), `beepwear-favicon.svg`. Wordmark (gold "Wear"),
+combination mark, stacked lockup, "BW" monogram, and favicon; documented in `BRAND.md §8`
+with usage rules. Organization JSON-LD now references the real mark asset (`inc/schema.php`).
+Closes the last open design item. **Build-time:** export a 512×512 PNG of the mark for
+schema, and the wordmark to outlines for flat assets.
 
 ## Project status — all 15 milestones addressed
 

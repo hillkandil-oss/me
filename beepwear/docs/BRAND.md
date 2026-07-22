@@ -125,3 +125,22 @@ Confident, precise, unhurried. Short declarative sentences. Speak to craft and
 ownership, not hype. Never invent reviews, awards, certifications, or trust badges.
 - Buttons say exactly what they do: **Add to bag**, **Proceed to checkout**, **View collection**.
 - Prices, materials, and specs are stated plainly. Specific beats clever.
+
+## 8. Logo (M2b)
+
+Concepts: `preview/logo.html`. Assets: `theme/beepwear/assets/images/`.
+
+- **Primary wordmark** — "Beep" in ink + "Wear" in deep gold, Cormorant Garamond 600
+  (`beepwear-wordmark.svg`). The identity carried through the site header/footer.
+- **Combination mark** — the watch-dial mark (`beepwear-mark.svg`) left of the wordmark, for
+  the header lockup. The dial's single gold hand echoes the hero/PDP motif.
+- **Stacked lockup** — mark over "BEEP WEAR" (tracked) with the optional line "Fine Timepieces".
+- **Monogram** — "BW" inside a gold bezel circle, for compact/social use.
+- **Favicon / app icon** — dial mark on warm-black (`beepwear-favicon.svg`).
+
+**Usage:** keep clear space ≥ the mark's radius around the lockup; minimum wordmark height
+~20px; never stretch, recolour outside the palette, or add effects. For the wordmark as a
+flat asset (email, print, schema), export the Cormorant text to **outlines** so it renders
+without the font. Provide a **512×512 PNG** export of the mark for the Organization schema
+`logo` (Google prefers raster ≥112px) — the theme currently references the SVG mark as a
+placeholder.

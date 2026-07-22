@@ -42,7 +42,7 @@ function beepwear_org_schema() {
 				'@id'   => home_url( '/#organization' ),
 				'name'  => 'BeepWear',
 				'url'   => home_url( '/' ),
-				'logo'  => get_stylesheet_directory_uri() . '/assets/images/beepwear-logo.png',
+				'logo'  => get_stylesheet_directory_uri() . '/assets/images/beepwear-mark.svg',
 			),
 			array(
 				'@type'           => 'WebSite',
