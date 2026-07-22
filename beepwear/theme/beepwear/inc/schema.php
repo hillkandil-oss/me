@@ -96,10 +96,12 @@ function beepwear_product_schema() {
 		'sku'         => $product->get_sku(),
 		'description' => wp_strip_all_tags( $product->get_short_description() ?: $product->get_description() ),
 		'image'       => wp_get_attachment_image_url( $product->get_image_id(), 'large' ),
+		'itemCondition' => 'https://schema.org/UsedCondition',
 		'offers'      => array(
 			'@type'         => 'Offer',
 			'price'         => $product->get_price(),
 			'priceCurrency' => get_woocommerce_currency(),
+			'itemCondition' => 'https://schema.org/UsedCondition',
 			'availability'  => $product->is_in_stock()
 				? 'https://schema.org/InStock'
 				: 'https://schema.org/OutOfStock',
@@ -109,3 +111,38 @@ function beepwear_product_schema() {
 	beepwear_print_jsonld( $data );
 }
 add_action( 'wp_head', 'beepwear_product_schema' );
+
+/**
+ * Declare "used" condition on Rank Math's Product rich snippet.
+ *
+ * Rank Math owns the authoritative Product schema in production, but does not
+ * emit itemCondition. Every BeepWear timepiece is pre-owned, so we add it here
+ * (both on the Product entity and its Offer) to match the product feed's
+ * condition:used and keep Merchant Center's page↔feed comparison clean.
+ *
+ * @param array $entity Rank Math product schema entity.
+ * @return array
+ */
+function beepwear_rankmath_product_condition( $entity ) {
+	if ( ! is_array( $entity ) ) {
+		return $entity;
+	}
+	$used = 'https://schema.org/UsedCondition';
+	if ( empty( $entity['itemCondition'] ) ) {
+		$entity['itemCondition'] = $used;
+	}
+	if ( isset( $entity['offers'] ) && is_array( $entity['offers'] ) ) {
+		// Offers may be a single Offer or a list.
+		if ( isset( $entity['offers']['@type'] ) ) {
+			$entity['offers']['itemCondition'] = $used;
+		} else {
+			foreach ( $entity['offers'] as $k => $offer ) {
+				if ( is_array( $offer ) ) {
+					$entity['offers'][ $k ]['itemCondition'] = $used;
+				}
+			}
+		}
+	}
+	return $entity;
+}
+add_filter( 'rank_math/snippet/rich_snippet_product_entity', 'beepwear_rankmath_product_condition' );
