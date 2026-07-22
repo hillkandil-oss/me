@@ -375,6 +375,15 @@ The remaining blockers are business inputs and live-site execution — not desig
 
 ---
 
+## Error & empty states · ✅ built (completes the visual template set)
+
+**Deliverables:** `preview/error-states.html` — branded **404** (dial mark, on-brand
+headline, search + Shop/Collections CTAs) and **empty-state cards** (empty bag, empty
+wishlist, no search results), each routing back into browsing per
+`INFORMATION-ARCHITECTURE.md §5`. On-system, verified. With this, **every customer-facing
+template (M4–M10 + errors) has a rendered preview.** Build: wire to `404.php` /
+`template-parts/` and the Woo empty-cart/wishlist/no-results hooks.
+
 ## Milestone 2b — Logo & favicon · ✅ signed off
 
 **Deliverables:** `preview/logo.html` (concepts) and theme SVGs — `beepwear-wordmark.svg`,
