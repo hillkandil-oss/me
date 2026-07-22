@@ -3,7 +3,7 @@ Theme Name: BeepWear
 Theme URI: https://beepwear.com
 Description: BeepWear — luxury watch boutique. Child theme of Hello Elementor implementing the BeepWear design system (see docs/BRAND.md). WooCommerce-ready, accessibility- and performance-minded.
 Author: BeepWear
-Version: 0.4.0
+Version: 0.5.0
 Template: hello-elementor
 Requires at least: 6.4
 Requires PHP: 8.0
@@ -253,4 +253,86 @@ input:focus,select:focus,textarea:focus{border-color:var(--bw-black)}
   *{scroll-behavior:auto!important}
   .bw-reveal{opacity:1; transform:none; transition:none}
   .woocommerce ul.products li.product:hover a img{transform:none}
+}
+
+/* ============================================================
+   Header / Footer / Homepage — native template styles
+   ============================================================ */
+.bw-header-row{display:flex;align-items:center;justify-content:space-between;gap:24px;height:78px}
+.bw-site-header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.94);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--bw-line)}
+.bw-logo{font-family:var(--font-display);font-size:30px;font-weight:600;letter-spacing:.02em;color:var(--bw-black);text-decoration:none}
+.bw-logo b{color:var(--bw-champagne-deep);font-weight:600}
+.bw-nav-list{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:13.5px;font-weight:500}
+.bw-nav-list a{color:var(--bw-charcoal);text-decoration:none;padding:6px 0;position:relative}
+.bw-nav-list a:hover{color:var(--bw-black)}
+.bw-header-icons{display:flex;gap:18px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.bw-header-icons a{color:var(--bw-charcoal);text-decoration:none}
+.bw-header-icons a:hover{color:var(--bw-black)}
+
+/* hero */
+.bw-hero{position:relative;overflow:hidden;color:var(--bw-white);
+  background:linear-gradient(120deg,#1a1712 0%,#241f18 45%,#3a3025 100%)}
+.bw-hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 90% at 78% 30%,rgba(194,161,92,.28),transparent 55%)}
+.bw-hero-inner{position:relative;z-index:2;padding-block:clamp(72px,11vw,120px)}
+.bw-hero-eyebrow{color:var(--bw-champagne)}
+.bw-hero-title{color:var(--bw-white);font-size:clamp(44px,7vw,88px);font-weight:500;line-height:.92;margin:16px 0 20px;max-width:15ch}
+.bw-hero-lead{max-width:52ch;color:rgba(255,255,255,.82);font-size:19px;margin:0 0 32px}
+.bw-hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.bw-hero .bw-btn--ghost{color:#fff;border-color:rgba(255,255,255,.5)}
+.bw-hero .bw-btn--ghost:hover{background:#fff;color:var(--bw-black);border-color:#fff}
+.bw-hero-trust{display:flex;gap:26px;flex-wrap:wrap;margin-top:38px;padding-top:24px;
+  border-top:1px solid rgba(255,255,255,.16);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.bw-hero-trust span{display:flex;align-items:center;gap:9px}
+.bw-hero-trust span::before{content:"";width:6px;height:6px;background:var(--bw-champagne);border-radius:50%}
+.bw-hero-mark{position:absolute;right:-60px;top:50%;transform:translateY(-50%);z-index:1;width:520px;height:520px;
+  border:1px solid rgba(194,161,92,.35);border-radius:50%;opacity:.6}
+.bw-hero-mark::before{content:"";position:absolute;inset:60px;border:1px solid rgba(194,161,92,.25);border-radius:50%}
+
+/* section head */
+.bw-shead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px}
+.bw-shead h2{font-size:clamp(30px,3.4vw,44px)}
+.bw-shead .bw-eyebrow{margin-bottom:10px}
+.bw-link-more{font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  border-bottom:1.5px solid var(--bw-champagne);padding-bottom:3px;white-space:nowrap;text-decoration:none;color:var(--bw-black)}
+
+/* lifestyle band */
+.bw-life{display:grid;grid-template-columns:1.05fr .95fr;min-height:460px;align-items:center}
+.bw-life-art{background:linear-gradient(135deg,#221d16,#3a3025);min-height:460px}
+.bw-life-txt{padding:clamp(40px,6vw,80px)}
+.bw-life-txt h2{font-size:clamp(30px,3.6vw,46px);margin:14px 0 20px;max-width:16ch;color:#fff}
+.bw-life-txt p{color:rgba(255,255,255,.8);max-width:46ch;margin:0 0 30px}
+
+/* why grid */
+.bw-why{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--bw-line)}
+.bw-why-cell{background:var(--bw-offwhite);padding:38px 30px}
+.bw-why-n{font-family:var(--font-display);font-size:22px;color:var(--bw-champagne-deep)}
+.bw-why-cell h3{font-size:22px;margin:14px 0 10px}
+.bw-why-cell p{font-size:14.5px;color:var(--bw-stone);margin:0}
+
+/* newsletter */
+.bw-news{text-align:center}
+.bw-news h2{color:#fff;font-size:clamp(30px,3.6vw,46px)}
+.bw-news p{color:rgba(255,255,255,.78);max-width:46ch;margin:14px auto 26px}
+.bw-news .bw-news-note{font-size:12px;color:rgba(255,255,255,.5);margin-top:16px}
+
+/* footer */
+.bw-site-footer{padding-block:64px 26px}
+.bw-footer-cols{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:32px}
+.bw-footer-brand p{font-size:14px;max-width:34ch;color:rgba(255,255,255,.72);margin:0 0 14px}
+.bw-footer-contact{font-size:13px;line-height:1.9}
+.bw-footer-contact a{color:var(--bw-champagne)}
+.bw-site-footer h4{color:#fff;font-family:var(--font-body);font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 16px}
+.bw-site-footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;font-size:14px}
+.bw-site-footer a{color:rgba(255,255,255,.72);text-decoration:none}
+.bw-site-footer a:hover{color:var(--bw-champagne)}
+.bw-footer-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:22px;font-size:12.5px;color:rgba(255,255,255,.5)}
+
+@media(max-width:900px){
+  .bw-nav-list,.bw-header-icons{display:none}
+  .bw-life{grid-template-columns:1fr}.bw-life-art{min-height:220px}
+  .bw-why{grid-template-columns:repeat(2,1fr)}
+  .bw-footer-cols{grid-template-columns:1fr 1fr}
+  .bw-hero-mark{display:none}
 }
