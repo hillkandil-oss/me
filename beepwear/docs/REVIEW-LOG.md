@@ -375,6 +375,21 @@ The remaining blockers are business inputs and live-site execution — not desig
 
 ---
 
+## Buying guides · ✅ core set written (content authority asset)
+
+**Deliverables (`content/guides/`):** the flagship **Luxury Watch Buying Guide** (~2,100
+words, meets the Part 8 2,000+ target) plus **Automatic vs Quartz**, **Watch Size Guide**,
+**Water Resistance**, **Watch Care**, and **Watch Materials**. All original, honest, in the
+BeepWear voice — no hype, no financial promises, cross-linked to collections and each other.
+
+| Gate | Result | Notes |
+|------|--------|-------|
+| Content quality | ✅ | Original, researched, plain-spoken; internal links; no filler/AI clichés. |
+| SEO | ✅ | One topic per guide; clean `/journal/…` URLs; Article schema at build; interlinked. |
+| Merchant Center | ✅ | Educational, accurate; no product misrepresentation or false claims. |
+
+**Remaining guides (optional):** First Luxury Watch, Gift Guide — slate in `CONTENT-STRATEGY.md`.
+
 ## Error & empty states · ✅ built (completes the visual template set)
 
 **Deliverables:** `preview/error-states.html` — branded **404** (dial mark, on-brand
