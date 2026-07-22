@@ -13,12 +13,12 @@ the next business day. You'll receive an email when your order ships.
 
 ## Shipping methods & delivery estimates
 
-We ship to customers across our supported regions using tracked, insured carriers.
+We ship using tracked, insured carriers.
 
-| Method | Estimated delivery | Cost |
-|--------|--------------------|------|
-| Standard, tracked & insured | [confirm: 3–6] business days | [confirm: Free over $X / $Y] |
-| Express courier | [confirm: 1–3] business days | [confirm: $Z] |
+| Destination | Rate | Estimated delivery |
+|-------------|------|--------------------|
+| United States | **$120 flat rate**, tracked & insured | 3–7 business days |
+| International | Calculated at checkout | Varies by destination |
 
 Delivery estimates are typical transit times after dispatch, not guarantees, and may vary by
 destination and customs processing.

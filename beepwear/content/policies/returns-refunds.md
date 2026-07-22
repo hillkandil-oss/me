@@ -8,7 +8,7 @@ refunds work.
 
 ## Return window
 
-You may request a return within **[confirm: 14/30] days** of delivery.
+You may request a return within **30 days** of delivery.
 
 ## Eligibility & condition
 

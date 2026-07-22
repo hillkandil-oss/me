@@ -46,7 +46,7 @@ function beepwear_announcement_customize( $wp_customize ) {
 	$wp_customize->add_setting(
 		'beepwear_announcement_messages',
 		array(
-			'default'           => "Free worldwide shipping on eligible orders\n100% secure checkout\nAuthentic luxury watches\nDedicated customer support\nHassle-free returns",
+			'default'           => "Complimentary insured packaging\n100% secure checkout\nAuthentic luxury watches\nDedicated customer support\nHassle-free returns",
 			'sanitize_callback' => 'sanitize_textarea_field',
 		)
 	);
