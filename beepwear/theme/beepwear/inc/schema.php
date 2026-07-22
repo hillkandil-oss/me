@@ -38,11 +38,27 @@ function beepwear_org_schema() {
 		'@context' => 'https://schema.org',
 		'@graph'   => array(
 			array(
-				'@type' => 'Organization',
-				'@id'   => home_url( '/#organization' ),
-				'name'  => 'BeepWear',
-				'url'   => home_url( '/' ),
-				'logo'  => get_stylesheet_directory_uri() . '/assets/images/beepwear-mark.svg',
+				'@type'        => 'Organization',
+				'@id'          => home_url( '/#organization' ),
+				'name'         => 'BeepWear',
+				'url'          => home_url( '/' ),
+				'logo'         => get_stylesheet_directory_uri() . '/assets/images/beepwear-mark.svg',
+				'email'        => 'info@beepwear.com',
+				'telephone'    => '+1-605-361-9867',
+				'address'      => array(
+					'@type'           => 'PostalAddress',
+					'streetAddress'   => '510 Main St',
+					'addressLocality' => 'Wall',
+					'addressRegion'   => 'SD',
+					'postalCode'      => '57790',
+					'addressCountry'  => 'US',
+				),
+				'contactPoint' => array(
+					'@type'       => 'ContactPoint',
+					'contactType' => 'customer service',
+					'email'       => 'info@beepwear.com',
+					'telephone'   => '+1-605-361-9867',
+				),
 			),
 			array(
 				'@type'           => 'WebSite',

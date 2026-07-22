@@ -27,7 +27,7 @@ here clearly.
 
 ## How to return
 
-1. Contact **[confirm: email]** with your order number to request a return.
+1. Contact **info@beepwear.com** with your order number to request a return.
 2. We'll confirm eligibility and provide return instructions [confirm: and a label, if offered].
 3. Pack the watch securely in its original packaging and ship it with a tracked service.
 
@@ -51,5 +51,5 @@ with photos. We'll cover return shipping and send a replacement or full refund �
 
 ## Contact
 
-**[confirm: email]** · [Contact](/contact/). Related: [Shipping](/shipping-policy/) ·
+**info@beepwear.com** · [Contact](/contact/). Related: [Shipping](/shipping-policy/) ·
 [Warranty](/warranty-policy/).

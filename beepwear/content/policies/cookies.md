@@ -28,4 +28,4 @@ periodically or when this policy changes materially.
 
 ## Contact
 
-**[confirm: email]** · See also the [Privacy Policy](/privacy-policy/).
+**info@beepwear.com** · See also the [Privacy Policy](/privacy-policy/).

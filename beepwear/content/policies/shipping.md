@@ -53,5 +53,5 @@ we can usually update it before dispatch, but not after the order has shipped.
 
 ## Questions
 
-Contact our support team at **[confirm: email]** — see the [Contact](/contact/) page for hours
+Contact our support team at **info@beepwear.com** — see the [Contact](/contact/) page for hours
 and response times. Related: [Returns & Refunds](/returns/) · [Warranty](/warranty-policy/).

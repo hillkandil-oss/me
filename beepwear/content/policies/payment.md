@@ -33,8 +33,8 @@ alternative method. Contact your bank if the issue persists.
 ## Order confirmation
 
 A successful payment produces an on-screen confirmation and an email with your order number.
-If you don't receive it, check your spam folder or contact **[confirm: email]**.
+If you don't receive it, check your spam folder or contact **info@beepwear.com**.
 
 ## Contact
 
-**[confirm: email]** · [Contact](/contact/).
+**info@beepwear.com** · [Contact](/contact/).

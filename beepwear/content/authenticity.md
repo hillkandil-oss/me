@@ -38,5 +38,5 @@ policies. If anything about your watch isn't as described, contact us and we'll 
 
 ## Contact
 
-**[confirm: email]** · [Contact](/contact/). Related: [Why Buy From BeepWear](/why-beepwear/)
+**info@beepwear.com** · [Contact](/contact/). Related: [Why Buy From BeepWear](/why-beepwear/)
 · [Quality Assurance](/quality-assurance/).

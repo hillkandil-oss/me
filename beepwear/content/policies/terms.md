@@ -59,4 +59,4 @@ We may suspend or end access for breach of these terms.
 
 ## 11. Contact
 
-**[confirm: email]** · [Contact](/contact/).
+**info@beepwear.com** · [Contact](/contact/).

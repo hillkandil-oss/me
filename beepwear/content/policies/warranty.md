@@ -31,7 +31,7 @@ Defects in the movement, case, dial, and factory components arising from normal 
 
 ## How to make a claim
 
-1. Contact **[confirm: email]** with your order number and a description (and photos) of the issue.
+1. Contact **info@beepwear.com** with your order number and a description (and photos) of the issue.
 2. We'll assess the claim and provide next steps [confirm: including where to send the watch].
 3. Valid claims are repaired or replaced [confirm: at no cost / terms].
 
@@ -39,5 +39,5 @@ Defects in the movement, case, dial, and factory components arising from normal 
 
 ## Contact
 
-**[confirm: email]** · [Contact](/contact/). Related: [Returns & Refunds](/returns/) ·
+**info@beepwear.com** · [Contact](/contact/). Related: [Returns & Refunds](/returns/) ·
 [Watch Care guide](/journal/watch-care/).

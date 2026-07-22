@@ -25,9 +25,9 @@ and address issues as we find them.
 ## Reporting an issue
 
 If you encounter a barrier or need content in an alternative format, please contact us at
-**[confirm: email]** with the page and a description of the problem. We'll do our best to
+**info@beepwear.com** with the page and a description of the problem. We'll do our best to
 resolve it and provide the information you need.
 
 ## Contact
 
-**[confirm: email]** · [Contact](/contact/).
+**info@beepwear.com** · [Contact](/contact/).

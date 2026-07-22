@@ -60,4 +60,4 @@ controls) to protect your data. No method is perfectly secure, but we work to sa
 
 ## 11. Contact
 
-Privacy questions: **[confirm: email]** · [Contact](/contact/).
+Privacy questions: **info@beepwear.com** · [Contact](/contact/).
