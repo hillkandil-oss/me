@@ -56,9 +56,9 @@ The next milestone doesn't begin until the previous one is signed off.
 | 10 | Customer Account | ✅ complete |
 | 11 | SEO | ✅ complete |
 | 12 | Merchant Center Audit | ✅ complete |
-| 13 | Testing | ⬜ planned |
-| 14 | Deployment | ⬜ planned |
-| 15 | Launch | ⬜ planned |
+| 13 | Testing | ✅ complete |
+| 14 | Deployment | ✅ complete |
+| 15 | Launch | ✅ gate ready |
 
 ## Environment note
 

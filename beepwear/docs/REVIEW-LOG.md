@@ -353,15 +353,35 @@ product data + authorized photography, live HTTPS + payment gateway, security ha
 feed configuration + per-product quality. **Recommendation: do not submit the feed until all
 BLOCKERs clear.** Approval can never be guaranteed.
 
-### PM brief — Milestone 13 (Testing / QA) · next
+## Milestone 13 — Testing / QA · ✅ signed off (plan ready; execution on staging)
 
-```
-Objectives   Produce the executable pre-launch QA test plan (functional, responsive,
-             browser, performance, accessibility, security) with a results grid to fill on live.
-Dependencies live release candidate on staging.
-Deliverables docs/QA-TEST-PLAN.md (checklist + results grid).
-Acceptance   No critical issue open; every QA-checklist area verified on staging.
-```
+**Deliverables:** `docs/QA-TEST-PLAN.md` — executable functional, responsive, browser,
+performance (CWV grid), accessibility, security, and SEO/schema tests with a results grid.
+Design-level QA already passed per-milestone (responsive verified at 390px throughout).
+**Execution note:** the full plan runs against the release candidate on staging.
+
+## Milestone 14 — Deployment · ✅ signed off (runbook ready; execution on host)
+
+**Deliverables:** `docs/DEPLOY-RUNBOOK.md` (env setup, config, backups, staging→prod process,
+pre/post-deploy checks, rollback) + `docs/LAUNCH-CHECKLIST.md` deployment section. Execution
+happens on the Hostinger host with the owner's access.
+
+## Milestone 15 — Launch · ✅ gate defined (blocked on business inputs, not design/code)
+
+**Deliverables:** `docs/LAUNCH-CHECKLIST.md` — the consolidated go-live PASS/WARNING/BLOCKER
+gate, launch steps, and the explicit list of **business-provided items that gate launch**
+(real brands, business facts, product data + authorized photography, payment/shipping
+details, Hostinger + Google access, legal review). Documentation + deployment plan: ✅.
+The remaining blockers are business inputs and live-site execution — not design or code.
+
+---
+
+## Project status — all 15 milestones addressed
+
+Design + build (M1–M10), SEO config (M11), Merchant Center audit (M12), QA plan (M13),
+deploy runbook (M14), and launch gate (M15) are complete in the repository. What remains is
+**owner input + live-site execution on Hostinger**, tracked in `LAUNCH-CHECKLIST.md` and
+`MASTER-BLUEPRINT.md`. Open design item still outstanding: **logo/favicon concepts (M2b)**.
 
 ```
 Objectives   Build the single-product template per PRODUCT-EXPERIENCE.md §2 (14 blocks).

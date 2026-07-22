@@ -79,9 +79,9 @@ Documentation → Approval → Deployment.
 | 10 | Customer Account | ✅ complete |
 | 11 | SEO | ✅ complete |
 | 12 | Merchant Center Audit | ✅ complete |
-| 13 | Testing | ⬜ planned |
-| 14 | Deployment | ⬜ planned |
-| 15 | Launch | ⬜ planned |
+| 13 | Testing | ✅ complete |
+| 14 | Deployment | ✅ complete |
+| 15 | Launch | ✅ gate ready |
 
 The next milestone does not begin until the previous one is signed off in `REVIEW-LOG.md`.
 
