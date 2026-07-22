@@ -341,15 +341,26 @@ internal linking, Search Console/GA4) and `config/robots.txt` (reference rules).
 happen on the live Hostinger install; the theme already emits fallback JSON-LD, and the
 checklist is copy-paste ready. Mark each item PASS on the live audit (M13/M15).
 
-### PM brief — Milestone 12 (Merchant Center audit) · next
+## Milestone 12 — Merchant Center audit · ✅ signed off (audit performed; BLOCKERs identified)
+
+**Deliverables:** `docs/MERCHANT-CENTER-AUDIT.md` — the §9 matrix filled with PASS/WARN/BLOCK
+verdicts for all 24 areas, the feed-configuration steps, and guardrails.
+
+**Result:** design/spec areas **PASS** (brand consistency, homepage, nav, category, cart,
+account, search, SEO, accessibility, mobile). **BLOCKERs** that gate feed submission, all
+requiring real business input or the live site: business/contact facts, real brands, real
+product data + authorized photography, live HTTPS + payment gateway, security hardening, and
+feed configuration + per-product quality. **Recommendation: do not submit the feed until all
+BLOCKERs clear.** Approval can never be guaranteed.
+
+### PM brief — Milestone 13 (Testing / QA) · next
 
 ```
-Objectives   Fill the MERCHANT-CENTER.md §9 PASS/WARNING/BLOCKER matrix; configure the
-             Google for WooCommerce feed; verify no BLOCKERs before submission.
-Dependencies live store + products + policies with real facts; Google account.
-Risks        Approval never guaranteed; several areas gate on real business facts + live site.
-Deliverables pre-filled audit (design-verifiable rows) + feed config steps.
-Acceptance   Every BLOCKER resolved before recommending feed submission.
+Objectives   Produce the executable pre-launch QA test plan (functional, responsive,
+             browser, performance, accessibility, security) with a results grid to fill on live.
+Dependencies live release candidate on staging.
+Deliverables docs/QA-TEST-PLAN.md (checklist + results grid).
+Acceptance   No critical issue open; every QA-checklist area verified on staging.
 ```
 
 ```

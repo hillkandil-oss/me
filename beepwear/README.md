@@ -55,7 +55,7 @@ The next milestone doesn't begin until the previous one is signed off.
 | 9 | Policies & content | ✅ complete |
 | 10 | Customer Account | ✅ complete |
 | 11 | SEO | ✅ complete |
-| 12 | Merchant Center Audit | ⬜ planned |
+| 12 | Merchant Center Audit | ✅ complete |
 | 13 | Testing | ⬜ planned |
 | 14 | Deployment | ⬜ planned |
 | 15 | Launch | ⬜ planned |
