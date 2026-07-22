@@ -3,7 +3,7 @@ Theme Name: BeepWear
 Theme URI: https://beepwear.com
 Description: BeepWear — luxury watch boutique. Child theme of Hello Elementor implementing the BeepWear design system (see docs/BRAND.md). WooCommerce-ready, accessibility- and performance-minded.
 Author: BeepWear
-Version: 0.8.0
+Version: 0.9.0
 Template: hello-elementor
 Requires at least: 6.4
 Requires PHP: 8.0
@@ -85,7 +85,7 @@ Text Domain: beepwear
 
 /* ---- base ---- */
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:90px}
 body{
   margin:0; background:var(--bw-bg); color:var(--bw-fg);
   font-family:var(--font-body); font-size:var(--fs-body); line-height:1.6;
@@ -330,7 +330,8 @@ input:focus,select:focus,textarea:focus{border-color:var(--bw-black)}
 .bw-footer-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:22px;font-size:12.5px;color:rgba(255,255,255,.5)}
 
 @media(max-width:900px){
-  .bw-nav-list,.bw-header-icons{display:none}
+  .bw-nav,.bw-header-icons{display:none}
+  .bw-burger{display:inline-flex}
   .bw-life{grid-template-columns:1fr}.bw-life-art{min-height:220px}
   .bw-why{grid-template-columns:repeat(2,1fr)}
   .bw-footer-cols{grid-template-columns:1fr 1fr}
@@ -375,4 +376,51 @@ input:focus,select:focus,textarea:focus{border-color:var(--bw-black)}
 
 @media(max-width:900px){
   .bw-about-inner,.bw-contact-inner{grid-template-columns:1fr;gap:26px}
+}
+
+/* ============================================================
+   Hamburger button + mobile navigation drawer
+   ============================================================ */
+.bw-burger{display:none;align-items:center;justify-content:center;width:44px;height:44px;
+  margin-left:4px;background:transparent;border:0;cursor:pointer;color:var(--bw-black);padding:0}
+.bw-burger__box{position:relative;display:block;width:24px;height:16px}
+.bw-burger__line,.bw-burger__line::before,.bw-burger__line::after{
+  content:"";position:absolute;left:0;width:24px;height:2px;background:currentColor;
+  border-radius:2px;transition:transform var(--dur) var(--ease),opacity var(--dur) var(--ease)}
+.bw-burger__line{top:50%;margin-top:-1px}
+.bw-burger__line::before{top:-7px}
+.bw-burger__line::after{top:7px}
+/* animate to X when open */
+body.bw-nav-open .bw-burger__line{background:transparent}
+body.bw-nav-open .bw-burger__line::before{transform:translateY(7px) rotate(45deg)}
+body.bw-nav-open .bw-burger__line::after{transform:translateY(-7px) rotate(-45deg)}
+
+.bw-mobile-nav{position:fixed;inset:0;z-index:40;background:rgba(20,19,16,.5);
+  opacity:0;visibility:hidden;transition:opacity var(--dur) var(--ease),visibility var(--dur) var(--ease)}
+.bw-mobile-nav.is-open{opacity:1;visibility:visible}
+.bw-mobile-nav__panel{position:absolute;top:0;right:0;height:100%;width:min(84vw,360px);
+  background:var(--bw-white);box-shadow:var(--shadow-lg);padding:88px 30px 32px;overflow-y:auto;
+  transform:translateX(100%);transition:transform 360ms var(--ease);display:flex;flex-direction:column}
+.bw-mobile-nav.is-open .bw-mobile-nav__panel{transform:none}
+.bw-mobile-nav__list{display:flex;flex-direction:column}
+.bw-mobile-nav__list a{font-family:var(--font-display);font-size:24px;font-weight:500;
+  color:var(--bw-black);text-decoration:none;padding:13px 0;border-bottom:1px solid var(--bw-line)}
+.bw-mobile-nav__list a:hover{color:var(--bw-champagne-deep)}
+.bw-mobile-nav__account{display:flex;gap:22px;margin-top:26px;font-size:12px;
+  letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.bw-mobile-nav__account a{color:var(--bw-charcoal);text-decoration:none}
+.bw-mobile-nav__contact{margin-top:auto;padding-top:26px;display:flex;flex-direction:column;gap:8px;font-size:14px}
+.bw-mobile-nav__contact a{color:var(--bw-champagne-deep);text-decoration:none}
+body.bw-nav-open{overflow:hidden}
+
+/* subtle sticky-header state once the page is scrolled */
+.bw-site-header{transition:box-shadow var(--dur) var(--ease),background var(--dur) var(--ease)}
+.bw-site-header.is-scrolled{background:rgba(255,255,255,.98);box-shadow:0 6px 24px -18px rgba(20,19,16,.5)}
+
+/* reveal stagger for grouped cards (Why Choose) */
+.bw-why .bw-reveal{transition-delay:calc(var(--bw-i,0) * 80ms)}
+
+@media (prefers-reduced-motion:reduce){
+  .bw-mobile-nav,.bw-mobile-nav__panel,.bw-burger__line,
+  .bw-burger__line::before,.bw-burger__line::after,.bw-site-header{transition:none}
 }
