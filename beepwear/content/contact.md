@@ -12,19 +12,17 @@ help.
 
 ## Get in touch
 
-- **Email:** info@beepwear.com
+- **Email:** [info@beepwear.com](mailto:info@beepwear.com)
 - **Phone:** +1 605-361-9867
-- **Business hours:** [confirm: e.g. Mon–Fri, 9:00–18:00, time zone]
+- **Business hours:** Monday–Friday, 9:00 AM – 5:00 PM (Mountain Time)
 - **Business address:** 510 Main St, Wall, SD 57790, USA
-- **Response time:** we aim to reply within [confirm: 1 business day].
+- **Response time:** we aim to reply within one business day.
 
-## Contact form
+For order questions, please include your order number. We're glad to help with product
+questions, orders, shipping, returns, and after-sales support.
 
-Fields: Name · Email · Order number (optional) · Subject · Message. (Elementor Pro Form →
-sends to the support inbox; includes the privacy notice.)
-
-**Privacy note:** We use the details you submit only to respond to your enquiry, as described
-in our [Privacy Policy](/privacy-policy/).
+**Privacy note:** We use the details you provide only to respond to your enquiry, as
+described in our [Privacy Policy](/privacy-policy/).
 
 ## Support options
 

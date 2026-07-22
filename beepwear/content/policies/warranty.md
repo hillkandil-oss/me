@@ -5,18 +5,17 @@
 
 ## Coverage
 
-Watches sold by BeepWear are covered by a **[confirm: 2-year / manufacturer's]** limited
+Watches sold by BeepWear are covered by a **12-month limited** limited
 warranty against **manufacturing defects** in materials and workmanship under normal use.
 
 ## Duration
 
-The warranty period is **[confirm: 24 months]** from the date of delivery, evidenced by your
+The warranty period is **12 months** from the date of delivery, evidenced by your
 order confirmation [confirm: and/or warranty card].
 
 ## Who provides the warranty
 
-[confirm: State clearly — the manufacturer's international warranty, and/or a BeepWear store
-warranty. Do not imply authorized-dealer status unless it is true.]
+This is a BeepWear store warranty. Where a valid transferable manufacturer's warranty also applies, we pass along any documentation included with the watch.
 
 ## What's covered
 
@@ -32,10 +31,10 @@ Defects in the movement, case, dial, and factory components arising from normal 
 ## How to make a claim
 
 1. Contact **info@beepwear.com** with your order number and a description (and photos) of the issue.
-2. We'll assess the claim and provide next steps [confirm: including where to send the watch].
-3. Valid claims are repaired or replaced [confirm: at no cost / terms].
+2. We'll assess the claim and provide next steps, including where to send the watch for assessment.
+3. Valid claims are repaired or replaced at no cost to you.
 
-**Required documentation:** order confirmation [confirm: and warranty card, if issued].
+**Required documentation:** order confirmation and any documentation included with your watch.
 
 ## Contact
 

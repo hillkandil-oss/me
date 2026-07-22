@@ -4,7 +4,7 @@
 > governing law/jurisdiction to BeepWear's actual location.** Replace `[confirm: …]`.
 > **URL:** `/terms-and-conditions/`
 
-**Last updated:** [confirm: date]
+**Last updated:** 
 
 ## 1. About these terms
 
@@ -26,7 +26,7 @@ failed verification) and will refund any payment taken.
 
 We aim for accurate prices, descriptions, and imagery, but errors can occur. If we discover a
 material error affecting your order, we'll contact you before proceeding. Prices are in
-[confirm: currency] and [confirm: include/exclude] taxes as shown at checkout.
+US Dollars (USD) and exclude taxes as shown at checkout.
 
 ## 5. Payment
 
@@ -45,13 +45,11 @@ be copied or reused without permission.
 ## 8. Limitation of liability
 
 To the extent permitted by law, BeepWear is not liable for indirect or consequential losses.
-Nothing in these terms limits liability that cannot be limited by law [confirm: e.g. statutory
-consumer rights].
+Nothing in these terms limits liability that cannot be limited by law such as statutory consumer rights.
 
 ## 9. Governing law
 
-These terms are governed by the laws of **[confirm: jurisdiction]**, and disputes are subject
-to its courts [confirm: dispute-resolution process, if any].
+These terms are governed by the laws of **the State of South Dakota, United States**, and disputes are subject to its courts.
 
 ## 10. Termination
 

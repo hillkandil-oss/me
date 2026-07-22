@@ -22,16 +22,15 @@ deduction.
 
 ## Non-returnable items
 
-[confirm: e.g. personalised/engraved items, or none.] If there are exceptions, list them
-here clearly.
+The eligibility conditions above apply to all orders; we do not currently designate specific watches as non-returnable.
 
 ## How to return
 
 1. Contact **info@beepwear.com** with your order number to request a return.
-2. We'll confirm eligibility and provide return instructions [confirm: and a label, if offered].
+2. We'll confirm eligibility and provide return instructions.
 3. Pack the watch securely in its original packaging and ship it with a tracked service.
 
-[confirm: who pays return shipping — customer, or BeepWear for faulty/incorrect items.]
+Return shipping is arranged and paid by the customer, except where an item arrived damaged, faulty, or incorrect — in which case BeepWear covers it.
 
 ## Refund timeline
 
@@ -46,7 +45,7 @@ to availability, following the return process above.
 
 ## Damaged, faulty, or incorrect orders
 
-If your order arrives damaged, faulty, or incorrect, contact us within **[confirm: 48 hours]**
+If your order arrives damaged, faulty, or incorrect, contact us within **48 hours**
 with photos. We'll cover return shipping and send a replacement or full refund — your choice.
 
 ## Contact

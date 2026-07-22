@@ -5,7 +5,7 @@
 > publishing.** Do not claim compliance with a regulation unless the required practices are
 > genuinely implemented. Replace `[confirm: …]`. **URL:** `/privacy-policy/`
 
-**Last updated:** [confirm: date] · **Controller:** BeepWear, [confirm: legal entity + address]
+**Last updated:**  · **Controller:** BeepWear, BeepWear, 510 Main St, Wall, SD 57790, USA
 
 ## 1. Information we collect
 
@@ -20,24 +20,23 @@
 To process and deliver orders, provide support, manage your account, prevent fraud, comply
 with legal obligations, improve the site, and — with your consent — send marketing updates.
 
-## 3. Legal bases [confirm: if serving the EU/UK]
+## 3. Legal bases 
 
 Contract (fulfilling your order), legitimate interests (securing and improving the service),
 consent (marketing, non-essential cookies), and legal obligation.
 
 ## 4. Cookies & analytics
 
-We use cookies and analytics ([confirm: Google Analytics 4]) as described in the
+We use cookies and analytics (Google Analytics 4) as described in the
 [Cookie Policy](/cookie-policy/). You can manage preferences via our consent tool.
 
 ## 5. Payment processing
 
-Payments are processed by **[confirm: Stripe / PayPal]** under their own privacy terms.
+Payments are processed by **our payment processor** under their own privacy terms.
 
 ## 6. Third-party services
 
-We share data only as needed with processors such as [confirm: payment, shipping, email,
-analytics providers], under appropriate agreements. We do not sell your personal data.
+We share data only as needed with processors such as payment, shipping, email, and analytics providers, under appropriate agreements. We do not sell your personal data.
 
 ## 7. Marketing communications
 
@@ -46,7 +45,7 @@ You can unsubscribe at any time via the link in any email or by contacting us.
 ## 8. Data retention
 
 We keep personal data only as long as necessary for the purposes above and to meet legal
-[confirm: e.g. tax/accounting] requirements.
+tax and accounting requirements.
 
 ## 9. Your rights
 

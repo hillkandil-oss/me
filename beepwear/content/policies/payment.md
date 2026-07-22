@@ -5,18 +5,17 @@
 
 ## Accepted payment methods
 
-We accept: [confirm: Visa, Mastercard, American Express, PayPal, Apple Pay, Google Pay,
-bank transfer — list only what's live]. Available methods are shown at checkout.
+We accept: direct bank transfer (wire). Available methods are shown at checkout.
 
 ## Payment security
 
 Payments are processed over an encrypted (HTTPS) connection by a **PCI-compliant payment
-gateway** ([confirm: Stripe / PayPal]). BeepWear does **not** store your full card details on
+gateway** (a secure bank transfer). BeepWear does **not** store your full card details on
 our servers.
 
 ## Currency
 
-Prices are displayed and charged in **[confirm: USD / your store currency]**. [confirm: If
+Prices are displayed and charged in **US Dollars (USD)**. [confirm: If
 multi-currency is offered later, note conversion.] Your bank may apply its own conversion or
 fees for international payments.
 
