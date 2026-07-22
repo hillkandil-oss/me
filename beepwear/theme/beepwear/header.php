@@ -15,6 +15,14 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
+<div class="bw-utilitybar">
+	<div class="bw-container bw-utilitybar__row">
+		<a href="tel:+16053619867" aria-label="Call BeepWear"><span aria-hidden="true">&#9742;</span> +1 605-361-9867</a>
+		<a href="mailto:info@beepwear.com" aria-label="Email BeepWear"><span aria-hidden="true">&#9993;</span> info@beepwear.com</a>
+		<span class="bw-utilitybar__addr"><span aria-hidden="true">&#9679;</span> 510 Main St, Wall, SD 57790</span>
+	</div>
+</div>
+
 <header class="bw-site-header">
 	<div class="bw-container bw-header-row">
 		<a class="bw-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>">Beep<b>Wear</b></a>

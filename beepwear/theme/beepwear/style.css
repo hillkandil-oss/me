@@ -3,7 +3,7 @@ Theme Name: BeepWear
 Theme URI: https://beepwear.com
 Description: BeepWear — luxury watch boutique. Child theme of Hello Elementor implementing the BeepWear design system (see docs/BRAND.md). WooCommerce-ready, accessibility- and performance-minded.
 Author: BeepWear
-Version: 0.5.0
+Version: 0.6.0
 Template: hello-elementor
 Requires at least: 6.4
 Requires PHP: 8.0
@@ -336,3 +336,14 @@ input:focus,select:focus,textarea:focus{border-color:var(--bw-black)}
   .bw-footer-cols{grid-template-columns:1fr 1fr}
   .bw-hero-mark{display:none}
 }
+
+/* ---- header utility bar (contact, clearly visible) ---- */
+.bw-utilitybar{background:var(--bw-black);color:rgba(255,255,255,.82);
+  font-size:12.5px;letter-spacing:.02em;border-bottom:1px solid rgba(194,161,92,.35)}
+.bw-utilitybar__row{display:flex;gap:26px;justify-content:center;align-items:center;
+  padding:9px 0;flex-wrap:wrap}
+.bw-utilitybar a{color:rgba(255,255,255,.85);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.bw-utilitybar a:hover{color:var(--bw-champagne)}
+.bw-utilitybar__addr{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.72)}
+.bw-utilitybar span[aria-hidden]{color:var(--bw-champagne)}
+@media(max-width:640px){.bw-utilitybar__addr{display:none} .bw-utilitybar__row{gap:18px;font-size:12px}}
