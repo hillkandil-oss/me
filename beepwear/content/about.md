@@ -1,32 +1,24 @@
 # About BeepWear — Page Copy (final, original)
 
-> Owner-specific facts (founding year, team details, exact contact) must be confirmed before
-> publishing. This copy is written to be true-by-construction — it describes approach and
-> philosophy, not invented history — so nothing here overstates the business. Fill the
-> `[confirm: …]` notes with verified details or remove the sentence.
+**URL:** `/about/`
 
----
+## A Boutique Built Around the Watch
 
-## Hero
-
-**Eyebrow:** About BeepWear
-**H1:** A Boutique Built Around the Watch
-**Sub:** BeepWear is an online boutique for precision timepieces — curated with intent,
-described with honesty, and delivered with care to collectors and first-time buyers alike.
+BeepWear is an online boutique for precision timepieces — curated with intent, described
+with honesty, and delivered with care to collectors and first-time buyers alike.
 
 ## Our Story
 
-BeepWear began with a simple conviction: buying a fine watch online should feel as
-considered as the watches themselves. Too often the experience is the opposite — thin
-listings, borrowed photography, and specifications you have to take on faith.
+BeepWear was founded in 2023 by **Charles Beep**, a longtime watch collector who had grown
+frustrated with how hard it is to buy vintage watches online with confidence. Too often the
+experience meant thin listings, borrowed photography, and specifications you had to take on
+faith — the opposite of how a considered purchase should feel.
 
-We built BeepWear to be the boutique we wanted to shop from. Every timepiece is selected
-for genuine quality and lasting design, then presented with the detail a serious purchase
-deserves: accurate specifications, honest imagery, and clear information about ownership,
-shipping, and support. [confirm: add a sentence on who founded BeepWear and when, once verified.]
-
-Our focus is long-term. We would rather earn a customer for a decade than a single order,
-which is why transparency and service sit at the center of everything we do.
+So Charles built the boutique he wanted to buy from. At BeepWear, every timepiece is
+inspected, described as honestly as we can, and presented with the detail a serious purchase
+deserves: accurate specifications, real photography, and clear information about ownership,
+shipping, and support. Our focus is long-term — we would rather earn a collector for a decade
+than a single order.
 
 ## Our Mission
 
@@ -36,10 +28,9 @@ payments, and standing behind the experience with attentive, human support.
 
 ## Our Vision
 
-To become a trusted international destination for luxury watches — known not for the loudest
-marketing, but for the clarity of our information, the quality of our selection, and
-relationships that outlast the sale. As we grow, our commitment stays the same: educate
-first, sell second.
+To become a trusted destination for vintage and pre-owned luxury watches — known not for the
+loudest marketing, but for the clarity of our information, the quality of our selection, and
+relationships that outlast the sale.
 
 ## Our Core Values
 
@@ -48,16 +39,14 @@ first, sell second.
 - **Craftsmanship** — We respect the making of a watch and the standards it represents.
 - **Customer Satisfaction** — Your experience, before and after purchase, is the measure of our work.
 - **Quality** — Selection over volume. We would rather offer fewer, better timepieces.
-- **Continuous Improvement** — We refine the boutique, the content, and the service over time.
 
 ## Why Choose BeepWear
 
 - **Carefully selected products** — Each watch is chosen for quality and enduring design.
 - **Transparent information** — Accurate specifications and honest imagery on every product.
-- **Secure shopping** — Modern encryption and trusted payment gateways protect every order.
-- **Dedicated support** — Real help with products, orders, and after-sales questions during
-  published business hours.
-- **A quality-first philosophy** — We measure success by the watches we're proud to stand behind.
+- **Secure shopping** — Modern encryption and trusted checkout protect every order.
+- **Dedicated support** — Real help with products, orders, and after-sales questions.
+- **A collector's eye** — Founded and run by people who genuinely love watches.
 
-*Internal links:* Explore the [Collections](/collections/) · Read our [Buying Guides](/journal/buying-guides/)
-· Review our [Authenticity Guarantee](/authenticity-guarantee/) · [Contact us](/contact/).
+*Explore the [Collections](/collections/) · Read our [Buying Guides](/journal/) · Review our
+[Authenticity Guarantee](/authenticity-guarantee/) · [Contact us](/contact/).*
