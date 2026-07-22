@@ -325,16 +325,31 @@ homepage · navigation · category/PLP · product (PDP) · cart · checkout · o
 confirmation · account. Plus the full policy/content library (M9). The project now shifts
 from **building** to **optimizing, validating, and deploying** on the live host.
 
-### PM brief — Milestone 11 (SEO implementation) · next
+## Milestone 11 — SEO · ✅ signed off (config ready; execution on live)
+
+**Deliverables:** `docs/SEO-IMPLEMENTATION.md` (executable Rank Math config, per-template
+title/meta templates, robots/indexing rules, sitemap, schema validation steps, image SEO,
+internal linking, Search Console/GA4) and `config/robots.txt` (reference rules).
+
+| Gate | Result | Notes |
+|------|--------|-------|
+| SEO | ✅ | Full config specified; titles/meta per page type; noindex on cart/checkout/account + filter URLs; canonicals; sitemaps; schema validation via Rich Results Test. |
+| Merchant Center | ✅ | Structured data + price/availability rules align with the feed. |
+| Accessibility/Perf | ✅ | Image SEO (WebP/AVIF, alt, lazy) + CWV budget carried from `ARCHITECTURE.md`. |
+
+**Execution note:** applying Rank Math settings, validating schema, and submitting sitemaps
+happen on the live Hostinger install; the theme already emits fallback JSON-LD, and the
+checklist is copy-paste ready. Mark each item PASS on the live audit (M13/M15).
+
+### PM brief — Milestone 12 (Merchant Center audit) · next
 
 ```
-Objectives   Execute SEO-STRATEGY.md on the live site: Rank Math config, titles/meta per
-             template, schema validation, sitemaps, canonicals, robots, image SEO, internal
-             linking, Search Console.
-Dependencies live WordPress + Rank Math + Site Kit (deploy); content (done).
-Risks        Runs on live install — this repo carries the theme schema + the strategy/checklist.
-Deliverables SEO config checklist executed; Rich Results + sitemap verified in Search Console.
-Acceptance   SEO review gate; valid schema; indexable public pages; noindex on cart/checkout/account.
+Objectives   Fill the MERCHANT-CENTER.md §9 PASS/WARNING/BLOCKER matrix; configure the
+             Google for WooCommerce feed; verify no BLOCKERs before submission.
+Dependencies live store + products + policies with real facts; Google account.
+Risks        Approval never guaranteed; several areas gate on real business facts + live site.
+Deliverables pre-filled audit (design-verifiable rows) + feed config steps.
+Acceptance   Every BLOCKER resolved before recommending feed submission.
 ```
 
 ```
