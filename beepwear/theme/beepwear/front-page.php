@@ -52,6 +52,21 @@ get_header();
 		</div>
 	</section>
 
+	<!-- About us -->
+	<section class="bw-section bw-about">
+		<div class="bw-container bw-about-inner">
+			<div class="bw-about-head">
+				<p class="bw-eyebrow"><?php esc_html_e( 'About Us', 'beepwear' ); ?></p>
+				<h2><?php esc_html_e( 'A Boutique Built Around the Watch', 'beepwear' ); ?></h2>
+			</div>
+			<div class="bw-about-body">
+				<p><?php esc_html_e( 'BeepWear began in 2023, founded by longtime collector Charles Beep out of a simple frustration: buying a fine watch online too often meant thin listings, borrowed photos, and specifications you had to take on faith. So he built the boutique he wanted to buy from.', 'beepwear' ); ?></p>
+				<p><?php esc_html_e( 'Today, every timepiece we offer is inspected, described honestly, and presented with the detail a considered purchase deserves. We curate precision watches for collectors and first-time buyers alike — with a focus on clarity, authenticity, and support that lasts well beyond the sale.', 'beepwear' ); ?></p>
+				<a class="bw-btn bw-btn--ghost" href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><?php esc_html_e( 'Read Our Story', 'beepwear' ); ?></a>
+			</div>
+		</div>
+	</section>
+
 	<!-- Why choose -->
 	<section class="bw-section bw-section--soft">
 		<div class="bw-container">
@@ -85,6 +100,26 @@ get_header();
 			<p><?php esc_html_e( 'Subscribe for new arrivals, featured collections, educational articles, and occasional offers.', 'beepwear' ); ?></p>
 			<?php echo do_shortcode( '[newsletter_form]' ); ?>
 			<p class="bw-news-note"><?php esc_html_e( 'We use your details only to send BeepWear updates. Unsubscribe anytime.', 'beepwear' ); ?></p>
+		</div>
+	</section>
+
+	<!-- Contact -->
+	<section class="bw-section bw-section--soft bw-contact">
+		<div class="bw-container bw-contact-inner">
+			<div class="bw-contact-intro">
+				<p class="bw-eyebrow"><?php esc_html_e( 'Get in Touch', 'beepwear' ); ?></p>
+				<h2><?php esc_html_e( 'Contact Us', 'beepwear' ); ?></h2>
+				<p><?php esc_html_e( 'Questions about a timepiece, an order, or after-sales support? Send us a message and our team will get back to you during business hours.', 'beepwear' ); ?></p>
+				<ul class="bw-contact-meta">
+					<li><a href="mailto:info@beepwear.com">info@beepwear.com</a></li>
+					<li><a href="tel:+16053619867">+1 605-361-9867</a></li>
+					<li><?php esc_html_e( '510 Main St, Wall, SD 57790', 'beepwear' ); ?></li>
+					<li><?php esc_html_e( 'Mon–Fri, 9:00–5:00 (Mountain)', 'beepwear' ); ?></li>
+				</ul>
+			</div>
+			<div class="bw-contact-form">
+				<?php echo do_shortcode( '[contact-form-7 id="661" title="Contact form 1"]' ); ?>
+			</div>
 		</div>
 	</section>
 

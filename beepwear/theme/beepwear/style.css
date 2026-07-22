@@ -3,7 +3,7 @@ Theme Name: BeepWear
 Theme URI: https://beepwear.com
 Description: BeepWear — luxury watch boutique. Child theme of Hello Elementor implementing the BeepWear design system (see docs/BRAND.md). WooCommerce-ready, accessibility- and performance-minded.
 Author: BeepWear
-Version: 0.6.0
+Version: 0.7.0
 Template: hello-elementor
 Requires at least: 6.4
 Requires PHP: 8.0
@@ -347,3 +347,32 @@ input:focus,select:focus,textarea:focus{border-color:var(--bw-black)}
 .bw-utilitybar__addr{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.72)}
 .bw-utilitybar span[aria-hidden]{color:var(--bw-champagne)}
 @media(max-width:640px){.bw-utilitybar__addr{display:none} .bw-utilitybar__row{gap:18px;font-size:12px}}
+
+/* ---- homepage: About Us ---- */
+.bw-about-inner{display:grid;grid-template-columns:0.9fr 1.4fr;gap:48px;align-items:start}
+.bw-about-head h2{font-size:clamp(28px,3.2vw,42px)}
+.bw-about-head .bw-eyebrow{margin-bottom:10px}
+.bw-about-body p{font-size:16px;line-height:1.85;color:var(--bw-stone);margin:0 0 18px;max-width:60ch}
+.bw-about-body .bw-btn{margin-top:6px}
+
+/* ---- homepage: Contact ---- */
+.bw-contact-inner{display:grid;grid-template-columns:0.85fr 1.15fr;gap:48px;align-items:start}
+.bw-contact-intro h2{font-size:clamp(28px,3.2vw,42px)}
+.bw-contact-intro .bw-eyebrow{margin-bottom:10px}
+.bw-contact-intro>p{font-size:15.5px;line-height:1.8;color:var(--bw-stone);max-width:46ch;margin:14px 0 22px}
+.bw-contact-meta{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;font-size:14.5px}
+.bw-contact-meta a{color:var(--bw-black)}
+.bw-contact-meta a:hover{color:var(--bw-champagne-deep)}
+.bw-contact-form .wpcf7-form p{margin:0 0 16px}
+.bw-contact-form input:not([type=submit]):not([type=checkbox]):not([type=radio]),
+.bw-contact-form textarea{width:100%;padding:13px 14px}
+.bw-contact-form label{display:block;font-size:13px;letter-spacing:.02em;color:var(--bw-black);margin-bottom:6px}
+.bw-contact-form textarea{min-height:140px;resize:vertical}
+.bw-contact-form .wpcf7-submit{appearance:none;font-family:var(--font-body);font-size:13px;
+  letter-spacing:.14em;text-transform:uppercase;padding:14px 34px;background:var(--bw-black);
+  color:var(--bw-white);border:1px solid var(--bw-black);cursor:pointer;transition:background .2s,color .2s}
+.bw-contact-form .wpcf7-submit:hover{background:var(--bw-champagne);color:var(--bw-black);border-color:var(--bw-champagne)}
+
+@media(max-width:900px){
+  .bw-about-inner,.bw-contact-inner{grid-template-columns:1fr;gap:26px}
+}
