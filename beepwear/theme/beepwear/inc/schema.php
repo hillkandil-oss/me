@@ -28,6 +28,40 @@ function beepwear_print_jsonld( $data ) {
 }
 
 /**
+ * Homepage SEO meta (description, canonical, Open Graph, Twitter).
+ *
+ * Rank Math does not emit these on a "latest posts" front page, so the theme
+ * fills the gap. Guarded to the front page and skipped if an SEO plugin has
+ * already printed a description this request (avoids duplicates).
+ */
+function beepwear_front_meta() {
+	if ( ! is_front_page() ) {
+		return;
+	}
+	// If Rank Math (or another SEO plugin) is emitting front-page meta, defer to it.
+	if ( function_exists( 'rank_math' ) && apply_filters( 'rank_math/frontend/description', false ) ) {
+		return;
+	}
+	$desc  = 'Shop an expertly curated collection of luxury and pre-owned watches at BeepWear — authentic timepieces, honest descriptions, secure checkout, and dedicated support.';
+	$url   = home_url( '/' );
+	$title = get_bloginfo( 'name' ) . ' — ' . get_bloginfo( 'description' );
+	$image = get_stylesheet_directory_uri() . '/assets/images/beepwear-mark.svg';
+
+	printf( '<meta name="description" content="%s">' . "\n", esc_attr( $desc ) );
+	printf( '<link rel="canonical" href="%s">' . "\n", esc_url( $url ) );
+	printf( '<meta property="og:type" content="website">' . "\n" );
+	printf( '<meta property="og:site_name" content="%s">' . "\n", esc_attr( get_bloginfo( 'name' ) ) );
+	printf( '<meta property="og:title" content="%s">' . "\n", esc_attr( $title ) );
+	printf( '<meta property="og:description" content="%s">' . "\n", esc_attr( $desc ) );
+	printf( '<meta property="og:url" content="%s">' . "\n", esc_url( $url ) );
+	printf( '<meta property="og:image" content="%s">' . "\n", esc_url( $image ) );
+	printf( '<meta name="twitter:card" content="summary_large_image">' . "\n" );
+	printf( '<meta name="twitter:title" content="%s">' . "\n", esc_attr( $title ) );
+	printf( '<meta name="twitter:description" content="%s">' . "\n", esc_attr( $desc ) );
+}
+add_action( 'wp_head', 'beepwear_front_meta', 2 );
+
+/**
  * Organization + WebSite schema on the front page.
  */
 function beepwear_org_schema() {
