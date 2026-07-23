@@ -19,10 +19,11 @@ accurate specifications, real photography, and clear information about ownership
 support. Our focus is long-term — we would rather earn a collector for a decade than a single
 order.
 
-> **Owner note (compliance):** If you wish to keep a named-founder story, replace the copy
-> above with the *real* founder's actual name and true history. Do **not** publish a fictional
-> individual — an invented founder is a Merchant Center misrepresentation trigger. See
-> `docs/MERCHANT-CENTER-MISREPRESENTATION-AUDIT.md`, Finding 1.
+> **Owner note:** The founder, **Charles Beep, is a real person** (owner-confirmed), so a
+> named-founder story is perfectly fine and can be restored — the de-personified version
+> above is optional. The only compliance requirement is that this real identity is presented
+> *consistently* across the site, domain registration, Merchant Center, and payment processor.
+> See `docs/MERCHANT-CENTER-LIVE-AUDIT-2026-07-23.md`, Finding 1.
 
 ## Our Mission
 

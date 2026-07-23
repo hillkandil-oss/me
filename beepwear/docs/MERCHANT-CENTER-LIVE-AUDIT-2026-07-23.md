@@ -9,11 +9,15 @@
 **Standard:** Google Merchant Center — Misrepresentation, Counterfeit, Editorial &
 professional, Product-data specification (2026).
 
-> **Verdict: ONE blocker away from submit-ready.** The store has been substantially
-> remediated since the last audit — authenticity, policies, contact, and checkout
-> now hold up. **The single fabricated founder on `/about/` is the remaining P0** and
-> must be fixed on the live site before submitting. Clear it plus the feed P1s, then
-> submit. Approval is never guaranteed for luxury.
+> **Verdict: essentially submit-ready pending feed cleanup + one identity check.**
+> The store has been substantially remediated since the last audit — authenticity,
+> policies, contact, and checkout now hold up. **Update (owner-confirmed): the founder
+> "Charles Beep" is a real person**, so the earlier "fabricated founder" P0 is
+> withdrawn. It is replaced by a lighter verification item: confirm that this real
+> identity is presented *consistently* across the website, domain WHOIS, Merchant
+> Center business info, and the payment processor. Clear the feed P1s (brand,
+> condition), verify identity consistency, then submit. Approval is never guaranteed
+> for luxury.
 
 ---
 
@@ -37,7 +41,7 @@ This is strong progress — most of the earlier misrepresentation surface is clo
 
 | # | Severity | Finding | Policy | State |
 |---|----------|---------|--------|-------|
-| 1 | 🔴 **P0** | Fabricated founder **"Charles Beep"** on live `/about/` | Misrepresentation (false identity) | **LIVE** |
+| 1 | 🟡 **P2** | Founder **"Charles Beep"** (owner-confirmed real) — verify identity is consistent across site, WHOIS, Merchant Center & payment processor | Misrepresentation (identity consistency) | Verify |
 | 2 | 🟠 **P1** | 47/269 feed products have **no brand** | Product data | Feed |
 | 3 | 🟠 **P1** | **No `condition` attribute in the feed** (live pages show "Used", but the feed CSV omits it) | Product data / accuracy | Feed |
 | 4 | 🟡 **P2** | **Thin, templated descriptions** ("rewards a closer look", "dive-ready build") repeated in form across products | Editorial / duplicate-content | LIVE + feed |
@@ -51,10 +55,21 @@ This is strong progress — most of the earlier misrepresentation surface is clo
 
 ## Detail & fixes
 
-### 1 — 🔴 Fabricated founder "Charles Beep" (LIVE, unresolved)
-**Evidence:** `/about/` still reads *"BeepWear was founded in 2023 by **Charles Beep**, a longtime watch collector…"* No such individual is substantiated; the name mirrors the brand.
-**Why:** Inventing a named founder with a biography is textbook false business identity — a core misrepresentation trigger, and the AI reviewer reads the About page directly. It's now conspicuous because every other page is honest.
-**Fix:** Update the **live** `/about/` in WordPress to either (a) the de-personified story (already prepared in `content/about.md` in this repo) or (b) the *real* founder's actual name and history. **Do not invent a person.** — *Owner action (needs WordPress access; repo copy already corrected).*
+### 1 — 🟡 Founder "Charles Beep" — real; verify identity consistency
+**Update:** The owner confirms **Charles Beep is a real person**. The earlier
+"fabricated founder" finding is withdrawn — a named, real founder story is fine and
+often *helps* trust. Because he's real, the de-personification in `content/about.md`
+is optional; the original named story can stay (or be restored).
+**What still matters:** Google cross-checks business identity across surfaces. A real
+founder is only a risk if the identity is *inconsistent* or *unverifiable*. Reconcile
+the signals that looked mismatched to an outside reviewer: the store admin email
+(`tcoculick@gmail.com`) differs from both the founder name and the owner contact
+(`hillkandil@gmail.com`).
+**Verify (owner):** the same real legal identity appears on — (a) the website/About,
+(b) domain WHOIS registrant, (c) Merchant Center business info + any business
+registration, and (d) the payment processor / checkout descriptor. If those all
+align, this finding closes. If any shows a different name/entity, reconcile it before
+submitting — the mismatch, not the person, is what Google flags. — *Owner verification.*
 
 ### 2 — 🟠 47 products with no brand
 **Fix:** Assign the true brand to each of the 47 flagged in `data/products-mc-audit.csv`; Merchant Center expects `brand` for watches. If genuinely unbranded, use the correct attribute rather than guessing. — *Owner action.*
@@ -90,7 +105,7 @@ Spot-check confirmed parity (e.g., Aqua Master $400 feed = $400 page). Re-verify
 | Google expectation | Status | Note |
 |--------------------|--------|------|
 | Complete, reachable contact info | ✅ | email + phone + address live |
-| Accurate, consistent business identity | ❌ | Fabricated founder (Finding 1) |
+| Accurate, consistent business identity | ⚠️ | Founder confirmed real; verify identity consistent across site/WHOIS/Merchant Center/payments (Finding 1) |
 | Original, complete policy pages | ✅ | returns/shipping/privacy/terms all filled |
 | Transparent authenticity/product claims | ✅ | independent-reseller disclosure is exemplary |
 | Secure, trustworthy checkout | ✅ (verify) | HTTPS, live cart; confirm no checkout surprises |
@@ -101,8 +116,12 @@ Spot-check confirmed parity (e.g., Aqua Master $400 feed = $400 page). Re-verify
 
 ## Owner action list (in order)
 
-1. **Fix the live `/about/`** — remove "Charles Beep" (use the repo's corrected copy, or the real founder). *Only blocker.*
-2. **Assign brands** to the 47 unbranded feed products.
+1. **Verify founder identity is consistent** — confirm "Charles Beep" (the real
+   founder) matches the name/entity on domain WHOIS, Merchant Center business info,
+   and the payment processor; reconcile the differing admin email. No `/about/` change
+   needed since he's real. *(The de-personified `content/about.md` is optional — you
+   can keep the named story.)*
+2. **Assign brands** to the 47 unbranded feed products. *(Top feed blocker.)*
 3. **Add `condition`** to the Merchant Center feed, matching product pages.
 4. **Add GTINs** where real; `identifier_exists=no` otherwise.
 5. **Enrich thin descriptions** on top listings (specs); use `structured_description` for AI copy.
@@ -114,7 +133,8 @@ Spot-check confirmed parity (e.g., Aqua Master $400 feed = $400 page). Re-verify
 
 ## Pre-submission checklist
 
-- [ ] No fabricated people/awards/partnerships/authorized-dealer claims. ← **fails on founder**
+- [x] No fabricated people/awards/partnerships/authorized-dealer claims. *(founder confirmed real)*
+- [ ] Real identity consistent across site / WHOIS / Merchant Center / payment processor. ← **verify**
 - [x] Authenticity/sourcing described in real, defensible terms.
 - [x] Policy pages complete — no placeholders/blanks.
 - [x] Contact email + phone + address visible and consistent.
