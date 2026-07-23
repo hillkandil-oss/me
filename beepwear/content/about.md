@@ -9,16 +9,20 @@ with honesty, and delivered with care to collectors and first-time buyers alike.
 
 ## Our Story
 
-BeepWear was founded in 2023 by **Charles Beep**, a longtime watch collector who had grown
-frustrated with how hard it is to buy vintage watches online with confidence. Too often the
-experience meant thin listings, borrowed photography, and specifications you had to take on
-faith — the opposite of how a considered purchase should feel.
+BeepWear began in 2023 out of a simple frustration: buying vintage and pre-owned watches
+online too often meant thin listings, borrowed photography, and specifications you had to take
+on faith — the opposite of how a considered purchase should feel.
 
-So Charles built the boutique he wanted to buy from. At BeepWear, every timepiece is
-inspected, described as honestly as we can, and presented with the detail a serious purchase
-deserves: accurate specifications, real photography, and clear information about ownership,
-shipping, and support. Our focus is long-term — we would rather earn a collector for a decade
-than a single order.
+So we built the boutique we wanted to buy from. At BeepWear, every timepiece is inspected,
+described as honestly as we can, and presented with the detail a serious purchase deserves:
+accurate specifications, real photography, and clear information about ownership, shipping, and
+support. Our focus is long-term — we would rather earn a collector for a decade than a single
+order.
+
+> **Owner note (compliance):** If you wish to keep a named-founder story, replace the copy
+> above with the *real* founder's actual name and true history. Do **not** publish a fictional
+> individual — an invented founder is a Merchant Center misrepresentation trigger. See
+> `docs/MERCHANT-CENTER-MISREPRESENTATION-AUDIT.md`, Finding 1.
 
 ## Our Mission
 
