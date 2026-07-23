@@ -60,7 +60,7 @@ get_header();
 				<h2><?php esc_html_e( 'A Boutique Built Around the Watch', 'beepwear' ); ?></h2>
 			</div>
 			<div class="bw-about-body">
-				<p><?php esc_html_e( 'BeepWear began in 2023, founded by longtime collector Charles Beep out of a simple frustration: buying a fine watch online too often meant thin listings, borrowed photos, and specifications you had to take on faith. So he built the boutique he wanted to buy from.', 'beepwear' ); ?></p>
+				<p><?php esc_html_e( 'BeepWear began in 2023 out of a simple frustration: buying a fine watch online too often meant thin listings, borrowed photos, and specifications you had to take on faith. So we built the boutique we wanted to buy from.', 'beepwear' ); ?></p>
 				<p><?php esc_html_e( 'Today, every timepiece we offer is inspected, described honestly, and presented with the detail a considered purchase deserves. We curate precision watches for collectors and first-time buyers alike — with a focus on clarity, authenticity, and support that lasts well beyond the sale.', 'beepwear' ); ?></p>
 				<a class="bw-btn bw-btn--ghost" href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><?php esc_html_e( 'Read Our Story', 'beepwear' ); ?></a>
 			</div>

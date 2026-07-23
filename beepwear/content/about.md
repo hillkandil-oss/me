@@ -9,12 +9,11 @@ with honesty, and delivered with care to collectors and first-time buyers alike.
 
 ## Our Story
 
-BeepWear was founded in 2023 by **Charles Beep**, a longtime watch collector who had grown
-frustrated with how hard it is to buy vintage watches online with confidence. Too often the
-experience meant thin listings, borrowed photography, and specifications you had to take on
-faith — the opposite of how a considered purchase should feel.
+BeepWear was founded in 2023 out of a simple frustration: buying a fine watch online too often
+meant thin listings, borrowed photography, and specifications you had to take on faith — the
+opposite of how a considered purchase should feel.
 
-So Charles built the boutique he wanted to buy from. At BeepWear, every timepiece is
+So we built the boutique we wanted to buy from. At BeepWear, every timepiece is
 inspected, described as honestly as we can, and presented with the detail a serious purchase
 deserves: accurate specifications, real photography, and clear information about ownership,
 shipping, and support. Our focus is long-term — we would rather earn a collector for a decade
