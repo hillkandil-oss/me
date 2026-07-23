@@ -9,15 +9,14 @@
 **Standard:** Google Merchant Center — Misrepresentation, Counterfeit, Editorial &
 professional, Product-data specification (2026).
 
-> **Verdict: essentially submit-ready pending feed cleanup + one identity check.**
+> **Verdict: not submit-ready — one identity reconciliation + feed cleanup remain.**
 > The store has been substantially remediated since the last audit — authenticity,
 > policies, contact, and checkout now hold up. **Update (owner-confirmed): the founder
 > "Charles Beep" is a real person**, so the earlier "fabricated founder" P0 is
-> withdrawn. It is replaced by a lighter verification item: confirm that this real
-> identity is presented *consistently* across the website, domain WHOIS, Merchant
-> Center business info, and the payment processor. Clear the feed P1s (brand,
-> condition), verify identity consistency, then submit. Approval is never guaranteed
-> for luxury.
+> withdrawn. **But the owner confirms the business identity is currently inconsistent**
+> across the website, Merchant Center, and payment processor — a genuine P1 to
+> reconcile (Finding 1) before submitting. Clear that plus the feed P1s (brand,
+> condition), then submit **once**. Approval is never guaranteed for luxury.
 
 ---
 
@@ -41,7 +40,7 @@ This is strong progress — most of the earlier misrepresentation surface is clo
 
 | # | Severity | Finding | Policy | State |
 |---|----------|---------|--------|-------|
-| 1 | 🟡 **P2** | Founder **"Charles Beep"** (owner-confirmed real) — verify identity is consistent across site, WHOIS, Merchant Center & payment processor | Misrepresentation (identity consistency) | Verify |
+| 1 | 🟠 **P1** | **Business identity is inconsistent** across surfaces (owner-confirmed). Founder is real, but the website / Merchant Center / payment-processor identities do not all align | Misrepresentation (identity consistency) | **Reconcile** |
 | 2 | 🟠 **P1** | 47/269 feed products have **no brand** | Product data | Feed |
 | 3 | 🟠 **P1** | **No `condition` attribute in the feed** (live pages show "Used", but the feed CSV omits it) | Product data / accuracy | Feed |
 | 4 | 🟡 **P2** | **Thin, templated descriptions** ("rewards a closer look", "dive-ready build") repeated in form across products | Editorial / duplicate-content | LIVE + feed |
@@ -55,21 +54,39 @@ This is strong progress — most of the earlier misrepresentation surface is clo
 
 ## Detail & fixes
 
-### 1 — 🟡 Founder "Charles Beep" — real; verify identity consistency
-**Update:** The owner confirms **Charles Beep is a real person**. The earlier
-"fabricated founder" finding is withdrawn — a named, real founder story is fine and
-often *helps* trust. Because he's real, the de-personification in `content/about.md`
-is optional; the original named story can stay (or be restored).
-**What still matters:** Google cross-checks business identity across surfaces. A real
-founder is only a risk if the identity is *inconsistent* or *unverifiable*. Reconcile
-the signals that looked mismatched to an outside reviewer: the store admin email
-(`tcoculick@gmail.com`) differs from both the founder name and the owner contact
-(`hillkandil@gmail.com`).
-**Verify (owner):** the same real legal identity appears on — (a) the website/About,
-(b) domain WHOIS registrant, (c) Merchant Center business info + any business
-registration, and (d) the payment processor / checkout descriptor. If those all
-align, this finding closes. If any shows a different name/entity, reconcile it before
-submitting — the mismatch, not the person, is what Google flags. — *Owner verification.*
+### 1 — 🟠 Business identity is inconsistent across surfaces (reconcile)
+**Update:** The founder **Charles Beep is a real person** — the "fabricated founder"
+finding is withdrawn, and a named founder story is fine. **However, the owner confirms
+the identity is *not* consistent** across the website, Merchant Center, and payment
+processor. That inconsistency — not the founder — is the misrepresentation risk, and
+Google cross-checks these directly.
+
+**The distinction that matters:**
+- **Must match (hard requirement):** website business identity ⇄ **Merchant Center
+  business name/address** ⇄ **payment-processor legal name + checkout/statement
+  descriptor**. These three are compared against each other during review.
+- **May differ (not a problem):** domain WHOIS registrant (privacy protection is fine);
+  founder vs. store-admin vs. owner being different real people (Charles Beep as
+  founder, the `tcoculick@` admin as operator, `hillkandil@` as owner is acceptable).
+
+**Fix — establish one legal identity for BeepWear and point the money/registration
+trail at it:**
+1. Decide the single legal entity behind the store — e.g. a registered LLC/sole
+   proprietorship, or an existing entity with **"BeepWear" as a registered DBA / trade
+   name**. (If BeepWear operates under a related business, that's fine — just document
+   the DBA link.)
+2. **Merchant Center business info** = that legal entity, address `510 Main St, Wall,
+   SD 57790`, matching the site footer/terms.
+3. **Payment processor** (Stripe/PayPal/etc.) account legal name = the same entity;
+   set the **statement/checkout descriptor to "BEEPWEAR"** so customers recognize the
+   charge. A processor account under an unrelated business name is a red flag.
+4. **Website** — show the same legal business name consistently in the footer, Terms,
+   Privacy, and Contact (a DBA line like "BeepWear is a trade name of <Entity>" is
+   enough).
+5. Domain WHOIS — owner or entity, or privacy-protected; no action needed unless it
+   shows an unrelated third party.
+— *Owner action; needs the real entity/processor details, which the auditor cannot
+supply.*
 
 ### 2 — 🟠 47 products with no brand
 **Fix:** Assign the true brand to each of the 47 flagged in `data/products-mc-audit.csv`; Merchant Center expects `brand` for watches. If genuinely unbranded, use the correct attribute rather than guessing. — *Owner action.*
@@ -116,11 +133,12 @@ Spot-check confirmed parity (e.g., Aqua Master $400 feed = $400 page). Re-verify
 
 ## Owner action list (in order)
 
-1. **Verify founder identity is consistent** — confirm "Charles Beep" (the real
-   founder) matches the name/entity on domain WHOIS, Merchant Center business info,
-   and the payment processor; reconcile the differing admin email. No `/about/` change
-   needed since he's real. *(The de-personified `content/about.md` is optional — you
-   can keep the named story.)*
+1. **Reconcile the business identity** — pick one legal entity for BeepWear (or register
+   "BeepWear" as a DBA of an existing entity) and make **Merchant Center business info +
+   payment-processor legal name + website business name** all agree, with the checkout
+   descriptor reading "BEEPWEAR". Founder/operator/owner may remain different real people;
+   the domain WHOIS may stay privacy-protected. No `/about/` change needed (founder is
+   real). *(See Finding 1 for the step-by-step.)*
 2. **Assign brands** to the 47 unbranded feed products. *(Top feed blocker.)*
 3. **Add `condition`** to the Merchant Center feed, matching product pages.
 4. **Add GTINs** where real; `identifier_exists=no` otherwise.
@@ -134,7 +152,7 @@ Spot-check confirmed parity (e.g., Aqua Master $400 feed = $400 page). Re-verify
 ## Pre-submission checklist
 
 - [x] No fabricated people/awards/partnerships/authorized-dealer claims. *(founder confirmed real)*
-- [ ] Real identity consistent across site / WHOIS / Merchant Center / payment processor. ← **verify**
+- [ ] Business identity consistent across website / Merchant Center / payment processor. ← **reconcile (Finding 1)**
 - [x] Authenticity/sourcing described in real, defensible terms.
 - [x] Policy pages complete — no placeholders/blanks.
 - [x] Contact email + phone + address visible and consistent.
