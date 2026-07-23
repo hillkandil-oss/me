@@ -3,7 +3,7 @@ Theme Name: BeepWear
 Theme URI: https://beepwear.com
 Description: BeepWear — luxury watch boutique. Child theme of Hello Elementor implementing the BeepWear design system (see docs/BRAND.md). WooCommerce-ready, accessibility- and performance-minded.
 Author: BeepWear
-Version: 0.9.1
+Version: 0.9.2
 Template: hello-elementor
 Requires at least: 6.4
 Requires PHP: 8.0
@@ -278,8 +278,10 @@ input:focus,select:focus,textarea:focus{border-color:var(--bw-black)}
 .bw-header-icons a:hover{color:var(--bw-black)}
 
 /* hero */
-.bw-hero{position:relative;overflow:hidden;color:var(--bw-white);
-  background:linear-gradient(120deg,#1a1712 0%,#241f18 45%,#3a3025 100%)}
+.bw-hero{position:relative;overflow:hidden;color:var(--bw-white);background-color:#141310;
+  background-image:linear-gradient(90deg,rgba(18,17,14,.93) 0%,rgba(18,17,14,.68) 46%,rgba(18,17,14,.42) 100%),
+    url("https://beepwear.com/wp-content/uploads/2026/07/pexels-mat-brown-150387-5421375-2048x1365.jpg");
+  background-size:cover;background-position:center;background-repeat:no-repeat}
 .bw-hero::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(120% 90% at 78% 30%,rgba(194,161,92,.28),transparent 55%)}
 .bw-hero-inner{position:relative;z-index:2;padding-block:clamp(72px,11vw,120px)}
@@ -306,7 +308,10 @@ input:focus,select:focus,textarea:focus{border-color:var(--bw-black)}
 
 /* lifestyle band */
 .bw-life{display:grid;grid-template-columns:1.05fr .95fr;min-height:460px;align-items:center}
-.bw-life-art{background:linear-gradient(135deg,#221d16,#3a3025);min-height:460px}
+.bw-life-art{background-color:#221d16;
+  background-image:linear-gradient(180deg,rgba(20,19,16,.12),rgba(20,19,16,.40)),
+    url("https://beepwear.com/wp-content/uploads/2026/07/pexels-duncan-van-gortel-1637524727-28977357-2048x2048.jpg");
+  background-size:cover;background-position:center;background-repeat:no-repeat;min-height:460px}
 .bw-life-txt{padding:clamp(40px,6vw,80px)}
 .bw-life-txt h2{font-size:clamp(30px,3.6vw,46px);margin:14px 0 20px;max-width:16ch;color:#fff}
 .bw-life-txt p{color:rgba(255,255,255,.8);max-width:46ch;margin:0 0 30px}

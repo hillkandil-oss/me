@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // No direct access.
 }
 
-define( 'BEEPWEAR_VERSION', '0.9.1' );
+define( 'BEEPWEAR_VERSION', '0.9.2' );
 define( 'BEEPWEAR_DIR', get_stylesheet_directory() );
 
 /**
