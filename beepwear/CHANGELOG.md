@@ -5,6 +5,14 @@ objective, impact, and status. Development branch: `claude/hello-lz33xo`.
 
 ## Unreleased (pre-launch build)
 
+- **GEO & AI visibility upgrade:** restructured all six journal guides for AI citability
+  (Quick Answer blocks, data tables, question-form headings, per-guide FAQs, meta
+  descriptions, internal links). Added theme JSON-LD fallback for journal posts —
+  `BlogPosting` + `FAQPage` + `HowTo` (`inc/schema.php`, `inc/journal-schema-data.php`),
+  using real post dates. Fixed social cards: raster `og:image`/`twitter:image`
+  (1200×630) + 512×512 Organization logo, replacing non-rendering SVGs. See
+  `docs/GEO-CITABILITY.md`. Impact: FAQ/Article/HowTo rich-result eligibility + AI-answer
+  citability; status: in repo, pending live apply.
 - **Ops & governance (Parts 12–14):** deploy runbook, operations/QA/maintenance model,
   multi-agent workflow, master execution blueprint with acceptance criteria + launch gate.
 - **Component library (Part 11):** shadow tokens, `.bw-badge` / `.bw-alert`; theme v0.4.0.

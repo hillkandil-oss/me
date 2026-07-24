@@ -33,7 +33,8 @@ array_map(
 		'setup',            // Theme supports + WooCommerce declaration.
 		'enqueue',          // Styles, script, font preload.
 		'announcement-bar', // Admin-configurable announcement bar.
-		'woocommerce',      // Storefront presentation tweaks.
-		'schema',           // JSON-LD structured data (fallback).
+		'woocommerce',          // Storefront presentation tweaks.
+		'journal-schema-data',  // FAQ/HowTo source for journal guides.
+		'schema',               // JSON-LD structured data (fallback).
 	)
 );
