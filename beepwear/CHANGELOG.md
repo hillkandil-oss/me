@@ -5,6 +5,22 @@ objective, impact, and status. Development branch: `claude/hello-lz33xo`.
 
 ## Unreleased (pre-launch build)
 
+- **SEO/GEO audit fixes (theme v0.9.5):** post-launch audit of the live site.
+  - Product schema: force `itemCondition: UsedCondition` on the Rank Math Product
+    entity (unconditional override — some Rank Math versions default to
+    NewCondition) plus a `rank_math/json_ld` graph-level safety net so the used
+    condition lands regardless of graph shape; map SKU → `mpn` when no mpn/gtin.
+  - Homepage share image: emit a real 1200×630 raster `og:image`/`twitter:image`
+    (`assets/images/og-default.png`) instead of the non-rendering SVG; add
+    `og:image:width/height`.
+  - Organization schema: add filterable `sameAs` (`beepwear/organization_sameas`),
+    empty by default — populate with real verified profile URLs only.
+  - `config/robots.txt`: explicit AI-crawler directives (GPTBot, OAI-SearchBot,
+    ClaudeBot, PerplexityBot, Google-Extended, CCBot, …) welcoming citation while
+    keeping transactional paths out.
+  - `config/llms.txt`: new GEO map of buying guides, shop, and policies for AI
+    answer engines.
+
 - **Ops & governance (Parts 12–14):** deploy runbook, operations/QA/maintenance model,
   multi-agent workflow, master execution blueprint with acceptance criteria + launch gate.
 - **Component library (Part 11):** shadow tokens, `.bw-badge` / `.bw-alert`; theme v0.4.0.

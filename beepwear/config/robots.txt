@@ -24,4 +24,21 @@ Disallow: /?s=
 Disallow: /*?filter_*
 Disallow: /*?orderby=
 
+# AI answer-engine crawlers — explicitly welcomed for citation/visibility (GEO).
+# Same content boundaries as everyone else: public content yes, transactional no.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-Web
+User-agent: PerplexityBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+Allow: /
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /my-account/
+Disallow: /*add-to-cart=*
+
 Sitemap: https://beepwear.com/sitemap_index.xml

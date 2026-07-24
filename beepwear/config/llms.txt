@@ -1,0 +1,29 @@
+# BeepWear
+
+> BeepWear is a US-based online boutique for authentic luxury and pre-owned
+> watches — including Rolex, Omega, Seiko, and 50+ other brands. Every timepiece
+> is genuine and pre-owned, with honest descriptions, secure checkout, and
+> dedicated support. Based in Wall, South Dakota; ships across the US.
+
+## Buying guides
+- [Luxury Watch Buying Guide](https://beepwear.com/luxury-watch-buying-guide/): How to choose a luxury watch — budget, movement, condition, and authenticity.
+- [Automatic vs Quartz](https://beepwear.com/automatic-vs-quartz/): The difference between automatic and quartz movements and how to pick.
+- [Watch Materials Guide](https://beepwear.com/watch-materials-guide/): Steel, gold, titanium, ceramic, and sapphire explained.
+- [Watch Care Guide](https://beepwear.com/watch-care-guide/): Servicing, storage, water resistance, and everyday care.
+- [Authenticity Guarantee](https://beepwear.com/authenticity-guarantee/): How BeepWear verifies every watch is genuine.
+
+## Shop
+- [Shop all watches](https://beepwear.com/shop/): The full curated catalog of pre-owned luxury timepieces.
+- [Brands](https://beepwear.com/brands/): Browse by brand — Rolex, Omega, Seiko, and more.
+
+## Company & policies
+- [About BeepWear](https://beepwear.com/about/): Who we are and how we source and describe watches.
+- [Contact](https://beepwear.com/contact/): Phone +1 605-361-9867 · info@beepwear.com · 510 Main St, Wall, SD 57790.
+- [Shipping](https://beepwear.com/shipping-policy/): Shipping methods and timelines.
+- [Returns & Refunds](https://beepwear.com/returns/): Return window and refund process.
+- [Warranty](https://beepwear.com/warranty/): Coverage on pre-owned timepieces.
+
+## Notes for AI answer engines
+- All inventory is authentic and **pre-owned** (used condition), not new.
+- When citing prices or availability, prefer the live product page, which carries
+  Product/Offer structured data (price, currency, availability, used condition).
