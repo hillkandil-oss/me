@@ -20,6 +20,16 @@
 
 ## Re-audit log
 
+**2026-07-24 (re-audit #3 — real progress, edits reached live):** The theme-demo purge
+finally landed. Homepage now: "Trenchsafety supplies shipping containers, trailers, and
+propane tanks…". Removed live: insurance copy, "Yellow Construction", +880 phone,
+info@gmail.com, Fall River address. Email now on own domain; homepage phone is the real
++1 605-356-2237. **Remaining blockers:** (1) products still have NO price (all 5 tanks
+sampled) — the hard stop; (2) fake number "(684) 555-0102" still on 7 pages (footer/contact)
+while homepage shows the real number — inconsistent + fabricated; (3) address is a Google
+Plus Code "VVV4+3G7, Watertown SD" site-wide — needs a real street address. Verdict: much
+closer, still not submit-ready until pricing + those two contact fixes land.
+
 **2026-07-24 (re-audit #2):** Still not submit-ready; no P0 addressed. All demo strings
 still present on all 8 pages. Only change: homepage SEO title improved to "Heavy Equipment,
 Trailers & Storage Solutions | Trenchsafety" (cosmetic). Regression: the 5 propane tanks
