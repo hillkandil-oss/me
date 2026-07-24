@@ -1,5 +1,39 @@
-<title>Hill Kandil</title>
-<meta name="description" content="Personal home — Hill Kandil.">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hill Kandil — Designer &amp; Interface Builder, Cairo</title>
+<meta name="description" content="Hill Kandil is a Cairo-based designer and builder crafting memorable interfaces, design systems, and motion — not templates.">
+
+<!-- Open Graph / social preview.
+     NOTE: swap the domain below for your real domain if you deploy to a custom one,
+     and add a 1200×630 og-image.png at the site root for the rich card to render. -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Hill Kandil — Designer &amp; Interface Builder">
+<meta property="og:description" content="Cairo-based designer and builder crafting memorable interfaces, design systems, and motion — not templates.">
+<meta property="og:url" content="https://hillkandil-oss.github.io/me/">
+<meta property="og:image" content="https://hillkandil-oss.github.io/me/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hill Kandil — Designer &amp; Interface Builder">
+<meta name="twitter:description" content="Cairo-based designer and builder crafting memorable interfaces, design systems, and motion.">
+<meta name="twitter:image" content="https://hillkandil-oss.github.io/me/og-image.png">
+
+<!-- Person structured data for GEO / AI-citation (ChatGPT, Perplexity, Google) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Hill Kandil",
+  "jobTitle": "Designer & Interface Builder",
+  "description": "Cairo-based designer and builder crafting memorable interfaces, design systems, and motion.",
+  "url": "https://hillkandil-oss.github.io/me/",
+  "address": { "@type": "PostalAddress", "addressLocality": "Cairo", "addressCountry": "EG" },
+  "knowsAbout": ["Interface Design", "Design Systems", "Motion Design", "Front-End Development"],
+  "sameAs": ["https://github.com/hillkandil-oss"]
+}
+</script>
+
 <style>
 
 @font-face { font-family:'Display'; font-weight:700; font-display:swap;
@@ -108,6 +142,8 @@ a{color:inherit}
   .name{font-size:clamp(58px,22vw,120px)}
 }
 </style>
+</head>
+<body>
 
 <div class="wrap">
   <div class="top">
@@ -119,8 +155,8 @@ a{color:inherit}
     <p class="eyebrow">Builder &middot; Designer &middot; Cairo</p>
     <div class="plate" id="plate">
       <h1 class="name">
-        <span class="row" data-word="HILL"></span>
-        <span class="row ln2" data-word="KANDIL"></span>
+        <span class="row" data-word="HILL">HILL</span>
+        <span class="row ln2" data-word="KANDIL">KANDIL</span>
       </h1>
       <div class="under" id="under"></div>
     </div>
@@ -135,8 +171,6 @@ a{color:inherit}
     <nav class="links" aria-label="Links">
       <a href="https://github.com/hillkandil-oss"><span class="k">01</span>GitHub</a>
       <a class="mint" href="mailto:hillkandil@gmail.com"><span class="k">02</span>Email</a>
-      <a href="#"><span class="k">03</span>Writing</a>
-      <a class="mint" href="#"><span class="k">04</span>Résumé</a>
     </nav>
     <span class="now">NOW &mdash; <b>shipping a design system</b></span>
   </footer>
@@ -157,6 +191,7 @@ a{color:inherit}
   var total=0;
   rows.forEach(function(row,ri){
     var word=row.getAttribute('data-word'), frag=document.createDocumentFragment();
+    row.textContent='';  // clear the crawler-visible text; JS re-renders it as animated letters
     word.split('').forEach(function(c,i){
       var s=document.createElement('span'); s.className='ch'; s.textContent=c;
       s.style.animationDelay=(0.18+total*0.045)+'s'; total++;
@@ -179,3 +214,5 @@ a{color:inherit}
   });
 })();
 </script>
+</body>
+</html>
