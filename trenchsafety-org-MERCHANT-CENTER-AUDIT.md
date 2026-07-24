@@ -18,6 +18,17 @@
 
 ---
 
+## Re-audit log
+
+**2026-07-23 (re-audit):** No material change. A fresh sweep of 8 live pages (home,
+about, contact, shop, refund_returns, shipping-policy, terms, privacy) shows **all**
+theme-demo strings still present on every page (`+880` phone, Fall River MA address,
+"Yellow Construction", `info@gmail.com`, "insurance needs", `industrie`, `vvv4+3g7`,
+"coming soon"). Identity and contact are unchanged. **Partial progress on pricing only:**
+some products now have prices (e.g. the 500-gallon ASME tank shows $28,000–$31,000), but
+others still have none (1000-gallon and 250-gallon tanks checked = no price). **Verdict
+unchanged: not submit-ready.** None of the P0 blockers have been addressed.
+
 ## The core problem, in one sentence
 
 A domain named **trenchsafety.org** is selling **propane tanks, shipping containers and
