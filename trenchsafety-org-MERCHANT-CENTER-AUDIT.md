@@ -20,7 +20,14 @@
 
 ## Re-audit log
 
-**2026-07-23 (re-audit):** No material change. A fresh sweep of 8 live pages (home,
+**2026-07-24 (re-audit #2):** Still not submit-ready; no P0 addressed. All demo strings
+still present on all 8 pages. Only change: homepage SEO title improved to "Heavy Equipment,
+Trailers & Storage Solutions | Trenchsafety" (cosmetic). Regression: the 5 propane tanks
+sampled now show **no price** (incl. the 500-gallon that briefly showed $28k–$31k). Fixes
+require a session with WordPress write-access to actually execute — repeat audits won't move
+the state.
+
+**2026-07-23 (re-audit #1):** No material change. A fresh sweep of 8 live pages (home,
 about, contact, shop, refund_returns, shipping-policy, terms, privacy) shows **all**
 theme-demo strings still present on every page (`+880` phone, Fall River MA address,
 "Yellow Construction", `info@gmail.com`, "insurance needs", `industrie`, `vvv4+3g7`,
