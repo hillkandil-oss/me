@@ -25,6 +25,10 @@ objective, impact, and status. Development branch: `claude/hello-lz33xo`.
     still carrying a `[confirm: …]` placeholder are auto-skipped so unverified
     facts never enter structured data (15 of 18 Q&A currently eligible);
     filterable via `beepwear/faq_items` and `beepwear/faq_page_slugs`.
+  - Archives: category and brand pages now render a "buying guides" internal-link
+    block beneath the grid (`inc/woocommerce.php` + styles), reducing thin
+    grid-only pages and strengthening internal linking / topical authority.
+    Filterable via `beepwear/archive_guide_links`.
 
 - **Ops & governance (Parts 12–14):** deploy runbook, operations/QA/maintenance model,
   multi-agent workflow, master execution blueprint with acceptance criteria + launch gate.

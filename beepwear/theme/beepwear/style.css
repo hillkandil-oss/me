@@ -437,3 +437,27 @@ body.bw-nav-open{overflow:hidden}
   .bw-mobile-nav,.bw-mobile-nav__panel,.bw-burger__line,
   .bw-burger__line::before,.bw-burger__line::after,.bw-site-header{transition:none}
 }
+
+/* Archive buying-guide internal links (category & brand pages) */
+.bw-archive-guides{
+  margin:var(--sp-5) auto 0; max-width:var(--maxw);
+  padding:var(--sp-4) clamp(14px,3vw,32px);
+  border-top:1px solid var(--bw-line);
+}
+.bw-archive-guides__title{
+  font-family:var(--font-display); font-size:var(--fs-h3);
+  font-weight:500; color:var(--bw-black); margin:0 0 var(--sp-2);
+}
+.bw-archive-guides__list{
+  list-style:none; margin:0; padding:0;
+  display:flex; flex-wrap:wrap; gap:var(--sp-1) var(--sp-3);
+}
+.bw-archive-guides__list a{
+  display:inline-block; color:var(--bw-champagne-deep);
+  border-bottom:1px solid transparent;
+  font-family:var(--font-body); font-size:var(--fs-small);
+  transition:border-color var(--dur) var(--ease),color var(--dur) var(--ease);
+}
+.bw-archive-guides__list a:hover,.bw-archive-guides__list a:focus{
+  color:var(--bw-black); border-bottom-color:var(--bw-champagne);
+}
