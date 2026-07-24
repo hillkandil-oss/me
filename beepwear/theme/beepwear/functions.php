@@ -35,5 +35,6 @@ array_map(
 		'announcement-bar', // Admin-configurable announcement bar.
 		'woocommerce',      // Storefront presentation tweaks.
 		'schema',           // JSON-LD structured data (fallback).
+		'faq-schema',       // FAQPage JSON-LD on the support FAQ page.
 	)
 );

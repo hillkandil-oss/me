@@ -20,6 +20,11 @@ objective, impact, and status. Development branch: `claude/hello-lz33xo`.
     keeping transactional paths out.
   - `config/llms.txt`: new GEO map of buying guides, shop, and policies for AI
     answer engines.
+  - FAQ: new `inc/faq-schema.php` emits `FAQPage` JSON-LD on the support FAQ page
+    (rich results + AI passage citation), seeded from `content/faq.md`. Answers
+    still carrying a `[confirm: …]` placeholder are auto-skipped so unverified
+    facts never enter structured data (15 of 18 Q&A currently eligible);
+    filterable via `beepwear/faq_items` and `beepwear/faq_page_slugs`.
 
 - **Ops & governance (Parts 12–14):** deploy runbook, operations/QA/maintenance model,
   multi-agent workflow, master execution blueprint with acceptance criteria + launch gate.
