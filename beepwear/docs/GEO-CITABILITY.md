@@ -51,20 +51,27 @@ Each guide now has, in the BeepWear voice:
 - `beepwear-share.png` (1200×630) — social/AI share card.
 - `beepwear-logo.png` (512×512) — raster mark for Organization schema (per `BRAND.md §Logo`).
 
-## Applying to the live site (WordPress / Rank Math)
+## Live status — applied 2026-07-25 (via WordPress REST API)
 
-The repo is the source of truth; these steps push it live.
+Applied directly to beepwear.com (REST cannot deploy theme files, so guide schema was
+shipped as **inline JSON-LD inside each post** rather than via the theme fallback):
 
-1. **Re-deploy the theme** (`theme/beepwear/`) so the new `schema.php`, data file, and images ship. Verify the two PNGs resolve at `/wp-content/themes/beepwear/assets/images/`.
-2. **Update each journal post body** from the matching `content/guides/*.md` (Quick Answer, tables, question headings, FAQ section).
-3. **Set the Rank Math meta description** on each guide (from the metadata block).
-4. **Schema ownership decision** (per `SEO-IMPLEMENTATION.md §2`):
-   - *Fallback path (now):* leave `BEEPWEAR_EMIT_SCHEMA = true` — the theme emits BlogPosting/FAQ/HowTo.
-   - *Rank Math path:* build the FAQ as a **Rank Math FAQ block** and the care steps as a **HowTo block**, set the post's Schema type to **Article**, then set `BEEPWEAR_EMIT_SCHEMA = false` to avoid duplicate schema.
-   Use one path, not both.
-5. **Delete the `hello-world` post** (Posts → Trash → Delete permanently) and confirm it drops from the sitemap.
-6. **Set Rank Math's default OG image** to `beepwear-share.png` for non-front pages.
-7. **Verify:** Google Rich Results Test + Schema.org validator on the homepage, a product, and each guide. Confirm social cards render in the Facebook Sharing Debugger and X Card validator.
+- ✅ **All 6 journal post bodies** updated from `content/guides/*.md` — Quick Answer callouts, data tables, question-form headings, FAQ sections.
+- ✅ **Inline JSON-LD** on every guide: `BlogPosting` + `FAQPage` (4 Q&As each) + `HowTo` (care guide). Validated as parseable; real post `datePublished`, current `dateModified`.
+- ✅ **Meta descriptions** set via each post's **excerpt** (Rank Math uses it as the description) — confirmed rendering in `<meta name="description">`.
+- ✅ **Share/logo rasters uploaded** to the media library (`/wp-content/uploads/2026/07/beepwear-share.png`, `…/beepwear-logo.png`); schema `image`/`publisher.logo` point to them (resolve 200).
+- ✅ **`hello-world` default post deleted** (force) — now 404, dropped from the post set.
+
+Backups of each post's pre-edit content are in the working session (`backup-<id>.json`).
+
+### Still requires a theme redeploy (SFTP / hosting — not possible over REST)
+
+1. **Deploy `theme/beepwear/`** so `inc/schema.php` + `inc/journal-schema-data.php` and the two PNGs under `assets/images/` ship. When you do, **keep `BEEPWEAR_EMIT_SCHEMA = false`** in production so the theme's journal schema does not duplicate the inline JSON-LD already in the post bodies (per `SEO-IMPLEMENTATION.md §2`).
+2. **Homepage social card:** the raster `og:image`/`twitter:image` + Organization logo fixes live in `inc/schema.php` and only take effect after deploy. Until then, either deploy, or set Rank Math's **default OG image** to the uploaded `beepwear-share.png` (Rank Math → Titles & Meta → Global).
+3. *(Optional)* Per-guide `og:image`: set the uploaded share card as each guide's featured image, or a Rank Math per-post OG image.
+
+### Verify
+Google Rich Results Test + Schema.org validator on the homepage, a product, and each guide; Facebook Sharing Debugger + X Card validator for social cards.
 
 ## Optional next (higher GEO ceiling)
 - Add a real named horologist byline + author bio page to strengthen E-E-A-T beyond the team attribution.
