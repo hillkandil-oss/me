@@ -1,0 +1,29 @@
+# Python bytecode / build artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+
+# Audit output — regenerate with compliance/audit-store.py, don't commit snapshots
+findings.json
+*-findings.json
+
+# Node
+node_modules/
+
+# Editor / OS noise
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Never commit credentials. Application passwords, WooCommerce REST keys, and
+# Merchant Center/hosting logins stay out of the repository entirely.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets.json
+credentials.json
