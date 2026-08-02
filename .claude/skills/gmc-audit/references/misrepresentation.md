@@ -13,6 +13,35 @@ Google evaluates four pillars: **business identity**, **contact reachability**,
 **complete & consistent policies**, and a **trustworthy checkout**. Fail any and
 the whole account is at risk.
 
+## Google's own best-practices (verbatim from the Merchant Center notice)
+
+When Google flags misrepresentation "through automated checks", the notice tells
+the merchant to make sure the Merchant Center account **and** the online store
+follow these best practices. Audit every store against them directly — they are
+Google's own words:
+
+1. **Provide transparency about your business identity, business model, policies,
+   and how your customers interact with you.** (Who you are, what you actually
+   do/sell, and clear policies — all consistent.)
+2. **Promote your online reputation by showing reviews or highlighting any badges
+   or seals of approval.** (Real, verifiable reviews and legitimate trust badges —
+   never fabricated.)
+3. **Use a professional design for your online store that includes an SSL
+   certificate.** (HTTPS everywhere, no placeholder/theme-demo content, no broken
+   or unfinished pages.)
+4. **Provide information in the business information settings in your Merchant
+   Center.** (Fill Merchant Center's *Business information* — name, address,
+   contact — and make it match the website exactly. This is a Merchant-Center-side
+   setting, not just the storefront.)
+5. **Follow SEO guidelines, improve your eligibility for seller ratings, and match
+   your product data in Merchant Center with your online store.** (Real titles/meta;
+   feed values = live page values; enable/qualify for seller ratings.)
+
+Then it links **"Learn more about the Misrepresentation policy."** These map onto
+the four pillars below, and add two Merchant-Center-side checks that a site-only
+audit misses: **(4) the Merchant Center Business information settings** and **(2)/(5)
+reviews, trust badges, and seller-ratings eligibility.**
+
 ## 1. Business identity (must be real and consistent)
 
 - A clear, real business/company name, presented the same way across the site,
@@ -111,6 +140,12 @@ Confirm each is TRUE:
 - [ ] Titles/descriptions/images accurately describe the actual item.
 - [ ] No inflated/fake "was" prices or countdowns that don't reset honestly.
 - [ ] Reviews/testimonials are real and verifiable (or hidden until they exist).
+
+**Merchant Center side & reputation (Google's own best-practices)**
+- [ ] Merchant Center **Business information settings** filled and matching the site.
+- [ ] SSL/HTTPS across the whole store; professional design, no demo/placeholder content.
+- [ ] Real reviews and/or legitimate trust badges shown; seller-ratings eligibility pursued.
+- [ ] SEO: real titles/meta; feed product data matches the live pages exactly.
 
 If any box can't be truthfully checked, it's an owner action — get the real
 fact, don't invent one.
