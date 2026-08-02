@@ -79,6 +79,32 @@ Notes:
   `brand` comes back empty on that path. Use the REST API (`--wc-key/--wc-secret`)
   or the store's brand plugin export if you need it.
 
+## Companion scripts: brand handling + Merchant Center import
+
+Two helpers turn a raw scrape into a re-import-ready catalogue:
+
+- **`strip_brands.py`** — remove brand names (and links) from a scrape, e.g. to
+  anonymize titles/descriptions.
+  ```bash
+  python3 strip_brands.py scraped.json --brands-file brands.txt --format csv -o clean.csv
+  ```
+
+- **`build_mc_import.py`** — build a Merchant-Center-oriented WooCommerce import CSV.
+  It **keeps** manufacturer brands (and fills the WooCommerce *Brands* column, which
+  Google Merchant Center needs), **removes** the source store's identity + links +
+  permalinks, leaves GTIN blank (never invents identifiers), and writes an **audit
+  CSV** that flags duplicate / near-duplicate / empty descriptions — the top
+  Merchant Center suspension risks.
+  ```bash
+  python3 build_mc_import.py scraped.json \
+      --brands-file brands.txt --store-terms-file store-terms.txt \
+      --out-csv mc-import.csv --out-audit mc-audit.csv
+  ```
+  Near-duplicate detection uses 6-word shingle Jaccard similarity (≥0.30). The
+  output CSV matches this repo's proven 49-column schema
+  (`beepwear/data/products-mc-cleaned.csv`) so it imports directly. See
+  `beepwear/data/research/README.md` for a worked example.
+
 ## Running in Claude Code on the web
 
 This environment's egress proxy blocks arbitrary external domains by default, so the

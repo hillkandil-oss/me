@@ -101,6 +101,14 @@ def strip_html(text: Optional[str]) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
+def clean_text(text: Optional[str]) -> str:
+    """Decode HTML entities in a plain field (e.g. a product title) without
+    treating it as markup — WooCommerce returns names like 'Set 7,7 kW &#8211; ECD'."""
+    if not text:
+        return ""
+    return html.unescape(text).strip()
+
+
 # --------------------------------------------------------------------------- #
 # Normalized record shape
 # --------------------------------------------------------------------------- #
@@ -182,9 +190,9 @@ def _normalize_shopify(base: str, p: Dict[str, Any]) -> Dict[str, Any]:
         "id": _num(p.get("id")),
         "handle": p.get("handle"),
         "url": f"{base}/products/{p.get('handle')}" if p.get("handle") else base,
-        "title": p.get("title"),
-        "brand": p.get("vendor") or "",
-        "product_type": p.get("product_type") or "",
+        "title": clean_text(p.get("title")),
+        "brand": clean_text(p.get("vendor")),
+        "product_type": clean_text(p.get("product_type")),
         "tags": p.get("tags") if isinstance(p.get("tags"), list) else _split_tags(p.get("tags")),
         "description": strip_html(p.get("body_html")),
         "images": [img.get("src") for img in p.get("images", []) if img.get("src")],
@@ -261,7 +269,7 @@ def _normalize_woo_store(base: str, p: Dict[str, Any]) -> Dict[str, Any]:
     currency = prices.get("currency_code")
     variant = {
         "id": _num(p.get("id")),
-        "title": p.get("name"),
+        "title": clean_text(p.get("name")),
         "sku": p.get("sku") or "",
         "price": _woo_price(prices.get("price"), unit),
         "compare_at_price": _woo_price(prices.get("regular_price"), unit),
@@ -275,10 +283,10 @@ def _normalize_woo_store(base: str, p: Dict[str, Any]) -> Dict[str, Any]:
         "id": _num(p.get("id")),
         "handle": p.get("slug"),
         "url": p.get("permalink") or base,
-        "title": p.get("name"),
+        "title": clean_text(p.get("name")),
         "brand": "",  # brand is a plugin taxonomy; not exposed by Store API
-        "product_type": ", ".join(c.get("name", "") for c in p.get("categories", [])),
-        "tags": [t.get("name", "") for t in p.get("tags", [])],
+        "product_type": ", ".join(clean_text(c.get("name")) for c in p.get("categories", [])),
+        "tags": [clean_text(t.get("name")) for t in p.get("tags", [])],
         "description": strip_html(p.get("description") or p.get("short_description")),
         "images": [img.get("src") for img in p.get("images", []) if img.get("src")],
         "variants": [variant],
@@ -317,12 +325,12 @@ def _normalize_woo_rest(base: str, p: Dict[str, Any]) -> Dict[str, Any]:
     variants = [
         {
             "id": _num(p.get("id")),
-            "title": p.get("name"),
+            "title": clean_text(p.get("name")),
             "sku": p.get("sku") or "",
             "price": _num(p.get("price")),
             "compare_at_price": _num(p.get("regular_price")),
             "currency": None,
-            "options": {a.get("name"): ", ".join(a.get("options", [])) for a in p.get("attributes", [])},
+            "options": {clean_text(a.get("name")): ", ".join(a.get("options", [])) for a in p.get("attributes", [])},
             "available": p.get("stock_status") == "instock",
         }
     ]
@@ -332,10 +340,10 @@ def _normalize_woo_rest(base: str, p: Dict[str, Any]) -> Dict[str, Any]:
         "id": _num(p.get("id")),
         "handle": p.get("slug"),
         "url": p.get("permalink") or base,
-        "title": p.get("name"),
+        "title": clean_text(p.get("name")),
         "brand": "",
-        "product_type": ", ".join(c.get("name", "") for c in p.get("categories", [])),
-        "tags": [t.get("name", "") for t in p.get("tags", [])],
+        "product_type": ", ".join(clean_text(c.get("name")) for c in p.get("categories", [])),
+        "tags": [clean_text(t.get("name")) for t in p.get("tags", [])],
         "description": strip_html(p.get("description") or p.get("short_description")),
         "images": [img.get("src") for img in p.get("images", []) if img.get("src")],
         "variants": variants,

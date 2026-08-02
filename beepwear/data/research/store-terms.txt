@@ -1,0 +1,8 @@
+# Source-store identity to REMOVE from names/descriptions on import.
+# (None of these currently appear in the scraped copy — kept as a safety net.)
+Container Solutions CS
+ContainerSolutions CS
+Container Solutions
+ContainerSolutions
+containersolutionscs.de
+containersolutionscs

@@ -1,0 +1,22 @@
+# Manufacturer brands to DETECT and KEEP (populates the WooCommerce "Brands"
+# column and stays in titles/descriptions). Google Merchant Center needs `brand`.
+# The core list is built into build_mc_import.py; add extra brands here, one per line.
+Mitsubishi Heavy
+Mitsubishi Electric
+Daikin
+EcoFlow
+Remko
+GREE
+Fendt
+Franc
+Variant
+Humbaur
+Anssems
+TPV
+Eduard
+Ifor Williams
+Cheval Liberté
+Stahlworks
+Aiper
+Beatbot
+Pool Expert
