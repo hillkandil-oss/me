@@ -7,7 +7,17 @@
 **Audit date:** 2026-07-25
 **Method:** `gmc-audit` skill — live fetch of home, a product, contact, about, and the policy pages.
 
-> **Verdict: NOT submit-ready — and currently not legally compliant for a German shop.**
+> **RE-AUDIT 2026-07-26 — now essentially submit-ready.** All P0/P1 fixes landed:
+> **Impressum** is live and complete (§5 DDG: "Slooterberk Billian AnhängerPlus,
+> Reiherstieg-Hauptdeich 806, 21107 Hamburg", Inhaber named, phone/email, USt-IdNr
+> present — full street number, no placeholders); **Widerrufsbelehrung** published +
+> linked; real German site **title**; **French product terms removed** (godets/
+> reconditionné/tondeuse gone from content); **personal Gmail removed** (author
+> archive now 404); **prices real** (€12,500–€25,000). Remaining minor: no homepage
+> meta description; one permalink slug still contains "3-godets" (cosmetic). This is
+> the fully-remediated store of the group. Original findings below for the record.
+>
+> **Original verdict: NOT submit-ready — and currently not legally compliant for a German shop.**
 > Two things are hard blockers in Germany specifically: there is **no Impressum** (legally
 > mandatory) and **no Widerrufsbelehrung** (mandatory 14-day right of withdrawal). On top of
 > that, the brand/domain (“AnhängerPlus” = *trailers*) doesn’t match the products (excavators),
