@@ -14,6 +14,7 @@ public) on 2026-08-02 for research + re-import prep, using
 | `containersolutionscs-mc-audit.csv` | Per-product brand + description status + recommendation |
 | `brands.txt` | Manufacturer brands to detect/keep (feeds the Brands column) |
 | `store-terms.txt` | Source-store identity to strip from copy (safety net) |
+| `description-rewrites.json` | Original rewritten copy for the 7 formerly near-duplicate products |
 
 ## What was done for the import file
 
@@ -34,13 +35,18 @@ public) on 2026-08-02 for research + re-import prep, using
 Per `beepwear/docs/MERCHANT-CENTER-CSV-AUDIT.md`, the biggest suspension risks are
 **duplicate content** and **copied descriptions**. For this scrape:
 
-- **7 near-duplicate descriptions** flagged in the audit (`Duplicate group`
-  `near-1..3`): the Ifor Williams TA5 trailer size-variants and one
-  container pair share substantial spec copy. **Rewrite these** so each is distinct.
-- The remaining **111 descriptions are unique within this set** — but "unique here"
-  is not "original." They are the **source store's own words**. Before submitting,
+- The 7 previously near-duplicate descriptions (Ifor Williams TA5 trailer
+  size-variants + one container pair) have been **rewritten as original, distinct
+  copy** — see `description-rewrites.json`. The audit now shows **118/118 unique,
+  0 near-duplicate** (6-word shingle Jaccard < 0.30 between all pairs).
+- The **other 111 descriptions are unique within this set** — but "unique here" is
+  not "original." They are still the **source store's own words**. Before submitting,
   spot-check for copied manufacturer/competitor copy (copyright) and rewrite as
   needed. Prices, availability and images must match your live product pages.
+
+The rewritten copy is applied at build time via `--desc-overrides
+description-rewrites.json` — the raw scrape JSON is left untouched, so the rewrite
+is reproducible and auditable.
 
 ## Reproduce
 
@@ -51,6 +57,7 @@ python3 store_scraper.py https://containersolutionscs.de --platform woocommerce 
 python3 build_mc_import.py ../../data/research/containersolutionscs-products.json \
     --brands-file ../../data/research/brands.txt \
     --store-terms-file ../../data/research/store-terms.txt \
+    --desc-overrides ../../data/research/description-rewrites.json \
     --out-csv   ../../data/research/containersolutionscs-mc-import.csv \
     --out-audit ../../data/research/containersolutionscs-mc-audit.csv
 ```

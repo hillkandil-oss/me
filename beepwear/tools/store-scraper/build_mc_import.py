@@ -188,8 +188,9 @@ def short_desc(text: str, limit: int = 160) -> str:
     return text[:limit].rsplit(" ", 1)[0] + "…"
 
 
-def build(records: List[Dict[str, Any]], brands_file, store_terms_file):
+def build(records: List[Dict[str, Any]], brands_file, store_terms_file, overrides=None):
     matchers = load_brand_matchers(brands_file)
+    overrides = overrides or {}
 
     # Store-name / link removal only — brands are intentionally preserved.
     store_terms = []
@@ -210,7 +211,8 @@ def build(records: List[Dict[str, Any]], brands_file, store_terms_file):
     for r in records:
         v = (r.get("variants") or [{}])[0]
         name = descrub(r.get("title", ""))
-        desc = descrub(r.get("description", ""))
+        raw_desc = overrides.get(str(r.get("id", "")), r.get("description", ""))
+        desc = descrub(raw_desc)
         brand = detect_brand(r.get("title", ""), matchers) or detect_brand(r.get("description", ""), matchers)
         item = {
             "id": r.get("id", ""), "sku": v.get("sku", "") or "", "name": name,
@@ -294,12 +296,16 @@ def main(argv=None) -> int:
     ap.add_argument("input", help="Scraped .json from store_scraper.py")
     ap.add_argument("--brands-file", help="Extra canonical brands, one per line (optional)")
     ap.add_argument("--store-terms-file", help="Source-store name variants to remove (optional)")
+    ap.add_argument("--desc-overrides", help="JSON {product_id: new_description} to replace copy (optional)")
     ap.add_argument("--out-csv", required=True)
     ap.add_argument("--out-audit", required=True)
     args = ap.parse_args(argv)
 
     records = json.load(open(args.input, encoding="utf-8"))
-    woo_rows, audit_rows = build(records, args.brands_file, args.store_terms_file)
+    overrides = {}
+    if args.desc_overrides:
+        overrides = {str(k): v for k, v in json.load(open(args.desc_overrides, encoding="utf-8")).items()}
+    woo_rows, audit_rows = build(records, args.brands_file, args.store_terms_file, overrides)
     write_csv(args.out_csv, WOO_COLUMNS, woo_rows)
     write_csv(args.out_audit, AUDIT_COLUMNS, audit_rows)
 
