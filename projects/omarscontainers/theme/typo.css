@@ -1,0 +1,118 @@
+
+/* ==========================================================================
+   Full-bleed, done at the source.
+   The theme pins content-size 700px / wide-size 1100px. Overriding those two
+   custom properties is surgical — every constrained container inherits it,
+   instead of fighting each selector.
+   ========================================================================== */
+:root{
+  --wp--style--global--content-size:100% !important;
+  --wp--style--global--wide-size:100% !important;
+  --wp--style--root--padding-left:var(--oc-gutter) !important;
+  --wp--style--root--padding-right:var(--oc-gutter) !important;
+}
+
+/* ==========================================================================
+   Typography
+   Fluid scale, so nothing is set at a single fixed size. Negative tracking on
+   large display sizes only — headings set at body tracking look loose, and body
+   text set at display tracking looks cramped. Line height moves inversely to
+   size for the same reason.
+   ========================================================================== */
+:root{
+  --oc-step--1:clamp(.875rem,.84rem + .18vw,.95rem);
+  --oc-step-0 :clamp(1rem,.96rem + .22vw,1.125rem);
+  --oc-step-1 :clamp(1.2rem,1.12rem + .4vw,1.45rem);
+  --oc-step-2 :clamp(1.5rem,1.34rem + .8vw,2.1rem);
+  --oc-step-3 :clamp(1.9rem,1.6rem + 1.5vw,3rem);
+  --oc-step-4 :clamp(2.4rem,1.85rem + 2.7vw,4.25rem);
+}
+
+body,.wp-site-blocks{
+  font-size:var(--oc-step-0);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  font-variant-numeric:tabular-nums lining-nums;
+}
+
+h1,.wp-block-post-title,.oc-hero h1{
+  font-size:var(--oc-step-4);
+  line-height:1.04;
+  letter-spacing:-.028em;
+  font-weight:750;
+  text-wrap:balance;
+  margin-block-end:.5em;
+}
+h2{
+  font-size:var(--oc-step-3);
+  line-height:1.12;
+  letter-spacing:-.02em;
+  font-weight:700;
+  text-wrap:balance;
+  margin-block:1.9em .55em;
+}
+h3{
+  font-size:var(--oc-step-2);
+  line-height:1.22;
+  letter-spacing:-.012em;
+  font-weight:680;
+  text-wrap:balance;
+  margin-block:1.5em .45em;
+}
+h4{ font-size:var(--oc-step-1); line-height:1.3; letter-spacing:-.008em; font-weight:650; }
+
+p,li{
+  text-wrap:pretty;          /* avoids orphans without ragging the block */
+  hyphens:auto;              /* German compounds are long; let them break */
+  -webkit-hyphens:auto;
+}
+p{ margin-block:0 1.05em; }
+
+/* Lead paragraph — the sentence directly after an h1 carries the pitch */
+h1 + p,.oc-hero p{
+  font-size:var(--oc-step-1);
+  line-height:1.45;
+  letter-spacing:-.006em;
+  font-weight:400;
+}
+
+/* Lists: hang the marker so the text edge stays flush with everything else */
+ul,ol{ padding-inline-start:1.15em; }
+li{ margin-block:.4em; padding-inline-start:.15em; }
+li::marker{ color:var(--oc-action-deep); }
+
+/* Small print stays legible rather than shrinking away */
+.has-small-font-size,small{ font-size:var(--oc-step--1); line-height:1.55; }
+
+/* Tables of specifications read as data, not prose */
+table{ font-variant-numeric:tabular-nums; font-size:var(--oc-step--1); }
+
+/* Strong pulls weight, not colour — colour is reserved for actions */
+strong,b{ font-weight:680; color:inherit; }
+
+/* ==========================================================================
+   Text motion — restrained on purpose.
+   Headings settle; body text never animates. Reading must not wait on motion,
+   and Merchant Center compares rendered text. Guarded by @supports so an
+   unsupporting browser shows everything immediately.
+   ========================================================================== */
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    @keyframes oc-heading-settle{
+      from{ opacity:0; transform:translateY(8px); letter-spacing:-.04em; }
+      to  { opacity:1; transform:translateY(0);  letter-spacing:inherit; }
+    }
+    .entry-content h2,.wp-block-post-content h2{
+      animation:oc-heading-settle linear both;
+      animation-timeline:view();
+      animation-range:entry 0% entry 30%;
+    }
+    /* never animate: prices, availability, buy controls, policy text */
+    .price,.summary,.wc-block-components-product-price,
+    form.cart,.wc-block-add-to-cart-form,
+    .woocommerce-product-details__short-description{
+      animation:none !important; opacity:1 !important; transform:none !important;
+    }
+  }
+}

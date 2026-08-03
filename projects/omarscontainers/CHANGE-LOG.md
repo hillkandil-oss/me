@@ -789,6 +789,67 @@ Palette variables, full-bleed rules, hero class and image, motion CSS, gallery f
 
 ---
 
+## 2026-08-03 (cont.) — Category imagery, typography, true full-bleed
+
+### Imported images applied where the subject is truthful
+
+All six uploads are **shipping-container terminal** photography. Applied to the four
+categories where that subject genuinely matches:
+
+| Category | Image |
+|---|---|
+| Lagercontainer | 22979 |
+| Werkstattcontainer | 22981 |
+| Wohncontainer | 22982 |
+| Sanitärcontainer | 22976 |
+
+**Six categories deliberately keep their real product photographs** — Klimaanlage,
+Anhänger, Pferdeanhänger, Bootsanhänger, Poolroboter, Poolcontainer. A container-terminal
+photo on "Pferdeanhänger" would show a buyer a shipping port when they clicked expecting
+horse trailers. That is misleading in exactly the way Merchant Center penalises, and the
+existing images are photographs of stock actually sold.
+
+Homepage category cards rebuilt to read images from the taxonomy rather than hardcoded
+`src` values, so future image changes propagate without editing the page.
+
+> Note: the port photographs carry visible third-party shipping-line branding — Crowley,
+> MSC, CAI, Triton, Hapag-Lloyd. Acceptable in documentary stock imagery, but worth knowing
+> that competitor marks appear on four category cards.
+
+### Full-bleed, done properly
+
+The earlier pass fought individual selectors. The theme pins
+`--wp--style--global--content-size: 700px` and `wide-size: 1100px`; overriding those two
+custom properties at `:root` is surgical — every constrained container inherits it.
+
+### Typography
+
+Fluid scale via `clamp()` across six steps; nothing is set at a single fixed size.
+
+- **Negative tracking on display sizes only** (−.028em at h1, −.02em at h2, down to none at
+  body). Headings set at body tracking read loose; body set at display tracking reads cramped.
+- **Line height moves inversely to size** — 1.04 at h1, 1.65 at body.
+- `text-wrap: balance` on headings, `text-wrap: pretty` on paragraphs — kills orphans
+  without ragging the block.
+- `hyphens: auto` — German compounds are long and break badly unaided.
+- `tabular-nums` on body and spec tables so dimensions and prices align in columns.
+- List markers take the action colour; `strong` pulls weight, never colour — colour stays
+  reserved for actions.
+
+### Text motion — deliberately restrained
+
+Headings settle on scroll (8px rise plus a letter-spacing tightening, 30% entry range).
+**Body text never animates**: reading must not wait on motion, and Merchant Center compares
+rendered text. Prices, availability, buy controls and short descriptions are explicitly
+exempted. Guarded by `@supports` and `prefers-reduced-motion` as before.
+
+### Verified live
+
+Content-size override, fluid scale, `text-wrap: balance`, guarded heading motion, hero
+image, 11 homepage images with **zero missing alt text**. Audit unchanged at **0 blocking**.
+
+---
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
