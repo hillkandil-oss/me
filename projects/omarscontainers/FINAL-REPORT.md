@@ -143,6 +143,58 @@ returns 403, HTTPS valid with `upgrade-insecure-requests`.
 - **Category images** use real product photos. Genuine storefront photography would be
   better and cannot be substituted with stock or generated imagery.
 
+---
+
+## 10. Cycle 2 — Agent 20: product feed built
+
+The first cycle never produced a feed. It now exists.
+
+**`compliance/build-feed.py`** generates a Merchant Center feed from the live Store API —
+the same data Google's crawler sees — in Google RSS XML or TSV, with its own validation pass.
+
+| Output | Size |
+|---|---|
+| `projects/omarscontainers/feed/feed.xml` | 363 KB, 110 items |
+| `projects/omarscontainers/feed/feed.tsv` | 285 KB, 110 items |
+
+### Feed validation — no blocking errors
+
+| Severity | Count | Item |
+|---|---|---|
+| HIGH | 52 | no brand — correct, these carry `identifier_exists: no` |
+| MEDIUM | 1 | no additional images |
+| INFO | 110 | declaring `identifier_exists: no` |
+
+All 110 items carry `id`, `title`, `description`, `link`, `image_link`, `availability`,
+`price`, `condition`, `product_type`, `google_product_category` and `shipping`.
+
+### Decisions encoded in the generator
+
+- **`id`** uses SKU where present, WooCommerce id otherwise — never invented, always unique.
+- **`gtin`/`mpn`** are emitted only where a real identifier exists. None does, so all 110
+  declare `identifier_exists: no`. Fabricating codes would be a policy violation.
+- **`price` is gross**, matching German B2C law and the landing page — feed and page agree.
+- **`sale_price`** only where a genuine higher regular price exists.
+- **`condition`** read from the store's `Zustand` attribute, not assumed.
+- **`shipping`** carries the real €170 flat rate so Merchant Center and checkout agree.
+- **`google_product_category`** mapped for all 10 categories using full taxonomy paths
+  rather than numeric ids — a mistyped id silently mis-categorises, a wrong path is
+  rejected at upload. Verify against Google's current taxonomy file before submitting.
+
+### Fixed during this cycle
+
+- **Promotional text in a product title** — *"Anhänger … | Angebot-Neu"*. "Angebot" is
+  promotional text, which Merchant Center disallows in `title`. Renamed to *"… | Neu"*.
+- **Feed validator false positive** — the promo pattern matched a bare `%`, flagging
+  *"100% Made in Germany"* as promotional. Narrowed to percentages tied to a discount word.
+
+### Still owner-gated for submission
+
+The feed file is ready to upload. Submission itself needs the Merchant Center account,
+domain verification and claim — none of which exist yet, and none of which I can create.
+
+---
+
 ## 9. Honest bottom line
 
 Site-side work is complete and verified. The catalogue is honest, the checkout arithmetic
