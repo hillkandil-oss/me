@@ -1,0 +1,92 @@
+
+/* ==========================================================================
+   MOBILE HARDENING
+   Audited against an iPhone user agent on the homepage and a product page.
+   Viewport and pinch-zoom were already correct; the gaps were overflow control,
+   fixed pixel widths inside WooCommerce markup, and iOS input zoom.
+   ========================================================================== */
+
+/* ---------- nothing may scroll the page sideways ---------- */
+html,body{ overflow-x:hidden; max-width:100%; }
+.wp-site-blocks,.entry-content,.wp-block-post-content{ overflow-wrap:break-word; }
+img,video,iframe,svg,table{ max-width:100%; height:auto; }
+
+/* wide content scrolls inside its own box rather than pushing the page */
+.entry-content table,.wp-block-post-content table,
+.woocommerce table.shop_table,.wc-block-cart-items,
+.woocommerce-checkout-review-order-table{
+  display:block; width:100%; overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.wp-block-table{ overflow-x:auto; }
+pre,code{ overflow-x:auto; white-space:pre-wrap; word-break:break-word; }
+
+/* ---------- iOS zooms the page when an input is under 16px ---------- */
+input,select,textarea,
+.wc-block-components-text-input input,
+.woocommerce form .form-row input.input-text{
+  font-size:16px !important;
+  max-width:100%;
+}
+
+@media (max-width:781px){
+  /* long German compounds must break rather than overflow */
+  h1,h2,h3,h4{ overflow-wrap:anywhere; hyphens:auto; -webkit-hyphens:auto; }
+
+  /* columns stack; the gap becomes vertical rhythm */
+  .wp-block-columns{ gap:1.15rem !important; }
+  .wp-block-column{ flex-basis:100% !important; }
+
+  /* cards get room to breathe once stacked */
+  .oc-cat-card{ padding:0 0 1.1rem; }
+  .oc-cat-card figure.wp-block-image img{ aspect-ratio:16/10; }
+
+  /* hero is shorter on a phone — a full-height hero buries the content */
+  .oc-hero{ padding-block:2.6rem !important; }
+
+  /* buttons go full width; a 44px target that is 80px wide is still a miss */
+  .wp-block-button__link,.wp-element-button,
+  .woocommerce a.button,.woocommerce button.button{
+    width:100%; justify-content:center; text-align:center;
+  }
+  .wp-block-buttons{ flex-direction:column; align-items:stretch; gap:.6rem; }
+
+  /* product gallery and summary stack cleanly */
+  .woocommerce div.product div.images,
+  .woocommerce div.product div.summary{ width:100% !important; float:none !important;
+    margin-right:0 !important; }
+
+  /* tabs wrap instead of overflowing */
+  .woocommerce div.product .woocommerce-tabs ul.tabs{
+    display:flex; flex-wrap:wrap; gap:.35rem; padding-left:0;
+  }
+  .woocommerce div.product .woocommerce-tabs ul.tabs li{ margin:0; }
+
+  /* the specification lists are the reason people buy — keep them readable */
+  .entry-content ul li,.wp-block-post-content ul li{ line-height:1.6; }
+
+  /* footer columns stack with clear separation */
+  .wp-block-group.has-color-2-background-color .wp-block-column{
+    padding-block:.6rem;
+  }
+}
+
+@media (max-width:480px){
+  :root{ --oc-gutter:14px; }
+  .oc-hero{ padding-block:2.1rem !important; }
+  /* the wordmark should not eat the header on a small phone */
+  .wp-block-site-logo img{ max-width:190px; height:auto; }
+}
+
+/* ---------- tap targets everywhere, not just below 781px ---------- */
+@media (pointer:coarse){
+  a.wp-block-navigation-item__content,
+  .wp-block-button__link,.wp-element-button,
+  .woocommerce a.button,.woocommerce button.button,
+  .oc-topbar a{
+    min-height:44px; display:inline-flex; align-items:center;
+  }
+  .wp-block-navigation__submenu-container a{ padding-block:.6rem; }
+  /* hover effects do nothing useful on touch and can stick */
+  .oc-cat-card:hover,.woocommerce ul.products li.product:hover{ transform:none; }
+}
