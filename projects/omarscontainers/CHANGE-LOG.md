@@ -956,6 +956,27 @@ JavaScript switched off entirely.
 Script: `projects/omarscontainers/scripts/kontakt-map.py`. CSS: `theme/cart-map.css`.
 
 
+---
+
+## Mobile menu to pure black; account icon removed from header
+
+> Authorisation: *"change colour of mobile navigation to menu to black"* and
+> *"remove account badge"*
+
+**Mobile overlay** — the open navigation panel was `#05080C`, a shade off the page rather
+than matching it. Now `#000000`. Confirmed by computed style in a browser: overlay
+`rgb(0,0,0)`, its links `rgb(248,250,252)` — 20.07:1.
+
+**Account icon** — `woocommerce/customer-account` removed from the header template part.
+It stays listed in the block's `ignoredHookedBlocks` metadata, which is what stops
+WooCommerce re-injecting it on the next template render; deleting the markup alone would
+not have held. The now-dead CSS selectors were stripped in the same pass.
+
+The header was re-fetched live before writing, never rebuilt from a cached copy. Verified
+after the write that the nav reference, top contact bar, site logo, site title and the
+mini-cart block all survived, and that the footer legal block is intact.
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform

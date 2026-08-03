@@ -1072,7 +1072,7 @@ input,select,textarea,
 
 /* the open overlay itself */
 .wp-block-navigation__responsive-container.is-menu-open{
-  background-color:#05080C !important;
+  background-color:#000000 !important;
   color:var(--oc-ink) !important;
   padding:clamp(1.2rem,5vw,2.4rem) !important;
 }
@@ -1153,7 +1153,7 @@ input,select,textarea,
 }
 
 /* ==========================================================================
-   HEADER CART & ACCOUNT ICONS — dark theme
+   HEADER CART ICON — dark theme
    WooCommerce renders the mini-cart glyph with a hard-coded fill="#000000"
    presentation attribute. On a black header that is 1:1 — the icon is there,
    it is simply invisible. A CSS `fill` rule beats a presentation attribute,
@@ -1165,25 +1165,20 @@ input,select,textarea,
      BLACK count on cargo orange .....  5.90:1  (white would be 3.56:1, fails)
    ========================================================================== */
 
-.wc-block-mini-cart__button,
-.wp-block-woocommerce-customer-account a,
-.wc-block-customer-account__toggle{
+.wc-block-mini-cart__button{
   color:var(--oc-ink) !important;
   padding:.45em !important;
   border-radius:6px;
   transition:background-color var(--oc-fast,140ms) ease,
              transform var(--oc-fast,140ms) var(--oc-ease-out,cubic-bezier(.23,1,.32,1));
 }
-.wc-block-mini-cart__button:hover,
-.wp-block-woocommerce-customer-account a:hover,
-.wc-block-customer-account__toggle:hover{
+.wc-block-mini-cart__button:hover:hover{
   background-color:var(--oc-surface-2,#1C242F) !important;
 }
 .wc-block-mini-cart__button:active{ transform:scale(.94); transition-duration:80ms; }
 
 /* the glyphs themselves */
-.wc-block-mini-cart__icon,
-.wc-block-customer-account__account-icon{
+.wc-block-mini-cart__icon{
   fill:var(--oc-ink) !important;
   width:26px !important; height:26px !important;
 }
@@ -1205,8 +1200,7 @@ input,select,textarea,
 
 /* touch target on mobile */
 @media (max-width:781px){
-  .wc-block-mini-cart__button,
-  .wp-block-woocommerce-customer-account a{
+  .wc-block-mini-cart__button{
     min-width:44px; min-height:44px;
     display:inline-flex; align-items:center; justify-content:center;
   }

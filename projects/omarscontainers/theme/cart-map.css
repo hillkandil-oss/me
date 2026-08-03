@@ -1,5 +1,5 @@
 /* ==========================================================================
-   HEADER CART & ACCOUNT ICONS — dark theme
+   HEADER CART ICON — dark theme
    WooCommerce renders the mini-cart glyph with a hard-coded fill="#000000"
    presentation attribute. On a black header that is 1:1 — the icon is there,
    it is simply invisible. A CSS `fill` rule beats a presentation attribute,
@@ -11,25 +11,20 @@
      BLACK count on cargo orange .....  5.90:1  (white would be 3.56:1, fails)
    ========================================================================== */
 
-.wc-block-mini-cart__button,
-.wp-block-woocommerce-customer-account a,
-.wc-block-customer-account__toggle{
+.wc-block-mini-cart__button{
   color:var(--oc-ink) !important;
   padding:.45em !important;
   border-radius:6px;
   transition:background-color var(--oc-fast,140ms) ease,
              transform var(--oc-fast,140ms) var(--oc-ease-out,cubic-bezier(.23,1,.32,1));
 }
-.wc-block-mini-cart__button:hover,
-.wp-block-woocommerce-customer-account a:hover,
-.wc-block-customer-account__toggle:hover{
+.wc-block-mini-cart__button:hover:hover{
   background-color:var(--oc-surface-2,#1C242F) !important;
 }
 .wc-block-mini-cart__button:active{ transform:scale(.94); transition-duration:80ms; }
 
 /* the glyphs themselves */
-.wc-block-mini-cart__icon,
-.wc-block-customer-account__account-icon{
+.wc-block-mini-cart__icon{
   fill:var(--oc-ink) !important;
   width:26px !important; height:26px !important;
 }
@@ -51,8 +46,7 @@
 
 /* touch target on mobile */
 @media (max-width:781px){
-  .wc-block-mini-cart__button,
-  .wp-block-woocommerce-customer-account a{
+  .wc-block-mini-cart__button{
     min-width:44px; min-height:44px;
     display:inline-flex; align-items:center; justify-content:center;
   }
@@ -119,12 +113,14 @@
   background:radial-gradient(circle at 50% 45%,transparent 0,rgba(0,0,0,.55) 70%);
   pointer-events:none;
 }
-.oc-map__inner{ position:relative; z-index:1; max-width:46ch; }
+.oc-map__inner{ position:relative; z-index:1; max-width:52ch; }
 .oc-map__addr{
-  font-weight:700; font-size:1.05rem; margin:0 0 .35rem;
+  font-weight:700; font-size:1.05rem; margin:0 0 .4rem;
+  line-height:1.35; text-wrap:balance;
   color:var(--oc-ink,#F8FAFC);
 }
 .oc-map__note{
+  text-wrap:pretty;
   font-size:.875rem; line-height:1.55; margin:0 0 1rem;
   color:var(--oc-muted,#94A3B8);
 }

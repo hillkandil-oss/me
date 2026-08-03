@@ -32,9 +32,10 @@
   outline:3px solid var(--oc-action); outline-offset:2px;
 }
 
-/* the open overlay itself */
+/* the open overlay itself — pure black, matching the page rather than sitting
+   a shade off it. Owner request; the off-black was a needless second value. */
 .wp-block-navigation__responsive-container.is-menu-open{
-  background-color:#05080C !important;
+  background-color:#000000 !important;
   color:var(--oc-ink) !important;
   padding:clamp(1.2rem,5vw,2.4rem) !important;
 }
