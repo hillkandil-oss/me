@@ -1151,3 +1151,167 @@ input,select,textarea,
   }
   .hostinger-ai-site-navigation-wrapper{ justify-content:flex-end !important; }
 }
+
+/* ==========================================================================
+   HEADER CART & ACCOUNT ICONS — dark theme
+   WooCommerce renders the mini-cart glyph with a hard-coded fill="#000000"
+   presentation attribute. On a black header that is 1:1 — the icon is there,
+   it is simply invisible. A CSS `fill` rule beats a presentation attribute,
+   so this is the fix rather than re-authoring the block.
+
+   Contrast, measured:
+     off-white icon on black ......... 20.07:1
+     cargo orange badge on black .....  5.90:1
+     BLACK count on cargo orange .....  5.90:1  (white would be 3.56:1, fails)
+   ========================================================================== */
+
+.wc-block-mini-cart__button,
+.wp-block-woocommerce-customer-account a,
+.wc-block-customer-account__toggle{
+  color:var(--oc-ink) !important;
+  padding:.45em !important;
+  border-radius:6px;
+  transition:background-color var(--oc-fast,140ms) ease,
+             transform var(--oc-fast,140ms) var(--oc-ease-out,cubic-bezier(.23,1,.32,1));
+}
+.wc-block-mini-cart__button:hover,
+.wp-block-woocommerce-customer-account a:hover,
+.wc-block-customer-account__toggle:hover{
+  background-color:var(--oc-surface-2,#1C242F) !important;
+}
+.wc-block-mini-cart__button:active{ transform:scale(.94); transition-duration:80ms; }
+
+/* the glyphs themselves */
+.wc-block-mini-cart__icon,
+.wc-block-customer-account__account-icon{
+  fill:var(--oc-ink) !important;
+  width:26px !important; height:26px !important;
+}
+
+/* item-count badge: orange disc, black numeral */
+.wc-block-mini-cart__badge{
+  background-color:var(--oc-action,#EA580C) !important;
+  color:#000000 !important;
+  font-weight:700;
+  border:none !important;
+  min-width:1.35em;
+  line-height:1.35em;
+  border-radius:999px;
+}
+/* zero items should not shout — the badge only earns colour once it has stock */
+.wc-block-mini-cart__quantity-badge .wc-block-mini-cart__badge:empty{ display:none; }
+
+.wc-block-mini-cart__amount{ color:var(--oc-ink) !important; font-weight:600; }
+
+/* touch target on mobile */
+@media (max-width:781px){
+  .wc-block-mini-cart__button,
+  .wp-block-woocommerce-customer-account a{
+    min-width:44px; min-height:44px;
+    display:inline-flex; align-items:center; justify-content:center;
+  }
+}
+
+/* ---------- the slide-out drawer ---------- */
+.wc-block-components-drawer,
+.wc-block-components-drawer__screen-overlay + .wc-block-components-drawer,
+.wc-block-mini-cart__drawer .wc-block-components-drawer{
+  background-color:var(--oc-surface,#141A22) !important;
+  color:var(--oc-ink) !important;
+  border-left:1px solid var(--oc-line,#2A3441);
+}
+.wc-block-mini-cart__drawer *,
+.wc-block-components-drawer__content,
+.wc-block-mini-cart__title,
+.wc-block-mini-cart__items,
+.wc-block-mini-cart__footer{
+  color:var(--oc-ink) !important;
+}
+.wc-block-mini-cart__footer{
+  background-color:var(--oc-surface,#141A22) !important;
+  border-top:1px solid var(--oc-line,#2A3441) !important;
+}
+.wc-block-components-drawer__screen-overlay{
+  background-color:rgba(0,0,0,.72) !important;
+}
+.wc-block-mini-cart__empty-cart-wrapper{ color:var(--oc-muted,#94A3B8) !important; }
+
+/* ==========================================================================
+   ANFAHRT MAP — two-click (Zwei-Klick) loader on /kontakt/
+   The map is NOT embedded on page load. An embedded Google Maps iframe sends
+   the visitor's IP address to Google before they have chosen to share it,
+   which on a German site is a DSGVO exposure and there is no consent manager
+   installed here. So the page ships a placeholder; the iframe is created only
+   after the visitor presses the button. A plain link to Google Maps sits
+   alongside it and works with JavaScript switched off entirely.
+   ========================================================================== */
+.oc-map{
+  margin:1.5rem 0 0;
+  border:1px solid var(--oc-line,#2A3441);
+  border-radius:10px;
+  overflow:hidden;
+  background:var(--oc-surface,#141A22);
+}
+.oc-map__frame{
+  position:relative;
+  aspect-ratio:16/9;
+  min-height:260px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:1.5rem;
+  /* a schematic street grid, drawn in CSS — no third-party request, and it is
+     decoration, so it cannot be mistaken for a photograph of the yard */
+  background-image:
+    linear-gradient(var(--oc-line,#2A3441) 1px,transparent 1px),
+    linear-gradient(90deg,var(--oc-line,#2A3441) 1px,transparent 1px);
+  background-size:44px 44px;
+}
+.oc-map__frame::after{
+  content:"";
+  position:absolute; inset:0;
+  background:radial-gradient(circle at 50% 45%,transparent 0,rgba(0,0,0,.55) 70%);
+  pointer-events:none;
+}
+.oc-map__inner{ position:relative; z-index:1; max-width:52ch; }
+.oc-map__addr{
+  font-weight:700; font-size:1.05rem; margin:0 0 .4rem;
+  line-height:1.35; text-wrap:balance;
+  color:var(--oc-ink,#F8FAFC);
+}
+.oc-map__note{
+  text-wrap:pretty;
+  font-size:.875rem; line-height:1.55; margin:0 0 1rem;
+  color:var(--oc-muted,#94A3B8);
+}
+.oc-map__btn{
+  display:inline-flex; align-items:center; gap:.5em;
+  background:var(--oc-action,#EA580C); color:#000000;
+  font-weight:700; font-size:.95rem;
+  border:1px solid var(--oc-action,#EA580C); border-radius:6px;
+  padding:.7em 1.2em; min-height:44px; cursor:pointer;
+  transition:transform 140ms cubic-bezier(.23,1,.32,1),
+             background-color 140ms ease;
+}
+.oc-map__btn:hover{ background:var(--oc-action-deep,#F97316); transform:translateY(-1px); }
+.oc-map__btn:active{ transform:translateY(0) scale(.985); transition-duration:80ms; }
+.oc-map__btn:focus-visible{ outline:3px solid #F8FAFC; outline-offset:2px; }
+.oc-map__links{
+  display:flex; flex-wrap:wrap; gap:1rem;
+  padding:.85rem 1.1rem;
+  border-top:1px solid var(--oc-line,#2A3441);
+  font-size:.9rem;
+}
+.oc-map__links a{ color:var(--oc-action-deep,#F97316); text-underline-offset:.18em; }
+.oc-map__links a:hover{ color:var(--oc-ink,#F8FAFC); }
+.oc-map iframe{ display:block; width:100%; height:100%; border:0; }
+.oc-map--live .oc-map__frame{ padding:0; background-image:none; }
+.oc-map--live .oc-map__frame::after{ display:none; }
+
+@media (max-width:600px){
+  .oc-map__frame{ aspect-ratio:4/3; }
+}
+@media (prefers-reduced-motion:reduce){
+  .oc-map__btn{ transition-duration:.01ms; }
+  .oc-map__btn:hover{ transform:none; }
+}

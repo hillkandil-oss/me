@@ -895,6 +895,67 @@ homepage, shop, a policy page and a category archive. Audit unchanged at **0 blo
 
 ---
 
+---
+
+## Navigation restructure + header cart icon
+
+> Authorisation: *"rename conselor page as blog an contact us page should be the last page
+> as for card page it should be an icon on the header an remove add to cart page on navigation"*
+
+| Change | Detail |
+|---|---|
+| Page 23002 renamed | title `Ratgeber` → `Blog`, slug `ratgeber` → `blog` |
+| Navigation 22959 rebuilt | Shop (10 category submenu) → Standort → Über uns → Blog → **Kontakt last** |
+| `Warenkorb` removed from nav | the cart is reached from the header icon instead |
+| Header cart icon | `woocommerce/mini-cart` was **already** in the header template part — it was invisible, not absent |
+
+### The cart icon was there all along
+
+WooCommerce renders the mini-cart glyph with a hard-coded `fill="#000000"` presentation
+attribute. On the black header that is 1:1 contrast — present in the DOM, invisible to the
+eye. The fix is a CSS `fill` rule (which beats a presentation attribute in the cascade),
+not a re-authored block. Same for the customer-account glyph.
+
+Measured after the fix, via `getComputedStyle` in a real browser rather than by reading
+the stylesheet:
+
+| Element | Computed | Contrast on black |
+|---|---|---|
+| `.wc-block-mini-cart__icon` fill | `rgb(248,250,252)` | 20.07:1 |
+| `.wc-block-customer-account__account-icon` fill | `rgb(248,250,252)` | 20.07:1 |
+| item-count badge | `#EA580C` disc, `#000` numeral | 5.90:1 both ways |
+
+The mini-cart drawer, its overlay and its footer were also still light-themed and are now
+on the dark surface tokens.
+
+---
+
+## Google Maps on /kontakt/ — two-click loader
+
+> Authorisation: *"add google maps to the contact us page"*
+
+**The map is not embedded on page load.** A live Google Maps iframe transmits the visitor's
+IP address to Google before they have chosen to share it. On a German site with no consent
+manager installed, that is a DSGVO exposure the owner would carry. So `/kontakt/` ships a
+placeholder; the iframe is created only after the visitor presses **Karte laden**.
+
+Verified in a real browser: **zero** Google requests on page load, exactly **one** after
+the click. Two plain links — *In Google Maps öffnen* and *Route planen* — work with
+JavaScript switched off entirely.
+
+- Embed URL is keyless (`maps?q=…&output=embed`) and was checked against Google before
+  shipping: it resolves to *Karnaper Str. 177 A, 45329 Essen* rather than a blank tile.
+- The placeholder is a CSS-drawn schematic grid, **not** a photograph — a stock aerial shot
+  here would read as a picture of the yard, which would be a misrepresentation.
+- Address, opening hours, e-mail and the `[BESTÄTIGEN: Telefonnummer]` marker are copied
+  verbatim from the live page; a fact-preservation assertion in the script blocks the write
+  if any of them go missing.
+- Malformed block markup on the page was repaired in the same pass — an unclosed
+  `<!-- wp:heading -->` had been wrapping the entire contact form.
+
+Script: `projects/omarscontainers/scripts/kontakt-map.py`. CSS: `theme/cart-map.css`.
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
