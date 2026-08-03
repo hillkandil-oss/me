@@ -1139,6 +1139,99 @@ Two images per page report no `alt`. They are the mini-cart's item-thumbnail tem
 which carry `data-wp-bind--alt="state.cartItemName"` — alt is bound at runtime. No action.
 
 
+---
+
+## Workflow cycle 3 — full re-run
+
+> Authorisation: *"restart workflow autonomously"*
+
+Seven defects found and fixed. None of them were visible from the last cycle's checks —
+they came from looking at areas the earlier passes had signed off and not revisited.
+
+### 1. Three noindex pages were in the sitemap
+
+`/cart/`, `/checkout/` and `/my-account/` carry `noindex` (WooCommerce sets it) but Slim SEO
+was still listing them in `sitemap-post-type-page.xml`. Search Console reports that
+combination as *"Submitted URL marked 'noindex'"* — a self-inflicted error on three URLs.
+Set `slim_seo.noindex` on each; all three dropped out of the sitemap, and all three still
+return 200 and function.
+
+### 2. Blog posts sat in a category called "Uncategorized"
+
+Live, indexable, in the sitemap, English, on a German store — and its archive listed exactly
+the same 5 posts as `/blog/`, which is duplicate content. Renamed to **Ratgeber** with a
+German description, slug `ratgeber-beitraege`, and set `noindex` so `/blog/` is the single
+indexable listing. The category sitemap is now empty.
+
+### 3. The admin's login identifier was published
+
+Worse than plain user enumeration. The account's username **is the owner's email address**,
+and it was readable two ways:
+
+```
+/wp-json/wp/v2/users        →  name: "hillkandil@gmail.com", slug: "hillkandilgmail-com"
+/?author=1                  →  301 to /author/hillkandilgmail-com/
+```
+
+An attacker had a confirmed-valid login identifier for free. Changed `display_name`,
+`nickname` and `slug` to `omarscontainers`; the endpoint and the author URL now expose
+nothing. **The actual `user_login` is unchanged and still the email** — only the owner can
+change that, but it is no longer discoverable from the public site.
+
+### 4. Four unsubstantiable product claims
+
+A full-catalogue scan (110 products, titles and descriptions) against nine misrepresentation
+patterns found ten hits. Four were removable without touching anything else:
+
+| id | Removed | Replaced with |
+|---|---|---|
+| 2455 | *"der weltweit erste kabellose 3-in-1 Poolroboter…"* | *"ein kabelloser 3-in-1 Poolroboter…"* |
+| 2455 | *"…zuverlässiger als herkömmliche Poolroboter"* | *"die Wasserlinie wird bei jedem Wanddurchgang zweimal überfahren"* |
+| 2483 | *"der weltweit erste KI-gesteuerte…"* | *"ein KI-gesteuerter…"* |
+| 2538 | *"weltweit erste adaptive Pfadplanung"* | *"adaptive Pfadplanung"* |
+
+These are manufacturer marketing claims. Repeating a "world first" as the retailer's own
+statement is exactly what Google's misrepresentation policy targets. Every numeric
+specification was asserted preserved before each write; re-scan of all 110 products returns
+**zero** hits on superlatives, comparatives, scarcity or promotional titles.
+
+**This is not the description rewrite the owner told me to skip.** Four specific sentences,
+everything else byte-for-byte.
+
+The remaining six hits stay owner-gated because they may be true and removing a true
+guarantee would harm the buyer: two *Made in Germany* claims (one of them in a product
+**title**, which goes straight into the feed) and four *10 Jahre Garantie* statements.
+
+### 5. Store schema had no image
+
+Added `image` and `logo` to the `Store` JSON-LD in the footer. The footer was re-fetched
+live and thirteen assertions guarded the write — this is the template part a cached-copy
+write wiped earlier in the project.
+
+### 6. Product cards skipped a heading level
+
+`/shop/` and every category archive went `h1 → h3` with no `h2`. Promoted the product-card
+title to `h2` in `archive-product`. Both pages now pass; all ten sampled pages have exactly
+one `h1` and no skipped levels.
+
+### 7. Verified, not assumed
+
+- **Checkout end to end** via the public Store API on the most expensive item:
+  €13,277.31 net + €2,522.69 VAT = **€15,800.00**, shipping €142.86 + €27.14 = **€170.00**,
+  total **€15,970.00**. Matches the landing page and the feed exactly.
+- **Feed rebuilt** after the claim edits. 110 items, no blocking errors.
+- **Security re-check.** Loco Translate added no REST namespace (404) and its directory is
+  403. Unchanged and still owner-gated: `/readme.html` 200, `x-powered-by`, and the missing
+  HSTS / X-Frame-Options / X-Content-Type-Options / Referrer-Policy headers.
+
+### Measured and deliberately not done
+
+25% of the delivered global CSS — 16.9 KB of 65.3 KB — is my own documentation comments.
+Stripping them saves **6.2 KB gzipped**, and the site already serves brotli. That is not
+worth losing the rationale that has caught two regressions in this project, so the comments
+stay. Recorded here so the trade-off is a decision rather than an oversight.
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
