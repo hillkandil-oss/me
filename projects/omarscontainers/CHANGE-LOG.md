@@ -424,6 +424,80 @@ immediately before every write, because template parts accumulate edits across a
 
 ---
 
+## 2026-08-03 (cont.) — Imagery, logo, design audit
+
+**Authorised by owner:** *"continue an generate images to use on website"*
+
+### Category images — real photos, not generated ones
+
+Asked to generate images, I did **not** generate photographs of containers. AI-made
+container or yard photography presented as this business's stock would be exactly the
+misrepresentation we spent the session removing.
+
+Instead, every category was matched to a **real photograph of stock actually sold**, taken
+from the best-documented product in that category. **10/10 categories now have an image**,
+all with alt text, and the homepage cards render them.
+
+| Category | Sourced from |
+|---|---|
+| Klimaanlage | Mitsubishi Heavy Set Tower 7,7 kW |
+| Anhänger | Anhänger 105x205cm 750kg Typ U2 |
+| Wohncontainer | Mobiler Wohncontainer / Luxusholz |
+| Pferdeanhänger | Cheval Liberté GOLD 3 Premium |
+| Poolcontainer | Mobiler Mini-Schwimmbadcontainer |
+| Sanitärcontainer | WC Sanitärcontainer Doppelkabine |
+| Bootsanhänger | Variant Bootsanhänger Ocean 1000 |
+| Poolroboter | Beatbot AquaSense 2 Pro |
+| Lagercontainer | Neuer 10-Fuß-Lagercontainer |
+| Werkstattcontainer | 4m Spezial-Container |
+
+### Logo — built as SVG, no credits spent
+
+The business had no logo. A brand mark makes no factual claim about stock, so it is
+legitimately generatable. The Higgsfield balance check was declined, so rather than spend
+credits it was drawn directly as **SVG**: a corrugated shipping-container mark, the
+wordmark split weight-wise (`omars` bold / `containers` light), and the strapline
+`ESSEN · NEUWARE`. Rasterised to PNG (WordPress blocks SVG upload by default), uploaded
+with alt text, and set as site logo and favicon. Vector source is editable and free of
+licensing encumbrance.
+
+### Design audit (impeccable skill + bundled detector)
+
+Detector: only `overused-font` warnings (Montserrat, Roboto, Lato, Open Sans) — all from
+the Hostinger theme's bundled stack, not from anything written here.
+
+**Fixed:**
+
+| Issue | Before | After |
+|---|---|---|
+| Heading hierarchy jump h1 → h3 | 1 jump | **none** |
+| Lazy-loaded images | 0/13 | **10/13** |
+| Images with intrinsic dimensions (CLS) | 1/13 | **11/13** |
+| WooCommerce page titles in English | Cart, Checkout, My account | **Warenkorb, Kasse, Mein Konto** (slugs kept, no URL breakage) |
+
+Already clean: viewport meta, `<main>`/`<nav>` landmarks, skip link, single H1, zero images
+missing alt text, no render-blocking stylesheets, no fixed-px inline widths.
+
+---
+
+## ⚠ OWNER ACTION — the shop interface is in English
+
+`WPLANG` is `en_US` and `<html lang="en-US">` on a wholly German store. A customer buying a
+€4,830 container currently reads *"Your cart is currently empty"* and *"Return to shop"* at
+checkout.
+
+Two consequences: a trust and conversion problem at the moment of payment, and a wrong
+language signal to Google on a site whose feed, currency and target country are all German.
+
+**Attempted and failed:** setting `language: de_DE` via REST returns `en_US` silently — the
+German translation pack is not installed and the REST API cannot install one.
+
+**Fix (2 minutes, admin GUI):** *Einstellungen → Allgemein → Sprache der Website →
+**Deutsch*** and save. WordPress downloads the pack and translates WooCommerce's interface
+strings automatically. Page titles are already German.
+
+---
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform

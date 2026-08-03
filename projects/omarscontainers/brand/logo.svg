@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" width="520" height="120" role="img" aria-label="omarscontainers">
+  <title>omarscontainers</title>
+  <defs>
+    <clipPath id="c"><rect x="14" y="30" width="76" height="60" rx="4"/></clipPath>
+  </defs>
+
+  <!-- Container mark: corrugated profile, the defining silhouette of a shipping container -->
+  <g clip-path="url(#c)">
+    <rect x="14" y="30" width="76" height="60" fill="#1F4E5F"/>
+    <!-- corrugation ribs -->
+    <g fill="#FFFFFF" opacity="0.13">
+      <rect x="20" y="30" width="4" height="60"/>
+      <rect x="30" y="30" width="4" height="60"/>
+      <rect x="40" y="30" width="4" height="60"/>
+      <rect x="50" y="30" width="4" height="60"/>
+      <rect x="60" y="30" width="4" height="60"/>
+      <rect x="70" y="30" width="4" height="60"/>
+      <rect x="80" y="30" width="4" height="60"/>
+    </g>
+    <!-- top and bottom rails -->
+    <rect x="14" y="30" width="76" height="7" fill="#163C49"/>
+    <rect x="14" y="83" width="76" height="7" fill="#163C49"/>
+  </g>
+  <rect x="14" y="30" width="76" height="60" rx="4" fill="none" stroke="#0E2A33" stroke-width="2"/>
+
+  <!-- Wordmark -->
+  <text x="108" y="66"
+        font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+        font-size="38" font-weight="700" letter-spacing="-0.6" fill="#0E2A33">omars</text>
+  <text x="215" y="66"
+        font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+        font-size="38" font-weight="300" letter-spacing="-0.4" fill="#1F4E5F">containers</text>
+
+  <text x="109" y="88"
+        font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+        font-size="13.5" font-weight="500" letter-spacing="2.6" fill="#5B7480">ESSEN · NEUWARE</text>
+</svg>
