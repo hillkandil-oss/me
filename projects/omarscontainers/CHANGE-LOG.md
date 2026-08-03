@@ -113,6 +113,70 @@ sanitary units and pools where no manufacturer is evidenced. These should carry
 
 ---
 
+## 2026-08-03 (cont.) — Payment, shipping, condition
+
+**Authorised by owner:** *"payment is through bank transfer freighted is a flat rate of
+170euros an its new stock"*
+
+### Payment — checkout now functions
+
+| Setting | Before | After |
+|---|---|---|
+| `bacs` (Direct bank transfer) | disabled | **enabled** |
+| Title | "Direct bank transfer" | "Überweisung (Vorkasse)" |
+
+> ### ⚠ BANK ACCOUNT DETAILS ARE NOT SET — customers cannot actually pay
+> BACS is enabled, but no account details are configured. A customer completing checkout
+> is shown payment instructions with **no IBAN to transfer to**. Orders will be placed and
+> never paid.
+>
+> Needed: **account holder · IBAN · BIC · bank name**.
+> WooCommerce → Settings → Payments → Direct bank transfer → Account details.
+> This is a launch blocker, not a nicety.
+
+### Shipping — Deutschland zone
+
+| Item | Value |
+|---|---|
+| Zone | Deutschland (id 1), country `DE` |
+| Method | Flat rate — "Speditionsversand (Pauschale)" |
+| Cost entered | `142.86` net |
+| **Customer pays** | **€170.00** (142.86 net + 27.14 VAT) |
+| Tax status | taxable |
+
+First set to `170`, which WooCommerce treated as **net** — customers would have been charged
+**€202.30**. Corrected to 142.86 net so the gross charge is exactly the €170 specified.
+
+> If €170 was meant as a *net* figure with VAT on top (customer pays €202.30), set the cost
+> back to `170`.
+
+### Condition — new stock
+
+Created global attribute **Zustand** (id 1) with term **Neu**, applied to **110/110**
+products, visible on the product page. Feeds `condition: new` and schema `itemCondition:
+NewCondition`.
+
+### End-to-end checkout test — PASSED
+
+Real cart via the public Store API, unauthenticated:
+
+```
+product          €4,660.00  (gross, incl. 19% MwSt)
+shipping         €  170.00  (gross, incl. 19% MwSt)
+ORDER TOTAL      €4,830.00
+```
+
+Shipping rates resolve, tax calculates correctly, and `bacs` is offered as a payment method.
+**A customer can now complete checkout** — subject to the bank details warning above.
+
+### Re-audit after these changes
+
+Blockers cleared: no-payment-gateway, no-shipping. Remaining 6 blocking findings are all
+**missing legal/policy pages** plus business identity not visible on the homepage — the
+next work package.
+
+---
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
@@ -125,8 +189,7 @@ sanitary units and pools where no manufacturer is evidenced. These should carry
 
 ## Not yet done — still blocking submission
 
-1. No payment gateway enabled — **checkout still cannot complete**
-2. No shipping zone or freight rates for Germany
-3. No legal pages (Impressum, Datenschutz, Widerruf, AGB, Versand, Zahlung, Kontakt)
-4. Condition attribute unset on all 110 products (brands now done)
-5. 110 descriptions still copied from third-party sites
+1. **Bank account details (IBAN/BIC) not set** — orders can be placed but not paid
+2. No legal pages (Impressum, Datenschutz, Widerruf, AGB, Versand, Zahlung, Kontakt)
+3. 110 descriptions still copied from third-party sites
+4. Business identity (email, phone, address) not visible on the homepage
