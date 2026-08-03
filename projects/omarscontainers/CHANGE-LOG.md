@@ -66,6 +66,53 @@ inconsistent with the business identity.
 
 ---
 
+## 2026-08-03 (cont.) — Duplicate removal + brand assignment
+
+**Authorised by owner:** *"continue"*
+
+### Duplicate products removed
+
+Six SKUs each existed twice — verified byte-identical (same name, description, price and
+image count) before removal. The older copy of each pair was kept; the newer duplicate was
+moved to **trash**, not permanently deleted, so all six are restorable from
+Products → Trash.
+
+| SKU | Kept | Trashed |
+|---|---|---|
+| CL3ST2660 | 2974 | 4197 |
+| CL3ST2661 | 2980 | 4172 |
+| CL3ST2662 | 2994 | 4165 |
+| CL3ST2663 | 2999 | 4148 |
+| CL3ST2664 | 3011 | 4115 |
+| CL3ST2665 | 3029 | 4103 |
+
+Live catalogue: **116 → 110**. Duplicate SKUs remaining: **0**.
+
+> *Correction to the earlier audit:* finding B5 said "twelve duplicate products". Twelve
+> products were *involved* in duplication, but only **six** were redundant. Six were removed.
+
+### Brands assigned — 58 of 110
+
+Created 18 `product_brand` terms and assigned them. **Every brand was taken from the
+product's own title** — none inferred, none invented.
+
+Aiper · Anssems · Beatbot · Cheval Liberté · Daikin · EcoFlow · Eduard · Fendt · FOCO ·
+Franc · Gree · Humbaur · Ifor Williams · Mitsubishi · Remko · Stahlworks · TPV · Variant
+
+The remaining **52 products were deliberately left without a brand** — unbranded containers,
+sanitary units and pools where no manufacturer is evidenced. These should carry
+`identifier_exists: no` in the feed rather than a fabricated brand.
+
+### Still open on product data
+
+- **Two Remko pairs share a title but have different SKUs** (ids 3602/3631 and 3613/3638,
+  identical prices, 7 vs 6 images). Not touched — needs an owner decision on whether these
+  are genuinely distinct stock or a second duplicate import.
+- Condition attribute still unset on all 110 (blocked on MI-10: new or used?).
+- Descriptions still copied from third-party sources.
+
+---
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
@@ -81,6 +128,5 @@ inconsistent with the business identity.
 1. No payment gateway enabled — **checkout still cannot complete**
 2. No shipping zone or freight rates for Germany
 3. No legal pages (Impressum, Datenschutz, Widerruf, AGB, Versand, Zahlung, Kontakt)
-4. 12 duplicate products not yet removed
-5. No brand or condition attributes on any product
-6. 116 descriptions still copied from third-party sites
+4. Condition attribute unset on all 110 products (brands now done)
+5. 110 descriptions still copied from third-party sites
