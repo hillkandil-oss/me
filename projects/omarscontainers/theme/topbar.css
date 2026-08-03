@@ -1,0 +1,20 @@
+
+/* ---------- header contact bar ---------- */
+.oc-topbar{
+  background-color:#0A0F16 !important;
+  border-bottom:1px solid var(--oc-line);
+  padding-block:.45rem;
+}
+.oc-topbar p{ margin:0; color:var(--oc-muted) !important; }
+.oc-topbar a{ color:var(--oc-muted) !important; text-decoration:none;
+  transition:color 140ms ease; }
+.oc-topbar a:hover{ color:var(--oc-action) !important; }
+.oc-sep{ opacity:.45; }
+@media (max-width:781px){
+  .oc-topbar p{ text-align:center !important; line-height:1.5; }
+  .oc-sep{ display:none; }
+  .oc-topbar a,.oc-hours{ display:block; }
+}
+/* featured product cards keep the price flush and the button at the foot */
+.oc-cat-card{ display:flex; flex-direction:column; height:100%; padding-bottom:1rem; }
+.oc-cat-card .wp-block-buttons{ margin-top:auto; }
