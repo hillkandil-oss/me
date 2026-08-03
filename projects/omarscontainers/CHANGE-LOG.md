@@ -317,6 +317,60 @@ cannot honour is a misrepresentation.
 
 ---
 
+## 2026-08-03 (cont.) — Agent 8: homepage and site identity
+
+**Authorised by owner:** *"continue with the building of the website"*
+
+### The site had no homepage
+
+`show_on_front` was `posts` — the front page was a **blog feed**, not a storefront. That is
+why the homepage read as thin in every earlier audit. Created `/startseite/` (id 22958) and
+set it as the static front page.
+
+### Homepage content
+
+| Section | Content |
+|---|---|
+| Hero | H1, plain-language summary of what is sold, "Alle Artikel sind Neuware", two CTAs (Shop, Standort) |
+| Trust row | Physical location + hours · shipping €170 incl. VAT · 30-day returns with return postage paid |
+| Categories | All 10 categories with live product counts, linked |
+| Buying info | Payment process, gross-price/VAT statement, collection discount |
+| Pre-sales | Contact route with a stated response time |
+
+Every figure matches the policy pages — shipping €170, 30 days, 0–1 working day processing,
+19% VAT. Nothing invented.
+
+**Deliberately excluded:** countdown timers, stock-scarcity messages, visitor counters,
+fabricated reviews, trust badges, awards, press mentions, and any "best/cheapest/number one"
+claim. Those are §40 automatic failure conditions and the fastest route to a
+misrepresentation flag.
+
+### Site identity
+
+| Setting | Before | After |
+|---|---|---|
+| Site title | `omarscontainers.de` | `omarscontainers` |
+| Tagline | *(empty)* | `Container, Poolcontainer und Anhänger — Neuware aus Essen` |
+| `show_on_front` | `posts` | `page` |
+
+### Verified on the rendered page
+
+H1 present · 10 category links · "Neuware" · €170 · 30 Tage · address · opening hours ·
+Impressum link · **0 unresolved `[BESTÄTIGEN]` markers** · no placeholder text.
+
+### Audit
+
+Still **0 blocking findings**. Remaining: 3 HIGH, 2 MEDIUM.
+
+### Not done — needs assets or owner input
+
+- **All 10 categories have no image.** Category cards are text-only. Needs real photographs
+  of actual stock — stock photography of containers the business does not own would be
+  misrepresentation.
+- Telephone number still absent (HIGH).
+
+---
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
