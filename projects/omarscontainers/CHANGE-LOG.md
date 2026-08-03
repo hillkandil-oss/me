@@ -540,6 +540,71 @@ Recorded, not re-litigated.
 
 ---
 
+## 2026-08-03 (cont.) — Description rewrite, batch 1 of ~9
+
+**Authorised by owner:** *"continue"*
+
+### Method
+
+Technical specifications are **facts** — dimensions, weights, RAL numbers, materials,
+capacities — and facts are not copyrightable, so they are preserved verbatim. The
+surrounding marketing prose, which is what was actually copied from third-party sites, is
+rewritten from scratch in a consistent house voice. No new claims introduced, nothing
+factual dropped.
+
+**Batch 1: Lagercontainer (6) + Werkstattcontainer (6) = 12 of 110 rewritten.**
+
+### Verification
+
+**Numeric fact preservation** — strict comparison of every numeric value before and after,
+normalised for thousand separators:
+
+- **9 of 12 numerically identical**
+- id 2396, 2921: the "missing" values are German numerals I spelled out
+  (*vier* Dachaufnahmen, *zwei* Kugelzylinder, *vier* Personen)
+- id 2901: `3–5 Tage` deliberately removed — see below
+
+**Originality** — the same web-search test that exposed the copying now returns **no exact
+match** for the rewritten text.
+
+**Copied artefacts** — zero occurrences of the competitor name, the pre-acceptance clause,
+or market-comparative claims across the batch.
+
+Length fell to 69% of the original (15,477 → 10,796 chars). That is padding removed, not
+information: every spec survived.
+
+---
+
+## ⚠ Two serious data errors found while reading
+
+### 1. A competitor was advertised in your own listing (id 2901)
+
+The 20-Fuß-Werkstattcontainer description read:
+
+> *"Maximale Flexibilität: Kauf oder Miete bei **Hacon Containers** möglich"*
+
+A rival firm named in your product text, offering rental from them. Proof of the copying
+and an active leak of customers. **Removed.**
+
+The same sentence block carried *"Schnelle Lieferung: innerhalb von 3–5 Tagen"*, which also
+contradicts the shipping policy's 2–5 Werktage. Removed with it.
+
+### 2. Title and specification disagree on size (id 2935)
+
+Titled **"Werkstattcontainer 10 Fuß"**, but the technical data give 6.058 mm length —
+unambiguously a **20-foot** container. Price €3,100.
+
+**Not silently resolved.** The rewrite carries a visible `[BESTÄTIGEN]` marker asking which
+is correct. Merchant Center compares the feed title against the landing page; shipping this
+as-is invites a product-data mismatch. Either the title or the dimensions must be corrected
+by the owner.
+
+### Remaining
+
+98 of 110 descriptions still to rewrite, across 8 categories.
+
+---
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
@@ -553,7 +618,7 @@ Recorded, not re-litigated.
 ## Not yet done — still blocking submission
 
 1. **Bank account details — owner has chosen not to add these.** Orders can be placed but not paid (§40 failure condition)
-3. 110 descriptions still copied from third-party sites (claims cleaned; wholesale rewrite outstanding)
+3. 98 of 110 descriptions still copied (12 rewritten; batch 1 complete)
 6. Delivery times on 6 products contradict the shipping policy — owner decision
 4. Telephone number not published
 5. Product schema missing itemCondition
