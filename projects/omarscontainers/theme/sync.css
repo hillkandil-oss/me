@@ -1,0 +1,160 @@
+
+/* ==========================================================================
+   DARK SYNC — everything the first dark pass did not reach.
+   Found by scanning the rendered CSS of the homepage, shop, cart, account,
+   category and product templates for light background declarations still in
+   play. WooCommerce ships its own component styles that the theme's palette
+   never touches, so they stayed white on a black page.
+   ========================================================================== */
+
+/* ---------- WooCommerce interactive controls ---------- */
+.wc-block-components-quantity-selector,
+.wc-block-components-quantity-selector.quantity,
+form.cart div.quantity,.quantity input.qty{
+  background-color:var(--oc-surface-2) !important;
+  border-color:var(--oc-line) !important;
+  color:var(--oc-ink) !important;
+}
+.wc-block-components-quantity-selector__button,
+.quantity .plus,.quantity .minus{
+  background:transparent !important; color:var(--oc-ink) !important;
+  border-color:var(--oc-line) !important;
+}
+
+/* ---------- notices, messages, errors ---------- */
+.woocommerce-message,.woocommerce-info,.woocommerce-error,
+.wc-block-components-notice-banner{
+  background-color:var(--oc-surface-2) !important;
+  color:var(--oc-ink) !important;
+  border:1px solid var(--oc-line) !important;
+}
+.wc-block-components-notice-banner.is-error{ border-left:4px solid #F87171 !important; }
+.wc-block-components-notice-banner.is-success{ border-left:4px solid #34D399 !important; }
+.wc-block-components-notice-banner.is-info{ border-left:4px solid var(--oc-action) !important; }
+.woocommerce-message::before,.woocommerce-info::before{ color:var(--oc-action) !important; }
+
+/* ---------- cart, checkout, account tables and panels ---------- */
+.woocommerce table.shop_table,.woocommerce table.shop_table td,
+.woocommerce table.shop_table th,
+.wc-block-cart-items,.wc-block-cart-items td,.wc-block-cart-items th,
+.wp-block-woocommerce-cart-order-summary-block,
+.wc-block-components-totals-wrapper,
+.woocommerce-checkout-review-order-table{
+  background-color:transparent !important;
+  color:var(--oc-ink) !important;
+  border-color:var(--oc-line) !important;
+}
+.woocommerce table.shop_table thead th,
+.wc-block-cart-items__header{
+  background-color:var(--oc-surface-2) !important;
+  color:var(--oc-ink) !important;
+}
+.woocommerce-MyAccount-navigation ul li a{
+  background-color:var(--oc-surface) !important;
+  color:var(--oc-ink) !important;
+  border:1px solid var(--oc-line) !important;
+}
+.woocommerce-MyAccount-navigation ul li.is-active a{
+  background-color:var(--oc-action) !important; color:#000 !important;
+}
+
+/* ---------- form fields inside Woo blocks ---------- */
+.wc-block-components-text-input input,
+.wc-block-components-textarea,
+.wc-block-components-select__container,
+.woocommerce form .form-row input.input-text,
+.woocommerce form .form-row textarea,
+.woocommerce form .form-row select,
+.select2-container--default .select2-selection--single{
+  background-color:var(--oc-surface-2) !important;
+  color:var(--oc-ink) !important;
+  border-color:var(--oc-line) !important;
+}
+.wc-block-components-text-input label,
+.woocommerce form .form-row label{ color:var(--oc-muted) !important; }
+.select2-dropdown,.select2-results__option{
+  background-color:var(--oc-surface-2) !important; color:var(--oc-ink) !important;
+}
+.select2-results__option--highlighted{ background-color:var(--oc-action) !important; color:#000 !important; }
+
+/* ---------- product gallery & tabs ---------- */
+.woocommerce div.product .woocommerce-tabs ul.tabs li{
+  background-color:var(--oc-surface) !important;
+  border-color:var(--oc-line) !important;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active{
+  background-color:var(--oc-surface-2) !important;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li a{ color:var(--oc-ink) !important; }
+.woocommerce div.product .woocommerce-tabs ul.tabs::before{ border-color:var(--oc-line) !important; }
+.flex-control-thumbs li img{ border:1px solid var(--oc-line); border-radius:4px; }
+
+/* ---------- WordPress preset colour classes that assume a light page ---------- */
+.has-very-light-gray-background-color,
+.has-white-background-color,
+.has-light-background-color{
+  background-color:var(--oc-surface) !important;
+  color:var(--oc-ink) !important;
+}
+.has-white-color,.has-very-light-gray-color{ color:var(--oc-ink) !important; }
+
+/* ---------- skip link ---------- */
+.skip-link.screen-reader-text:focus{
+  background-color:var(--oc-action) !important;
+  color:#000 !important;
+  border-radius:0 0 6px 0;
+  box-shadow:none;
+}
+
+/* ---------- breadcrumbs, pagination, sorting ---------- */
+.woocommerce .woocommerce-breadcrumb,
+.woocommerce .woocommerce-breadcrumb a,
+.woocommerce-result-count,.woocommerce-ordering select{
+  color:var(--oc-muted) !important;
+}
+.woocommerce .woocommerce-breadcrumb a:hover{ color:var(--oc-action) !important; }
+.woocommerce nav.woocommerce-pagination ul,
+.woocommerce nav.woocommerce-pagination ul li{
+  border-color:var(--oc-line) !important;
+}
+.woocommerce nav.woocommerce-pagination ul li a,
+.woocommerce nav.woocommerce-pagination ul li span{ color:var(--oc-ink) !important; }
+.woocommerce nav.woocommerce-pagination ul li span.current{
+  background-color:var(--oc-action) !important; color:#000 !important;
+}
+
+/* ==========================================================================
+   Seamless: sections should meet, not collide.
+   Alternating full-width bands share one border colour and no gaps, so the page
+   reads as continuous surface rather than stacked boxes on a black void.
+   ========================================================================== */
+.wp-site-blocks > * + *{ margin-block-start:0; }
+.entry-content > .wp-block-group,
+.wp-block-post-content > .wp-block-group{
+  border-top:1px solid var(--oc-line);
+  margin-block:0;
+}
+.entry-content > .wp-block-group:first-child{ border-top:0; }
+
+/* every other band lifts slightly — depth without a hard edge */
+.entry-content > .wp-block-group:nth-of-type(even){
+  background-color:#080B10;
+}
+.oc-hero{ border-radius:0; border-left:0; border-right:0; }
+
+/* cards sit on the band, not in a hole */
+.oc-cat-card{
+  background-color:var(--oc-surface) !important;
+  box-shadow:0 1px 0 rgba(255,255,255,.03) inset;
+}
+.oc-cat-card:hover{ background-color:var(--oc-surface-2) !important; }
+
+/* images meet their card edge cleanly */
+.oc-cat-card figure.wp-block-image{ margin-block-end:.85rem; }
+.oc-cat-card figure.wp-block-image img{
+  width:100%; aspect-ratio:4/3; object-fit:cover; display:block;
+}
+
+/* scrollbar stops being a white stripe on the right */
+html{ color-scheme:dark; scrollbar-color:var(--oc-line) #000; }
+::selection{ background:var(--oc-action); color:#000; }
