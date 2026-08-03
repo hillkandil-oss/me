@@ -850,6 +850,51 @@ image, 11 homepage images with **zero missing alt text**. Audit unchanged at **0
 
 ---
 
+## 2026-08-03 (cont.) — Dark theme (white replaced with black)
+
+### Why the text had to invert too
+
+A literal white→black swap would have left the specified navy `#0F172A` text on a black
+background at **1.18:1 — effectively invisible**. So the background inverting means the
+text inverts with it. Measured contrast for the resulting scheme:
+
+| Pairing | Ratio | |
+|---|---|---|
+| Off-white `#F8FAFC` text on black | **20.07:1** | AAA |
+| Off-white on card `#141A22` | **16.96:1** | AAA |
+| Muted `#94A3B8` on black | **8.19:1** | AAA |
+| Cargo orange `#EA580C` on black | **5.90:1** | AA |
+| **Black text on cargo orange** | **5.90:1** | AA — button labels |
+
+**Cargo orange `#EA580C` is unchanged** and reads better on black than it did on the light
+background — 5.90:1 versus 3.40:1. Button labels are now black on orange at 5.90:1, an
+improvement on the navy-on-orange 5.02:1 the light theme needed.
+
+### Card surfaces need an edge, not just a fill
+
+`#141A22` against pure black is only 1.18:1 — fine as a fill, invisible as a boundary. Every
+card, the submenu, the footer zone and form fields carry a `#2A3441` border so the layout
+still reads as zoned rather than dissolving into the background.
+
+### Other adjustments the inversion forced
+
+- **Hover direction reverses** — on light, hover deepened the orange; on dark it moves
+  *toward* light (`#F97316`), because darkening against black reads as disappearing.
+- **Links are orange** rather than the deep shade, which would have been too dark on black.
+- **Prices stay off-white**, never orange — the most important number keeps the highest
+  available contrast.
+- **`[BESTÄTIGEN]` markers** re-coloured to amber-on-dark; the light-mode cream would have
+  glared.
+- **Focus rings** switched to the action colour so they clear a black background.
+- **Hero scrim** deepened to 62% black so the port photograph still separates from the page.
+
+### Verified
+
+Dark background, inverted text, black button labels and 11/11 footer links confirmed on the
+homepage, shop, a policy page and a category archive. Audit unchanged at **0 blocking**.
+
+---
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform

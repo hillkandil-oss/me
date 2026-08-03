@@ -1,0 +1,168 @@
+
+/* ==========================================================================
+   DARK THEME — white replaced with black.
+   A literal swap would have left the navy text on black at 1.18:1, i.e.
+   invisible, so the text inverts with the background. Measured:
+
+     off-white text on black ........ 20.07:1  AAA
+     off-white on card surface ...... 16.96:1  AAA
+     muted text on black ............  8.19:1  AAA
+     cargo orange on black ..........  5.90:1  AA
+     BLACK text on cargo orange .....  5.90:1  AA   <- button labels
+
+   Cargo orange #EA580C is unchanged and reads better on black than it did on
+   the light background. Card surfaces need a visible border: #141A22 against
+   pure black is only 1.18:1, which is fine for a fill but invisible as an edge.
+   ========================================================================== */
+:root{
+  --oc-bg:#000000;
+  --oc-surface:#141A22;
+  --oc-surface-2:#1C242F;
+  --oc-ink:#F8FAFC;
+  --oc-muted:#94A3B8;
+  --oc-line:#2A3441;
+  --oc-action:#EA580C;
+  --oc-action-deep:#F97316;   /* lighter on dark = the hover moves toward light */
+}
+
+html,body,.wp-site-blocks,.editor-styles-wrapper{
+  background-color:#000000 !important;
+  color:var(--oc-ink) !important;
+}
+.entry-content,.wp-block-post-content,
+h1,h2,h3,h4,h5,h6,p,li,dd,dt,figcaption,label,th,td{ color:var(--oc-ink); }
+.has-small-font-size,small,.wp-block-post-date{ color:var(--oc-muted); }
+
+/* ---------- surfaces: fill plus a visible edge ---------- */
+.wp-block-columns .wp-block-column > .wp-block-group,
+.oc-cat-card,
+.woocommerce ul.products li.product,
+.wc-block-product-template__responsive .wc-block-product{
+  background-color:var(--oc-surface) !important;
+  border:1px solid var(--oc-line) !important;
+  color:var(--oc-ink);
+}
+.wp-block-group.has-color-2-background-color{
+  background-color:var(--oc-surface) !important;
+  color:var(--oc-ink) !important;
+  border-top:1px solid var(--oc-line);
+}
+.wp-block-group.has-color-2-background-color a,
+.wp-block-group.has-color-2-background-color h3,
+.wp-block-group.has-color-2-background-color p{ color:var(--oc-ink) !important; }
+.wp-block-group[style*="border-top-width:1px"]{
+  background-color:var(--oc-surface) !important;
+  border-color:var(--oc-line) !important;
+}
+
+/* ---------- header / nav ---------- */
+header .wp-block-group,.hostinger-ai-menu{
+  background-color:#000000 !important;
+  border-bottom:1px solid var(--oc-line);
+}
+.wp-block-navigation-item__content{ color:var(--oc-ink) !important; }
+.wp-block-navigation-item__content:hover{ color:var(--oc-action) !important; }
+.wp-block-navigation__submenu-container{
+  background-color:var(--oc-surface-2) !important;
+  border:1px solid var(--oc-line) !important;
+}
+.wp-block-navigation__submenu-container a{ color:var(--oc-ink) !important; }
+.wp-block-navigation__submenu-container a:hover{ color:var(--oc-action) !important; }
+
+/* ---------- buttons: orange fill, BLACK label = 5.90:1 ---------- */
+.wp-element-button,.wp-block-button__link,
+.woocommerce a.button,.woocommerce button.button,
+.woocommerce #respond input#submit,.woocommerce button.button.alt,
+input[type=submit]{
+  background-color:var(--oc-action) !important;
+  color:#000000 !important;
+  border-color:var(--oc-action) !important;
+  font-weight:700;
+}
+.wp-element-button:hover,.wp-block-button__link:hover,
+.woocommerce a.button:hover,.woocommerce button.button:hover,
+.woocommerce button.button.alt:hover{
+  background-color:var(--oc-action-deep) !important;
+  border-color:var(--oc-action-deep) !important;
+  color:#000000 !important;
+}
+.wp-block-button.is-style-outline .wp-block-button__link{
+  color:var(--oc-ink) !important;
+  border-color:var(--oc-ink) !important;
+  background:transparent !important;
+}
+.wp-block-button.is-style-outline .wp-block-button__link:hover{
+  background-color:var(--oc-ink) !important;
+  color:#000000 !important;
+}
+
+/* ---------- prices: off-white, high contrast, never orange ---------- */
+.woocommerce div.product p.price,.woocommerce div.product span.price,
+.woocommerce ul.products li.product .price,
+.wc-block-components-product-price{ color:var(--oc-ink) !important; font-weight:700; }
+.woocommerce del,.wc-block-components-product-price del{ color:var(--oc-muted) !important; }
+
+/* ---------- links ---------- */
+.entry-content a:not(.wp-element-button),
+.wp-block-post-content a:not(.wp-element-button){
+  color:var(--oc-action) !important;          /* 5.90:1 on black */
+  text-decoration-color:var(--oc-line);
+}
+.entry-content a:not(.wp-element-button):hover{
+  color:var(--oc-action-deep) !important;
+  text-decoration-color:var(--oc-action);
+}
+li::marker{ color:var(--oc-action); }
+
+/* ---------- forms ---------- */
+input,select,textarea{
+  background-color:var(--oc-surface-2) !important;
+  color:var(--oc-ink) !important;
+  border:1px solid var(--oc-line) !important;
+}
+input::placeholder,textarea::placeholder{ color:var(--oc-muted); }
+
+/* ---------- tables ---------- */
+table th{ background-color:var(--oc-surface-2); color:var(--oc-ink); }
+table td,table th{ border-color:var(--oc-line); }
+
+/* ---------- focus ring must clear a black background ---------- */
+a:focus-visible,button:focus-visible,input:focus-visible,
+select:focus-visible,textarea:focus-visible,.wp-element-button:focus-visible{
+  outline:3px solid var(--oc-action);
+  outline-offset:2px;
+}
+
+/* ---------- hero: darker scrim so the image still reads against black ---------- */
+.oc-hero{
+  background-image:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.62)),var(--oc-hero-image);
+  border:1px solid var(--oc-line);
+}
+.oc-hero h1,.oc-hero p{ color:var(--oc-ink) !important; }
+
+/* ---------- images: soften the hard edge against pure black ---------- */
+.oc-cat-card figure.wp-block-image img,
+.woocommerce ul.products li.product img{
+  border-radius:6px;
+}
+
+/* ---------- the [BESTÄTIGEN] markers stay legible on dark ---------- */
+.entry-content p[style*="fff8e1"]{
+  background:#2A1F05 !important;
+  color:#FDE68A !important;
+  border-left-color:#F5A623 !important;
+}
+.entry-content p[style*="fff8e1"] strong{ color:#FDE68A !important; }
+
+/* ---------- sale badge ---------- */
+.woocommerce span.onsale,.wc-block-components-product-sale-badge{
+  background-color:var(--oc-action) !important; color:#000000 !important;
+}
+
+/* ---------- reduced-motion hover feedback needs a visible ring on black ---------- */
+@media (prefers-reduced-motion: reduce){
+  .woocommerce ul.products li.product:hover,
+  .wp-block-columns .wp-block-column .wp-block-group:hover{
+    box-shadow:0 0 0 2px var(--oc-action);
+  }
+}
