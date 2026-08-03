@@ -177,6 +177,74 @@ next work package.
 
 ---
 
+## 2026-08-03 (cont.) — Legal pages, footer, business identity
+
+**Authorised by owner:** *"start the website building"*
+
+### Ten pages created and published
+
+| URL | Purpose |
+|---|---|
+| `/impressum/` | §5 DDG legal notice |
+| `/datenschutz/` | GDPR privacy policy (Art. 13) |
+| `/widerrufsrecht/` | 14-day withdrawal + Muster-Widerrufsformular |
+| `/agb/` | Terms of business |
+| `/versand-und-lieferung/` | Shipping, freight, collection |
+| `/zahlungsarten/` | Payment methods and process |
+| `/rueckgabe-erstattung/` | Returns and refunds |
+| `/kontakt/` | Contact |
+| `/standort/` | Visit us — address, hours, viewing, collection |
+| `/ueber-uns/` | About |
+
+All content uses **only owner-confirmed facts**. Every unknown is a visible
+`[BESTÄTIGEN: …]` marker on an amber background — it cannot be mistaken for real
+content and cannot silently ship. Nothing was invented.
+
+Outstanding markers: legal entity name and Rechtsform · managing director · telephone ·
+Handelsregister number · USt-IdNr. · bank details · cookie inventory · delivery-access
+requirements · excluded return categories · storefront photos · company history.
+
+### Wiring
+
+- AGB set as the WooCommerce checkout terms page (id 22941)
+- WordPress boilerplate drafts `privacy-policy` and `refund_returns` moved to trash
+- Footer template part extended with a business-identity block (name, address, email,
+  opening hours) and two link columns (Service, Rechtliches)
+- VAT/shipping notice added site-wide per PAngV
+- LiteSpeed cache purged and public rendering verified
+
+The theme is a **block theme**, so classic menu locations do not exist; the footer was
+edited as a template part rather than via a nav menu.
+
+### Re-audit — all blockers cleared
+
+| | Before | After |
+|---|---|---|
+| BLOCKER | 5 | **0** |
+| CRITICAL | 6 | **0** |
+| HIGH | 6 | 3 |
+
+Remaining: 52 unbranded products (correct — no brand evidenced), Product schema lacking
+`itemCondition`, no telephone, and the two Remko title duplicates.
+
+### Auditor bugs found and fixed while doing this
+
+1. **English-only policy slugs** reported all German pages as missing — 5 false CRITICALs.
+   Added DE slugs (`impressum`, `datenschutz`, `agb`, `widerruf…`, `versand…`, `kontakt`,
+   `ueber-uns`).
+2. **Address heuristic** matched only English street words, so `Karnaper Str. 177 A` read
+   as "no physical address" — 1 false CRITICAL. Added German forms
+   (`str.`, `straße`, `weg`, `platz`, `allee`, `gasse`, `ring`, `damm`).
+3. **No Impressum check at all** despite it being legally mandatory. Added, gated on the
+   site looking German, at BLOCKER severity.
+4. **Non-ASCII URLs crashed the auditor** (`UnicodeEncodeError` on `über-uns`) — introduced
+   by fix 1. Request URLs are now percent-encoded with IDNA host handling, which also makes
+   umlaut product URLs work.
+
+Fixture regression re-run after all four: 24 findings, unchanged distribution.
+
+---
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
@@ -190,6 +258,6 @@ next work package.
 ## Not yet done — still blocking submission
 
 1. **Bank account details (IBAN/BIC) not set** — orders can be placed but not paid
-2. No legal pages (Impressum, Datenschutz, Widerruf, AGB, Versand, Zahlung, Kontakt)
 3. 110 descriptions still copied from third-party sites
-4. Business identity (email, phone, address) not visible on the homepage
+4. Telephone number not published
+5. Product schema missing itemCondition

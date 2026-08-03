@@ -31,6 +31,7 @@ import re
 import ssl
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 from collections import Counter
 from typing import Any
@@ -41,14 +42,26 @@ UA = "Mozilla/5.0 (compatible; MerchantCenterReadinessAudit/1.0)"
 SEVERITIES = ["BLOCKER", "CRITICAL", "HIGH", "MEDIUM", "LOW", "INFO"]
 
 # Policy pages Google expects to find, by conventional slug.
+# Includes German (DE/AT/CH) equivalents — a German store publishes /impressum/
+# and /datenschutz/, never /privacy-policy/, and reporting those as missing is a
+# false positive that buries real findings.
 POLICY_SLUGS = {
-    "privacy": ["privacy-policy", "privacy"],
-    "terms": ["terms-and-conditions", "terms", "terms-of-service"],
-    "returns": ["returns", "returns-refunds", "return-policy", "refund-policy"],
-    "shipping": ["shipping-policy", "shipping", "delivery"],
-    "contact": ["contact", "contact-us"],
-    "about": ["about", "about-us"],
+    "privacy": ["privacy-policy", "privacy",
+                "datenschutz", "datenschutzerklaerung", "datenschutzerklärung"],
+    "terms": ["terms-and-conditions", "terms", "terms-of-service", "agb",
+              "allgemeine-geschaeftsbedingungen"],
+    "returns": ["returns", "returns-refunds", "return-policy", "refund-policy",
+                "rueckgabe", "rueckgabe-erstattung", "rückgabe", "widerrufsrecht",
+                "widerruf", "widerrufsbelehrung"],
+    "shipping": ["shipping-policy", "shipping", "delivery",
+                 "versand", "versandkosten", "versand-und-lieferung", "lieferung"],
+    "contact": ["contact", "contact-us", "kontakt"],
+    "about": ["about", "about-us", "ueber-uns", "über-uns", "unternehmen"],
 }
+
+# Legally mandatory in Germany/Austria independently of Merchant Center
+# (§5 DDG). Only checked when the site looks German.
+DE_REQUIRED_SLUGS = {"imprint": ["impressum", "imprint", "legal-notice"]}
 
 PLACEHOLDER_PATTERNS = [
     r"lorem ipsum",
@@ -135,6 +148,16 @@ class Audit:
         correctly configured 301 look like a 200 served at the original URL.
         """
         url = path if path.startswith("http") else f"{self.base}/{path.lstrip('/')}"
+        # Percent-encode non-ASCII (umlauts in German slugs and product URLs);
+        # http.client encodes the request line as ASCII and raises otherwise.
+        try:
+            url.encode("ascii")
+        except UnicodeEncodeError:
+            split = urllib.parse.urlsplit(url)
+            url = urllib.parse.urlunsplit((
+                split.scheme, split.netloc.encode("idna").decode("ascii"),
+                urllib.parse.quote(split.path, safe="/%"),
+                urllib.parse.quote(split.query, safe="=&%"), split.fragment))
         key = url if follow else f"{url}#noredirect"
         if key in self._cache:
             return self._cache[key]
@@ -318,6 +341,27 @@ class Audit:
                              f"/{hit}/ returns 200 but no homepage link found",
                              "Link every policy from the global footer.")
                 self.check_policy_body(label, hit)
+        self.check_german_imprint()
+
+    def check_german_imprint(self) -> None:
+        """Impressum is mandatory for German commercial sites (§5 DDG)."""
+        _, home, _ = self.get("/")
+        looks_german = bool(re.search(r'lang=["\']de', home, re.I)) or any(
+            w in home.lower() for w in ("impressum", "datenschutz", "warenkorb", "mwst", "versandkosten"))
+        if not looks_german:
+            return
+        for slug in DE_REQUIRED_SLUGS["imprint"]:
+            if self.get(f"/{slug}/")[0] == 200:
+                self.notes.append(f"Impressum found at /{slug}/ (§5 DDG)")
+                if slug not in home.lower():
+                    self.add("HIGH", "policies", f"/{slug}/",
+                             "Impressum exists but is not linked from the homepage.", "",
+                             "German law requires the Impressum to be reachable from every page.")
+                return
+        self.add("BLOCKER", "policies", "/impressum/",
+                 "No Impressum — legally mandatory for German commercial sites (§5 DDG).",
+                 f"tried: {', '.join(DE_REQUIRED_SLUGS['imprint'])}",
+                 "Publish an Impressum with operator name, address, contact and register details.")
 
     def check_policy_body(self, label: str, slug: str) -> None:
         _, body, _ = self.get(f"/{slug}/")
@@ -342,8 +386,13 @@ class Audit:
         text = self.text_of(home)
         has_email = bool(re.search(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", text))
         has_phone = bool(re.search(r"(?:\+\d[\d\s().-]{7,}|\(\d{3}\)\s*\d{3}[-.\s]?\d{4}|\b\d{3}[-.]\d{3}[-.]\d{4}\b)", text))
+        # Street-type tokens: English plus German/Austrian forms. German compounds
+        # ("Karnaper Str. 177 A", "Hauptstraße 5") do not match English tokens, so
+        # a correctly published German address would read as missing.
+        street_re = (r"(?:\b(?:st|street|ave|avenue|rd|road|blvd|suite|unit|way|lane|dr|drive)\b"
+                     r"|\bstr\.?\b|stra(?:ss|ß)e|\bweg\b|\bplatz\b|\ballee\b|\bgasse\b|\bring\b|\bdamm\b)")
         has_postal = bool(re.search(r"\b\d{4,5}(?:-\d{4})?\b", text)) and bool(
-            re.search(r"\b(?:st|street|ave|avenue|rd|road|blvd|suite|unit|way|lane|dr|drive)\b", text, re.I))
+            re.search(street_re, text, re.I))
 
         if not has_email:
             self.add("HIGH", "identity", "/",
