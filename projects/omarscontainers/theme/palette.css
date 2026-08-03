@@ -1,0 +1,163 @@
+/* ==========================================================================
+   omarscontainers — colour system
+     Background   #F8FAFC  soft off-white
+     Surfaces     #E2E8F0  light steel blue
+     Text         #0F172A  deep navy
+     Action       #EA580C  cargo orange
+
+   Contrast, measured:
+     navy on off-white ............ 17.06:1  AA/AAA
+     navy on steel-blue ........... 14.48:1  AA/AAA
+     navy on cargo orange ..........  5.02:1  AA  <- button text
+     WHITE on cargo orange .........  3.56:1  FAILS AA for normal text
+
+   So buttons keep the exact specified #EA580C fill and take NAVY label text,
+   which passes at 5.02:1. White-on-orange would have failed. Where white text
+   is unavoidable (hero overlay) a darker shade #C2410C is used instead — same
+   hue family, 5.18:1 with white.
+   ========================================================================== */
+
+:root{
+  --oc-bg:#F8FAFC;
+  --oc-surface:#E2E8F0;
+  --oc-ink:#0F172A;
+  --oc-action:#EA580C;
+  --oc-action-deep:#C2410C;   /* AA-safe with white text */
+  --oc-muted:#475569;
+  --oc-line:#CBD5E1;
+}
+
+/* ---------- base surfaces ---------- */
+body,.wp-site-blocks,.editor-styles-wrapper{
+  background-color:var(--oc-bg);
+  color:var(--oc-ink);
+}
+.entry-content, .wp-block-post-content{ color:var(--oc-ink); }
+h1,h2,h3,h4,h5,h6{ color:var(--oc-ink); }
+
+/* ---------- cards & zoned sections ---------- */
+.wp-block-columns .wp-block-column > .wp-block-group,
+.woocommerce ul.products li.product,
+.wc-block-product-template__responsive .wc-block-product{
+  background-color:var(--oc-surface);
+  border:1px solid var(--oc-line);
+  border-radius:8px;
+}
+.wp-block-group.has-color-2-background-color{
+  background-color:var(--oc-surface) !important;
+  color:var(--oc-ink);
+}
+.wp-block-group.has-color-2-background-color a,
+.wp-block-group.has-color-2-background-color h3{ color:var(--oc-ink); }
+
+/* the trust row reads as a distinct zone */
+.wp-block-group[style*="border-top-width:1px"]{
+  background-color:var(--oc-surface);
+  border-color:var(--oc-line) !important;
+}
+
+/* ---------- action buttons: exact #EA580C, navy label = 5.02:1 ---------- */
+.wp-element-button,.wp-block-button__link,
+.woocommerce a.button,.woocommerce button.button,
+.woocommerce #respond input#submit,.woocommerce button.button.alt,
+input[type=submit]{
+  background-color:var(--oc-action) !important;
+  color:var(--oc-ink) !important;
+  border:1px solid var(--oc-action) !important;
+  font-weight:650;
+  border-radius:6px;
+}
+.wp-element-button:hover,.wp-block-button__link:hover,
+.woocommerce a.button:hover,.woocommerce button.button:hover,
+.woocommerce button.button.alt:hover{
+  background-color:var(--oc-action-deep) !important;
+  border-color:var(--oc-action-deep) !important;
+  color:#FFFFFF !important;   /* 5.18:1 on the darker shade */
+}
+
+/* secondary / outline button */
+.wp-block-button.is-style-outline .wp-block-button__link{
+  background-color:transparent !important;
+  color:var(--oc-ink) !important;
+  border:1.5px solid var(--oc-ink) !important;
+}
+.wp-block-button.is-style-outline .wp-block-button__link:hover{
+  background-color:var(--oc-ink) !important;
+  color:var(--oc-bg) !important;
+  border-color:var(--oc-ink) !important;
+}
+
+/* ---------- price: navy, not orange. Orange on light fails contrast ---------- */
+.woocommerce div.product p.price,.woocommerce div.product span.price,
+.woocommerce ul.products li.product .price,
+.wc-block-components-product-price{
+  color:var(--oc-ink) !important;
+  font-weight:700;
+}
+.woocommerce del,.wc-block-components-product-price del{
+  color:var(--oc-muted) !important; opacity:1;
+}
+
+/* ---------- links ---------- */
+.entry-content a:not(.wp-element-button),
+.wp-block-post-content a:not(.wp-element-button){
+  color:var(--oc-action-deep);      /* 5.18:1-class shade, readable on light */
+  text-decoration-color:var(--oc-line);
+}
+.entry-content a:not(.wp-element-button):hover{
+  color:var(--oc-ink);
+  text-decoration-color:var(--oc-action);
+}
+
+/* ---------- header / nav ---------- */
+header .wp-block-group,.hostinger-ai-menu{
+  background-color:var(--oc-bg) !important;
+  border-bottom:1px solid var(--oc-line);
+}
+.wp-block-navigation-item__content{ color:var(--oc-ink) !important; }
+.wp-block-navigation-item__content:hover{ color:var(--oc-action-deep) !important; }
+.wp-block-navigation__submenu-container{
+  background-color:#FFFFFF !important;
+  border:1px solid var(--oc-line);
+}
+
+/* ---------- focus ring picks up the action colour, but the deep shade ---------- */
+a:focus-visible,button:focus-visible,input:focus-visible,
+select:focus-visible,textarea:focus-visible,.wp-element-button:focus-visible{
+  outline:3px solid var(--oc-action-deep);
+  outline-offset:2px;
+}
+
+/* ---------- hero: image + navy scrim so white text clears AA ---------- */
+.oc-hero{
+  position:relative;
+  background-image:linear-gradient(rgba(15,23,42,.72),rgba(15,23,42,.72)),
+                   var(--oc-hero-image);
+  background-size:cover;
+  background-position:center;
+  color:#FFFFFF;
+  border-radius:10px;
+  overflow:hidden;
+}
+.oc-hero h1,.oc-hero p{ color:#FFFFFF !important; }
+.oc-hero .wp-block-button.is-style-outline .wp-block-button__link{
+  color:#FFFFFF !important; border-color:#FFFFFF !important;
+}
+.oc-hero .wp-block-button.is-style-outline .wp-block-button__link:hover{
+  background-color:#FFFFFF !important; color:var(--oc-ink) !important;
+}
+
+/* ---------- tables & forms ---------- */
+table th{ background-color:var(--oc-surface); color:var(--oc-ink); }
+table td,table th{ border-color:var(--oc-line); }
+input,select,textarea{
+  background:#FFFFFF; border:1px solid var(--oc-line); border-radius:6px;
+  color:var(--oc-ink);
+}
+
+/* ---------- sale badge uses the action colour with navy text ---------- */
+.woocommerce span.onsale,.wc-block-components-product-sale-badge{
+  background-color:var(--oc-action) !important;
+  color:var(--oc-ink) !important;
+  font-weight:650;
+}

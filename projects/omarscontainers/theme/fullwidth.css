@@ -1,0 +1,39 @@
+
+/* ==========================================================================
+   Full-bleed layout — content runs border to border.
+   Overrides the theme's constrained content width. A small viewport-relative
+   gutter is kept so text never touches the screen edge (unreadable on mobile,
+   and clipped on notched devices).
+   ========================================================================== */
+:root{
+  --oc-gutter:clamp(16px,4vw,64px);
+}
+.wp-site-blocks > *,
+.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)),
+.wp-block-post-content.is-layout-constrained > *,
+.entry-content.is-layout-constrained > *{
+  max-width:none !important;
+  margin-left:auto; margin-right:auto;
+}
+.wp-block-group.is-layout-constrained > .wp-block-group__inner-container,
+.is-layout-constrained{
+  padding-left:var(--oc-gutter);
+  padding-right:var(--oc-gutter);
+}
+.alignwide,.alignfull{ max-width:none !important; width:auto !important; }
+
+/* paragraphs and lists span the full column too */
+.entry-content p,.wp-block-post-content p,
+.entry-content li,.wp-block-post-content li{ max-width:none !important; }
+
+/* headings and body share the same edge so the left rule reads as one line */
+.entry-content > *,.wp-block-post-content > *{ margin-left:0; margin-right:0; }
+
+/* columns stay edge to edge but keep breathing room between them */
+.wp-block-columns{ gap:clamp(16px,2.5vw,40px); }
+
+/* long measures are hard to read — restore a comfortable line length on very
+   wide screens only, without reintroducing a narrow centred column */
+@media (min-width:1800px){
+  .entry-content p,.wp-block-post-content p{ max-width:110ch !important; }
+}

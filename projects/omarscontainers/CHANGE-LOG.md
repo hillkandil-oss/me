@@ -741,6 +741,54 @@ Motion CSS live, `@supports` guard present, reduced-motion block present, galler
 
 ---
 
+## 2026-08-03 (cont.) — Colour system, hero imagery, full-bleed layout
+
+### Palette applied — with one accessibility correction
+
+| Role | Colour | Contrast |
+|---|---|---|
+| Background | `#F8FAFC` | — |
+| Cards & zones | `#E2E8F0` | — |
+| Text | `#0F172A` | **17.06:1** on background, **14.48:1** on cards |
+| Action | `#EA580C` | see below |
+
+**White text on `#EA580C` measures 3.56:1 — it fails WCAG AA for normal text (4.5:1).**
+
+Rather than change the specified colour, buttons keep the **exact `#EA580C` fill** and take
+**navy `#0F172A` label text, which passes at 5.02:1**. On hover the fill deepens to
+`#C2410C`, where white text clears at 5.18:1 — same hue family, and the darkening doubles
+as hover feedback.
+
+Prices are navy, not orange: orange on the light background is 3.40:1 and would have been
+unreadable on the single most important number on the page.
+
+### Hero imagery
+
+The six uploaded images are **Pexels stock photography of container ports** — not this
+business's premises or stock. That constrains where they can honestly be used:
+
+- **Used:** homepage hero background, decorative, behind a 72% navy scrim so the white
+  headline clears AA.
+- **Not used:** `/standort/`, where an image would read as "our yard"; and not as category
+  or product images, which continue to use **real photographs of stock actually sold**.
+
+Auto-generated alt text (the photographers' names — "Pexels wolfgang weiser 467045605")
+replaced with descriptive German alt text on all six.
+
+### Full-bleed layout
+
+Content now runs border to border per owner instruction. The theme's constrained width is
+overridden with a `clamp(16px,4vw,64px)` gutter so text never touches the screen edge —
+unreadable on mobile and clipped on notched devices. Above 1800px a 110ch cap keeps line
+length from becoming genuinely unreadable, without reintroducing a narrow centred column.
+
+### Verified live
+
+Palette variables, full-bleed rules, hero class and image, motion CSS, gallery fix,
+11/11 footer links, address and hours. Audit unchanged at **0 blocking findings**.
+
+---
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
