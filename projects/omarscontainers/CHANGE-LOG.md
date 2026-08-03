@@ -371,6 +371,39 @@ Still **0 blocking findings**. Remaining: 3 HIGH, 2 MEDIUM.
 
 ---
 
+## 2026-08-03 (cont.) — Agent 5: navigation
+
+**Authorised by owner:** *"yes"*
+
+### The header had no navigation
+
+The header's `wp:navigation` block referenced menu **6493**, and the footer's referenced
+**320**. Both IDs return `rest_post_invalid_id` — **neither menu exists**. The rendered
+header therefore contained exactly one link: the site title. No shop, no categories, no
+cart. Customers had no way to browse the catalogue except by guessing URLs.
+
+This is why the store looked empty despite holding 110 published products.
+
+### Built
+
+Created navigation **Hauptnavigation** (id 22959) and repointed both the header and footer
+blocks at it.
+
+```
+Shop ▾
+  Klimaanlage (21) · Anhänger (15) · Wohncontainer (15) · Pferdeanhänger (10)
+  Poolcontainer (10) · Sanitärcontainer (10) · Bootsanhänger (9)
+  Poolroboter (8) · Lagercontainer (6) · Werkstattcontainer (6)
+Standort · Kontakt · Warenkorb
+```
+
+### Verified
+
+Header renders **15 links**, including all **10 category links**. Every destination checked
+individually — **14/14 return HTTP 200**, no 404s or redirects.
+
+---
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
