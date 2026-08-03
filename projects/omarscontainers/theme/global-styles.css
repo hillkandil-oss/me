@@ -1,0 +1,1142 @@
+/* ==========================================================================
+   omarscontainers — motion & polish
+   Rules this file holds itself to:
+     - Custom easing curves; built-in CSS easings are too weak to read as intentional.
+     - ease-out for entrances (starts fast = feels responsive). Never ease-in on UI.
+     - Durations matched to element type, not one global number.
+     - Scroll reveals live inside @supports (animation-timeline). Where unsupported,
+       content is simply visible — never hidden. Google's crawler always sees it.
+     - prefers-reduced-motion disables movement but preserves every state change.
+     - Price, availability and add-to-cart never animate in. Commercial data is
+       visible on first paint, always.
+   ========================================================================== */
+
+:root{
+  --oc-ink:#0E2A33;
+  --oc-deep:#1F4E5F;
+  --oc-muted:#5B7480;
+  --oc-line:rgba(14,42,51,.12);
+  --oc-ease-out:cubic-bezier(.23,1,.32,1);
+  --oc-ease-in-out:cubic-bezier(.77,0,.175,1);
+  --oc-fast:140ms;
+  --oc-base:240ms;
+  --oc-slow:420ms;
+}
+
+/* ---------- typography rhythm ---------- */
+.wp-block-post-content h2,
+.entry-content h2{ letter-spacing:-.015em; line-height:1.2; margin-top:2.2em; }
+.wp-block-post-content h3,
+.entry-content h3{ letter-spacing:-.01em; line-height:1.28; }
+.entry-content p,
+.wp-block-post-content p{ line-height:1.7; }
+.entry-content ul li,
+.wp-block-post-content ul li{ line-height:1.65; margin-block:.35em; }
+
+/* ---------- links ---------- */
+.entry-content a:not(.wp-element-button),
+.wp-block-post-content a:not(.wp-element-button){
+  text-underline-offset:.18em;
+  text-decoration-thickness:1px;
+  transition:color var(--oc-fast) ease, text-decoration-color var(--oc-fast) ease;
+}
+.entry-content a:not(.wp-element-button):hover{ color:var(--oc-deep); }
+
+/* ---------- buttons: press must feel physical ---------- */
+.wp-element-button,.wp-block-button__link,
+button,input[type=submit],.button,
+.woocommerce a.button,.woocommerce button.button{
+  transition:transform var(--oc-fast) var(--oc-ease-out),
+             box-shadow var(--oc-base) var(--oc-ease-out),
+             background-color var(--oc-fast) ease,
+             filter var(--oc-fast) ease;
+  will-change:auto;
+}
+.wp-element-button:hover,.wp-block-button__link:hover,
+.woocommerce a.button:hover,.woocommerce button.button:hover{
+  transform:translateY(-1px);
+  box-shadow:0 6px 18px -6px rgba(14,42,51,.35);
+}
+/* :active must respond faster than hover — the user is watching this moment */
+.wp-element-button:active,.wp-block-button__link:active,
+.woocommerce a.button:active,.woocommerce button.button:active{
+  transform:translateY(0) scale(.985);
+  transition-duration:80ms;
+}
+
+/* ---------- product & category cards ---------- */
+.wp-block-group.has-background,
+.woocommerce ul.products li.product,
+.wc-block-product-template__responsive .wc-block-product{
+  transition:transform var(--oc-base) var(--oc-ease-out),
+             box-shadow var(--oc-base) var(--oc-ease-out),
+             border-color var(--oc-base) ease;
+}
+.woocommerce ul.products li.product:hover,
+.wc-block-product-template__responsive .wc-block-product:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 34px -18px rgba(14,42,51,.45);
+}
+
+/* image reveal on card hover — the image moves, the price never does */
+.woocommerce ul.products li.product a img,
+.wc-block-product-template__responsive .wc-block-product img{
+  transition:transform var(--oc-slow) var(--oc-ease-out), filter var(--oc-base) ease;
+  backface-visibility:hidden;
+}
+.woocommerce ul.products li.product:hover a img,
+.wc-block-product-template__responsive .wc-block-product:hover img{
+  transform:scale(1.035);
+}
+
+/* homepage category cards */
+.wp-block-columns .wp-block-column .wp-block-group{
+  transition:transform var(--oc-base) var(--oc-ease-out),
+             box-shadow var(--oc-base) var(--oc-ease-out),
+             border-color var(--oc-base) ease;
+}
+.wp-block-columns .wp-block-column .wp-block-group:hover{
+  transform:translateY(-2px);
+  border-color:var(--oc-deep);
+  box-shadow:0 12px 28px -18px rgba(14,42,51,.4);
+}
+.wp-block-columns .wp-block-column figure.wp-block-image{ overflow:hidden; border-radius:4px; }
+.wp-block-columns .wp-block-column figure.wp-block-image img{
+  transition:transform var(--oc-slow) var(--oc-ease-out);
+  display:block; width:100%; height:auto;
+}
+.wp-block-columns .wp-block-column .wp-block-group:hover figure.wp-block-image img{
+  transform:scale(1.045);
+}
+
+/* ---------- navigation ---------- */
+.wp-block-navigation-item__content{
+  transition:color var(--oc-fast) ease, opacity var(--oc-fast) ease;
+}
+.wp-block-navigation .wp-block-navigation__submenu-container{
+  border-radius:6px;
+  box-shadow:0 18px 44px -22px rgba(14,42,51,.5);
+  overflow:hidden;
+}
+
+/* ---------- focus: visible and consistent, never removed ---------- */
+a:focus-visible,button:focus-visible,input:focus-visible,
+select:focus-visible,textarea:focus-visible,.wp-element-button:focus-visible{
+  outline:2px solid var(--oc-deep);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
+/* ---------- footer ---------- */
+.wp-block-group.has-color-2-background-color a{
+  transition:opacity var(--oc-fast) ease;
+}
+.wp-block-group.has-color-2-background-color a:hover{ opacity:.72; }
+
+/* ---------- the [BESTÄTIGEN] markers should look like the warnings they are --- */
+.entry-content p[style*="fff8e1"]{ border-radius:4px; font-size:.95em; }
+
+/* ==========================================================================
+   Scroll reveal — progressive enhancement only.
+   Inside @supports, so a browser without animation-timeline gets plain visible
+   content. Nothing is ever hidden by default, which keeps the crawler and
+   no-JS users seeing the full page.
+   ========================================================================== */
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    @keyframes oc-rise{
+      from{ opacity:0; transform:translateY(14px); }
+      to  { opacity:1; transform:translateY(0); }
+    }
+    .entry-content > .wp-block-group,
+    .wp-block-post-content > .wp-block-group,
+    .wp-block-columns{
+      animation:oc-rise linear both;
+      animation-timeline:view();
+      animation-range:entry 0% entry 42%;
+    }
+    /* Commercial data must not fade in — it renders immediately, always. */
+    .woocommerce div.product .summary,
+    .wc-block-components-product-price,
+    .price, .summary .price, form.cart, .wc-block-add-to-cart-form{
+      animation:none !important;
+      opacity:1 !important;
+      transform:none !important;
+    }
+  }
+}
+
+/* ---------- reduced motion: kill movement, keep every state change ---------- */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+  /* hover feedback still exists, it just arrives without travel */
+  .woocommerce ul.products li.product:hover,
+  .wp-block-columns .wp-block-column .wp-block-group:hover{
+    transform:none;
+    box-shadow:0 0 0 2px var(--oc-deep);
+  }
+}
+
+/* ---------- mobile touch targets ---------- */
+@media (max-width:781px){
+  .wp-block-navigation-item__content,
+  .wp-element-button,.wp-block-button__link{ min-height:44px; display:inline-flex;
+    align-items:center; }
+  .entry-content p,.wp-block-post-content p{ max-width:none; }
+}
+
+/* ==========================================================================
+   Safety net: WooCommerce ships the product gallery at opacity:0 inline and
+   relies on JS to reveal it. If that script fails, is blocked, or is slow, the
+   product images are invisible — on the exact page a buyer decides from, and
+   the exact page Merchant Center compares against the feed. Force it visible;
+   the flexslider JS still works normally on top of this.
+   ========================================================================== */
+.woocommerce div.product div.images.woocommerce-product-gallery{ opacity:1 !important; }
+.woocommerce-product-gallery{ opacity:1 !important; }
+.hostinger-ai-fade-up{ opacity:1; }
+
+/* ==========================================================================
+   omarscontainers — colour system
+     Background   #F8FAFC  soft off-white
+     Surfaces     #E2E8F0  light steel blue
+     Text         #0F172A  deep navy
+     Action       #EA580C  cargo orange
+
+   Contrast, measured:
+     navy on off-white ............ 17.06:1  AA/AAA
+     navy on steel-blue ........... 14.48:1  AA/AAA
+     navy on cargo orange ..........  5.02:1  AA  <- button text
+     WHITE on cargo orange .........  3.56:1  FAILS AA for normal text
+
+   So buttons keep the exact specified #EA580C fill and take NAVY label text,
+   which passes at 5.02:1. White-on-orange would have failed. Where white text
+   is unavoidable (hero overlay) a darker shade #C2410C is used instead — same
+   hue family, 5.18:1 with white.
+   ========================================================================== */
+
+:root{
+  --oc-bg:#F8FAFC;
+  --oc-surface:#E2E8F0;
+  --oc-ink:#0F172A;
+  --oc-action:#EA580C;
+  --oc-action-deep:#C2410C;   /* AA-safe with white text */
+  --oc-muted:#475569;
+  --oc-line:#CBD5E1;
+}
+
+/* ---------- base surfaces ---------- */
+body,.wp-site-blocks,.editor-styles-wrapper{
+  background-color:var(--oc-bg);
+  color:var(--oc-ink);
+}
+.entry-content, .wp-block-post-content{ color:var(--oc-ink); }
+h1,h2,h3,h4,h5,h6{ color:var(--oc-ink); }
+
+/* ---------- cards & zoned sections ---------- */
+.wp-block-columns .wp-block-column > .wp-block-group,
+.woocommerce ul.products li.product,
+.wc-block-product-template__responsive .wc-block-product{
+  background-color:var(--oc-surface);
+  border:1px solid var(--oc-line);
+  border-radius:8px;
+}
+.wp-block-group.has-color-2-background-color{
+  background-color:var(--oc-surface) !important;
+  color:var(--oc-ink);
+}
+.wp-block-group.has-color-2-background-color a,
+.wp-block-group.has-color-2-background-color h3{ color:var(--oc-ink); }
+
+/* the trust row reads as a distinct zone */
+.wp-block-group[style*="border-top-width:1px"]{
+  background-color:var(--oc-surface);
+  border-color:var(--oc-line) !important;
+}
+
+/* ---------- action buttons: exact #EA580C, navy label = 5.02:1 ---------- */
+.wp-element-button,.wp-block-button__link,
+.woocommerce a.button,.woocommerce button.button,
+.woocommerce #respond input#submit,.woocommerce button.button.alt,
+input[type=submit]{
+  background-color:var(--oc-action) !important;
+  color:var(--oc-ink) !important;
+  border:1px solid var(--oc-action) !important;
+  font-weight:650;
+  border-radius:6px;
+}
+.wp-element-button:hover,.wp-block-button__link:hover,
+.woocommerce a.button:hover,.woocommerce button.button:hover,
+.woocommerce button.button.alt:hover{
+  background-color:var(--oc-action-deep) !important;
+  border-color:var(--oc-action-deep) !important;
+  color:#FFFFFF !important;   /* 5.18:1 on the darker shade */
+}
+
+/* secondary / outline button */
+.wp-block-button.is-style-outline .wp-block-button__link{
+  background-color:transparent !important;
+  color:var(--oc-ink) !important;
+  border:1.5px solid var(--oc-ink) !important;
+}
+.wp-block-button.is-style-outline .wp-block-button__link:hover{
+  background-color:var(--oc-ink) !important;
+  color:var(--oc-bg) !important;
+  border-color:var(--oc-ink) !important;
+}
+
+/* ---------- price: navy, not orange. Orange on light fails contrast ---------- */
+.woocommerce div.product p.price,.woocommerce div.product span.price,
+.woocommerce ul.products li.product .price,
+.wc-block-components-product-price{
+  color:var(--oc-ink) !important;
+  font-weight:700;
+}
+.woocommerce del,.wc-block-components-product-price del{
+  color:var(--oc-muted) !important; opacity:1;
+}
+
+/* ---------- links ---------- */
+.entry-content a:not(.wp-element-button),
+.wp-block-post-content a:not(.wp-element-button){
+  color:var(--oc-action-deep);      /* 5.18:1-class shade, readable on light */
+  text-decoration-color:var(--oc-line);
+}
+.entry-content a:not(.wp-element-button):hover{
+  color:var(--oc-ink);
+  text-decoration-color:var(--oc-action);
+}
+
+/* ---------- header / nav ---------- */
+header .wp-block-group,.hostinger-ai-menu{
+  background-color:var(--oc-bg) !important;
+  border-bottom:1px solid var(--oc-line);
+}
+.wp-block-navigation-item__content{ color:var(--oc-ink) !important; }
+.wp-block-navigation-item__content:hover{ color:var(--oc-action-deep) !important; }
+.wp-block-navigation__submenu-container{
+  background-color:#FFFFFF !important;
+  border:1px solid var(--oc-line);
+}
+
+/* ---------- focus ring picks up the action colour, but the deep shade ---------- */
+a:focus-visible,button:focus-visible,input:focus-visible,
+select:focus-visible,textarea:focus-visible,.wp-element-button:focus-visible{
+  outline:3px solid var(--oc-action-deep);
+  outline-offset:2px;
+}
+
+/* ---------- hero: image + navy scrim so white text clears AA ---------- */
+.oc-hero{
+  position:relative;
+  background-image:linear-gradient(rgba(15,23,42,.72),rgba(15,23,42,.72)),
+                   var(--oc-hero-image);
+  background-size:cover;
+  background-position:center;
+  color:#FFFFFF;
+  border-radius:10px;
+  overflow:hidden;
+}
+.oc-hero h1,.oc-hero p{ color:#FFFFFF !important; }
+.oc-hero .wp-block-button.is-style-outline .wp-block-button__link{
+  color:#FFFFFF !important; border-color:#FFFFFF !important;
+}
+.oc-hero .wp-block-button.is-style-outline .wp-block-button__link:hover{
+  background-color:#FFFFFF !important; color:var(--oc-ink) !important;
+}
+
+/* ---------- tables & forms ---------- */
+table th{ background-color:var(--oc-surface); color:var(--oc-ink); }
+table td,table th{ border-color:var(--oc-line); }
+input,select,textarea{
+  background:#FFFFFF; border:1px solid var(--oc-line); border-radius:6px;
+  color:var(--oc-ink);
+}
+
+/* ---------- sale badge uses the action colour with navy text ---------- */
+.woocommerce span.onsale,.wc-block-components-product-sale-badge{
+  background-color:var(--oc-action) !important;
+  color:var(--oc-ink) !important;
+  font-weight:650;
+}
+
+:root{--oc-hero-image:url("https://omarscontainers.de/wp-content/uploads/2026/08/pexels-jimbear-12999282-scaled.jpg");}
+
+/* ==========================================================================
+   Full-bleed layout — content runs border to border.
+   Overrides the theme's constrained content width. A small viewport-relative
+   gutter is kept so text never touches the screen edge (unreadable on mobile,
+   and clipped on notched devices).
+   ========================================================================== */
+:root{
+  --oc-gutter:clamp(16px,4vw,64px);
+}
+.wp-site-blocks > *,
+.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)),
+.wp-block-post-content.is-layout-constrained > *,
+.entry-content.is-layout-constrained > *{
+  max-width:none !important;
+  margin-left:auto; margin-right:auto;
+}
+.wp-block-group.is-layout-constrained > .wp-block-group__inner-container,
+.is-layout-constrained{
+  padding-left:var(--oc-gutter);
+  padding-right:var(--oc-gutter);
+}
+.alignwide,.alignfull{ max-width:none !important; width:auto !important; }
+
+/* paragraphs and lists span the full column too */
+.entry-content p,.wp-block-post-content p,
+.entry-content li,.wp-block-post-content li{ max-width:none !important; }
+
+/* headings and body share the same edge so the left rule reads as one line */
+.entry-content > *,.wp-block-post-content > *{ margin-left:0; margin-right:0; }
+
+/* columns stay edge to edge but keep breathing room between them */
+.wp-block-columns{ gap:clamp(16px,2.5vw,40px); }
+
+/* long measures are hard to read — restore a comfortable line length on very
+   wide screens only, without reintroducing a narrow centred column */
+@media (min-width:1800px){
+  .entry-content p,.wp-block-post-content p{ max-width:110ch !important; }
+}
+
+/* ==========================================================================
+   Full-bleed, done at the source.
+   The theme pins content-size 700px / wide-size 1100px. Overriding those two
+   custom properties is surgical — every constrained container inherits it,
+   instead of fighting each selector.
+   ========================================================================== */
+:root{
+  --wp--style--global--content-size:100% !important;
+  --wp--style--global--wide-size:100% !important;
+  --wp--style--root--padding-left:var(--oc-gutter) !important;
+  --wp--style--root--padding-right:var(--oc-gutter) !important;
+}
+
+/* ==========================================================================
+   Typography
+   Fluid scale, so nothing is set at a single fixed size. Negative tracking on
+   large display sizes only — headings set at body tracking look loose, and body
+   text set at display tracking looks cramped. Line height moves inversely to
+   size for the same reason.
+   ========================================================================== */
+:root{
+  --oc-step--1:clamp(.875rem,.84rem + .18vw,.95rem);
+  --oc-step-0 :clamp(1rem,.96rem + .22vw,1.125rem);
+  --oc-step-1 :clamp(1.2rem,1.12rem + .4vw,1.45rem);
+  --oc-step-2 :clamp(1.5rem,1.34rem + .8vw,2.1rem);
+  --oc-step-3 :clamp(1.9rem,1.6rem + 1.5vw,3rem);
+  --oc-step-4 :clamp(2.4rem,1.85rem + 2.7vw,4.25rem);
+}
+
+body,.wp-site-blocks{
+  font-size:var(--oc-step-0);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  font-variant-numeric:tabular-nums lining-nums;
+}
+
+h1,.wp-block-post-title,.oc-hero h1{
+  font-size:var(--oc-step-4);
+  line-height:1.04;
+  letter-spacing:-.028em;
+  font-weight:750;
+  text-wrap:balance;
+  margin-block-end:.5em;
+}
+h2{
+  font-size:var(--oc-step-3);
+  line-height:1.12;
+  letter-spacing:-.02em;
+  font-weight:700;
+  text-wrap:balance;
+  margin-block:1.9em .55em;
+}
+h3{
+  font-size:var(--oc-step-2);
+  line-height:1.22;
+  letter-spacing:-.012em;
+  font-weight:680;
+  text-wrap:balance;
+  margin-block:1.5em .45em;
+}
+h4{ font-size:var(--oc-step-1); line-height:1.3; letter-spacing:-.008em; font-weight:650; }
+
+p,li{
+  text-wrap:pretty;          /* avoids orphans without ragging the block */
+  hyphens:auto;              /* German compounds are long; let them break */
+  -webkit-hyphens:auto;
+}
+p{ margin-block:0 1.05em; }
+
+/* Lead paragraph — the sentence directly after an h1 carries the pitch */
+h1 + p,.oc-hero p{
+  font-size:var(--oc-step-1);
+  line-height:1.45;
+  letter-spacing:-.006em;
+  font-weight:400;
+}
+
+/* Lists: hang the marker so the text edge stays flush with everything else */
+ul,ol{ padding-inline-start:1.15em; }
+li{ margin-block:.4em; padding-inline-start:.15em; }
+li::marker{ color:var(--oc-action-deep); }
+
+/* Small print stays legible rather than shrinking away */
+.has-small-font-size,small{ font-size:var(--oc-step--1); line-height:1.55; }
+
+/* Tables of specifications read as data, not prose */
+table{ font-variant-numeric:tabular-nums; font-size:var(--oc-step--1); }
+
+/* Strong pulls weight, not colour — colour is reserved for actions */
+strong,b{ font-weight:680; color:inherit; }
+
+/* ==========================================================================
+   Text motion — restrained on purpose.
+   Headings settle; body text never animates. Reading must not wait on motion,
+   and Merchant Center compares rendered text. Guarded by @supports so an
+   unsupporting browser shows everything immediately.
+   ========================================================================== */
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    @keyframes oc-heading-settle{
+      from{ opacity:0; transform:translateY(8px); letter-spacing:-.04em; }
+      to  { opacity:1; transform:translateY(0);  letter-spacing:inherit; }
+    }
+    .entry-content h2,.wp-block-post-content h2{
+      animation:oc-heading-settle linear both;
+      animation-timeline:view();
+      animation-range:entry 0% entry 30%;
+    }
+    /* never animate: prices, availability, buy controls, policy text */
+    .price,.summary,.wc-block-components-product-price,
+    form.cart,.wc-block-add-to-cart-form,
+    .woocommerce-product-details__short-description{
+      animation:none !important; opacity:1 !important; transform:none !important;
+    }
+  }
+}
+
+/* ==========================================================================
+   DARK THEME — white replaced with black.
+   A literal swap would have left the navy text on black at 1.18:1, i.e.
+   invisible, so the text inverts with the background. Measured:
+
+     off-white text on black ........ 20.07:1  AAA
+     off-white on card surface ...... 16.96:1  AAA
+     muted text on black ............  8.19:1  AAA
+     cargo orange on black ..........  5.90:1  AA
+     BLACK text on cargo orange .....  5.90:1  AA   <- button labels
+
+   Cargo orange #EA580C is unchanged and reads better on black than it did on
+   the light background. Card surfaces need a visible border: #141A22 against
+   pure black is only 1.18:1, which is fine for a fill but invisible as an edge.
+   ========================================================================== */
+:root{
+  --oc-bg:#000000;
+  --oc-surface:#141A22;
+  --oc-surface-2:#1C242F;
+  --oc-ink:#F8FAFC;
+  --oc-muted:#94A3B8;
+  --oc-line:#2A3441;
+  --oc-action:#EA580C;
+  --oc-action-deep:#F97316;   /* lighter on dark = the hover moves toward light */
+}
+
+html,body,.wp-site-blocks,.editor-styles-wrapper{
+  background-color:#000000 !important;
+  color:var(--oc-ink) !important;
+}
+.entry-content,.wp-block-post-content,
+h1,h2,h3,h4,h5,h6,p,li,dd,dt,figcaption,label,th,td{ color:var(--oc-ink); }
+.has-small-font-size,small,.wp-block-post-date{ color:var(--oc-muted); }
+
+/* ---------- surfaces: fill plus a visible edge ---------- */
+.wp-block-columns .wp-block-column > .wp-block-group,
+.oc-cat-card,
+.woocommerce ul.products li.product,
+.wc-block-product-template__responsive .wc-block-product{
+  background-color:var(--oc-surface) !important;
+  border:1px solid var(--oc-line) !important;
+  color:var(--oc-ink);
+}
+.wp-block-group.has-color-2-background-color{
+  background-color:var(--oc-surface) !important;
+  color:var(--oc-ink) !important;
+  border-top:1px solid var(--oc-line);
+}
+.wp-block-group.has-color-2-background-color a,
+.wp-block-group.has-color-2-background-color h3,
+.wp-block-group.has-color-2-background-color p{ color:var(--oc-ink) !important; }
+.wp-block-group[style*="border-top-width:1px"]{
+  background-color:var(--oc-surface) !important;
+  border-color:var(--oc-line) !important;
+}
+
+/* ---------- header / nav ---------- */
+header .wp-block-group,.hostinger-ai-menu{
+  background-color:#000000 !important;
+  border-bottom:1px solid var(--oc-line);
+}
+.wp-block-navigation-item__content{ color:var(--oc-ink) !important; }
+.wp-block-navigation-item__content:hover{ color:var(--oc-action) !important; }
+.wp-block-navigation__submenu-container{
+  background-color:var(--oc-surface-2) !important;
+  border:1px solid var(--oc-line) !important;
+}
+.wp-block-navigation__submenu-container a{ color:var(--oc-ink) !important; }
+.wp-block-navigation__submenu-container a:hover{ color:var(--oc-action) !important; }
+
+/* ---------- buttons: orange fill, BLACK label = 5.90:1 ---------- */
+.wp-element-button,.wp-block-button__link,
+.woocommerce a.button,.woocommerce button.button,
+.woocommerce #respond input#submit,.woocommerce button.button.alt,
+input[type=submit]{
+  background-color:var(--oc-action) !important;
+  color:#000000 !important;
+  border-color:var(--oc-action) !important;
+  font-weight:700;
+}
+.wp-element-button:hover,.wp-block-button__link:hover,
+.woocommerce a.button:hover,.woocommerce button.button:hover,
+.woocommerce button.button.alt:hover{
+  background-color:var(--oc-action-deep) !important;
+  border-color:var(--oc-action-deep) !important;
+  color:#000000 !important;
+}
+.wp-block-button.is-style-outline .wp-block-button__link{
+  color:var(--oc-ink) !important;
+  border-color:var(--oc-ink) !important;
+  background:transparent !important;
+}
+.wp-block-button.is-style-outline .wp-block-button__link:hover{
+  background-color:var(--oc-ink) !important;
+  color:#000000 !important;
+}
+
+/* ---------- prices: off-white, high contrast, never orange ---------- */
+.woocommerce div.product p.price,.woocommerce div.product span.price,
+.woocommerce ul.products li.product .price,
+.wc-block-components-product-price{ color:var(--oc-ink) !important; font-weight:700; }
+.woocommerce del,.wc-block-components-product-price del{ color:var(--oc-muted) !important; }
+
+/* ---------- links ---------- */
+.entry-content a:not(.wp-element-button),
+.wp-block-post-content a:not(.wp-element-button){
+  color:var(--oc-action) !important;          /* 5.90:1 on black */
+  text-decoration-color:var(--oc-line);
+}
+.entry-content a:not(.wp-element-button):hover{
+  color:var(--oc-action-deep) !important;
+  text-decoration-color:var(--oc-action);
+}
+li::marker{ color:var(--oc-action); }
+
+/* ---------- forms ---------- */
+input,select,textarea{
+  background-color:var(--oc-surface-2) !important;
+  color:var(--oc-ink) !important;
+  border:1px solid var(--oc-line) !important;
+}
+input::placeholder,textarea::placeholder{ color:var(--oc-muted); }
+
+/* ---------- tables ---------- */
+table th{ background-color:var(--oc-surface-2); color:var(--oc-ink); }
+table td,table th{ border-color:var(--oc-line); }
+
+/* ---------- focus ring must clear a black background ---------- */
+a:focus-visible,button:focus-visible,input:focus-visible,
+select:focus-visible,textarea:focus-visible,.wp-element-button:focus-visible{
+  outline:3px solid var(--oc-action);
+  outline-offset:2px;
+}
+
+/* ---------- hero: darker scrim so the image still reads against black ---------- */
+.oc-hero{
+  background-image:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.62)),var(--oc-hero-image);
+  border:1px solid var(--oc-line);
+}
+.oc-hero h1,.oc-hero p{ color:var(--oc-ink) !important; }
+
+/* ---------- images: soften the hard edge against pure black ---------- */
+.oc-cat-card figure.wp-block-image img,
+.woocommerce ul.products li.product img{
+  border-radius:6px;
+}
+
+/* ---------- the [BESTÄTIGEN] markers stay legible on dark ---------- */
+.entry-content p[style*="fff8e1"]{
+  background:#2A1F05 !important;
+  color:#FDE68A !important;
+  border-left-color:#F5A623 !important;
+}
+.entry-content p[style*="fff8e1"] strong{ color:#FDE68A !important; }
+
+/* ---------- sale badge ---------- */
+.woocommerce span.onsale,.wc-block-components-product-sale-badge{
+  background-color:var(--oc-action) !important; color:#000000 !important;
+}
+
+/* ---------- reduced-motion hover feedback needs a visible ring on black ---------- */
+@media (prefers-reduced-motion: reduce){
+  .woocommerce ul.products li.product:hover,
+  .wp-block-columns .wp-block-column .wp-block-group:hover{
+    box-shadow:0 0 0 2px var(--oc-action);
+  }
+}
+
+/* ---------- header contact bar ---------- */
+.oc-topbar{
+  background-color:#0A0F16 !important;
+  border-bottom:1px solid var(--oc-line);
+  padding-block:.45rem;
+}
+.oc-topbar p{ margin:0; color:var(--oc-muted) !important; }
+.oc-topbar a{ color:var(--oc-muted) !important; text-decoration:none;
+  transition:color 140ms ease; }
+.oc-topbar a:hover{ color:var(--oc-action) !important; }
+.oc-sep{ opacity:.45; }
+@media (max-width:781px){
+  .oc-topbar p{ text-align:center !important; line-height:1.5; }
+  .oc-sep{ display:none; }
+  .oc-topbar a,.oc-hours{ display:block; }
+}
+/* featured product cards keep the price flush and the button at the foot */
+.oc-cat-card{ display:flex; flex-direction:column; height:100%; padding-bottom:1rem; }
+.oc-cat-card .wp-block-buttons{ margin-top:auto; }
+
+/* ==========================================================================
+   Icon system — inline SVG through CSS masks.
+   Authored here rather than pulled from an icon font or CDN: no external
+   request, nothing for a content-security policy to block, and every glyph
+   inherits currentColor so the dark inversion needed no per-icon work.
+   All icons are decorative and sit beside a text label, so they are masked
+   pseudo-elements rather than image elements - invisible to screen readers by
+   construction, no empty alt text to maintain.
+   ========================================================================== */
+.oc-ico::before,
+.oc-topbar a::before,
+.oc-hours::before,
+.oc-trust h2::before{
+  content:"";
+  display:inline-block;
+  width:1.05em; height:1.05em;
+  margin-right:.5em;
+  vertical-align:-.16em;
+  background-color:currentColor;
+  -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+  -webkit-mask-position:center;  mask-position:center;
+  -webkit-mask-size:contain;     mask-size:contain;
+  flex:none;
+}
+
+.oc-ico-mail::before{ -webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%206h18v12H3z%22%2F%3E%3Cpath%20d%3D%22m3%207%209%206%209-6%22%2F%3E%3C%2Fsvg%3E"); mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%206h18v12H3z%22%2F%3E%3Cpath%20d%3D%22m3%207%209%206%209-6%22%2F%3E%3C%2Fsvg%3E"); }
+.oc-ico-pin::before{ -webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%2021s7-5.5%207-11a7%207%200%201%200-14%200c0%205.5%207%2011%207%2011z%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2210%22%20r%3D%222.6%22%2F%3E%3C%2Fsvg%3E"); mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%2021s7-5.5%207-11a7%207%200%201%200-14%200c0%205.5%207%2011%207%2011z%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2210%22%20r%3D%222.6%22%2F%3E%3C%2Fsvg%3E"); }
+.oc-ico-clock::before{ -webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%229%22%2F%3E%3Cpath%20d%3D%22M12%207v5.2l3.4%202%22%2F%3E%3C%2Fsvg%3E"); mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%229%22%2F%3E%3Cpath%20d%3D%22M12%207v5.2l3.4%202%22%2F%3E%3C%2Fsvg%3E"); }
+.oc-ico-truck::before{ -webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M2%207h11v9H2z%22%2F%3E%3Cpath%20d%3D%22M13%2010h4.2l2.8%203v3h-7z%22%2F%3E%3Ccircle%20cx%3D%226.5%22%20cy%3D%2218%22%20r%3D%221.9%22%2F%3E%3Ccircle%20cx%3D%2217%22%20cy%3D%2218%22%20r%3D%221.9%22%2F%3E%3C%2Fsvg%3E"); mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M2%207h11v9H2z%22%2F%3E%3Cpath%20d%3D%22M13%2010h4.2l2.8%203v3h-7z%22%2F%3E%3Ccircle%20cx%3D%226.5%22%20cy%3D%2218%22%20r%3D%221.9%22%2F%3E%3Ccircle%20cx%3D%2217%22%20cy%3D%2218%22%20r%3D%221.9%22%2F%3E%3C%2Fsvg%3E"); }
+.oc-ico-rotate::before{ -webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M20%2012a8%208%200%201%201-2.6-5.9%22%2F%3E%3Cpath%20d%3D%22M20%204v5h-5%22%2F%3E%3C%2Fsvg%3E"); mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M20%2012a8%208%200%201%201-2.6-5.9%22%2F%3E%3Cpath%20d%3D%22M20%204v5h-5%22%2F%3E%3C%2Fsvg%3E"); }
+.oc-ico-shield::before{ -webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%203.2%2019%206v5.4c0%204.3-2.9%207.6-7%209.4-4.1-1.8-7-5.1-7-9.4V6z%22%2F%3E%3Cpath%20d%3D%22m9.2%2012.2%202%202%203.6-3.8%22%2F%3E%3C%2Fsvg%3E"); mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%203.2%2019%206v5.4c0%204.3-2.9%207.6-7%209.4-4.1-1.8-7-5.1-7-9.4V6z%22%2F%3E%3Cpath%20d%3D%22m9.2%2012.2%202%202%203.6-3.8%22%2F%3E%3C%2Fsvg%3E"); }
+.oc-ico-bank::before{ -webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3.5%209.6%2012%205l8.5%204.6%22%2F%3E%3Cpath%20d%3D%22M5.5%2010.5v7M9.5%2010.5v7M14.5%2010.5v7M18.5%2010.5v7%22%2F%3E%3Cpath%20d%3D%22M3.5%2019.5h17%22%2F%3E%3C%2Fsvg%3E"); mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3.5%209.6%2012%205l8.5%204.6%22%2F%3E%3Cpath%20d%3D%22M5.5%2010.5v7M9.5%2010.5v7M14.5%2010.5v7M18.5%2010.5v7%22%2F%3E%3Cpath%20d%3D%22M3.5%2019.5h17%22%2F%3E%3C%2Fsvg%3E"); }
+.oc-ico-ruler::before{ -webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3.6%2014.9%2014.9%203.6l5.5%205.5L9.1%2020.4z%22%2F%3E%3Cpath%20d%3D%22m7.4%2011.1%201.8%201.8M10.6%207.9l1.8%201.8M13.8%204.7l1.8%201.8%22%2F%3E%3C%2Fsvg%3E"); mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3.6%2014.9%2014.9%203.6l5.5%205.5L9.1%2020.4z%22%2F%3E%3Cpath%20d%3D%22m7.4%2011.1%201.8%201.8M10.6%207.9l1.8%201.8M13.8%204.7l1.8%201.8%22%2F%3E%3C%2Fsvg%3E"); }
+
+/* contact bar: icon per item, chosen by link type so no markup change is needed */
+.oc-topbar a[href^="mailto"]::before{ -webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%206h18v12H3z%22%2F%3E%3Cpath%20d%3D%22m3%207%209%206%209-6%22%2F%3E%3C%2Fsvg%3E"); mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%206h18v12H3z%22%2F%3E%3Cpath%20d%3D%22m3%207%209%206%209-6%22%2F%3E%3C%2Fsvg%3E"); }
+.oc-topbar a[href="/standort/"]::before{ -webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%2021s7-5.5%207-11a7%207%200%201%200-14%200c0%205.5%207%2011%207%2011z%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2210%22%20r%3D%222.6%22%2F%3E%3C%2Fsvg%3E"); mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%2021s7-5.5%207-11a7%207%200%201%200-14%200c0%205.5%207%2011%207%2011z%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2210%22%20r%3D%222.6%22%2F%3E%3C%2Fsvg%3E"); }
+.oc-hours::before{ -webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%229%22%2F%3E%3Cpath%20d%3D%22M12%207v5.2l3.4%202%22%2F%3E%3C%2Fsvg%3E"); mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%229%22%2F%3E%3Cpath%20d%3D%22M12%207v5.2l3.4%202%22%2F%3E%3C%2Fsvg%3E"); }
+
+
+/* trust row: icon per heading, matched on the heading's own wording.
+   :has() keeps this in CSS instead of rewriting the page markup. */
+@supports selector(:has(*)){
+  .wp-block-column:has(h2) h2{ display:flex; align-items:center; }
+  .wp-block-column h2::before{
+    content:""; display:inline-block; width:1.15em; height:1.15em; margin-right:.5em;
+    background-color:var(--oc-action); flex:none;
+    -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+    -webkit-mask-position:center; mask-position:center;
+    -webkit-mask-size:contain; mask-size:contain;
+  }
+}
+
+
+
+/* The trust row has a fixed order: location, shipping, returns. */
+.wp-block-columns .wp-block-column:nth-child(1) h2::before{ -webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%2021s7-5.5%207-11a7%207%200%201%200-14%200c0%205.5%207%2011%207%2011z%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2210%22%20r%3D%222.6%22%2F%3E%3C%2Fsvg%3E"); mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%2021s7-5.5%207-11a7%207%200%201%200-14%200c0%205.5%207%2011%207%2011z%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2210%22%20r%3D%222.6%22%2F%3E%3C%2Fsvg%3E"); }
+.wp-block-columns .wp-block-column:nth-child(2) h2::before{ -webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M2%207h11v9H2z%22%2F%3E%3Cpath%20d%3D%22M13%2010h4.2l2.8%203v3h-7z%22%2F%3E%3Ccircle%20cx%3D%226.5%22%20cy%3D%2218%22%20r%3D%221.9%22%2F%3E%3Ccircle%20cx%3D%2217%22%20cy%3D%2218%22%20r%3D%221.9%22%2F%3E%3C%2Fsvg%3E"); mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M2%207h11v9H2z%22%2F%3E%3Cpath%20d%3D%22M13%2010h4.2l2.8%203v3h-7z%22%2F%3E%3Ccircle%20cx%3D%226.5%22%20cy%3D%2218%22%20r%3D%221.9%22%2F%3E%3Ccircle%20cx%3D%2217%22%20cy%3D%2218%22%20r%3D%221.9%22%2F%3E%3C%2Fsvg%3E"); }
+.wp-block-columns .wp-block-column:nth-child(3) h2::before{ -webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M20%2012a8%208%200%201%201-2.6-5.9%22%2F%3E%3Cpath%20d%3D%22M20%204v5h-5%22%2F%3E%3C%2Fsvg%3E"); mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.7%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M20%2012a8%208%200%201%201-2.6-5.9%22%2F%3E%3Cpath%20d%3D%22M20%204v5h-5%22%2F%3E%3C%2Fsvg%3E"); }
+/* category and product cards have h3, not h2, so they are untouched by the above */
+
+
+/* ==========================================================================
+   DARK SYNC — everything the first dark pass did not reach.
+   Found by scanning the rendered CSS of the homepage, shop, cart, account,
+   category and product templates for light background declarations still in
+   play. WooCommerce ships its own component styles that the theme's palette
+   never touches, so they stayed white on a black page.
+   ========================================================================== */
+
+/* ---------- WooCommerce interactive controls ---------- */
+.wc-block-components-quantity-selector,
+.wc-block-components-quantity-selector.quantity,
+form.cart div.quantity,.quantity input.qty{
+  background-color:var(--oc-surface-2) !important;
+  border-color:var(--oc-line) !important;
+  color:var(--oc-ink) !important;
+}
+.wc-block-components-quantity-selector__button,
+.quantity .plus,.quantity .minus{
+  background:transparent !important; color:var(--oc-ink) !important;
+  border-color:var(--oc-line) !important;
+}
+
+/* ---------- notices, messages, errors ---------- */
+.woocommerce-message,.woocommerce-info,.woocommerce-error,
+.wc-block-components-notice-banner{
+  background-color:var(--oc-surface-2) !important;
+  color:var(--oc-ink) !important;
+  border:1px solid var(--oc-line) !important;
+}
+.wc-block-components-notice-banner.is-error{ border-left:4px solid #F87171 !important; }
+.wc-block-components-notice-banner.is-success{ border-left:4px solid #34D399 !important; }
+.wc-block-components-notice-banner.is-info{ border-left:4px solid var(--oc-action) !important; }
+.woocommerce-message::before,.woocommerce-info::before{ color:var(--oc-action) !important; }
+
+/* ---------- cart, checkout, account tables and panels ---------- */
+.woocommerce table.shop_table,.woocommerce table.shop_table td,
+.woocommerce table.shop_table th,
+.wc-block-cart-items,.wc-block-cart-items td,.wc-block-cart-items th,
+.wp-block-woocommerce-cart-order-summary-block,
+.wc-block-components-totals-wrapper,
+.woocommerce-checkout-review-order-table{
+  background-color:transparent !important;
+  color:var(--oc-ink) !important;
+  border-color:var(--oc-line) !important;
+}
+.woocommerce table.shop_table thead th,
+.wc-block-cart-items__header{
+  background-color:var(--oc-surface-2) !important;
+  color:var(--oc-ink) !important;
+}
+.woocommerce-MyAccount-navigation ul li a{
+  background-color:var(--oc-surface) !important;
+  color:var(--oc-ink) !important;
+  border:1px solid var(--oc-line) !important;
+}
+.woocommerce-MyAccount-navigation ul li.is-active a{
+  background-color:var(--oc-action) !important; color:#000 !important;
+}
+
+/* ---------- form fields inside Woo blocks ---------- */
+.wc-block-components-text-input input,
+.wc-block-components-textarea,
+.wc-block-components-select__container,
+.woocommerce form .form-row input.input-text,
+.woocommerce form .form-row textarea,
+.woocommerce form .form-row select,
+.select2-container--default .select2-selection--single{
+  background-color:var(--oc-surface-2) !important;
+  color:var(--oc-ink) !important;
+  border-color:var(--oc-line) !important;
+}
+.wc-block-components-text-input label,
+.woocommerce form .form-row label{ color:var(--oc-muted) !important; }
+.select2-dropdown,.select2-results__option{
+  background-color:var(--oc-surface-2) !important; color:var(--oc-ink) !important;
+}
+.select2-results__option--highlighted{ background-color:var(--oc-action) !important; color:#000 !important; }
+
+/* ---------- product gallery & tabs ---------- */
+.woocommerce div.product .woocommerce-tabs ul.tabs li{
+  background-color:var(--oc-surface) !important;
+  border-color:var(--oc-line) !important;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active{
+  background-color:var(--oc-surface-2) !important;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li a{ color:var(--oc-ink) !important; }
+.woocommerce div.product .woocommerce-tabs ul.tabs::before{ border-color:var(--oc-line) !important; }
+.flex-control-thumbs li img{ border:1px solid var(--oc-line); border-radius:4px; }
+
+/* ---------- WordPress preset colour classes that assume a light page ---------- */
+.has-very-light-gray-background-color,
+.has-white-background-color,
+.has-light-background-color{
+  background-color:var(--oc-surface) !important;
+  color:var(--oc-ink) !important;
+}
+.has-white-color,.has-very-light-gray-color{ color:var(--oc-ink) !important; }
+
+/* ---------- skip link ---------- */
+.skip-link.screen-reader-text:focus{
+  background-color:var(--oc-action) !important;
+  color:#000 !important;
+  border-radius:0 0 6px 0;
+  box-shadow:none;
+}
+
+/* ---------- breadcrumbs, pagination, sorting ---------- */
+.woocommerce .woocommerce-breadcrumb,
+.woocommerce .woocommerce-breadcrumb a,
+.woocommerce-result-count,.woocommerce-ordering select{
+  color:var(--oc-muted) !important;
+}
+.woocommerce .woocommerce-breadcrumb a:hover{ color:var(--oc-action) !important; }
+.woocommerce nav.woocommerce-pagination ul,
+.woocommerce nav.woocommerce-pagination ul li{
+  border-color:var(--oc-line) !important;
+}
+.woocommerce nav.woocommerce-pagination ul li a,
+.woocommerce nav.woocommerce-pagination ul li span{ color:var(--oc-ink) !important; }
+.woocommerce nav.woocommerce-pagination ul li span.current{
+  background-color:var(--oc-action) !important; color:#000 !important;
+}
+
+/* ==========================================================================
+   Seamless: sections should meet, not collide.
+   Alternating full-width bands share one border colour and no gaps, so the page
+   reads as continuous surface rather than stacked boxes on a black void.
+   ========================================================================== */
+.wp-site-blocks > * + *{ margin-block-start:0; }
+.entry-content > .wp-block-group,
+.wp-block-post-content > .wp-block-group{
+  border-top:1px solid var(--oc-line);
+  margin-block:0;
+}
+.entry-content > .wp-block-group:first-child{ border-top:0; }
+
+/* every other band lifts slightly — depth without a hard edge */
+.entry-content > .wp-block-group:nth-of-type(even){
+  background-color:#080B10;
+}
+.oc-hero{ border-radius:0; border-left:0; border-right:0; }
+
+/* cards sit on the band, not in a hole */
+.oc-cat-card{
+  background-color:var(--oc-surface) !important;
+  box-shadow:0 1px 0 rgba(255,255,255,.03) inset;
+}
+.oc-cat-card:hover{ background-color:var(--oc-surface-2) !important; }
+
+/* images meet their card edge cleanly */
+.oc-cat-card figure.wp-block-image{ margin-block-end:.85rem; }
+.oc-cat-card figure.wp-block-image img{
+  width:100%; aspect-ratio:4/3; object-fit:cover; display:block;
+}
+
+/* scrollbar stops being a white stripe on the right */
+html{ color-scheme:dark; scrollbar-color:var(--oc-line) #000; }
+::selection{ background:var(--oc-action); color:#000; }
+
+/* ==========================================================================
+   MOBILE HARDENING
+   Audited against an iPhone user agent on the homepage and a product page.
+   Viewport and pinch-zoom were already correct; the gaps were overflow control,
+   fixed pixel widths inside WooCommerce markup, and iOS input zoom.
+   ========================================================================== */
+
+/* ---------- nothing may scroll the page sideways ---------- */
+html,body{ overflow-x:hidden; max-width:100%; }
+.wp-site-blocks,.entry-content,.wp-block-post-content{ overflow-wrap:break-word; }
+img,video,iframe,svg,table{ max-width:100%; height:auto; }
+
+/* wide content scrolls inside its own box rather than pushing the page */
+.entry-content table,.wp-block-post-content table,
+.woocommerce table.shop_table,.wc-block-cart-items,
+.woocommerce-checkout-review-order-table{
+  display:block; width:100%; overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.wp-block-table{ overflow-x:auto; }
+pre,code{ overflow-x:auto; white-space:pre-wrap; word-break:break-word; }
+
+/* ---------- iOS zooms the page when an input is under 16px ---------- */
+input,select,textarea,
+.wc-block-components-text-input input,
+.woocommerce form .form-row input.input-text{
+  font-size:16px !important;
+  max-width:100%;
+}
+
+@media (max-width:781px){
+  /* long German compounds must break rather than overflow */
+  h1,h2,h3,h4{ overflow-wrap:anywhere; hyphens:auto; -webkit-hyphens:auto; }
+
+  /* columns stack; the gap becomes vertical rhythm */
+  .wp-block-columns{ gap:1.15rem !important; }
+  .wp-block-column{ flex-basis:100% !important; }
+
+  /* cards get room to breathe once stacked */
+  .oc-cat-card{ padding:0 0 1.1rem; }
+  .oc-cat-card figure.wp-block-image img{ aspect-ratio:16/10; }
+
+  /* hero is shorter on a phone — a full-height hero buries the content */
+  .oc-hero{ padding-block:2.6rem !important; }
+
+  /* buttons go full width; a 44px target that is 80px wide is still a miss */
+  .wp-block-button__link,.wp-element-button,
+  .woocommerce a.button,.woocommerce button.button{
+    width:100%; justify-content:center; text-align:center;
+  }
+  .wp-block-buttons{ flex-direction:column; align-items:stretch; gap:.6rem; }
+
+  /* product gallery and summary stack cleanly */
+  .woocommerce div.product div.images,
+  .woocommerce div.product div.summary{ width:100% !important; float:none !important;
+    margin-right:0 !important; }
+
+  /* tabs wrap instead of overflowing */
+  .woocommerce div.product .woocommerce-tabs ul.tabs{
+    display:flex; flex-wrap:wrap; gap:.35rem; padding-left:0;
+  }
+  .woocommerce div.product .woocommerce-tabs ul.tabs li{ margin:0; }
+
+  /* the specification lists are the reason people buy — keep them readable */
+  .entry-content ul li,.wp-block-post-content ul li{ line-height:1.6; }
+
+  /* footer columns stack with clear separation */
+  .wp-block-group.has-color-2-background-color .wp-block-column{
+    padding-block:.6rem;
+  }
+}
+
+@media (max-width:480px){
+  :root{ --oc-gutter:14px; }
+  .oc-hero{ padding-block:2.1rem !important; }
+  /* the wordmark should not eat the header on a small phone */
+  .wp-block-site-logo img{ max-width:190px; height:auto; }
+}
+
+/* ---------- tap targets everywhere, not just below 781px ---------- */
+@media (pointer:coarse){
+  a.wp-block-navigation-item__content,
+  .wp-block-button__link,.wp-element-button,
+  .woocommerce a.button,.woocommerce button.button,
+  .oc-topbar a{
+    min-height:44px; display:inline-flex; align-items:center;
+  }
+  .wp-block-navigation__submenu-container a{ padding-block:.6rem; }
+  /* hover effects do nothing useful on touch and can stick */
+  .oc-cat-card:hover,.woocommerce ul.products li.product:hover{ transform:none; }
+}
+
+/* ==========================================================================
+   MOBILE NAVIGATION VISIBILITY
+   The header navigation carries textColor "color2" = #2C2A29. On the black
+   background that is roughly 1.3:1 — so the hamburger SVG, which draws with
+   currentColor, was rendering invisible. The markup was always correct; the
+   menu simply could not be seen. Everything below forces the overlay and its
+   controls onto theme colours.
+   ========================================================================== */
+
+/* the hamburger and close buttons */
+.wp-block-navigation__responsive-container-open,
+.wp-block-navigation__responsive-container-close{
+  color:var(--oc-ink) !important;
+  background:transparent !important;
+  padding:.55rem !important;
+  min-width:44px; min-height:44px;
+  display:inline-flex !important; align-items:center; justify-content:center;
+  border-radius:6px;
+}
+.wp-block-navigation__responsive-container-open svg,
+.wp-block-navigation__responsive-container-close svg{
+  fill:currentColor !important; width:28px; height:28px;
+}
+.wp-block-navigation__responsive-container-open:hover,
+.wp-block-navigation__responsive-container-close:hover{
+  color:var(--oc-action) !important;
+  background:var(--oc-surface) !important;
+}
+.wp-block-navigation__responsive-container-open:focus-visible,
+.wp-block-navigation__responsive-container-close:focus-visible{
+  outline:3px solid var(--oc-action); outline-offset:2px;
+}
+
+/* the open overlay itself */
+.wp-block-navigation__responsive-container.is-menu-open{
+  background-color:#05080C !important;
+  color:var(--oc-ink) !important;
+  padding:clamp(1.2rem,5vw,2.4rem) !important;
+}
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__content,
+.wp-block-navigation__responsive-container.is-menu-open a{
+  color:var(--oc-ink) !important;
+  font-size:1.15rem;
+  padding-block:.7rem;
+  width:100%;
+  border-bottom:1px solid var(--oc-line);
+}
+.wp-block-navigation__responsive-container.is-menu-open a:hover,
+.wp-block-navigation__responsive-container.is-menu-open a:focus-visible{
+  color:var(--oc-action) !important;
+}
+.wp-block-navigation__responsive-container.is-menu-open
+  .wp-block-navigation__responsive-container-content{
+  width:100%; align-items:stretch;
+}
+/* submenu items indent so the Shop hierarchy stays readable */
+.wp-block-navigation__responsive-container.is-menu-open
+  .wp-block-navigation__submenu-container{
+  background:transparent !important; border:0 !important; padding-left:1rem;
+}
+.wp-block-navigation__responsive-container.is-menu-open
+  .wp-block-navigation__submenu-container a{
+  font-size:1rem; color:var(--oc-muted) !important;
+}
+.wp-block-navigation__responsive-container.is-menu-open
+  .wp-block-navigation__submenu-container a:hover{ color:var(--oc-action) !important; }
+
+/* submenu toggle arrows must be visible too */
+.wp-block-navigation__submenu-icon,
+.wp-block-navigation-submenu__toggle{
+  color:var(--oc-ink) !important; fill:currentColor !important;
+}
+
+/* the header row itself keeps the logo and burger apart on a phone */
+@media (max-width:781px){
+  .hostinger-ai-menu-wrapper{
+    display:flex !important; align-items:center; justify-content:space-between;
+    gap:.75rem; grid-template-columns:none !important;
+  }
+  .hostinger-ai-site-navigation-wrapper{ justify-content:flex-end !important; }
+}
+
+
+/* ==========================================================================
+   Desktop: horizontal navigation. Mobile: overlay trigger.
+   overlayMenu is back to "mobile", so the theme handles the switch at its own
+   breakpoint. Only the pieces that survive both states are styled here.
+   ========================================================================== */
+@media (min-width:782px){
+  .hostinger-ai-menu-wrapper{
+    display:flex !important;
+    grid-template-columns:none !important;
+    align-items:center; justify-content:space-between; gap:1.5rem;
+  }
+  .hostinger-ai-site-navigation-wrapper{ justify-content:flex-end !important; }
+  /* the horizontal bar needs room to breathe and a clear hover target */
+  .wp-block-navigation__container{ gap:.35rem 1.15rem; }
+  .wp-block-navigation .wp-block-navigation-item__content{
+    padding-block:.4rem; border-bottom:2px solid transparent;
+  }
+  .wp-block-navigation .wp-block-navigation-item__content:hover{
+    border-bottom-color:var(--oc-action);
+  }
+  .wp-block-navigation .current-menu-item > .wp-block-navigation-item__content{
+    border-bottom-color:var(--oc-action);
+  }
+}
+@media (max-width:781px){
+  .hostinger-ai-menu-wrapper{
+    display:flex !important; grid-template-columns:none !important;
+    align-items:center; justify-content:space-between; gap:.75rem;
+  }
+  .hostinger-ai-site-navigation-wrapper{ justify-content:flex-end !important; }
+}
