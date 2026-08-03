@@ -1036,15 +1036,26 @@ input,select,textarea,
    ========================================================================== */
 
 /* the hamburger and close buttons */
+/* Colour and hit area only. The display property is deliberately NOT forced:
+   WordPress hides the trigger above its own breakpoint with
+   .wp-block-navigation__responsive-container-open:not(.always-shown){display:none}
+   and an !important display here overrode that, leaving the burger showing on
+   desktop alongside the horizontal navigation. */
 .wp-block-navigation__responsive-container-open,
 .wp-block-navigation__responsive-container-close{
   color:var(--oc-ink) !important;
   background:transparent !important;
   padding:.55rem !important;
   min-width:44px; min-height:44px;
-  display:inline-flex !important; align-items:center; justify-content:center;
+  align-items:center; justify-content:center;
   border-radius:6px;
 }
+/* restore the intended flex layout only where the trigger is actually shown */
+@media (max-width:781px){
+  .wp-block-navigation__responsive-container-open{ display:inline-flex; }
+}
+.wp-block-navigation__responsive-container.is-menu-open
+  .wp-block-navigation__responsive-container-close{ display:inline-flex; }
 .wp-block-navigation__responsive-container-open svg,
 .wp-block-navigation__responsive-container-close svg{
   fill:currentColor !important; width:28px; height:28px;
