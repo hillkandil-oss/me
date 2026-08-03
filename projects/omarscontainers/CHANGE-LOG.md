@@ -1092,6 +1092,53 @@ into the structured data Google reads.
 Template snapshots kept in `theme/templates/`.
 
 
+---
+
+## Feed rebuilt, blog SEO gap closed, cart drawer verified
+
+### Feed regenerated against the live store — byte-identical
+
+Rebuilt both formats from the Store API after all of today's changes. 110 items, same
+validation profile as before (52 no-brand HIGH which is correct for unbranded stock, 1 no
+additional images, 110 declaring `identifier_exists: no`), **and the output files did not
+change by a single byte**. That is the useful result: the site work did not disturb
+feed↔landing-page parity.
+
+### `/blog/` was shipping with no meta description
+
+Slim SEO builds a description from page content, but `page_for_posts` means WordPress never
+renders the Blog page's own content — so there was nothing to build from, and the page went
+out with no `<meta name="description">` at all. Set explicitly (160 chars) and verified live.
+
+### Blog posts scanned against the truthfulness rules
+
+All 5 posts checked for superlatives, invented statistics, review or rating language,
+fabricated company tenure, scarcity messaging and guarantee claims. **One hit, and it is a
+false positive** — *"die Einstufung Ihres Gespanns können wir nicht rechtsverbindlich
+vornehmen"* is a disclaimer, not a claim. Nothing to remove.
+
+### Mini-cart drawer verified rather than assumed
+
+I had written the drawer styling blind. Checked the selectors against the served markup:
+12 of 13 match live classes. The one that does not, `wc-block-mini-cart__amount`, is the
+block's optional price label — not enabled here, kept as a defensive rule.
+
+Computed styles, full cascade, drawer forced open:
+
+| | Computed | Contrast |
+|---|---|---|
+| cart icon | `rgb(248,250,252)` | 20.07:1 on black |
+| badge | `#EA580C` / black text | 5.90:1 |
+| drawer surface | `rgb(20,26,34)` | — |
+| drawer text | `rgb(248,250,252)` | 16.96:1 |
+| scrim | `rgba(0,0,0,.72)` | — |
+
+### Not a defect
+
+Two images per page report no `alt`. They are the mini-cart's item-thumbnail templates,
+which carry `data-wp-bind--alt="state.cartItemName"` — alt is bound at runtime. No action.
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform

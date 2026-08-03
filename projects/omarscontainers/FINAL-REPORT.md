@@ -111,9 +111,20 @@ returns 403, HTTPS valid with `upgrade-insecure-requests`.
    exemption for bespoke goods.
 
 ### Two minutes each
-4. **Site language → Deutsch.** *Einstellungen → Allgemein → Sprache*. Checkout currently
-   reads *"Your cart is currently empty"* and `<html lang="en-US">` on a German store.
-   Setting this over REST silently fails — the translation pack is not installed.
+4. **Site language → Deutsch.** *Einstellungen → Allgemein → Sprache → Speichern.*
+   **Loco Translate is now installed**, so the German pack can be fetched; WordPress
+   downloads it on save.
+
+   I cannot do this over REST and it is not for want of trying: `POST /wp/v2/settings
+   {"language":"de_DE"}` returns `en_US` every time, because WordPress only accepts a locale
+   already present in `wp-content/languages`, and the downloader
+   (`wp_download_language_pack()`) is reachable only from `wp-admin/options.php`.
+
+   This is not cosmetic. Until it is set: checkout reads *"Your cart is currently empty"*,
+   every page declares `<html lang="en-US">` and `og:locale: en_US`, and the 404 page's
+   `<title>`, `og:title` and breadcrumb read *"Page not found"* — inside the structured data
+   Google reads. Hardcoded English in the theme's own templates has been translated
+   separately; those were template content that no language pack would have reached.
 5. **Test that `info@omarscontainers.de` receives mail.** Unverified; a bouncing sender is
    a silent checkout failure.
 
