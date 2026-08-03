@@ -1,0 +1,202 @@
+/* ==========================================================================
+   omarscontainers — motion & polish
+   Rules this file holds itself to:
+     - Custom easing curves; built-in CSS easings are too weak to read as intentional.
+     - ease-out for entrances (starts fast = feels responsive). Never ease-in on UI.
+     - Durations matched to element type, not one global number.
+     - Scroll reveals live inside @supports (animation-timeline). Where unsupported,
+       content is simply visible — never hidden. Google's crawler always sees it.
+     - prefers-reduced-motion disables movement but preserves every state change.
+     - Price, availability and add-to-cart never animate in. Commercial data is
+       visible on first paint, always.
+   ========================================================================== */
+
+:root{
+  --oc-ink:#0E2A33;
+  --oc-deep:#1F4E5F;
+  --oc-muted:#5B7480;
+  --oc-line:rgba(14,42,51,.12);
+  --oc-ease-out:cubic-bezier(.23,1,.32,1);
+  --oc-ease-in-out:cubic-bezier(.77,0,.175,1);
+  --oc-fast:140ms;
+  --oc-base:240ms;
+  --oc-slow:420ms;
+}
+
+/* ---------- typography rhythm ---------- */
+.wp-block-post-content h2,
+.entry-content h2{ letter-spacing:-.015em; line-height:1.2; margin-top:2.2em; }
+.wp-block-post-content h3,
+.entry-content h3{ letter-spacing:-.01em; line-height:1.28; }
+.entry-content p,
+.wp-block-post-content p{ line-height:1.7; max-width:72ch; }
+.entry-content ul li,
+.wp-block-post-content ul li{ line-height:1.65; margin-block:.35em; }
+
+/* ---------- links ---------- */
+.entry-content a:not(.wp-element-button),
+.wp-block-post-content a:not(.wp-element-button){
+  text-underline-offset:.18em;
+  text-decoration-thickness:1px;
+  transition:color var(--oc-fast) ease, text-decoration-color var(--oc-fast) ease;
+}
+.entry-content a:not(.wp-element-button):hover{ color:var(--oc-deep); }
+
+/* ---------- buttons: press must feel physical ---------- */
+.wp-element-button,.wp-block-button__link,
+button,input[type=submit],.button,
+.woocommerce a.button,.woocommerce button.button{
+  transition:transform var(--oc-fast) var(--oc-ease-out),
+             box-shadow var(--oc-base) var(--oc-ease-out),
+             background-color var(--oc-fast) ease,
+             filter var(--oc-fast) ease;
+  will-change:auto;
+}
+.wp-element-button:hover,.wp-block-button__link:hover,
+.woocommerce a.button:hover,.woocommerce button.button:hover{
+  transform:translateY(-1px);
+  box-shadow:0 6px 18px -6px rgba(14,42,51,.35);
+}
+/* :active must respond faster than hover — the user is watching this moment */
+.wp-element-button:active,.wp-block-button__link:active,
+.woocommerce a.button:active,.woocommerce button.button:active{
+  transform:translateY(0) scale(.985);
+  transition-duration:80ms;
+}
+
+/* ---------- product & category cards ---------- */
+.wp-block-group.has-background,
+.woocommerce ul.products li.product,
+.wc-block-product-template__responsive .wc-block-product{
+  transition:transform var(--oc-base) var(--oc-ease-out),
+             box-shadow var(--oc-base) var(--oc-ease-out),
+             border-color var(--oc-base) ease;
+}
+.woocommerce ul.products li.product:hover,
+.wc-block-product-template__responsive .wc-block-product:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 34px -18px rgba(14,42,51,.45);
+}
+
+/* image reveal on card hover — the image moves, the price never does */
+.woocommerce ul.products li.product a img,
+.wc-block-product-template__responsive .wc-block-product img{
+  transition:transform var(--oc-slow) var(--oc-ease-out), filter var(--oc-base) ease;
+  backface-visibility:hidden;
+}
+.woocommerce ul.products li.product:hover a img,
+.wc-block-product-template__responsive .wc-block-product:hover img{
+  transform:scale(1.035);
+}
+
+/* homepage category cards */
+.wp-block-columns .wp-block-column .wp-block-group{
+  transition:transform var(--oc-base) var(--oc-ease-out),
+             box-shadow var(--oc-base) var(--oc-ease-out),
+             border-color var(--oc-base) ease;
+}
+.wp-block-columns .wp-block-column .wp-block-group:hover{
+  transform:translateY(-2px);
+  border-color:var(--oc-deep);
+  box-shadow:0 12px 28px -18px rgba(14,42,51,.4);
+}
+.wp-block-columns .wp-block-column figure.wp-block-image{ overflow:hidden; border-radius:4px; }
+.wp-block-columns .wp-block-column figure.wp-block-image img{
+  transition:transform var(--oc-slow) var(--oc-ease-out);
+  display:block; width:100%; height:auto;
+}
+.wp-block-columns .wp-block-column .wp-block-group:hover figure.wp-block-image img{
+  transform:scale(1.045);
+}
+
+/* ---------- navigation ---------- */
+.wp-block-navigation-item__content{
+  transition:color var(--oc-fast) ease, opacity var(--oc-fast) ease;
+}
+.wp-block-navigation .wp-block-navigation__submenu-container{
+  border-radius:6px;
+  box-shadow:0 18px 44px -22px rgba(14,42,51,.5);
+  overflow:hidden;
+}
+
+/* ---------- focus: visible and consistent, never removed ---------- */
+a:focus-visible,button:focus-visible,input:focus-visible,
+select:focus-visible,textarea:focus-visible,.wp-element-button:focus-visible{
+  outline:2px solid var(--oc-deep);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
+/* ---------- footer ---------- */
+.wp-block-group.has-color-2-background-color a{
+  transition:opacity var(--oc-fast) ease;
+}
+.wp-block-group.has-color-2-background-color a:hover{ opacity:.72; }
+
+/* ---------- the [BESTÄTIGEN] markers should look like the warnings they are --- */
+.entry-content p[style*="fff8e1"]{ border-radius:4px; font-size:.95em; }
+
+/* ==========================================================================
+   Scroll reveal — progressive enhancement only.
+   Inside @supports, so a browser without animation-timeline gets plain visible
+   content. Nothing is ever hidden by default, which keeps the crawler and
+   no-JS users seeing the full page.
+   ========================================================================== */
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    @keyframes oc-rise{
+      from{ opacity:0; transform:translateY(14px); }
+      to  { opacity:1; transform:translateY(0); }
+    }
+    .entry-content > .wp-block-group,
+    .wp-block-post-content > .wp-block-group,
+    .wp-block-columns{
+      animation:oc-rise linear both;
+      animation-timeline:view();
+      animation-range:entry 0% entry 42%;
+    }
+    /* Commercial data must not fade in — it renders immediately, always. */
+    .woocommerce div.product .summary,
+    .wc-block-components-product-price,
+    .price, .summary .price, form.cart, .wc-block-add-to-cart-form{
+      animation:none !important;
+      opacity:1 !important;
+      transform:none !important;
+    }
+  }
+}
+
+/* ---------- reduced motion: kill movement, keep every state change ---------- */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+  /* hover feedback still exists, it just arrives without travel */
+  .woocommerce ul.products li.product:hover,
+  .wp-block-columns .wp-block-column .wp-block-group:hover{
+    transform:none;
+    box-shadow:0 0 0 2px var(--oc-deep);
+  }
+}
+
+/* ---------- mobile touch targets ---------- */
+@media (max-width:781px){
+  .wp-block-navigation-item__content,
+  .wp-element-button,.wp-block-button__link{ min-height:44px; display:inline-flex;
+    align-items:center; }
+  .entry-content p,.wp-block-post-content p{ max-width:none; }
+}
+
+/* ==========================================================================
+   Safety net: WooCommerce ships the product gallery at opacity:0 inline and
+   relies on JS to reveal it. If that script fails, is blocked, or is slow, the
+   product images are invisible — on the exact page a buyer decides from, and
+   the exact page Merchant Center compares against the feed. Force it visible;
+   the flexslider JS still works normally on top of this.
+   ========================================================================== */
+.woocommerce div.product div.images.woocommerce-product-gallery{ opacity:1 !important; }
+.woocommerce-product-gallery{ opacity:1 !important; }
+.hostinger-ai-fade-up{ opacity:1; }

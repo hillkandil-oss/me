@@ -674,6 +674,73 @@ the title.
 
 ---
 
+## 2026-08-03 (cont.) — Warranty page, motion, visual polish
+
+**Owner report:** shipping / returns / warranty / payment / terms pages "not visible", and
+the site lacks motion.
+
+### Pages — 4 of 5 already existed, 1 genuinely did not
+
+Verified live: `/versand-und-lieferung/`, `/rueckgabe-erstattung/`, `/zahlungsarten/`,
+`/agb/` all return 200 with 271–386 words, and the footer renders **10/10 policy links on
+every page type** — homepage, shop, policy pages and category archives alike. They are under
+German slugs, which is correct for a German store.
+
+**Warranty was genuinely missing.** Created `/gewaehrleistung/` — Gewährleistung und
+Garantie: the statutory two-year right under §§ 434 ff. BGB, the twelve-month reversed
+burden of proof, how manufacturer guarantees sit *alongside* statutory rights rather than
+replacing them, the claims procedure, transport damage, and the distinction from the
+withdrawal right. Linked in the footer, now **11/11**.
+
+Carries a `[BESTÄTIGEN]` marker for the three trailers advertising "10 Jahre Garantie" —
+§ 479 BGB requires an advertised guarantee to name the guarantor, duration, scope and
+conditions.
+
+### Motion and polish
+
+Added to theme global styles (`projects/omarscontainers/theme/design.css`, 8.2 KB):
+
+- **Custom easing curves** — `cubic-bezier(.23,1,.32,1)` for entrances. Built-in CSS easings
+  are too weak to read as intentional. **No `ease-in` anywhere on UI**; it delays the moment
+  the user is watching most closely.
+- **Durations by element type** — 140 ms interactive feedback, 240 ms cards, 420 ms image
+  reveals. `:active` drops to 80 ms so a press feels immediate.
+- **Card and image treatment** — lift plus shadow on hover, 1.035–1.045 image scale.
+  The image moves; the price never does.
+- **Focus rings** restored and made consistent, never removed.
+- **44 px minimum touch targets** below 781 px.
+
+### How the motion stays crawler-safe
+
+Scroll reveals sit inside `@supports (animation-timeline: view())` **and**
+`@media (prefers-reduced-motion: no-preference)`. A browser without support gets plain
+visible content — **nothing is hidden by default**, so Google and no-JS users always see the
+full page. Price, availability and add-to-cart are explicitly exempted from any animation.
+
+`prefers-reduced-motion: reduce` removes movement but keeps every state change: hover
+feedback becomes an outline instead of a lift, rather than disappearing.
+
+### Pre-existing defect found and fixed
+
+WooCommerce ships the product gallery with **inline `opacity: 0`**, revealed only by
+JavaScript. If that script fails, is blocked, or is slow, **product images are invisible** —
+on the exact page a buyer decides from and the exact page Merchant Center compares against
+the feed. Forced visible in CSS; the flexslider script still works on top.
+
+Also neutralised `.hostinger-ai-fade-up`, a theme class that sets `opacity: 0` with no
+fallback. It is currently unused, but it would hide content the moment it were applied.
+
+### Verified
+
+Motion CSS live, `@supports` guard present, reduced-motion block present, gallery fix live,
+11/11 footer links, address and hours intact. Audit unchanged at **0 blocking findings**.
+
+> *Correction:* an intermediate check reported "price visible in HTML: False" on the product
+> page. That was a faulty regex expecting a bare `€`; the price renders as an HTML entity.
+> Re-checked against unescaped text: price present as `5,000.00 €`. No defect existed.
+
+---
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
