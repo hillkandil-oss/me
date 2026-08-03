@@ -498,6 +498,48 @@ strings automatically. Page titles are already German.
 
 ---
 
+## 2026-08-03 (cont.) — LocalBusiness structured data
+
+**Authorised by owner:** *"leave bank details"* (bank details dropped per owner instruction;
+work continued on the next findings)
+
+### Store schema added
+
+Appended `Store` JSON-LD to the footer template part, so it renders on every page:
+
+- Name, URL, email, EUR, payment method
+- Full `PostalAddress` — Karnaper Str. 177 A, 45329 Essen, NRW, DE
+- `openingHoursSpecification` — Mon–Sat 08:00–18:30 (6 days)
+- `areaServed` Deutschland
+- `hasOfferCatalog` with all 10 categories
+
+Verified rendering: one JSON-LD block, `@type=Store`, address and hours parsed correctly,
+and the legal links plus address confirmed still intact afterwards.
+
+**Guarded this time.** After the earlier footer regression, the write now asserts the legal
+block is present and the schema absent before appending, and the shell aborts if the
+payload file is empty. That guard earned its keep immediately: a Python syntax error
+produced a 0-byte payload and the `curl` still fired. The empty POST was a harmless no-op —
+confirmed by re-reading the footer (8,902 chars, legal block intact) — but the check is
+what made that verifiable rather than assumed.
+
+### Auditor bug #5 — German opening hours
+
+The `brick-and-mortar` finding persisted after the schema was live. Cause: the visible-hours
+check looked only for `monday` / `hours`, while the page reads *"Montag bis Samstag,
+08:00 – 18:30 Uhr"*. Added German markers (`montag`, `samstag`, `öffnungszeit`, ` uhr`,
+`geöffnet`, `geschlossen`). Fixture regression re-run: 24 findings, unchanged.
+
+### Owner decision recorded — bank details
+
+Bank account details will not be added. Consequence, stated once and then dropped:
+`bacs` is enabled, so a customer can complete checkout and receive payment instructions
+with no account to pay into. Under the project workflow §40 that is *"products cannot
+actually be purchased"* — an automatic failure condition for Merchant Center submission.
+Recorded, not re-litigated.
+
+---
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
@@ -510,7 +552,7 @@ strings automatically. Page titles are already German.
 
 ## Not yet done — still blocking submission
 
-1. **Bank account details (IBAN/BIC) not set** — orders can be placed but not paid
+1. **Bank account details — owner has chosen not to add these.** Orders can be placed but not paid (§40 failure condition)
 3. 110 descriptions still copied from third-party sites (claims cleaned; wholesale rewrite outstanding)
 6. Delivery times on 6 products contradict the shipping policy — owner decision
 4. Telephone number not published

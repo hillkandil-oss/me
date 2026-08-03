@@ -494,7 +494,12 @@ class Audit:
                      "LocalBusiness schema omits a postal address.", "",
                      "Add a full PostalAddress matching the site, GBP, and Merchant Center exactly.")
         text = self.text_of(home).lower()
-        if not any(d in text for d in ("monday", "mon ", "mon–", "mon-", "hours")):
+        # English and German markers — a German store writes "Montag bis Samstag … Uhr"
+        # or "Öffnungszeiten", never "Monday"/"hours".
+        hour_markers = ("monday", "mon ", "mon–", "mon-", "hours", "opening",
+                        "montag", "dienstag", "samstag", "öffnungszeit", "oeffnungszeit",
+                        " uhr", "geöffnet", "geschlossen")
+        if not any(d in text for d in hour_markers):
             self.add("HIGH", "brick-and-mortar", "/",
                      "No opening hours visible to customers on the homepage.", "",
                      "Publish human-readable hours in the footer or header.")
