@@ -644,6 +644,36 @@ product grids.
 
 ---
 
+## 2026-08-03 (cont.) — Agent 4 batch 2: Sanitärcontainer (10 products)
+
+**22 of 110 descriptions now rewritten.**
+
+### Self-caught quality failure
+
+The first pass of this batch **dropped real specifications** — door pass-through
+(65 × 190 cm), window sizes (60 × 40 cm), panel thicknesses, and on two products the
+**outer dimensions entirely** (2568: 121 × 221 × 235 cm; 2580: 4.000 × 2.400 × 2.350 mm).
+
+Caught by the numeric fact-preservation check, not by eye. Three rounds of patching were
+needed: the first missed because the Bauweise block text differed, the second because the
+stored markup contained newlines my replacement string did not.
+
+**Final state: 9 of 10 numerically identical to the original.**
+
+The single remaining gap is deliberate — see below.
+
+### Deliberate omission — "100% Made in Germany" (id 2604)
+
+The original text asserted *"100% Made in Germany"*. Origin claims are strictly regulated
+in Germany and I cannot verify this one, so it was **not carried into the rewritten
+description**. It still appears in the **product title**, which I did not change because
+that alters product identity.
+
+**Owner action:** either substantiate the claim (and I will restore it) or remove it from
+the title.
+
+---
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
@@ -657,7 +687,7 @@ product grids.
 ## Not yet done — still blocking submission
 
 1. **Bank account details — owner has chosen not to add these.** Orders can be placed but not paid (§40 failure condition)
-3. 98 of 110 descriptions still copied (12 rewritten; batch 1 complete)
+3. 88 of 110 descriptions still copied (22 rewritten; batches 1-2 complete)
 6. Delivery times on 6 products contradict the shipping policy — owner decision
 4. Telephone number not published
 5. Product schema missing itemCondition
