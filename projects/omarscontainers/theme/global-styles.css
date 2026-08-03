@@ -1309,3 +1309,70 @@ input,select,textarea,
   .oc-map__btn{ transition-duration:.01ms; }
   .oc-map__btn:hover{ transform:none; }
 }
+
+/* ==========================================================================
+   MOBILE MENU — beating the theme's own !important rules
+
+   The Hostinger theme ships these in assets/css/style.min.css:
+
+     .wp-block-navigation__responsive-container.is-menu-open{
+       background-color:var(--wp--preset--color--base,
+                        var(--wp--preset--color--light,#fff))!important }
+     .wp-block-navigation__responsive-container.is-menu-open,
+     …is-menu-open .wp-block-navigation-item__content,
+     …is-menu-open .wp-block-navigation__responsive-close,
+     …is-menu-open .wp-block-navigation__submenu-icon{
+       color:var(--wp--preset--color--contrast,
+             var(--wp--preset--color--dark,#000))!important }
+
+   `--wp--preset--color--base` is not defined on this site, so the fallback
+   chain lands on `--wp--preset--color--light: #ffffff`. That is why the open
+   menu was white with black text: the earlier rules matched at the same
+   specificity, and the theme's stylesheet is a <link> that loads after the
+   inline global styles, so it won.
+
+   These selectors carry one extra class and one element, which settles it on
+   specificity rather than on load order.
+   ========================================================================== */
+
+body .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open{
+  background-color:#000000 !important;
+  color:var(--oc-ink) !important;
+  padding:clamp(1.2rem,5vw,2.4rem) !important;
+}
+
+/* text, close button and the submenu arrows — all forced to #000 by the theme */
+body .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open
+  .wp-block-navigation-item__content,
+body .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open
+  .wp-block-navigation__responsive-close,
+body .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open
+  .wp-block-navigation__responsive-container-close,
+body .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open
+  .wp-block-navigation__submenu-icon,
+body .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open a{
+  color:var(--oc-ink) !important;
+}
+body .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open
+  .wp-block-navigation-item__content:hover,
+body .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open
+  a:hover{
+  color:var(--oc-action) !important;
+}
+/* submenu entries stay one step quieter than their parent — 8.19:1, still AAA */
+body .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open
+  .wp-block-navigation__submenu-container a{
+  color:var(--oc-muted) !important;
+}
+body .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open
+  .wp-block-navigation__submenu-container a:hover{
+  color:var(--oc-action) !important;
+}
+/* the panel behind the submenu is the overlay itself, not a card */
+body .wp-block-navigation .wp-block-navigation__responsive-container.is-menu-open
+  .wp-block-navigation__submenu-container{
+  background-color:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  padding-left:1rem;
+}

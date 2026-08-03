@@ -977,6 +977,72 @@ after the write that the nav reference, top contact bar, site logo, site title a
 mini-cart block all survived, and that the footer legal block is intact.
 
 
+---
+
+## Mobile menu really is black now; Loco Translate installed
+
+> Authorisation: *"install translate plugin an change background of navigation menu of
+> mobile view from white to black"*
+
+### My previous "overlay is black" check was wrong
+
+I reported the mobile overlay as `rgb(0,0,0)` after the last change. It was white on the
+live site. The offline harness I measured with inlined only the page's `<style>` blocks and
+dropped every `<link rel=stylesheet>` — including the theme stylesheet, which is precisely
+where the overriding rules live. The harness removed the evidence and then agreed with me.
+
+The Hostinger theme ships, in `assets/css/style.min.css`:
+
+```css
+.wp-block-navigation__responsive-container.is-menu-open{
+  background-color:var(--wp--preset--color--base,
+                   var(--wp--preset--color--light,#fff))!important }
+.wp-block-navigation__responsive-container.is-menu-open,
+…is-menu-open .wp-block-navigation-item__content,
+…is-menu-open .wp-block-navigation__responsive-close,
+…is-menu-open .wp-block-navigation__submenu-icon{
+  color:var(--wp--preset--color--contrast,
+        var(--wp--preset--color--dark,#000))!important }
+```
+
+`--wp--preset--color--base` is undefined on this site, so the chain falls through to
+`--wp--preset--color--light: #ffffff`. My rules matched at the *same* specificity and were
+also `!important`, and the theme's `<link>` loads after the inline global styles — so the
+theme won on document order. The fix adds one class and one element to each selector, which
+settles it on specificity instead.
+
+Measured with the corrected harness (35 CSS sources, cascade order preserved), removing
+**only** the new 3,173-byte block to get the before column:
+
+| | Before | After |
+|---|---|---|
+| overlay background | `rgb(255,255,255)` | `rgb(0,0,0)` |
+| top-level link | `rgb(13,20,26)` | `rgb(248,250,252)` — 20.07:1 |
+| submenu arrow | `rgb(13,20,26)` | `rgb(248,250,252)` |
+| submenu link | `rgb(148,163,184)` | unchanged — 8.19:1 |
+
+`scripts/render-check.py` is the corrected harness, kept so this class of false pass cannot
+repeat: **any computed-style check must load linked stylesheets in document order.**
+
+### Loco Translate 2.8.8 installed and active
+
+Installed via `POST /wp/v2/plugins`. It has no front-end output.
+
+**It does not by itself switch the site to German, and I could not.** `POST /wp/v2/settings
+{"language":"de_DE"}` still returns `en_US` — tried before the install and again after.
+WordPress only accepts a locale that is already present in `wp-content/languages`, and the
+function that downloads a language pack (`wp_download_language_pack()`) is called from
+`wp-admin/options.php`, not from REST. There is no REST path to it.
+
+What Loco Translate adds is the admin screen that *can* fetch those packs, plus the ability
+to correct individual WooCommerce strings afterwards.
+
+Owner action, unchanged in substance but now unblocked:
+*Einstellungen → Allgemein → Sprache → Deutsch → Speichern.* WordPress downloads the pack on
+save. Checkout currently reads *"Your cart is currently empty"* and the page declares
+`<html lang="en-US">` on a German store.
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
