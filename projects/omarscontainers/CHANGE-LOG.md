@@ -245,6 +245,78 @@ Fixture regression re-run after all four: 24 findings, unchanged distribution.
 
 ---
 
+## 2026-08-03 (cont.) — Removed inherited false and unsubstantiated claims
+
+**Authorised by owner:** *"continue"*
+
+Scanned all 110 descriptions for claims inherited from the copied supplier text that are
+untrue of this business, unenforceable, or unsubstantiated.
+
+### Removed — pre-acceptance damage clause (1 product, id 2615)
+
+> *"Trotz sorgfältiger Verladung können minimale Dellen oder Kratzer entstehen — mit der
+> Auftragsannahme gilt dieser Hinweis als gelesen und akzeptiert."*
+
+Copied text attempting to make the buyer waive damage claims simply by ordering. Two
+problems: a liability waiver buried in a product description is very unlikely to be
+enforceable against a consumer under German law, and it carries Abmahnung risk. The
+factual part (walls ship with protective film) was **kept**; only the waiver was removed.
+
+### Removed — market-comparative claims (3 products, ids 3411, 3435, 3663)
+
+*"10 Jahre Garantie (einzigartig am Markt)"* · *"(einzigartig auf dem Markt)"* ·
+*"einzigartig auf dem Markt"*
+
+"Unique on the market" is a factual claim about competitors that cannot be substantiated,
+and is exactly the unsupported-claim category Merchant Center treats as misrepresentation.
+The **warranty term itself was kept** — only the comparative boast was cut. Ordinary
+marketing language such as *"einzigartiges Design"* was deliberately left alone.
+
+### Verified clear afterwards
+
+| Claim category | Remaining |
+|---|---|
+| Market-comparative claims | **0** |
+| Pre-acceptance waiver | **0** |
+| "aus unserem Hause/Werk" (own factory) | **0** |
+
+> A first pass matched only `(einzigartig am Markt)` and missed
+> `(einzigartig auf dem Markt)`. Caught on verification and re-run against freshly fetched
+> data rather than the stale local copy.
+
+---
+
+## ⚠ OWNER DECISION — delivery times contradict the shipping policy
+
+Six products state their own delivery time inside the description, and it disagrees with
+`/versand-und-lieferung/`:
+
+| Product id | Description says | Shipping policy says |
+|---|---|---|
+| 21736, 21741, 21743 | 15 bis 20 Tage | 2 bis 5 Werktage |
+| 21749, 21757 | 15–20 Tage | 2 bis 5 Werktage |
+| 22870 | 07 – 15 Tage | 2 bis 5 Werktage |
+
+**Not changed, deliberately.** Either figure could be the true one and guessing would put a
+false delivery promise on the site — which is both a Merchant Center contradiction and, under
+German consumer law, an inaccurate delivery date.
+
+Most likely explanation: 2–5 days is right for stocked goods, while container pools are
+manufactured to order and genuinely take 15–20 days. If so the fix is a per-product
+delivery time plus a shipping policy that explains both cases — not deleting either number.
+
+**Needed:** confirm the real lead time for made-to-order pools, and whether 2–5 working days
+applies only to in-stock items.
+
+### Warranty claims — also needs confirmation
+
+Three trailer products advertise **10 Jahre Garantie**. The AGB currently carries a
+`[BESTÄTIGEN]` marker for warranties. Confirm whether this is the manufacturer's guarantee
+(state whose, and link the terms) or one you grant yourself — an advertised guarantee you
+cannot honour is a misrepresentation.
+
+---
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
@@ -258,6 +330,7 @@ Fixture regression re-run after all four: 24 findings, unchanged distribution.
 ## Not yet done — still blocking submission
 
 1. **Bank account details (IBAN/BIC) not set** — orders can be placed but not paid
-3. 110 descriptions still copied from third-party sites
+3. 110 descriptions still copied from third-party sites (claims cleaned; wholesale rewrite outstanding)
+6. Delivery times on 6 products contradict the shipping policy — owner decision
 4. Telephone number not published
 5. Product schema missing itemCondition
