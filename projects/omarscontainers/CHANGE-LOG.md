@@ -1043,6 +1043,55 @@ save. Checkout currently reads *"Your cart is currently empty"* and the page dec
 `<html lang="en-US">` on a German store.
 
 
+---
+
+## QA sweep after the Blog rename — English strings found in theme templates
+
+> Authorisation: *"continue workflow autonomously"* (product-description rewrites explicitly
+> skipped by the owner: *"skip product description"*)
+
+### Link integrity after `ratgeber` → `blog`
+
+- `/ratgeber/` returns **301 → /blog/**. WordPress kept the old slug as a redirect, so no
+  link rots.
+- Zero references to the old slug anywhere in page content.
+- 24 key URLs swept. All resolve; the only non-200s are the two intended 301s and the
+  normal `/checkout/` 302 on an empty cart. Three URLs I had guessed at were wrong, not
+  broken — the real slugs are `/gewaehrleistung/`, `/versand-und-lieferung/`,
+  `/widerrufsrecht/`, all 200.
+- All 5 blog posts published and linked from `/blog/`.
+
+### English text hardcoded in the theme's templates
+
+`page_for_posts` is the Blog page, so WordPress renders the **index** template and ignores
+that page's own content. The template's H1 read **"Latest posts"** on a German store. These
+strings are template *content*, not translatable strings — no language pack will ever reach
+them.
+
+| Template | Was | Now |
+|---|---|---|
+| index | `Latest posts` | `Blog` + a short German standfirst |
+| index | `Read more` | `Weiterlesen` |
+| index | `No results found.` | `Zurzeit sind keine Beiträge vorhanden.` |
+| 404 | `Page not found` + body | `Seite nicht gefunden` + German body |
+| archive-product | `No results found` / `clearing any filters` / `store's home` | German |
+| product-search-results | `No products were found…`, `Search products…`, `Search` | German |
+| single-product | `Related products` | `Ähnliche Produkte` |
+
+Verified live on `/blog/`, a 404 URL, a product page and a category archive.
+
+### What is still English, and why I cannot fix it
+
+The 404 page's `<title>`, `og:title` and breadcrumb still read *"Page not found"*, and the
+page declares `og:locale: en_US` / `inLanguage: en-US`. Those come from WordPress core's own
+translatable strings and the site locale — **not** from any template I can edit. They resolve
+themselves the moment the site language is set to Deutsch, and not before. This is the
+clearest evidence yet for why that owner action matters: it is not cosmetic, it is leaking
+into the structured data Google reads.
+
+Template snapshots kept in `theme/templates/`.
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
