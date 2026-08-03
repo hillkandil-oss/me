@@ -1,0 +1,6 @@
+# Source-store identity to remove from copy on import.
+Mepal Construction
+MepalConstruction
+mepalconstruction.com
+mepalconstruction
+Mepal
