@@ -402,6 +402,26 @@ Standort · Kontakt · Warenkorb
 Header renders **15 links**, including all **10 category links**. Every destination checked
 individually — **14/14 return HTTP 200**, no 404s or redirects.
 
+### Regression introduced and fixed in the same session
+
+Wiring the navigation into the footer, I rebuilt the footer template part from a **local
+copy saved before** the legal block was appended. That stale write silently removed the
+business-identity block and all ten policy links from every page.
+
+Caught by the re-audit, which went **5 findings → 9** (Impressum no longer linked from the
+homepage, plus Datenschutz/AGB/Über uns). Restored by re-fetching the *current* footer and
+re-appending the block, with an assertion that the block is absent before appending so the
+same mistake cannot silently duplicate it instead.
+
+| | Findings |
+|---|---|
+| Before navigation work | 5 (HIGH 3, MEDIUM 2) |
+| After the regression | 9 (HIGH 4, MEDIUM 5) |
+| After the fix | **5 (HIGH 3, MEDIUM 2)** |
+
+Lesson recorded: **never write a template part from a cached local copy** — re-fetch
+immediately before every write, because template parts accumulate edits across a session.
+
 ---
 
 ## Verified during this session, no change required
