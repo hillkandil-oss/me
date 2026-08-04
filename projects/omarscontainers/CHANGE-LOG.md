@@ -1458,6 +1458,55 @@ Feed and landing page now agree: `price` 5000.00 EUR, `sale_price` 4660.00 EUR, 
 shows the same pair plus the 30-day disclosure.
 
 
+---
+
+## Trading name set to „omarscontainers.com"
+
+> Authorisation: *"legal entity is omarscontainers.com"* → clarified to option 1, the
+> **Geschäftsbezeichnung**.
+
+### What I did not do, and why
+
+The instruction as given was *"legal entity is omarscontainers.com"*. I did not write that
+into the Anbieter field. A domain name is not a legal entity under §5 DDG — the law wants a
+registered company name **with its legal form**, or, for an unregistered sole trader, the
+**natural person's full name**. An Impressum naming a domain as the provider counts as no
+Impressum at all and is abmahnfähig. Replacing a compliant entry with a non-compliant one on
+an ambiguous instruction would have been the wrong call, so I asked which of three readings
+was meant.
+
+I also checked the domain before answering: **`omarscontainers.com` does not resolve** — no A
+record, no response over HTTPS.
+
+### What changed
+
+Only the trade name. A sole trader may trade under a Geschäftsbezeichnung containing a domain,
+so this is legitimate:
+
+> **Omar Peters**
+> Einzelunternehmen, handelnd unter der Geschäftsbezeichnung **„omarscontainers.com"**
+> Karnaper Str. 177 A, 45329 Essen, Deutschland
+> *Das Unternehmen ist nicht im Handelsregister eingetragen.*
+
+Provider, address, register statement and placeholder count (2) all unchanged.
+
+### Two things the owner should be aware of
+
+1. **The site brands itself `omarscontainers`, the Impressum now says `omarscontainers.com`,
+   and the site is served from `omarscontainers.de`.** Merchant Center checks that the business
+   name on the site, in the Impressum and in the Merchant Center account agree. Three variants
+   is a weak spot. I have not unilaterally rebranded the header, logo or footer — that is a
+   brand decision, not a compliance fix.
+2. **The .com domain is dead.** Trading under a name customers will read as a web address, when
+   that address does not load, invites support mail at best and a credibility question at worst.
+
+### Also fixed this pass
+
+The Impressum's meta description was being auto-generated from page content, so
+`[BESTÄTIGEN: …]` was leaking into the `description` and `og:description` of a legal page.
+Set explicitly.
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
