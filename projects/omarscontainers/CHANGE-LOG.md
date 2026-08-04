@@ -1569,6 +1569,54 @@ plain `de_DE` would put a *du*-form checkout in front of a *Sie*-form shop selli
 Loco Translate is installed as a second route if the dropdown misbehaves.
 
 
+---
+
+## Telephone number published — MEDIUM finding closed
+
+> Authorisation: *"+49402760906 use this number on the website"*
+
+Displayed as **+49 40 2760906**, `tel:+49402760906` in every link so a phone dials it
+directly. Placed in four locations:
+
+| Location | Effect |
+|---|---|
+| Header contact bar | first item, ahead of the e-mail — highest-intent contact |
+| Impressum | replaces the `[BESTÄTIGEN]` placeholder |
+| Kontakt page | replaces the `[BESTÄTIGEN]` placeholder |
+| `Store` JSON-LD in the footer | `telephone` was **missing** from the structured data |
+
+**Audit: MEDIUM 2 → 1.** *"No telephone number visible on the homepage"* is closed.
+
+Impressum placeholders **2 → 1** (only USt-IdNr. remains, which may be "not applicable").
+Kontakt page placeholders **1 → 0**.
+
+### One thing the owner needs to look at
+
+**`+49 40 …` is the Hamburg dialling code. The business address is Essen, which is `0201`.**
+
+That is not automatically wrong — a ported number, a VoIP line, or a business that moved all
+produce this. But it is worth knowing, because:
+
+- Merchant Center checks that business information is consistent across the site, the feed and
+  the account.
+- Google Business Profile ranks on **NAP consistency** (Name, Address, Phone). A Hamburg number
+  against an Essen address is exactly the mismatch that verification queries.
+- A customer reading an Essen address and a Hamburg landline may simply wonder.
+
+This project already has Hamburg in its history — the store's region was originally set to
+Hamburg and was corrected to NRW earlier in the build on the owner's instruction. The number
+matching the *old* setting rather than the current address is worth a second look.
+
+If the number is correct, nothing needs doing. If an Essen line exists, that would be the
+stronger one to publish.
+
+### The two `/standort/` placeholders are correct and should stay
+
+Checked while verifying: they ask for access/parking notes and for **real photographs of the
+yard**. The second one explicitly says stock photos of someone else's site would be a
+misrepresentation. Both are owner knowledge that must not be invented.
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
