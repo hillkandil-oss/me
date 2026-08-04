@@ -22,5 +22,19 @@ All notable changes to the deliverables in this repo.
   already present; config wrong for DE (en_US/USD/US:CA/GMT0, no homepage); legal pages
   missing; menus unassigned; product feed gaps (no dims/condition/brand/GTIN).
 
+### Built (live site, staged as drafts / unassigned)
+- Store config: Europe/Berlin, EUR (German format), DE-NRW, Duisburg/47138, tagline.
+- German Contact Form 7 → info@kaisercontainers.de + customer confirmation.
+- 10 pages (draft): Startseite, Kontakt, Über uns, Impressum, Datenschutz, AGB,
+  Widerruf, Versand, Zahlung, FAQ — with 〔BITTE BESTÄTIGEN〕 markers, nothing fabricated.
+- Navigation menu (id 28) with Container dropdown (4 real categories) — not yet assigned.
+- Zustand (Neu/Gebraucht) attribute on all 20 products (17 neu, 3 gebraucht).
+- Rank Math SEO installed + active (finish config in GUI; see go-live checklist §D2).
+
+### Delivered (repo)
+- design-system.md + brand.css; header/footer snippets; merchant-center-feed.csv (20 rows)
+  + feed audit; localbusiness.jsonld + schema-jsonld.php; product-dimensions-reference.md;
+  go-live-checklist.md; merchant-center-readiness.md (NOT READY — owner facts pending).
+
 ### Removed
 - Unrelated prior project (BeepWear watch store) — recoverable from git history.

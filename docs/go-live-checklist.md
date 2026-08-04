@@ -28,6 +28,16 @@ Flip it live in this order once the owner facts are confirmed and placeholders a
 - [ ] Footer builder: add footer from `theme/snippets/footer.html`
 - [ ] Assign **Main Menu** (id 28) to the **main_menu** theme location
 
+## D2. Rank Math SEO (installed & active — finish in GUI)
+- [ ] Run the Rank Math **Setup Wizard** (Rank Math → Dashboard)
+- [ ] Settings → Permalinks → **Save** (flushes rewrite → activates `sitemap_index.xml`)
+- [ ] Titles & Meta: set homepage title/description + product/category title templates (German)
+- [ ] **Local SEO** module: enter verified business (name, street, Duisburg, 47138, phone,
+      hours Mo–Sa 08:00–18:30, geo). **Use EITHER Rank Math Local SEO OR
+      `theme/snippets/schema-jsonld.php` — not both** (avoid duplicate LocalBusiness schema)
+- [ ] Ensure WooCommerce module on → Product/Offer/Breadcrumb schema emitted
+- [ ] Per-page SEO titles for key pages (not writable via API; set here)
+
 ## E. Verify after go-live
 - [ ] Header phone/email/directions links work; address consistent everywhere
 - [ ] Nav renders on one line desktop; Container dropdown works; mobile menu works
