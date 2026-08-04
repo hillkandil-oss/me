@@ -152,3 +152,25 @@ html, body { overflow-x: hidden; }
   * { animation: none !important; transition: none !important; scroll-behavior:auto !important; }
   .kc-reveal { opacity:1; transform:none; }
 }
+
+/* --- Applied live via footer widget: theme fonts, page-title, full-bleed --- */
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap");
+
+body,p,li,span,div,td,th,input,textarea,select,button,.auto-container,.woocommerce{font-family:"Inter","Segoe UI",system-ui,sans-serif;}
+h1,h2,h3,h4,h5,h6,.sec-title,.title,.page-title h1,.woocommerce-loop-product__title,.product_title,.widget-title{font-family:"Archivo","Segoe UI",sans-serif !important;}
+.main-menu .navigation>li>a,.main-menu a,nav a,.menu a{font-family:"Archivo",sans-serif !important;font-weight:600;}
+
+/* page-title banner: brand steel band, full width */
+.page-title{background:linear-gradient(135deg,#26323C 0%,#1A1D21 100%) !important;padding-block:56px !important;}
+.page-title .bg-layer,.page-title .pattern-layer{background:none !important;opacity:.12 !important;}
+.page-title,.page-title *{color:#fff !important;}
+.page-title h1,.page-title .title{font-family:"Archivo",sans-serif !important;font-weight:800 !important;font-size:2.2rem !important;}
+.page-title .bread-crumb a,.page-title a{color:#F0C3AF !important;}
+.page-title .bread-crumb li{color:#C7CFD5 !important;}
+
+/* homepage sections full-bleed (border to border) */
+.kc-home section{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;max-width:100vw;}
+.kc-home .kc-wrap{max-width:1200px;margin-inline:auto;padding-inline:24px;}
+.kc-hero,.kc-band{border-radius:0 !important;}
+
+/* logo swap handled live via data-URI in the footer CSS widget */
