@@ -1,6 +1,6 @@
 # omarscontainers.de — Final Supervisory Report (Agent 22)
 
-**Date:** 2026-08-03 · **Site:** https://omarscontainers.de
+**Date:** 2026-08-04 (cycles 1–5) · **Site:** https://omarscontainers.de
 **Workflow:** Agents 1–22, run autonomously per owner instruction
 
 > **STATUS: OWNER ACTION REQUIRED**
@@ -69,8 +69,11 @@ lazy loading 0 → 10 of 13 images, intrinsic dimensions 1 → 11 of 13.
 
 - **No fake reviews, badges, awards, scarcity messaging, or countdowns** — and none were
   added. `AggregateRating` markup with nothing behind it: zero.
-- **Sale pricing genuine** — 9 discounted products, 6.8–38.7% spread, no uniform pattern,
-  zero fake strikethroughs.
+- **Sale pricing** — 9 discounted products, 6.8–38.7% spread, no uniform pattern.
+  *This line previously read "genuine … zero fake strikethroughs". That claim was too strong:
+  the check only confirmed WooCommerce held a higher `regular_price`, never that it had been
+  charged. The owner has since confirmed the reference prices were genuinely charged, and all
+  9 now carry the PAngV §11 30-day-lowest-price disclosure (cycle 5).*
 - **Live-site QA** — 27 key URLs checked, all resolve.
 - **Checkout** — verified end to end against the public API, not by reading settings.
 - **Images** — 8.9 per product, self-hosted, zero missing alt text on sampled pages.
@@ -82,70 +85,95 @@ lazy loading 0 → 10 of 13 images, intrinsic dimensions 1 → 11 of 13.
 | HIGH | 52 products have no brand | **Correct as-is.** Unbranded containers and pools; they should carry `identifier_exists: no`. Inventing a brand would be the violation. |
 | HIGH | Product schema omits `itemCondition` | Needs a PHP filter on `woocommerce_structured_data_product`. **Not possible over REST** — requires a snippets plugin, SFTP, or a child theme. |
 | MEDIUM | No telephone on homepage | Owner has not supplied one. |
-| MEDIUM | 2 Remko products share a title | Different SKUs — needs an owner decision on whether they are distinct stock. |
+| MEDIUM | 2 Remko products share a title | **Diagnosed (cycle 4):** duplicate imports, not distinct stock. Deletion of one per pair is the owner's call. A wrong-colour lead image found underneath this has been fixed. |
 
 ## 6. Security audit (Agent 16)
 
 **Sound:** single administrator account, `xmlrpc.php` returns 405, `wp-config.php.bak`
 returns 403, HTTPS valid with `upgrade-insecure-requests`.
 
-**Findings the owner should action** (all need server or plugin access I do not have):
+**Closed during cycle 3 — the admin's login identifier was published.** The account's
+username *is* the owner's email address, and it was readable from
+`/wp-json/wp/v2/users` (`name`, `slug`) and via `/?author=1` → `/author/hillkandilgmail-com/`.
+That is a confirmed-valid login identifier handed out for free. `display_name`, `nickname`
+and `slug` are now `omarscontainers` and neither route leaks anything.
+**The `user_login` itself is unchanged and still the email** — only the owner can change
+that, best done by creating a second administrator with a non-email username. It is no
+longer discoverable from the public site.
 
-- `/wp-json/wp/v2/users` returns 200 — **user enumeration**
+**Still open, all needing server or plugin access:**
+
+- `/wp-json/wp/v2/users` returns 200 — the endpoint is still enumerable, it just no longer
+  reveals an email
 - `/readme.html` returns 200 — WordPress version disclosure
 - `x-powered-by: PHP/8.3.31` — PHP version disclosure
 - No `Strict-Transport-Security`, `X-Frame-Options`, `X-Content-Type-Options`, or
   `Referrer-Policy` headers
 
+**Loco Translate**, added in cycle 4, registers no REST namespace (404) and its directory
+returns 403. It did not measurably widen the attack surface.
+
 ## 7. Owner actions — consolidated
+
+*Updated 2026-08-04 after cycles 3–5. Items 2, 6 and 11 below are now **closed**.*
 
 ### Blocking a real sale
 1. **Bank details** — account holder, IBAN, BIC, bank name. Without these, orders are
-   placed and never paid. *(Owner has deferred this.)*
+   placed and never paid. *(Owner has deferred this. It is the single hardest blocker
+   left: a reviewer who tests checkout reaches a dead end.)*
 
 ### Legally required in Germany
-2. **Impressum facts** — legal entity name and Rechtsform, managing director, telephone,
-   Handelsregister number, USt-IdNr. Currently visible `[BESTÄTIGEN]` markers.
+2. ~~**Impressum facts**~~ — **mostly closed.** Rechtsform confirmed as *Einzelunternehmen,
+   nicht im Handelsregister eingetragen*; provider named as **Omar Peters** trading as
+   *omarscontainers*; the Registereintrag section removed with a positive statement that no
+   registration exists. Placeholders went **5 → 2**. Still open: **telephone** and
+   **USt-IdNr.** — both may legitimately turn out to be "not applicable".
 3. **Legal review** of the AGB and Widerrufsbelehrung by a German lawyer or Fachkanzlei.
    Includes whether custom-built containers fall under the §312g Abs. 2 Nr. 1 BGB
-   exemption for bespoke goods.
+   exemption for bespoke goods. **Not started — outside what I can do.**
 
 ### Two minutes each
 4. **Site language → Deutsch.** *Einstellungen → Allgemein → Sprache → Speichern.*
-   **Loco Translate is now installed**, so the German pack can be fetched; WordPress
-   downloads it on save.
-
-   I cannot do this over REST and it is not for want of trying: `POST /wp/v2/settings
-   {"language":"de_DE"}` returns `en_US` every time, because WordPress only accepts a locale
-   already present in `wp-content/languages`, and the downloader
-   (`wp_download_language_pack()`) is reachable only from `wp-admin/options.php`.
-
-   This is not cosmetic. Until it is set: checkout reads *"Your cart is currently empty"*,
-   every page declares `<html lang="en-US">` and `og:locale: en_US`, and the 404 page's
-   `<title>`, `og:title` and breadcrumb read *"Page not found"* — inside the structured data
-   Google reads. Hardcoded English in the theme's own templates has been translated
-   separately; those were template content that no language pack would have reached.
-5. **Test that `info@omarscontainers.de` receives mail.** Unverified; a bouncing sender is
-   a silent checkout failure.
+   Loco Translate is installed so the pack can be fetched. Not cosmetic: `og:locale: en_US`
+   and `inLanguage: en-US` are in the structured data Google reads, and checkout still says
+   *"Your cart is currently empty"*.
+5. **Test that `info@omarscontainers.de` receives mail.** Still unverified; a bouncing
+   sender is a silent checkout failure.
+6. ~~**Publish the site's own price-history disclosure**~~ — **closed.** All 9 discounted
+   products now carry the PAngV §11 line near the price.
 
 ### Factual decisions only the owner can make
-6. **Delivery times** — 6 pool products state 15–20 days (one says 07–15) against a
+7. **Delivery times** — 6 pool products state 15–20 days (one says 07–15) against a
    shipping policy of 2–5 Werktage. Likely made-to-order versus stocked; needs confirming.
-7. **Product 2935** — titled *10 Fuß*, specified as 6.058 mm, which is 20 ft.
-8. **"100% Made in Germany"** (id 2604) — substantiate or remove from the title.
-9. **10-year warranty** on 3 trailers — manufacturer's or yours?
-10. **Were prices net or gross?** Treated as gross, so customers pay the same as before.
-    If they were net supplier prices, the business is absorbing the 19%.
-11. **Two Remko pairs** — distinct stock or a second duplicate import?
+8. **Product 2935** — titled *10 Fuß*, specified as 6.058 mm, which is 20 ft.
+9. **"100% Made in Germany"** (id 2604) — substantiate or remove **from the title**, which
+   is what goes into the feed. A second *made in Germany* claim sits in 3447's description.
+10. **10-year warranty** on 4 trailers — manufacturer's or yours? § 479 BGB governs how a
+    guarantee must be worded.
+11. **Were prices net or gross?** Treated as gross, so customers pay the same as before.
+12. ~~**Two Remko pairs**~~ — **closed as a question, open as an action.** They are
+    duplicate imports, not distinct stock: created seconds apart, identical prices,
+    sequential SKUs, the same photos uploaded twice. **Delete one from each pair** — I have
+    not, because deletion is destructive. Suggested keepers: **3602** (weiß), **3613**
+    (silber).
 
 ### Long lead time — start now
-12. **Google Business Profile verification.** Weeks of lead time, and it gates free local
-    listings and local inventory ads entirely. Nothing else waits on it, so the sooner it
-    starts the better.
+13. **Google Business Profile verification.** Weeks of lead time, and it gates free local
+    listings and local inventory ads entirely.
 
 ### Before submission
-13. Merchant Center account, domain verification and claim, Search Console, business
+14. Merchant Center account, domain verification and claim, Search Console, business
     identity verification, and a real test order.
+
+### Needs server or plugin access I do not have
+15. **Security hardening:** `/wp-json/wp/v2/users` returns 200, `/readme.html` returns 200,
+    `x-powered-by: PHP/8.3.31`, and no HSTS / X-Frame-Options / X-Content-Type-Options /
+    Referrer-Policy headers. *(The email-as-username exposure this created has been closed —
+    see §6.)*
+16. **`itemCondition` in Product schema** — needs a PHP filter on
+    `woocommerce_structured_data_product`. The only route I have is installing a
+    snippets plugin, which puts arbitrary PHP execution on a live store. **Awaiting your
+    decision**, not forgotten.
 
 ## 8. Not finished
 
