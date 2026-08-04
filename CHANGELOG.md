@@ -30,6 +30,10 @@ All notable changes to the deliverables in this repo.
 - Navigation menu (id 28) with Container dropdown (4 real categories) — not yet assigned.
 - Zustand (Neu/Gebraucht) attribute on all 20 products (17 neu, 3 gebraucht).
 - Rank Math SEO installed + active (finish config in GUI; see go-live checklist §D2).
+- German descriptions on all 9 real product categories.
+- WooCommerce: guest checkout + login reminder + account registration enabled;
+  "Deutschland" shipping zone with **store pickup** ("Abholung in Duisburg", enabled).
+- Note: woocommerce_terms_page_id (AGB) won't persist via REST → set in GUI at go-live.
 
 ### Delivered (repo)
 - design-system.md + brand.css; header/footer snippets; merchant-center-feed.csv (20 rows)

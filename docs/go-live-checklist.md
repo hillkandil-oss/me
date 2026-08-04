@@ -20,6 +20,10 @@ Flip it live in this order once the owner facts are confirmed and placeholders a
 - [ ] Settings → Reading → Front page displays **a static page → "Startseite"**
 - [ ] Remove/trash old English stubs: "Privacy Policy" (id 3), "Refund and Returns" (id 13);
       repoint WooCommerce privacy page → Datenschutz, terms page → AGB
+- [ ] WooCommerce → Settings → Advanced → **Terms page = AGB** (id 123) — not settable via
+      API; then enable the terms checkbox at checkout (WooCommerce → Settings → Advanced)
+- [ ] Add a **delivery** shipping method to the "Deutschland" zone once the freight cost basis
+      is known (pickup already configured); or keep "delivery quoted on request"
 
 ## D. Apply theme layer (GUI)
 - [ ] Appearance → Customize → **Additional CSS** → paste `theme/snippets/brand.css`
