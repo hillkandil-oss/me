@@ -1398,6 +1398,66 @@ Answering it will likely clear two of the four remaining placeholders at once.
 Rechtsform · Telefonnummer · Handelsregisternummer (if registered) · USt-IdNr. (if held).
 
 
+---
+
+## Owner answered both open questions
+
+> Authorisation: Rechtsform = **Einzelunternehmen, nicht im Handelsregister eingetragen**;
+> reference prices = **genuinely charged**.
+
+### Impressum restructured — placeholders 5 → 2
+
+A sole trader without a Handelsregister entry is a different document, not a filled-in form.
+Under §5 DDG the **provider is the natural person**; the trade name sits alongside it.
+
+| | Before | After |
+|---|---|---|
+| Anbieter | `omarscontainers` | **Omar Peters**, Einzelunternehmen, handelnd unter der Geschäftsbezeichnung „omarscontainers" |
+| Person label | *Vertretungsberechtigte Person* | folded into Anbieter — a sole trader has an Inhaber, not a Vertretungsberechtigten |
+| Registereintrag section | placeholder awaiting an HRB number | **removed**, replaced by the positive statement *"Das Unternehmen ist nicht im Handelsregister eingetragen."* |
+
+Deleting the Registereintrag section matters: a heading with a placeholder under it implies a
+registration exists and is merely unstated. Saying plainly that there is none is the accurate
+disclosure.
+
+The USt-IdNr. placeholder was also rewritten. §5 DDG requires it only *sofern vorhanden*, so
+it now says the section may be deleted outright if none was issued — and warns against
+putting the Steuernummer there instead, a common and incorrect substitution.
+
+**Remaining: telephone, USt-IdNr.** Both may end up being "not applicable" rather than
+values.
+
+### PAngV §11 disclosure on all 9 discounted products
+
+The owner confirms the struck-through prices were genuinely charged, so the reference price
+is the 30-day low. Each product now states it near the price:
+
+> *Niedrigster Gesamtpreis der letzten 30 Tage vor der Preisermäßigung: **22.000,00 €***
+
+German number formatting throughout (`22.000,00 €`), values read from each product's own
+`regular_price` — nothing typed by hand.
+
+**A rendering trap worth recording.** My first attempt looked like it had failed: searching
+the page for the `oc-pangv` class found nothing. It had not failed. The theme renders the
+summary through `core/post-excerpt`, which **strips all markup** — the class disappeared while
+the text survived. Two consequences:
+
+1. Never verify this kind of change by grepping for a class name. Grep for the *text*.
+2. Because markup is stripped, `</p><p>` provides no separation, so the line ran straight
+   into the summary's trailing ellipsis: *"…können Sie…Niedrigster Gesamtpreis…"*. Fixed with
+   a literal leading space inside the paragraph, which survives stripping. Verified on two
+   products that it now reads cleanly.
+
+Also checked: the excerpt block is capped at `excerptLength: 100` words and these summaries
+run ~30, so the disclosure is not at risk of being truncated away.
+
+### Feed rebuilt with `--reference-prices-verified`
+
+`sale_price` restored on all 9 — the flag added last cycle exists exactly for this moment.
+Feed and landing page now agree: `price` 5000.00 EUR, `sale_price` 4660.00 EUR, and the page
+shows the same pair plus the 30-day disclosure.
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
