@@ -1688,6 +1688,70 @@ trace of the Hamburg number remains (`4027609` absent from every page), and that
 `+0201` string appears nowhere.
 
 
+---
+
+## Feed URL sweep — an item-level disapproval nobody had looked for
+
+> Authorisation: *"anyother thing for an agent to do"*
+
+Five cycles had validated the feed's *contents* and never once checked that its **URLs
+actually resolve**. Broken `link` or `image_link` values are a top cause of item-level
+disapproval, so this was a real gap.
+
+Swept all **110 landing pages** and all **759 image URLs** (109 main + 650 additional) as
+Googlebot.
+
+| | Result |
+|---|---|
+| landing pages non-200 | **0** |
+| images non-200 | **0** |
+| titles over 150 chars | 0 |
+| descriptions under 80 chars | 0 |
+| empty `link` or `image_link` | 0 |
+
+### But 10 images were not being served as images
+
+Nine `.avif` files came back `200` with **`Content-Type: text/plain`**, and one was a proxy
+artefact that re-checked clean. All nine belonged to a single product — **2909,
+*Werkstattcontainer Garage mobile Werkstatt*, SKU CL3ST2653** — whose entire gallery, **main
+image included**, was AVIF.
+
+Two independent problems in one item:
+
+1. **AVIF is not a Merchant Center supported image format.** Google accepts GIF, JPEG, PNG,
+   WebP, TIFF and BMP. AVIF is not on the list.
+2. **Served as `text/plain`**, because the host has no MIME mapping for `.avif` — so even a
+   supported format at that URL would likely fail to fetch.
+
+A status-code check alone would have passed this. It took checking the **content type** to
+see it.
+
+### Fixed properly rather than flagged
+
+- Downloaded all 10 originals (indexes 0 and 1 were the same file — 9 unique).
+- Decoded with Pillow's AVIF support and converted to **WebP**, quality 88, `method=6`.
+  980×551, RGBA preserved.
+- **Looked at the result** before uploading, per the standing rule about trusting filenames:
+  a real photograph of an anthracite workshop container with a sectional door, in snow.
+- Uploaded the 9 as new media with German alt text, reassigned to product 2909 in order.
+- Verified every one now returns `Content-Type: image/webp`.
+
+### Re-swept after the fix
+
+```
+feed items      : 110
+landing pages   : 110   non-200: 0
+image URLs      : 759   bad (non-200 or non-image type): 0
+avif anywhere in feed: False
+```
+
+### One shared main image is expected, not a defect
+
+Two items share a main image: `CL3ST26104` and `CL3ST26106`, both *Remko … S-Line – silber*.
+That is the duplicate-import pair, and both correctly point at the one genuine silver
+photograph. It resolves when the owner deletes one of them.
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
