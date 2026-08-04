@@ -1232,6 +1232,70 @@ worth losing the rationale that has caught two regressions in this project, so t
 stay. Recorded here so the trade-off is a decision rather than an oversight.
 
 
+---
+
+## Cycle 4 — the "duplicate titles" finding was hiding an image mismatch
+
+> Authorisation: *"continue workflow from agent 1"*
+
+The audit had carried *"2 product titles are shared by more than one product"* as a MEDIUM
+owner-decision for several cycles. Diagnosing it properly instead of deferring it turned up a
+misrepresentation risk underneath.
+
+### What the pairs actually are
+
+| | 3602 / 3631 (weiß, €1.950) | 3613 / 3638 (S-Line silber, €2.150) |
+|---|---|---|
+| created | 20:34:49 / 20:34:38 | 20:34:43 / 20:34:34 |
+| SKUs | CL3ST26103 / CL3ST26105 | CL3ST26104 / CL3ST26106 |
+| price | identical | identical |
+| images | same source files re-uploaded (`-1`, `-2` suffixes) | same |
+
+Created seconds apart in one import, identical prices, sequential SKUs, the same photos
+uploaded twice. These are **duplicate imports of two products, not four.**
+
+### The part that mattered
+
+I did not trust the filenames — I downloaded the images, built contact sheets and looked at
+them. The white and silver studio shots are plainly different units.
+
+**Product 3638 is titled *S-Line – silber* and priced at €2.150 — the silver premium over the
+€1.950 white — and its main image was the WHITE unit.** That image is what the feed sends as
+`image_link` and what a buyer judges the product by. A feed image showing a different
+colour from the product it describes is exactly what Merchant Center disapproves for.
+
+It was also listed twice in that product's own gallery, as was 3631's.
+
+### Fixed
+
+| Product | Before | After |
+|---|---|---|
+| 3638 silber | lead = white studio shot, 6 images (1 dup) | lead = genuine silver shot, 5 images |
+| 3613 silber | correct lead, 7 images (1 dup) | 6 images |
+| 3631 weiß | correct lead, 6 images (1 dup) | 5 images |
+
+Verified in the rebuilt feed — all four SKUs now have `image_link` colour matching the title:
+
+```
+CL3ST26103  … – weiß              image=WHITE   expected=WHITE   OK
+CL3ST26104  … S-Line – silber     image=SILVER  expected=SILVER  OK
+CL3ST26105  … – weiß              image=WHITE   expected=WHITE   OK
+CL3ST26106  … S-Line – silber     image=SILVER  expected=SILVER  OK
+```
+
+### Still owner-gated, and now better specified
+
+**Delete one product from each pair.** Deleting is destructive, so it stays the owner's call —
+but this is no longer an open question about whether they are distinct stock. They are not.
+Suggested keepers: **3602** (weiß) and **3613** (silber), both of which have the fuller,
+correctly-ordered galleries.
+
+Also worth the owner knowing: the installation photos shared across all four products show a
+white unit. They are kept on the silver products because the lead image is now correct and
+they carry genuine setup information, but real photographs of the silver unit in situ would
+be better.
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
