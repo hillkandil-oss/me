@@ -1,0 +1,38 @@
+<!-- ============================================================
+     kaisercontainers — Header Top Info Bar
+     Apply above the main navigation via the Tranzix header builder,
+     an Elementor header template, or a child-theme header hook.
+     Uses .kc-topbar styles from brand.css. Replace 〔…〕 at go-live.
+     ============================================================ -->
+<div class="kc-topbar" role="complementary" aria-label="Kontakt- und Standortinformationen">
+  <div class="kc-container kc-topbar__inner">
+    <a class="kc-topbar__item" href="tel:〔TELEFON-E164, z. B. +49203…〕">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 11.5a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>
+      <span>Anrufen: 〔Telefonnummer〕</span>
+    </a>
+    <a class="kc-topbar__item" href="mailto:info@kaisercontainers.de">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+      <span>info@kaisercontainers.de</span>
+    </a>
+    <span class="kc-topbar__item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      <span>Mo–Sa: 08:00–18:30 Uhr</span>
+    </span>
+    <a class="kc-topbar__item" href="https://maps.app.goo.gl/k4JZCaARe1ZPu5WUA" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.7 7-12A7 7 0 0 0 5 9c0 5.3 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      <span>47138 Duisburg · Route planen</span>
+    </a>
+  </div>
+</div>
+
+<style>
+.kc-topbar__inner{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;padding-block:8px;}
+.kc-topbar__item{display:inline-flex;gap:7px;align-items:center;color:#fff;text-decoration:none;font-size:.9rem;}
+.kc-topbar__item svg{color:#E8A583;flex:0 0 auto;}
+.kc-topbar__item:hover{color:#F0C3AF;}
+@media(max-width:680px){
+  /* keep the two most useful actions on mobile: call + directions */
+  .kc-topbar__item{font-size:.85rem;}
+  .kc-topbar__inner{justify-content:center;gap:6px 14px;}
+}
+</style>

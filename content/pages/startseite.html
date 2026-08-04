@@ -1,0 +1,162 @@
+<!-- Startseite (homepage) · draft -->
+
+<style>
+.kc-home{--ink:#1A1D21;--steel:#26323C;--corten:#C2522A;--corten7:#A2401E;--paper:#F6F7F8;--line:#DDE1E4;--muted:#5B6670;--success:#2E7D46;font-family:Inter,'Segoe UI',system-ui,sans-serif;color:var(--ink);}
+.kc-home h1,.kc-home h2,.kc-home h3{font-family:Archivo,'Segoe UI',system-ui,sans-serif;line-height:1.15;}
+.kc-home .kc-wrap{max-width:1200px;margin-inline:auto;padding-inline:20px;}
+.kc-home section{padding-block:64px;}
+.kc-hero{background:linear-gradient(135deg,#26323C 0%,#1A1D21 100%);color:#fff;border-radius:8px;overflow:hidden;position:relative;}
+.kc-hero .kc-wrap{padding-block:72px;position:relative;z-index:1;}
+.kc-hero:before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 2px,transparent 2px 64px);opacity:.6;}
+.kc-hero h1{font-size:clamp(2rem,4.5vw,2.9rem);font-weight:800;margin:0 0 .5em;max-width:16ch;}
+.kc-hero p{font-size:1.15rem;max-width:52ch;color:#D8DDE1;margin:0 0 1.6em;}
+.kc-eyebrow{display:inline-block;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:#E8A583;font-weight:600;margin-bottom:1em;}
+.kc-btn{display:inline-block;background:var(--corten);color:#fff;font-weight:600;padding:.8em 1.5em;border-radius:6px;text-decoration:none;transition:background .18s;}
+.kc-btn:hover{background:var(--corten7);color:#fff;}
+.kc-btn--ghost{background:transparent;border:1px solid #6b7883;color:#fff;margin-left:10px;}
+.kc-btn--ghost:hover{background:rgba(255,255,255,.1);color:#fff;}
+.kc-grid{display:grid;gap:20px;}
+.kc-grid--4{grid-template-columns:repeat(4,1fr);}
+.kc-grid--3{grid-template-columns:repeat(3,1fr);}
+.kc-grid--2{grid-template-columns:1fr 1fr;}
+.kc-cat{display:block;background:#fff;border:1px solid var(--line);border-radius:6px;padding:22px;text-decoration:none;color:var(--ink);transition:box-shadow .18s,transform .18s;}
+.kc-cat:hover{box-shadow:0 8px 24px rgba(26,29,33,.1);transform:translateY(-2px);color:var(--ink);}
+.kc-cat h3{margin:.2em 0;font-size:1.15rem;color:var(--ink);}
+.kc-cat span{color:var(--muted);font-size:.95rem;}
+.kc-cat .kc-ico{width:40px;height:40px;color:var(--corten);}
+.kc-benefit{display:flex;gap:14px;align-items:flex-start;}
+.kc-benefit .kc-ico{width:34px;height:34px;color:var(--corten);flex:0 0 auto;}
+.kc-benefit h3{font-size:1.05rem;margin:.1em 0 .3em;}
+.kc-benefit p{font-size:.95rem;color:var(--muted);margin:0;}
+.kc-band{background:var(--steel);color:#fff;border-radius:8px;}
+.kc-band .kc-wrap{padding-block:48px;}
+.kc-band h2,.kc-band h3{color:#fff;} .kc-band a{color:#F0C3AF;}
+.kc-store-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;}
+.kc-store-list{list-style:none;padding:0;margin:0;} .kc-store-list li{padding:6px 0;border-bottom:1px solid rgba(255,255,255,.12);}
+.kc-faq details{background:#fff;border:1px solid var(--line);border-radius:6px;padding:14px 18px;margin-bottom:10px;}
+.kc-faq summary{font-weight:600;cursor:pointer;font-family:Archivo,sans-serif;}
+.kc-faq p{margin:.6em 0 0;color:var(--muted);}
+.kc-lead{font-size:1.15rem;color:var(--muted);max-width:70ch;}
+.kc-todo{background:#FFF3CD;color:#7a5b00;padding:0 4px;border-radius:3px;}
+.kc-center{text-align:center;} .kc-mt{margin-top:1.4em;}
+.kc-photo-slot{background:#EDEFF1;border:1px dashed #B9C0C6;border-radius:6px;min-height:280px;display:flex;align-items:center;justify-content:center;color:#8A929A;text-align:center;padding:20px;font-size:.95rem;}
+@media(max-width:900px){.kc-grid--4{grid-template-columns:1fr 1fr;}.kc-grid--3{grid-template-columns:1fr;}.kc-store-grid{grid-template-columns:1fr;}}
+@media(max-width:560px){.kc-grid--4{grid-template-columns:1fr;}.kc-grid--2{grid-template-columns:1fr;}.kc-btn--ghost{margin-left:0;margin-top:10px;}}
+@media(prefers-reduced-motion:reduce){.kc-cat,.kc-btn{transition:none;}}
+</style>
+
+<div class="kc-home">
+
+<!-- 2. HERO -->
+<section class="kc-hero"><div class="kc-wrap">
+  <span class="kc-eyebrow">Container kaufen in Duisburg</span>
+  <h1>See-, Lager- & Garagencontainer – neu und gebraucht</h1>
+  <p>Von 6 bis 40 Fuß, für Gewerbe und Privat. Online bestellen, deutschlandweit liefern lassen
+  oder nach Absprache bei uns in Duisburg abholen.</p>
+  <a class="kc-btn" href="/shop/">Zum Shop</a>
+  <a class="kc-btn kc-btn--ghost" href="https://maps.app.goo.gl/k4JZCaARe1ZPu5WUA" target="_blank" rel="noopener">Route planen</a>
+</div></section>
+
+<!-- 3. FEATURED CATEGORIES -->
+<section><div class="kc-wrap">
+  <h2>Unsere Container-Kategorien</h2>
+  <p class="kc-lead">Wählen Sie die passende Container-Art für Ihren Einsatzzweck.</p>
+  <div class="kc-grid kc-grid--4 kc-mt">
+    <a class="kc-cat" href="/product-category/seecontainer/"><svg class="kc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg><h3>Seecontainer</h3><span>Robust für Lagerung & Transport</span></a>
+    <a class="kc-cat" href="/product-category/lagercontainer/"><svg class="kc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1-5h16l1 5"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/></svg><h3>Lagercontainer</h3><span>Sichere Lagerlösungen</span></a>
+    <a class="kc-cat" href="/product-category/garagencontainer/"><svg class="kc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg><h3>Garagencontainer</h3><span>Mit Sektionaltor</span></a>
+    <a class="kc-cat" href="/product-category/gebrauchtcontainer/"><svg class="kc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h13v10H1z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg><h3>Gebrauchtcontainer</h3><span>Geprüft & preiswert</span></a>
+  </div>
+</div></section>
+
+<!-- 4. FEATURED PRODUCTS -->
+<section style="background:#fff;border-block:1px solid #DDE1E4;"><div class="kc-wrap">
+  <h2>Unsere Container</h2>
+  <p class="kc-lead">Eine Auswahl aus unserem Sortiment. Alle Preise in Euro.</p>
+  <div class="kc-mt">[products limit="8" columns="4" orderby="date" order="DESC"]</div>
+  <p class="kc-mt"><a class="kc-btn" href="/shop/">Alle Container ansehen</a></p>
+</div></section>
+
+<!-- 5. ADDITIONAL COLLECTION: Gebrauchtcontainer -->
+<section><div class="kc-wrap">
+  <h2>Gebrauchtcontainer</h2>
+  <p class="kc-lead">Geprüfte gebrauchte Container – eine wirtschaftliche Alternative.</p>
+  <div class="kc-mt">[products limit="4" columns="4" category="gebrauchtcontainer" orderby="date"]</div>
+</div></section>
+
+<!-- 6. BENEFITS -->
+<section style="background:#fff;border-block:1px solid #DDE1E4;"><div class="kc-wrap">
+  <h2>Warum kaisercontainers</h2>
+  <div class="kc-grid kc-grid--3 kc-mt">
+    <div class="kc-benefit"><svg class="kc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1-5h16l1 5"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/></svg><div><h3>Online & vor Ort</h3><p>Bequem online bestellen oder nach Absprache in Duisburg abholen.</p></div></div>
+    <div class="kc-benefit"><svg class="kc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg><div><h3>Neu & gebraucht</h3><p>Neue und geprüfte gebrauchte Container – Zustand transparent gekennzeichnet.</p></div></div>
+    <div class="kc-benefit"><svg class="kc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h13v10H1z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg><div><h3>Lieferung deutschlandweit</h3><p>Bearbeitung 0–1 Werktage, Lieferung typischerweise 2–5 Werktage.</p></div></div>
+    <div class="kc-benefit"><svg class="kc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><div><h3>Sichere Zahlung</h3><p>Zahlung per Banküberweisung über eine verschlüsselte Verbindung.</p></div></div>
+    <div class="kc-benefit"><svg class="kc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.7 7-12A7 7 0 0 0 5 9c0 5.3 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg><div><h3>Fester Standort</h3><p>Ein echtes Geschäft mit Adresse in Duisburg – rufen Sie uns an oder besuchen Sie uns.</p></div></div>
+    <div class="kc-benefit"><svg class="kc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg><div><h3>Persönliche Beratung</h3><p>Wir helfen Ihnen, die richtige Größe und Ausführung zu finden.</p></div></div>
+  </div>
+</div></section>
+
+<!-- 7. SHORT ABOUT -->
+<section><div class="kc-wrap kc-grid kc-grid--2" style="align-items:center;">
+  <div>
+    <h2>Ihr Container-Partner in Duisburg</h2>
+    <p>kaisercontainers bietet neue und gebrauchte See-, Lager- und Garagencontainer für gewerbliche
+    und private Kunden. Wir sind ein Geschäft mit festem Standort in Duisburg (Homberg/Baerl) – Sie
+    können uns anrufen, besuchen und Container nach Absprache vor Ort abholen.</p>
+    <p>Unser Anspruch: das passende Produkt, transparente Angaben zu Zustand und Maßen und ein
+    Kundenservice, der weiterhilft.</p>
+    <p class="kc-mt"><a class="kc-btn" href="/ueber-uns/">Mehr über uns</a>
+    <a class="kc-btn kc-btn--ghost" style="border-color:#C2522A;color:#C2522A;" href="https://maps.app.goo.gl/k4JZCaARe1ZPu5WUA" target="_blank" rel="noopener">Route planen</a></p>
+  </div>
+  <div class="kc-photo-slot">Platz für ein echtes Foto Ihres Standorts oder Container-Platzes.<br>
+  <mark class="kc-todo">〔BITTE BESTÄTIGEN: Bitte ein echtes Foto bereitstellen – keine erfundenen Bilder〕</mark></div>
+</div></section>
+
+<!-- 8. STORE INFO / TRUST -->
+<section class="kc-band"><div class="kc-wrap">
+  <div class="kc-store-grid">
+    <div>
+      <h2>Besuchen Sie unser Geschäft</h2>
+      <ul class="kc-store-list">
+        <li><strong>Adresse:</strong> <mark class="kc-todo">〔BITTE BESTÄTIGEN: Straße + Hausnr.〕</mark>, 47138 Duisburg (Homberg/Baerl)</li>
+        <li><strong>Öffnungszeiten:</strong> Mo–Sa: 08:00–18:30 Uhr</li>
+        <li><strong>Telefon:</strong> <mark class="kc-todo">〔BITTE BESTÄTIGEN: Telefonnummer〕</mark></li>
+        <li><strong>E-Mail:</strong> <a href="mailto:info@kaisercontainers.de">info@kaisercontainers.de</a></li>
+      </ul>
+      <p class="kc-mt"><a class="kc-btn" href="https://maps.app.goo.gl/k4JZCaARe1ZPu5WUA" target="_blank" rel="noopener">Route planen</a></p>
+    </div>
+    <div>
+      <iframe title="Standort von kaisercontainers in Duisburg" style="border:0;border-radius:8px;width:100%;height:280px;"
+        src="https://www.google.com/maps?q=47138+Duisburg+Homberg+Baerl&output=embed" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</div></section>
+
+<!-- 9. FAQ -->
+<section class="kc-faq"><div class="kc-wrap">
+  <h2>Häufige Fragen</h2>
+  <div class="kc-mt">
+    <details><summary>Wo befindet sich Ihr Geschäft?</summary><p>In 47138 Duisburg (Homberg/Baerl). Adresse und Karte finden Sie oben und auf der <a href="/kontakt/">Kontaktseite</a>.</p></details>
+    <details><summary>Kann ich Container vor Ort kaufen und abholen?</summary><p>Ja, nach vorheriger Absprache können Sie Container ansehen und abholen.</p></details>
+    <details><summary>Welche Zahlungsarten akzeptieren Sie?</summary><p>Zahlung per Banküberweisung. Details unter <a href="/zahlung/">Zahlung</a>.</p></details>
+    <details><summary>Liefern Sie deutschlandweit?</summary><p>Ja. Bearbeitung 0–1 Werktage, Lieferung typischerweise 2–5 Werktage. Details unter <a href="/versand/">Versand & Lieferung</a>.</p></details>
+    <details><summary>Wie kann ich die Verfügbarkeit bestätigen?</summary><p>Online- und Ladenverfügbarkeit können abweichen. Bitte kontaktieren Sie uns vor einem Besuch, um die Verfügbarkeit eines bestimmten Containers zu bestätigen.</p></details>
+    <details><summary>Wie funktioniert die Rückgabe?</summary><p>14-tägiges Widerrufsrecht plus freiwillige 30-Tage-Rückgabe. Details unter <a href="/widerruf/">Widerruf & Rückgabe</a>.</p></details>
+  </div>
+</div></section>
+
+<!-- 10. CONTACT FORM (final section) -->
+<section style="background:#fff;border-top:1px solid #DDE1E4;"><div class="kc-wrap">
+  <h2>Kontaktieren Sie unser Geschäft</h2>
+  <p class="kc-lead">Fragen zu Verfügbarkeit, Maßen, Lieferung oder einem Besuch? Wir antworten in
+  der Regel innerhalb eines Werktages.</p>
+  <ul class="kc-store-list" style="list-style:none;padding:0;color:#5B6670;">
+    <li><strong>Telefon:</strong> <mark class="kc-todo">〔BITTE BESTÄTIGEN: Telefonnummer〕</mark> · <strong>E-Mail:</strong> <a href="mailto:info@kaisercontainers.de">info@kaisercontainers.de</a></li>
+    <li><strong>Öffnungszeiten:</strong> Mo–Sa: 08:00–18:30 Uhr</li>
+  </ul>
+  <div class="kc-mt">[contact-form-7 id="6" title="Kontaktformular"]</div>
+</div></section>
+
+</div>

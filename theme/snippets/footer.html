@@ -1,0 +1,86 @@
+<!-- ============================================================
+     kaisercontainers — Footer
+     Apply via the Tranzix footer builder / Elementor footer template /
+     child-theme footer. Uses .kc-footer styles from brand.css.
+     Replace 〔…〕 at go-live. Add social links ONLY when verified.
+     ============================================================ -->
+<footer class="kc-footer">
+  <div class="kc-container kc-footer__grid">
+
+    <div class="kc-footer__col kc-footer__brand">
+      <h3>kaisercontainers</h3>
+      <p>Neue und gebrauchte See-, Lager- und Garagencontainer für Gewerbe und Privat –
+      Verkauf, Lieferung und Abholung in Duisburg.</p>
+    </div>
+
+    <div class="kc-footer__col">
+      <h4>Kontakt & Standort</h4>
+      <address>
+        〔Straße + Hausnummer〕<br>
+        47138 Duisburg (Homberg/Baerl)<br>
+        Deutschland
+      </address>
+      <p>
+        Tel.: <a href="tel:〔TELEFON-E164〕">〔Telefonnummer〕</a><br>
+        E-Mail: <a href="mailto:info@kaisercontainers.de">info@kaisercontainers.de</a><br>
+        Öffnungszeiten: Mo–Sa, 08:00–18:30 Uhr
+      </p>
+      <a class="kc-footer__cta" href="https://maps.app.goo.gl/k4JZCaARe1ZPu5WUA" target="_blank" rel="noopener">Route planen</a>
+    </div>
+
+    <div class="kc-footer__col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="/shop/">Alle Container</a></li>
+        <li><a href="/product-category/seecontainer/">Seecontainer</a></li>
+        <li><a href="/product-category/lagercontainer/">Lagercontainer</a></li>
+        <li><a href="/product-category/garagencontainer/">Garagencontainer</a></li>
+        <li><a href="/product-category/gebrauchtcontainer/">Gebrauchtcontainer</a></li>
+        <li><a href="/my-account/">Mein Konto</a></li>
+      </ul>
+    </div>
+
+    <div class="kc-footer__col">
+      <h4>Service & Rechtliches</h4>
+      <ul>
+        <li><a href="/ueber-uns/">Über uns</a></li>
+        <li><a href="/kontakt/">Kontakt</a></li>
+        <li><a href="/faq/">Häufige Fragen</a></li>
+        <li><a href="/versand/">Versand &amp; Lieferung</a></li>
+        <li><a href="/widerruf/">Widerruf &amp; Rückgabe</a></li>
+        <li><a href="/zahlung/">Zahlung</a></li>
+        <li><a href="/agb/">AGB</a></li>
+        <li><a href="/datenschutz/">Datenschutz</a></li>
+        <li><a href="/impressum/">Impressum</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="kc-footer__bar">
+    <div class="kc-container kc-footer__bar-inner">
+      <span>© <span id="kc-year">2026</span> kaisercontainers. Alle Rechte vorbehalten.</span>
+      <span class="kc-footer__pay">Zahlung: Banküberweisung</span>
+      <!-- Social links: add ONLY verified profiles. Example:
+      <a href="〔verifizierter Link〕" aria-label="Facebook">…</a> -->
+    </div>
+  </div>
+</footer>
+
+<style>
+.kc-footer__grid{display:grid;grid-template-columns:1.4fr 1.2fr 1fr 1fr;gap:32px;padding-block:48px;}
+.kc-footer h3{color:#fff;font-family:Archivo,sans-serif;margin:0 0 .5em;}
+.kc-footer h4{color:#fff;font-size:1rem;margin:0 0 .8em;}
+.kc-footer p,.kc-footer address{color:#C7CFD5;font-style:normal;line-height:1.6;font-size:.95rem;}
+.kc-footer ul{list-style:none;padding:0;margin:0;}
+.kc-footer li{padding:3px 0;}
+.kc-footer a{color:#E9EDF0;text-decoration:none;font-size:.95rem;}
+.kc-footer a:hover{color:#fff;text-decoration:underline;}
+.kc-footer__cta{display:inline-block;margin-top:10px;background:#C2522A;color:#fff !important;padding:.5em 1em;border-radius:6px;}
+.kc-footer__cta:hover{background:#A2401E;text-decoration:none;}
+.kc-footer__bar{border-top:1px solid rgba(255,255,255,.12);}
+.kc-footer__bar-inner{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;align-items:center;padding-block:16px;color:#9AA6AF;font-size:.88rem;}
+@media(max-width:900px){.kc-footer__grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.kc-footer__grid{grid-template-columns:1fr;gap:24px;}}
+</style>
+<script>document.getElementById('kc-year')&&(document.getElementById('kc-year').textContent=new Date().getFullYear());</script>
