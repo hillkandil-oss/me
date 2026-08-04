@@ -1460,10 +1460,10 @@ shows the same pair plus the 30-day disclosure.
 
 ---
 
-## Trading name set to „omarscontainers.com"
+## Trading name — settled on „omarscontainers.de"
 
 > Authorisation: *"legal entity is omarscontainers.com"* → clarified to option 1, the
-> **Geschäftsbezeichnung**.
+> **Geschäftsbezeichnung** → corrected to *"Impressum omarscontainers.de"*.
 
 ### What I did not do, and why
 
@@ -1484,21 +1484,26 @@ Only the trade name. A sole trader may trade under a Geschäftsbezeichnung conta
 so this is legitimate:
 
 > **Omar Peters**
-> Einzelunternehmen, handelnd unter der Geschäftsbezeichnung **„omarscontainers.com"**
+> Einzelunternehmen, handelnd unter der Geschäftsbezeichnung **„omarscontainers.de"**
 > Karnaper Str. 177 A, 45329 Essen, Deutschland
 > *Das Unternehmen ist nicht im Handelsregister eingetragen.*
 
 Provider, address, register statement and placeholder count (2) all unchanged.
 
-### Two things the owner should be aware of
+`.com` was set briefly and then corrected to `.de` by the owner — the right call. It resolves
+the concern raised at the time: a trade name customers read as a web address should be an
+address that actually loads, and `omarscontainers.com` did not resolve. No `.com` string
+remains anywhere on the page.
 
-1. **The site brands itself `omarscontainers`, the Impressum now says `omarscontainers.com`,
-   and the site is served from `omarscontainers.de`.** Merchant Center checks that the business
-   name on the site, in the Impressum and in the Merchant Center account agree. Three variants
-   is a weak spot. I have not unilaterally rebranded the header, logo or footer — that is a
-   brand decision, not a compliance fix.
-2. **The .com domain is dead.** Trading under a name customers will read as a web address, when
-   that address does not load, invites support mail at best and a credibility question at worst.
+### Still worth the owner's attention
+
+**The site brands itself `omarscontainers`; the Impressum trade name is `omarscontainers.de`.**
+Merchant Center checks that the business name on the site, in the Impressum and in the
+Merchant Center account agree. Two near-identical variants is far better than the three we
+briefly had, and is unlikely to be queried — but when the Merchant Center account is created,
+**enter the business name exactly as the Impressum states it**, and it becomes a non-issue.
+I have not rebranded the header, logo or footer: that is a brand decision, not a compliance
+fix.
 
 ### Also fixed this pass
 
