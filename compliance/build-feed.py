@@ -114,9 +114,11 @@ def condition_of(product: dict) -> str | None:
 
 
 def build(base: str, country: str, currency: str, shipping_cost: str | None,
-          max_products: int) -> tuple[list[dict], list[str]]:
+          max_products: int,
+          reference_prices_verified: bool = False) -> tuple[list[dict], list[str]]:
     items: list[dict] = []
     notes: list[str] = []
+    unsubstantiated: list[tuple[str, float, float]] = []
     page = 1
     raw: list[dict] = []
     while len(raw) < max_products:
@@ -163,10 +165,23 @@ def build(base: str, country: str, currency: str, shipping_cost: str | None,
             "mpn": "",
         }
 
-        # Genuine sale price only — never a manufactured strikethrough.
+        # A sale price is a CLAIM: that the reference price was really charged before.
+        #
+        # WooCommerce having a higher regular_price does not substantiate that. Under
+        # PAngV §11 (Germany, implementing EU 98/6/EC Art. 6a) an advertised reduction
+        # must state the lowest price the trader applied in the preceding 30 days, and
+        # Google treats an unsubstantiated strikethrough as misrepresentation.
+        #
+        # So the reference price has to be verified out-of-band by someone who knows
+        # the shop's price history. Until it is, the feed carries the price the
+        # customer actually pays and makes no reduction claim at all — which is always
+        # true, and never a policy risk.
         if p.get("on_sale") and regular > price_major > 0:
-            item["price"] = f"{regular:.2f} {prices.get('currency_code') or currency}"
-            item["sale_price"] = f"{price_major:.2f} {prices.get('currency_code') or currency}"
+            if reference_prices_verified:
+                item["price"] = f"{regular:.2f} {prices.get('currency_code') or currency}"
+                item["sale_price"] = f"{price_major:.2f} {prices.get('currency_code') or currency}"
+            else:
+                unsubstantiated.append((item_id, regular, price_major))
 
         # No GTIN or MPN is available from the store. Declaring identifier_exists=no
         # is the honest option; inventing a code is a policy violation.
@@ -181,6 +196,14 @@ def build(base: str, country: str, currency: str, shipping_cost: str | None,
     dupes = [i for i, c in seen_ids.items() if c > 1]
     if dupes:
         notes.append(f"DUPLICATE ids: {len(dupes)} — {dupes[:5]}")
+    if unsubstantiated:
+        worst = max(100 * (r - s) / r for _, r, s in unsubstantiated)
+        notes.append(
+            f"SALE PRICES WITHHELD: {len(unsubstantiated)} product(s) have a higher "
+            f"regular_price in WooCommerce (up to {worst:.1f}% apparent reduction), but "
+            f"nothing substantiates that it was ever charged. The feed carries the actual "
+            f"selling price and makes no reduction claim. Pass --reference-prices-verified "
+            f"once the 30-day price history is confirmed (PAngV §11).")
     return items, notes
 
 
@@ -265,11 +288,17 @@ def main() -> int:
     ap.add_argument("--currency", default="EUR")
     ap.add_argument("--shipping", help="flat shipping cost, e.g. 170.00")
     ap.add_argument("--max-products", type=int, default=5000)
+    ap.add_argument("--reference-prices-verified", action="store_true",
+                    help="Emit sale_price. Only pass this once someone has confirmed "
+                         "the struck-through reference price was genuinely charged in "
+                         "the preceding 30 days (PAngV §11). Off by default, because an "
+                         "unsubstantiated reduction is a misrepresentation risk.")
     a = ap.parse_args()
 
     base = a.url if "://" in a.url else "https://" + a.url
     base = base.rstrip("/")
-    items, notes = build(base, a.country, a.currency, a.shipping, a.max_products)
+    items, notes = build(base, a.country, a.currency, a.shipping, a.max_products,
+                         a.reference_prices_verified)
 
     print(f"\nMerchant Center feed — {base}")
     print("=" * 70)

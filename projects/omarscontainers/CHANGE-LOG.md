@@ -1296,6 +1296,64 @@ they carry genuine setup information, but real photographs of the silver unit in
 be better.
 
 
+---
+
+## Cycle 5 — the sale prices are not substantiated
+
+> Authorisation: *"continue to next agent"*
+
+Earlier cycles recorded *"Sale pricing is genuine — 9 discounted products, no uniform
+pattern, zero fake strikethroughs"* under **Verified, no change required**. That check only
+confirmed WooCommerce held a higher `regular_price`. It never asked whether that price was
+ever charged. Looking properly:
+
+| | |
+|---|---|
+| discounted products | 9 of 110 |
+| apparent reductions | 6.8% – **38.7%** (e.g. €22.000 → €15.800) |
+| all created | **2026-08-03** |
+| earliest product in the whole catalogue | 2026-08-02 |
+| `date_on_sale_from` / `date_on_sale_to` | **None on all nine** — open-ended, permanent |
+
+The store is two days old and the sales have no start date. **There is no 30-day price
+history in which the struck-through reference price was ever charged here.**
+
+PAngV §11 (Germany, implementing EU 98/6/EC Art. 6a) requires an advertised reduction to
+state the lowest price the trader applied in the preceding 30 days. Google treats an
+unsubstantiated strikethrough as misrepresentation. A permanent open-ended "sale" with no
+history is a recognised disapproval trigger.
+
+### What changed in the generator
+
+`build-feed.py` treated `regular_price > price` as proof of a genuine sale. It is not proof
+of anything except that a number was typed into a field. The reference price now has to be
+verified out-of-band:
+
+- **Default:** the feed carries the price the customer actually pays and makes **no reduction
+  claim**. Always true, never a policy risk. Sale-price tags in the feed went 9 → **0**.
+- **`--reference-prices-verified`:** restores `sale_price` for all 9 once someone confirms the
+  price history. Tested both ways — 0 tags without the flag, 9 with it.
+- The build now prints a note naming the count and the largest apparent reduction, so this
+  cannot quietly pass unnoticed again.
+
+### Not fixed, and not mine to fix
+
+**The strikethrough is still on the website.** Removing it means changing the shop's pricing
+display, which is a commercial decision. The owner has two honest routes:
+
+1. The reference prices *were* genuinely charged in the last 30 days → keep them, add the
+   PAngV §11 disclosure, and rebuild the feed with `--reference-prices-verified`.
+2. They were not → clear the sale prices so each product's regular price is simply what it
+   sells for. Customers pay the same either way.
+
+Route 2 is the safer default for a two-day-old shop.
+
+### Correction to an earlier entry
+
+The line *"Sale pricing is genuine … zero fake strikethroughs"* in this log was wrong — or
+rather, it verified something narrower than it claimed. It is superseded by this entry.
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
