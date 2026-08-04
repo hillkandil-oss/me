@@ -1369,11 +1369,10 @@ Placeholders: **5 → 4**.
 
 ### Two judgement calls in this
 
-**The name was typed `omars peters`.** I published **Omar Peters** — the business name
-*omarscontainers* reads as the German genitive of *Omar*, so that is near-certainly the
-intended spelling. It is a real person's name on a legal document, so the owner should
-confirm it. I did not invent it; I normalised capitalisation and read `omars` as the
-possessive rather than a given name.
+**The name was typed `omars peters`.** I published **Omar Peters**, reading `omars` as the
+German genitive the business name is built from rather than a given name. Because it is a
+real person's name on a legal document I asked the owner to confirm rather than assume —
+**confirmed by the owner on 2026-08-04.**
 
 **I used *Vertretungsberechtigte Person*, not *Geschäftsführer*.** "Geschäftsführer" is
 specific to a GmbH. Since no Rechtsform has been supplied, that label would have asserted a
