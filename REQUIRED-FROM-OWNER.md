@@ -40,8 +40,14 @@ Legend: 🔴 blocks publication · 🟠 blocks a specific page/feature · 🟡 i
 | 18 | **Verified social-media profile links** | Header/footer | ⏳ (omit until verified) |
 
 ## 🟡 Product data (per product, for the feed)
-GTIN/EAN (only if real — never invented), MPN, exact dimensions (20ft/40ft/High Cube etc.),
-material, colour, weight, what's included, real stock/availability.
+| # | Item | Status |
+|---|---|---|
+| 19 | **Condition (Neu/Gebraucht)** | ✅ applied to all 20 products (17 neu, 3 gebraucht) |
+| 20 | **Dimensions + weight** — confirm standard ISO figures in `docs/product-dimensions-reference.md` (or send actual) | ⏳ all 20 products currently blank |
+| 21 | **GTIN/EAN** — only if real (containers usually have none → feed uses `identifier_exists=no`) | ⏳ optional |
+| 22 | **Material / colour / what's included** per product (optional, improves feed) | ⏳ |
+
+_Feed generated: `data/merchant-center-feed.csv` (20 real rows) · gaps: `data/product-feed-audit.csv`._
 
 ---
 _Last updated: 2026-08-04 · maintained during the build._

@@ -1,0 +1,52 @@
+{
+  "note": "Reference JSON-LD for kaisercontainers. Replace every 〔…〕 with verified data before publishing. Inject on every page via the PHP snippet in theme/snippets/schema-jsonld.php, or an SEO plugin. Validate at https://validator.schema.org and Google Rich Results Test.",
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://kaisercontainers.de/#organization",
+      "name": "kaisercontainers",
+      "url": "https://kaisercontainers.de/",
+      "logo": "https://kaisercontainers.de/〔Pfad-zum-Logo〕.png",
+      "email": "info@kaisercontainers.de",
+      "telephone": "〔+49… E.164〕",
+      "sameAs": []
+    },
+    {
+      "@type": "Store",
+      "@id": "https://kaisercontainers.de/#localbusiness",
+      "name": "kaisercontainers",
+      "image": "https://kaisercontainers.de/〔echtes-Standortfoto〕.jpg",
+      "url": "https://kaisercontainers.de/",
+      "email": "info@kaisercontainers.de",
+      "telephone": "〔+49… E.164〕",
+      "priceRange": "€€",
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Banküberweisung",
+      "parentOrganization": { "@id": "https://kaisercontainers.de/#organization" },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "〔Straße + Hausnummer〕",
+        "addressLocality": "Duisburg",
+        "addressRegion": "Nordrhein-Westfalen",
+        "postalCode": "47138",
+        "addressCountry": "DE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "〔Breitengrad〕",
+        "longitude": "〔Längengrad〕"
+      },
+      "hasMap": "https://maps.app.goo.gl/k4JZCaARe1ZPu5WUA",
+      "areaServed": { "@type": "Country", "name": "Deutschland" },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+          "opens": "08:00",
+          "closes": "18:30"
+        }
+      ]
+    }
+  ]
+}

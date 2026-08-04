@@ -1,0 +1,21 @@
+id,sku,name,condition,images,has_dimensions,has_weight,price_eur,gaps
+18,GC-LA-12,12 Fuß Lagercontainer mit Tür & Fenster,new,2,nein,nein,2150.00,Maße fehlen; Gewicht fehlt
+19,GC-UC-40-HC,Gebrauchter 40 Fuß High Cube Container,used,5,nein,nein,2400.00,Maße fehlen; Gewicht fehlt
+20,GC-UC-40,Gebrauchter 40 Fuß Container,used,4,nein,nein,2200.00,Maße fehlen; Gewicht fehlt
+21,GC-UC-20,Gebrauchter 20 Fuß Container,used,6,nein,nein,1650.00,Maße fehlen; Gewicht fehlt
+22,GC-SC-40-HC-OS,40 Fuß High Cube Container mit offener Seite,new,1,nein,nein,3850.00,Maße fehlen; Gewicht fehlt
+23,GC-SC-40-HC-DD,40 Fuß High Cube Doppeltür-Seecontainer,new,4,nein,nein,3650.00,Maße fehlen; Gewicht fehlt
+24,GC-SC-40-HC,40 Fuß High Cube Seecontainer,new,6,nein,nein,3450.00,Maße fehlen; Gewicht fehlt
+25,GC-SC-40,40 Fuß Seecontainer,new,4,nein,nein,3200.00,Maße fehlen; Gewicht fehlt
+26,GC-SC-20-HC-OS,20 Fuß High Cube Container mit offener Seite,new,4,nein,nein,3150.00,Maße fehlen; Gewicht fehlt
+27,GC-SC-20-HC-DD,20 Fuß High Cube Doppeltür-Seecontainer,new,3,nein,nein,2850.00,Maße fehlen; Gewicht fehlt
+28,GC-GA-20-HC,20 Fuß High Cube Garagencontainer (Sektionaltor),new,3,nein,nein,3150.00,Maße fehlen; Gewicht fehlt
+29,GC-SC-20-HC,20 Fuß High Cube Seecontainer,new,6,nein,nein,2750.00,Maße fehlen; Gewicht fehlt
+30,GC-SC-20-OS,20 Fuß Container mit offener Seite,new,4,nein,nein,2950.00,Maße fehlen; Gewicht fehlt
+31,GC-SC-20-DD,20 Fuß Doppeltür-Seecontainer,new,4,nein,nein,2650.00,Maße fehlen; Gewicht fehlt
+32,GC-GA-20,20 Fuß Garagencontainer (Sektionaltor),new,3,nein,nein,2950.00,Maße fehlen; Gewicht fehlt
+33,GC-SC-10-HC,10 Fuß High Cube Seecontainer,new,4,nein,nein,2050.00,Maße fehlen; Gewicht fehlt
+34,GC-SC-08,8 Fuß Seecontainer,new,3,nein,nein,1190.00,Maße fehlen; Gewicht fehlt
+35,GC-SC-06,6 Fuß Seecontainer,new,2,nein,nein,990.00,Maße fehlen; Gewicht fehlt
+36,GC-SC-20,20 Fuß Seecontainer,new,6,nein,nein,2450.00,Maße fehlen; Gewicht fehlt
+37,GC-SC-10,10 Fuß Seecontainer,new,6,nein,nein,1890.00,Maße fehlen; Gewicht fehlt
