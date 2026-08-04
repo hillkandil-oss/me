@@ -1657,6 +1657,37 @@ Reminder from the previous entry: choose **Deutsch (Sie)** / `de_DE_formal`, not
 `de_DE`, which is the informal *du* variant. Site copy is 26 Sie-forms to zero du-forms.
 
 
+---
+
+## Telephone corrected to the Essen line — and the format fixed
+
+> Authorisation: *"+02012760909 use this number instead"*
+
+**Published as `+49 201 2760909`, not as given.** `+02012760909` is not a dialable number:
+`+` introduces the international format and a leading `0` is the German national trunk prefix
+— they are mutually exclusive. A phone dialling `+0201…` fails. The two valid renderings of
+the number supplied are:
+
+| | |
+|---|---|
+| national | `0201 2760909` |
+| international | **`+49 201 2760909`** ← published, in `tel:` and on screen |
+
+Normalised, not reinterpreted: the digits are exactly as given, only the prefix is corrected.
+
+### This closes the mismatch flagged an hour ago
+
+The previous number was `+49 40 …` — **Hamburg**, against an Essen address. `0201` **is
+Essen**. Name, address and phone now agree, which is what Merchant Center's business-info
+check and Google Business Profile's NAP consistency both look at. The concern raised when the
+first number was published is resolved.
+
+Replaced in all four locations — header contact bar, Impressum, Kontakt page, and the
+`telephone` field of the `Store` JSON-LD. Verified live that the new number renders, that no
+trace of the Hamburg number remains (`4027609` absent from every page), and that the invalid
+`+0201` string appears nowhere.
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
