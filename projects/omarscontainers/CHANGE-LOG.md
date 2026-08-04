@@ -1512,6 +1512,63 @@ The Impressum's meta description was being auto-generated from page content, so
 Set explicitly.
 
 
+---
+
+## Site language — exhausted every route I have, and it is not reachable
+
+> Authorisation: *"change site language in german"*
+
+I could not do it, and this entry records **what was actually tried**, so nobody repeats the
+search.
+
+| Route | Result |
+|---|---|
+| `POST /wp/v2/settings {"language":"de_DE"}` | returns `en_US` — silently rejected |
+| `wp-abilities/v1/.../hostinger-ai-assistant/wp-settings-update` (accepts a `language` field) | returns `en_US` — same rejection |
+| All 100 entries in the Abilities API, scanned for file-write, upload, translation or locale install | **none exists** — only plugin/theme/media management |
+| `hostinger-easy-onboarding/v1`, `hostinger-tools-plugin/v1`, `hostinger/v1`, `litespeed/*`, `slim-seo` route maps | nothing that installs a language pack |
+| `xmlrpc.php` | 405, disabled |
+
+### Why it fails, precisely
+
+WordPress core's `sanitize_option('WPLANG')` checks the value against
+`get_available_languages()`, which scans `wp-content/languages` for `.mo` files. If the locale
+is not already on disk it **silently reverts to the existing value** — no error, which is why
+every attempt returns `en_US` with a 200.
+
+The function that puts the files on disk, `wp_download_language_pack()`, is called from
+`wp-admin/options.php`. It is not exposed through REST by core or by any installed plugin. The
+Hostinger ability is a thin wrapper over `update_option()`, so it hits the same wall.
+
+**This is a genuine dead end over REST, not a missing trick.**
+
+### Pre-flight done so the owner's click cannot fail
+
+Checked `api.wordpress.org/translations/core/1.0/?version=7.0.2`: the German pack **exists and
+is current** — `de_DE`, updated 2026-08-03. Saving will download it.
+
+### Recommendation: pick `de_DE_formal`, not `de_DE`
+
+WordPress ships two German locales. `de_DE` is the informal *du* variant; **`de_DE_formal` is
+the *Sie* variant**. Counted across the live site:
+
+| Page | Sie-form | du-form |
+|---|---|---|
+| /kontakt/ | 11 | 0 |
+| /ueber-uns/ | 13 | 0 |
+| /versand-und-lieferung/ | 2 | 0 |
+
+Every word of copy on this site addresses the customer as *Sie*, and none as *du*. Choosing
+plain `de_DE` would put a *du*-form checkout in front of a *Sie*-form shop selling
+€15,000 containers. **Deutsch (Sie)** is the one to pick.
+
+### Owner action
+
+*Einstellungen → Allgemein → Spracheinstellungen der Website → **Deutsch (Sie)** → Speichern.*
+
+Loco Translate is installed as a second route if the dropdown misbehaves.
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
