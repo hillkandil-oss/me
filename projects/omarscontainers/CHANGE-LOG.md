@@ -1354,6 +1354,51 @@ The line *"Sale pricing is genuine … zero fake strikethroughs"* in this log wa
 rather, it verified something narrower than it claimed. It is superseded by this entry.
 
 
+---
+
+## Impressum — two owner facts supplied
+
+> Authorisation: *"Impressum legal entity omarscontainers managing director omars peters"*
+
+| | |
+|---|---|
+| Anbieter | omarscontainers, Karnaper Str. 177 A, 45329 Essen |
+| Vertretungsberechtigte Person | **Omar Peters** |
+
+Placeholders: **5 → 4**.
+
+### Two judgement calls in this
+
+**The name was typed `omars peters`.** I published **Omar Peters** — the business name
+*omarscontainers* reads as the German genitive of *Omar*, so that is near-certainly the
+intended spelling. It is a real person's name on a legal document, so the owner should
+confirm it. I did not invent it; I normalised capitalisation and read `omars` as the
+possessive rather than a given name.
+
+**I used *Vertretungsberechtigte Person*, not *Geschäftsführer*.** "Geschäftsführer" is
+specific to a GmbH. Since no Rechtsform has been supplied, that label would have asserted a
+legal form nobody has confirmed. The neutral term is correct for a GmbH and for a sole trader
+alike.
+
+### Why a Rechtsform placeholder remains
+
+*omarscontainers* is a trade name, not a legal form — so §5 DDG is still not satisfied. The
+placeholder was rewritten to say exactly that, and to name the consequence: **this one answer
+decides whether the Registereintrag and USt-IdNr. sections apply at all.**
+
+- **GmbH / UG / e. K.** → Handelsregister number is mandatory, and *Geschäftsführer* becomes
+  the correct label.
+- **Einzelunternehmen, not in the Handelsregister** → there is no HRB number, and the
+  provider must be named as the **natural person** (Omar Peters), with *omarscontainers* as
+  the trade name alongside.
+
+Answering it will likely clear two of the four remaining placeholders at once.
+
+### Still outstanding
+
+Rechtsform · Telefonnummer · Handelsregisternummer (if registered) · USt-IdNr. (if held).
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
