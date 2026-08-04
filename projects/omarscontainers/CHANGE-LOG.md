@@ -1617,6 +1617,46 @@ yard**. The second one explicitly says stock photos of someone else's site would
 misrepresentation. Both are owner knowledge that must not be invented.
 
 
+---
+
+## Site language, second attempt — search widened, same dead end, cost now quantified
+
+> Authorisation: *"change site language to german"* (asked again)
+
+Rather than repeat the earlier answer I widened the search. **The first pass had missed
+abilities** — the endpoint paginates at 100 and there are **128**.
+
+| Checked this pass | Result |
+|---|---|
+| All **128** abilities (not 100) across 7 pages | no file-write, upload, locale or translation ability |
+| `mcp` and `hostinger-ai-assistant/v1/mcp` | expose the same ability registry |
+| `jetpack/v4` (28 routes incl. remote_provision, remote_connect) | connection management only |
+| `hostinger-ai-plugin/v1` (set-fonts, set-colors, save-contact-info, build-content…) | site-builder actions, no locale |
+| `wc/private`, `litespeed/v3`, `wp-site-health/v1`, `wp-block-editor/v1` | nothing relevant |
+
+Confirmed dead end. The only ability that touches this, `hostinger-ai-assistant/wp-settings-update`,
+advertises a `language` field and is a thin wrapper over `update_option()` — so it hits core's
+`sanitize_option('WPLANG')` guard and silently returns `en_US`.
+
+### What the missing locale is actually costing, measured
+
+Every string below is **visible to a customer right now** on a German store:
+
+| Page | English still shown |
+|---|---|
+| Every product & shop page | **`Add to cart`** — the primary conversion button |
+| Product page | `Description`, `Additional information`, `Reviews`, `Sale!` |
+| Shop | `Showing 1–16 of 110 results`, all five `Sort by …` options |
+| Everywhere | `Subtotal`, `Total`, `View cart`, `Home`, `Skip to content` |
+
+The buy button on a €15,000 container is in English. These are core and WooCommerce
+translatable strings — not template content, so the template translations done earlier cannot
+reach them. **One save in Settings → General fixes every one of them simultaneously.**
+
+Reminder from the previous entry: choose **Deutsch (Sie)** / `de_DE_formal`, not plain
+`de_DE`, which is the informal *du* variant. Site copy is 26 Sie-forms to zero du-forms.
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
