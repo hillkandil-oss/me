@@ -15,5 +15,12 @@ All notable changes to the deliverables in this repo.
   store is in Duisburg; owner to provide the correct number.
 - **Condition:** containers sold **both new and used** → per-product `condition` attribute.
 
+### Audited (live site, read-only)
+- Authenticated to live WordPress via Application Password (admin). Reachable from sandbox.
+- Recorded findings in `docs/site-audit.md`: theme **Tranzix v1.0.1**, WooCommerce +
+  Elementor + CF7 + LiteSpeed on Hostinger; **20 real German products** + German categories
+  already present; config wrong for DE (en_US/USD/US:CA/GMT0, no homepage); legal pages
+  missing; menus unassigned; product feed gaps (no dims/condition/brand/GTIN).
+
 ### Removed
 - Unrelated prior project (BeepWear watch store) — recoverable from git history.
