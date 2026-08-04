@@ -1,0 +1,47 @@
+# Required From Store Owner — kaisercontainers
+
+Nothing below will be published, guessed, or fabricated. Each item blocks the pages/features
+listed until you confirm a verified value. Send answers and I'll fill them in.
+
+Legend: 🔴 blocks publication · 🟠 blocks a specific page/feature · 🟡 improves trust/SEO
+
+## 🔴 Legal & identity (German law — Impressum, §5 DDG/TMG)
+| # | Item | Needed for | Status |
+|---|---|---|---|
+| 1 | **Store phone number** (brief's +49 403508980 is a *Hamburg* code; store is in *Duisburg*) | Header, footer, contact, schema, feed | ⏳ owner will provide correct number |
+| 2 | **Responsible person / owner full name** | Impressum | ⏳ |
+| 3 | **Exact street + house number** (currently only "Homberg/Ruhrort/Baerl") | Address everywhere, Maps pin, schema | ⏳ |
+| 4 | **USt-IdNr.** (VAT ID) | Impressum, invoices, feed tax | ⏳ |
+| 5 | **Handelsregisternummer + registry court** (if registered) | Impressum | ⏳ |
+| 6 | **Legal form** (e.g. Einzelunternehmen, GmbH) | Impressum, AGB | ⏳ |
+
+## 🔴 Commerce facts
+| # | Item | Needed for | Status |
+|---|---|---|---|
+| 7 | **Container condition** — confirmed **new + used both sold** | Product labels, feed `condition` | ✅ confirmed |
+| 8 | **Prices net or gross?** (B2B container sales are often net + 19% VAT) | Price display, checkout, feed | ⏳ |
+| 9 | **Real shipping costs** for containers (heavy freight — flat, by zone, or on request?) | Cart, checkout, Versand policy, feed | ⏳ |
+| 10 | **Warranty / Gewährleistung terms** | Warranty policy, product pages | ⏳ |
+| 11 | **Store-pickup details** — address/hours/prep/ID/holding period for collection | Pickup section, checkout | ⏳ (pickup = YES confirmed; details needed) |
+
+## 🟠 Location & contact detail
+| # | Item | Needed for | Status |
+|---|---|---|---|
+| 12 | **Geo coordinates** (lat/long of the real premises) | LocalBusiness schema, map | ⏳ (derive from confirmed street address) |
+| 13 | **Nearby landmark** | Contact page (optional) | ⏳ |
+| 14 | **Parking / public transport / accessibility** | Store-visit section | ⏳ |
+
+## 🟡 Brand & media
+| # | Item | Needed for | Status |
+|---|---|---|---|
+| 15 | **Real logo** (or approve the proposed placeholder wordmark) | Header, footer, schema | ⏳ |
+| 16 | **Brand colors** (or approve proposed industrial palette) | Design system | ⏳ proposed, awaiting approval |
+| 17 | **Real photos** of store premises + actual containers | Hero, product pages, About | 🔴 must be real; no AI misrepresentation |
+| 18 | **Verified social-media profile links** | Header/footer | ⏳ (omit until verified) |
+
+## 🟡 Product data (per product, for the feed)
+GTIN/EAN (only if real — never invented), MPN, exact dimensions (20ft/40ft/High Cube etc.),
+material, colour, weight, what's included, real stock/availability.
+
+---
+_Last updated: 2026-08-04 · maintained during the build._
