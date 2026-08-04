@@ -34,6 +34,11 @@ All notable changes to the deliverables in this repo.
 - WooCommerce: guest checkout + login reminder + account registration enabled;
   "Deutschland" shipping zone with **store pickup** ("Abholung in Duisburg", enabled).
 - Note: woocommerce_terms_page_id (AGB) won't persist via REST → set in GUI at go-live.
+- Site title set to brand "kaisercontainers".
+- Descriptive German alt text set on all 80 product images (accessibility/SEO/feed).
+- Added Cookie-Richtlinie + Barrierefreiheitserklärung pages and 3 Ratgeber guides (draft).
+- Complianz cookie consent installed (inactive; wizard config at go-live).
+- theme/snippets/product-info.php — global product availability/shipping/returns section.
 
 ### Delivered (repo)
 - design-system.md + brand.css; header/footer snippets; merchant-center-feed.csv (20 rows)
