@@ -15,8 +15,9 @@ Flip it live in this order once the owner facts are confirmed and placeholders a
 
 ## C. Publish content (WordPress admin or via API)
 - [ ] Publish pages: Startseite, Kontakt, Über uns, Impressum, Datenschutz, AGB,
-      Widerruf, Versand, Zahlung, FAQ (currently draft ids: 128, 119, 120, 121, 122,
-      123, 124, 125, 126, 127)
+      Widerruf, Versand, Zahlung, FAQ, Cookie-Richtlinie, Barrierefreiheit
+      (draft ids: 128, 119, 120, 121, 122, 123, 124, 125, 126, 127, 139, 140)
+- [ ] Publish Ratgeber posts (ids 141, 142, 143) + add a "Ratgeber" nav/footer link
 - [ ] Settings → Reading → Front page displays **a static page → "Startseite"**
 - [ ] Remove/trash old English stubs: "Privacy Policy" (id 3), "Refund and Returns" (id 13);
       repoint WooCommerce privacy page → Datenschutz, terms page → AGB
@@ -41,6 +42,12 @@ Flip it live in this order once the owner facts are confirmed and placeholders a
       `theme/snippets/schema-jsonld.php` — not both** (avoid duplicate LocalBusiness schema)
 - [ ] Ensure WooCommerce module on → Product/Offer/Breadcrumb schema emitted
 - [ ] Per-page SEO titles for key pages (not writable via API; set here)
+
+## D3. Consent + product info
+- [ ] **Complianz** (installed, inactive) → activate + run wizard (DSGVO/TTDSG, German,
+      prior opt-in for non-essential); link to Cookie-Richtlinie; test on mobile
+- [ ] Add `theme/snippets/product-info.php` (child theme/snippets) → global
+      "Versand, Abholung & Verfügbarkeit" tab + availability notice on every product
 
 ## E. Verify after go-live
 - [ ] Header phone/email/directions links work; address consistent everywhere
