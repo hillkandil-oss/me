@@ -45,5 +45,20 @@ All notable changes to the deliverables in this repo.
   + feed audit; localbusiness.jsonld + schema-jsonld.php; product-dimensions-reference.md;
   go-live-checklist.md; merchant-center-readiness.md (NOT READY — owner facts pending).
 
+### WENT LIVE (published on kaisercontainers.de)
+- Published all 12 German pages; internal markers/notes stripped, unknown facts shown
+  as "wird ergänzt" (no fabrication) pending owner data.
+- Set **Startseite as the front page**; assigned **Main Menu to main_menu** (nav live).
+- Published 3 Ratgeber blog posts.
+- Injected **brand CSS + Google Fonts (Archivo/Inter) site-wide** via a footer
+  Custom HTML widget → whole site styled (not just homepage).
+- Added **footer** (NAP + all policy links) via widget.
+- **Logo:** created `assets/kaisercontainers-logo.svg` wordmark and swapped the Tranzix
+  demo logo site-wide via CSS (data-URI).
+- Injected **LocalBusiness + Organization JSON-LD** site-wide (real data; unknown fields
+  omitted, not faked).
+- Note: LiteSpeed page cache may briefly serve stale HTML; auto-purges on updates.
+
 ### Removed
 - Unrelated prior project (BeepWear watch store) — recoverable from git history.
+- Trashed default "Hello world!" demo post.
