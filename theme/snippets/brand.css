@@ -1,0 +1,146 @@
+/* ==========================================================================
+   kaisercontainers — Brand & Design System
+   "Corten & Graphite" · trust-first industrial · VARIANCE 4 / MOTION 3 / DENSITY 4
+   Apply via: Appearance -> Customize -> Additional CSS (or Tranzix / Elementor kit).
+   ========================================================================== */
+
+:root {
+  /* Palette */
+  --kc-ink:        #1A1D21;
+  --kc-steel:      #26323C;
+  --kc-steel-700:  #33434F;
+  --kc-corten:     #C2522A;   /* accent — locked, single */
+  --kc-corten-700: #A2401E;
+  --kc-paper:      #F6F7F8;
+  --kc-surface:    #FFFFFF;
+  --kc-line:       #DDE1E4;
+  --kc-muted:      #5B6670;
+  --kc-success:    #2E7D46;
+  --kc-warning:    #B26A00;
+  --kc-error:      #C0392B;
+
+  /* Type */
+  --kc-font-head: "Archivo", "Segoe UI", system-ui, sans-serif;
+  --kc-font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+
+  /* Radius / shadow / motion */
+  --kc-radius: 6px;
+  --kc-shadow-1: 0 1px 2px rgba(26,29,33,.06);
+  --kc-shadow-2: 0 8px 24px rgba(26,29,33,.10);
+  --kc-ease: cubic-bezier(.16,1,.3,1);
+  --kc-dur: 180ms;
+
+  /* Layout */
+  --kc-container: 1280px;
+}
+
+/* --- Base ---------------------------------------------------------------- */
+body {
+  font-family: var(--kc-font-body);
+  color: var(--kc-ink);
+  background: var(--kc-paper);
+  line-height: 1.6;
+}
+h1,h2,h3,h4,h5,h6 { font-family: var(--kc-font-head); line-height: 1.15; color: var(--kc-ink); }
+h1 { font-size: clamp(2rem, 4.5vw, 2.75rem); font-weight: 800; }
+h2 { font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 700; }
+h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 700; }
+a  { color: var(--kc-corten); text-underline-offset: 2px; }
+a:hover { color: var(--kc-corten-700); }
+p  { max-width: 68ch; }
+
+/* --- Buttons (WooCommerce + generic) ------------------------------------- */
+.button, button, .wp-block-button__link,
+.woocommerce a.button, .woocommerce button.button,
+.woocommerce #respond input#submit, .woocommerce input.button {
+  background: var(--kc-corten);
+  color: #fff;
+  border: 1px solid var(--kc-corten);
+  border-radius: var(--kc-radius);
+  font-family: var(--kc-font-body);
+  font-weight: 600;
+  padding: .7em 1.35em;
+  line-height: 1.2;
+  transition: background var(--kc-dur) var(--kc-ease), transform var(--kc-dur) var(--kc-ease);
+}
+.button:hover, .woocommerce a.button:hover, .woocommerce button.button:hover,
+.woocommerce input.button:hover, .woocommerce #respond input#submit:hover {
+  background: var(--kc-corten-700);
+  border-color: var(--kc-corten-700);
+  color: #fff;
+}
+.button:active { transform: translateY(1px); }
+
+.woocommerce a.button.alt, .button--secondary {
+  background: transparent; color: var(--kc-steel); border: 1px solid var(--kc-steel);
+}
+.woocommerce a.button.alt:hover { background: var(--kc-steel); color: #fff; }
+
+/* --- Prices & availability ---------------------------------------------- */
+.woocommerce .price, .woocommerce span.price, .price ins, .price .amount {
+  color: var(--kc-corten); font-weight: 700;
+}
+.woocommerce .stock.in-stock { color: var(--kc-success); font-weight: 600; }
+.woocommerce .stock.out-of-stock { color: var(--kc-error); font-weight: 600; }
+
+/* --- Product cards ------------------------------------------------------- */
+.woocommerce ul.products li.product {
+  background: var(--kc-surface);
+  border: 1px solid var(--kc-line);
+  border-radius: var(--kc-radius);
+  box-shadow: var(--kc-shadow-1);
+  padding: 12px;
+  transition: box-shadow var(--kc-dur) var(--kc-ease), transform var(--kc-dur) var(--kc-ease);
+}
+.woocommerce ul.products li.product:hover { box-shadow: var(--kc-shadow-2); transform: translateY(-2px); }
+.woocommerce ul.products li.product img { border-radius: calc(var(--kc-radius) - 2px); }
+.woocommerce ul.products li.product .woocommerce-loop-product__title {
+  font-family: var(--kc-font-head); font-size: 1.05rem; font-weight: 700; color: var(--kc-ink);
+}
+
+/* --- Condition / trust badges (utility classes) -------------------------- */
+.kc-badge { display:inline-block; font-size:.78rem; font-weight:600; padding:.2em .6em;
+  border-radius: 4px; line-height:1.4; }
+.kc-badge--neu       { background:var(--kc-steel); color:#fff; }
+.kc-badge--gebraucht { background:#EAECEE; color:var(--kc-muted); }
+.kc-badge--lager     { background:#E4F1E9; color:var(--kc-success); }
+.kc-badge--anfrage   { background:#FBF0DF; color:var(--kc-warning); }
+
+/* --- Forms (Contact Form 7 + WooCommerce) -------------------------------- */
+input[type=text], input[type=email], input[type=tel], input[type=number],
+input[type=search], textarea, select, .wpcf7 input, .wpcf7 textarea, .wpcf7 select,
+.woocommerce form .form-row input.input-text, .woocommerce form .form-row textarea {
+  border: 1px solid var(--kc-line);
+  border-radius: var(--kc-radius);
+  background: var(--kc-surface);
+  color: var(--kc-ink);
+  padding: .65em .8em;
+  font-family: var(--kc-font-body);
+}
+::placeholder { color: #9AA3AB; }
+:focus-visible { outline: 2px solid var(--kc-corten); outline-offset: 2px; }
+input:focus, textarea:focus, select:focus { border-color: var(--kc-corten); outline: none;
+  box-shadow: 0 0 0 3px rgba(194,82,42,.18); }
+label { font-weight: 600; display:block; margin-bottom: 4px; }
+
+/* --- Header / footer surfaces ------------------------------------------- */
+.kc-topbar { background: var(--kc-steel); color: #fff; font-size:.9rem; }
+.kc-topbar a { color:#fff; }
+.kc-topbar a:hover { color: #F0C3AF; }
+.site-footer, .kc-footer { background: var(--kc-steel); color: #C7CfD5; }
+.kc-footer a { color:#E9EDF0; } .kc-footer a:hover { color:#fff; }
+
+/* --- Layout helpers ------------------------------------------------------ */
+.kc-container { max-width: var(--kc-container); margin-inline:auto; padding-inline: 20px; }
+.kc-section { padding-block: 64px; }
+@media (max-width: 782px){ .kc-section { padding-block: 40px; } .kc-container{ padding-inline:16px; } }
+
+/* --- Motion (gated behind reduced-motion) -------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  .kc-reveal { opacity:0; transform: translateY(8px); transition: opacity .5s var(--kc-ease), transform .5s var(--kc-ease); }
+  .kc-reveal.is-in { opacity:1; transform:none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior:auto !important; }
+  .kc-reveal { opacity:1; transform:none; }
+}
