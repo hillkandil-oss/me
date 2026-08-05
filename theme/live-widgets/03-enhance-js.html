@@ -57,7 +57,41 @@
    for(var i=0;i<n.length;i++){ if(n[i].parentNode){ n[i].parentNode.removeChild(n[i]); } }
   }
  }
- function run(){dropDemoBar();topbar();shopCta();edgeToEdge();}
+
+ function reveal(){
+  if(!("IntersectionObserver" in window)){return;}
+  if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches){return;}
+  var sels=[".kc-home section h2",".kc-home .kc-lead",".kc-cat",".kc-benefit",
+            ".kc-home .kc-store-list",".kc-faq details",".woocommerce ul.products li.product",
+            ".kc-home .kc-photo-slot",".kc-home form"];
+  var groups={};
+  for(var s=0;s<sels.length;s++){
+   var n=document.querySelectorAll(sels[s]);
+   for(var i=0;i<n.length;i++){
+    if(n[i].classList.contains("kc-rv")){continue;}
+    n[i].classList.add("kc-rv");
+    var key=sels[s];
+    groups[key]=(groups[key]||0)+1;
+    n[i].style.setProperty("--d",((groups[key]-1)%6)*70+"ms");
+   }
+  }
+  var io=new IntersectionObserver(function(entries){
+   for(var e=0;e<entries.length;e++){
+    if(entries[e].isIntersecting){entries[e].target.classList.add("is-in");io.unobserve(entries[e].target);}
+   }
+  },{threshold:0.12,rootMargin:"0px 0px -40px 0px"});
+  var all=document.querySelectorAll(".kc-rv");
+  for(var j=0;j<all.length;j++){io.observe(all[j]);}
+ }
+ function stickyHeader(){
+  var mh=document.querySelector(".main-header");
+  if(!mh){return;}
+  function onScroll(){
+   if(window.pageYOffset>240){mh.classList.add("kc-stuck");}else{mh.classList.remove("kc-stuck");}
+  }
+  window.addEventListener("scroll",onScroll,{passive:true});onScroll();
+ }
+ function run(){reveal();stickyHeader();dropDemoBar();topbar();shopCta();edgeToEdge();}
  if(document.readyState!=="loading"){run();}else{document.addEventListener("DOMContentLoaded",run);}
  window.addEventListener("load",edgeToEdge);
 })();
