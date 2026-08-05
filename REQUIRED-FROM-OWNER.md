@@ -51,3 +51,14 @@ _Feed generated: `data/merchant-center-feed.csv` (20 real rows) · gaps: `data/p
 
 ---
 _Last updated: 2026-08-04 · maintained during the build._
+
+## ⚠️ Theme demo data found in template (needs a permanent fix)
+The Tranzix theme header hardcodes **fake contact data**: phone `+357 984538` (Cyprus)
+and a dead `mailto:#` link, in `.header-top-two`. It is now removed from the rendered
+page (CSS hide + JS DOM removal), but the string still exists in the theme's PHP
+template, so it remains in the raw HTML source.
+
+**Permanent fix (recommended before Merchant Center submission):** edit the theme
+header template in a child theme (or via Hostinger File Manager) to delete that block,
+or replace the values with the real store phone once confirmed. Fabricated contact
+details are a Merchant Center misrepresentation risk.

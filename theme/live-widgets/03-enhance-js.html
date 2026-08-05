@@ -1,4 +1,4 @@
-<!-- LIVE widget custom_html-4 (footer-sidebar) on kaisercontainers.de -->
+<!-- LIVE widget custom_html-4 (footer-sidebar) -->
 <script>
 (function(){
  function mk(tag,cls,txt,href){
@@ -49,7 +49,15 @@
    el=el.parentElement;
   }
  }
- function run(){topbar();shopCta();edgeToEdge();}
+
+ function dropDemoBar(){
+  var sel=[".header-top-two",".header-top-one",".header-top"];
+  for(var s=0;s<sel.length;s++){
+   var n=document.querySelectorAll(sel[s]);
+   for(var i=0;i<n.length;i++){ if(n[i].parentNode){ n[i].parentNode.removeChild(n[i]); } }
+  }
+ }
+ function run(){dropDemoBar();topbar();shopCta();edgeToEdge();}
  if(document.readyState!=="loading"){run();}else{document.addEventListener("DOMContentLoaded",run);}
  window.addEventListener("load",edgeToEdge);
 })();
