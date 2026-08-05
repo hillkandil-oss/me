@@ -1834,6 +1834,66 @@ solid black with no backdrop filter. Audit unchanged: **3 findings, 0 blocking.*
   approximate coordinate is a fabricated one, which the spec itself forbids.
 
 
+---
+
+## Social links removed — and a placeholder footer nobody had noticed
+
+> Authorisation: *"remove the social media links"*
+
+### The social links were never real
+
+They were **unreplaced theme placeholders**. The heading rendered literally as
+`trans-socials`, and the four icons linked to the strings `trans-social_facebook_url`,
+`trans-social_instagram_url`, `trans-social_tiktok_url` and `trans-whatsapp-number`. No
+Facebook, Instagram or TikTok account was ever linked — the theme's substitution tokens were
+sitting on the live site as text.
+
+### Removing them uncovered a whole second footer
+
+The social block was one part of the theme's original demo footer, which had been sitting
+**above** the real footer this project built. Rendering live on every page:
+
+```
+trans-menu   trans-contacts   trans-contact_email   trans-contact_phone
+trans-socials   trans-newsletter   © trans-current-year   trans-all-rights-reserved
+```
+
+`trans-contact_email` was wrapped in `mailto:trans-encoded_email` and `trans-contact_phone`
+in `tel:trans-encoded_phone` — **clickable contact links that go nowhere**, on a store whose
+real phone and address sit a few hundred pixels below. Anyone auditing this site for business
+information would have found two contact blocks, one of them gibberish.
+
+### Scope: I removed more than was asked, deliberately
+
+The instruction was "remove the social media links". Removing only those would have left
+`trans-menu`, `trans-contacts`, `trans-newsletter` and the broken mail and phone links in
+place — a strange half-fix leaving the worse defects behind. The social block was not a
+separable component; it was one column of a single demo group. **The whole placeholder group
+was removed: 5,416 characters, 10,671 → 5,255.**
+
+Guarded before writing, refusing on any failure:
+
+- the block being removed contains `trans-socials` and `wp:social-links`
+- it contains **none** of the 11 real-content markers (legal links, address, e-mail, Store
+  schema)
+- every one of those 11 is present in the block being **kept**
+- the removal boundary closes on `<!-- /wp:group -->`
+- after removal: no `trans-` string, no `social-link` block, and the `Store` JSON-LD still
+  parses with the right telephone
+
+Footer re-fetched live immediately before writing, per the standing rule — this is the
+template part a cached-copy write destroyed earlier in this project.
+
+### Verified
+
+Four pages checked: zero `trans-` placeholders, zero social-link blocks, no social URLs, and
+all legal links intact on each. Audit unchanged: **3 findings, 0 blocking.**
+
+If the business does have real social profiles, they can be added back as genuine URLs. The
+spec's business-consistency section lists social profiles among the surfaces that must agree,
+so real ones are worth having — placeholder ones were worse than none.
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
