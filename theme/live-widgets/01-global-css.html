@@ -200,4 +200,29 @@ input:focus,textarea:focus,select:focus{border-color:var(--kc-corten);box-shadow
 /* sticky header condense */
 .main-header.kc-stuck{position:sticky;top:0;z-index:999;box-shadow:0 6px 24px rgba(26,29,33,.16);
  backdrop-filter:saturate(140%) blur(2px);transition:box-shadow .25s ease;}
+
+/* ===== CORRECTION: section mapping was off by one; store-info band (with the
+   Google Map) had a light bg but white text. Make that section light + BLACK text. ===== */
+.kc-home section:nth-of-type(7),.kc-band{
+ background:#EEF1F4 !important;
+ background-image:
+  linear-gradient(rgba(38,50,60,.10) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(38,50,60,.10) 1px,transparent 1px),
+  linear-gradient(rgba(38,50,60,.05) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(38,50,60,.05) 1px,transparent 1px) !important;
+ background-size:120px 120px,120px 120px,24px 24px,24px 24px !important;
+ border-top:3px solid var(--kc-corten);}
+.kc-band:before{display:none !important;}
+.kc-band,.kc-band *,.kc-band h2,.kc-band h3,.kc-band p,.kc-band li,.kc-band strong,.kc-band span{
+ color:var(--kc-ink) !important;}
+.kc-band a{color:var(--kc-corten) !important;text-decoration:underline;}
+.kc-band a.kc-btn{color:#fff !important;text-decoration:none;background:var(--kc-corten) !important;}
+.kc-band .kc-store-list li{border-bottom:1px solid rgba(38,50,60,.18) !important;}
+
+/* correct the remaining section backgrounds for the real order */
+.kc-home section:nth-of-type(4){
+ background-color:#E7EBEE !important;
+ background-image:repeating-linear-gradient(45deg,rgba(38,50,60,.10) 0 3px,transparent 3px 16px) !important;}
+.kc-home section:nth-of-type(5){background:#fff !important;background-image:none !important;}
+.kc-home section:nth-of-type(9){background:#fff !important;background-image:none !important;}
 </style>
