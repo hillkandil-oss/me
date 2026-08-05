@@ -58,3 +58,35 @@ identity + USt-IdNr. (+ HRB), price net/gross, real photos, shipping cost basis,
 the contact form are tested, and (d) LocalBusiness + Product schema validate with data matching the
 visible pages. Submit only on the live custom domain, never a preview URL, and only with the
 owner's explicit authorization.
+
+
+---
+
+## Update — live verification pass (2026-08-05)
+
+**Progress since the first report**
+- All 16 pages **published and returning 200** (home, shop, cart, checkout, account, contact,
+  about, FAQ and all eight policy/legal pages).
+- Homepage is the front page; navigation live; brand design, logo, footer with full NAP and
+  policy links applied site-wide.
+- **Product pages now carry the §17 block**: availability-may-differ notice, processing and
+  delivery times, pickup, payment method, returns, and policy links.
+- Condition (`Neu`/`Gebraucht`) visible on all 20 products; feed CSV carries `condition`.
+- Product schema present with `availability` + `priceCurrency`; LocalBusiness + Organization
+  schema injected site-wide with verified data only.
+- Sitemap live at `/sitemap.xml`.
+- Fake theme demo contact bar (Cyprus `+357` number, dead `mailto:#`) removed from the
+  rendered page — a direct misrepresentation risk retired.
+
+**Status: still NOT READY for submission.** Remaining blockers are unchanged and all require
+owner-verified facts or one-time admin actions:
+1. Impressum incomplete (responsible person, street, USt-IdNr.) — legally required in Germany.
+2. `wird ergänzt` placeholders for phone and street are publicly visible.
+3. Contact form is CF7's English default and delivers to the **site-admin address**, not
+   `info@kaisercontainers.de` — a broken support path is a Merchant Center risk.
+4. Price basis (net vs. gross) still undeclared.
+5. Fake `+357` phone still present in the raw theme template source.
+6. Cookie consent installed but not activated.
+
+**Recommendation unchanged:** hold for verification, correct, then submit only with explicit
+authorization. Approval is never guaranteed.
