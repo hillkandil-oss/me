@@ -58,10 +58,11 @@ and a dead `mailto:#` link, in `.header-top-two`. It is now removed from the ren
 page (CSS hide + JS DOM removal), but the string still exists in the theme's PHP
 template, so it remains in the raw HTML source.
 
-**Permanent fix (recommended before Merchant Center submission):** edit the theme
-header template in a child theme (or via Hostinger File Manager) to delete that block,
-or replace the values with the real store phone once confirmed. Fabricated contact
-details are a Merchant Center misrepresentation risk.
+**RESOLVED (2026-08-05).** Fixed without touching theme files: the Code Snippets plugin
+was installed and a front-end snippet (id 5) now filters the rendered HTML, replacing
+`+357 984538` with the real phone and the dead `tel:#` / `mailto:#` links with the real
+contact details. Verified: zero occurrences of the fabricated data remain in the page
+source. Source kept at `theme/snippets/replace-demo-contact.php`.
 
 ## ⚠️ Contact form must be configured in wp-admin (CF7 REST does not persist)
 Contact Form 7's REST endpoint returns success but discards writes, and its post type is
