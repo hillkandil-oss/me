@@ -1,0 +1,56 @@
+<!-- LIVE widget custom_html-4 (footer-sidebar) on kaisercontainers.de -->
+<script>
+(function(){
+ function mk(tag,cls,txt,href){
+  var e=document.createElement(tag);
+  if(cls){e.className=cls;}
+  if(txt){e.appendChild(document.createTextNode(txt));}
+  if(href){e.setAttribute("href",href);}
+  return e;
+ }
+ function topbar(){
+  var mh=document.querySelector(".main-header");
+  if(!mh||document.getElementById("kc-topbar")){return;}
+  var bar=mk("div",null,null,null); bar.id="kc-topbar";
+  var inner=mk("div","kc-topbar__inner",null,null);
+  inner.appendChild(mk("span","kc-topbar__item kc-i-phone","Anrufen: wird ergänzt",null));
+  inner.appendChild(mk("a","kc-topbar__item kc-i-mail","info@kaisercontainers.de","mailto:info@kaisercontainers.de"));
+  inner.appendChild(mk("span","kc-topbar__item kc-i-clock","Mo–Sa: 08:00–18:30 Uhr",null));
+  var dir=mk("a","kc-topbar__item kc-i-pin kc-sep","47138 Duisburg · Route planen","https://maps.app.goo.gl/k4JZCaARe1ZPu5WUA");
+  dir.setAttribute("target","_blank"); dir.setAttribute("rel","noopener");
+  inner.appendChild(dir);
+  bar.appendChild(inner);
+  mh.insertBefore(bar,mh.firstChild);
+ }
+ function shopCta(){
+  var list=document.querySelectorAll(".main-header .theme-btn, a.theme-btn-eight");
+  for(var i=0;i<list.length;i++){
+   var a=list[i];
+   var t=(a.textContent||"").toLowerCase();
+   if(t.indexOf("sing up")>-1||t.indexOf("sign up")>-1||t.indexOf("sign in")>-1||a.getAttribute("href")==="#"){
+    while(a.firstChild){a.removeChild(a.firstChild);}
+    a.appendChild(document.createTextNode("Jetzt einkaufen"));
+    a.setAttribute("href","/shop/");
+   }
+  }
+ }
+ function edgeToEdge(){
+  var home=document.querySelector(".kc-home");
+  if(!home){return;}
+  var el=home.parentElement,guard=0;
+  while(el&&el!==document.body&&guard<25){
+   guard=guard+1;
+   el.style.setProperty("max-width","none","important");
+   el.style.setProperty("width","100%","important");
+   el.style.setProperty("padding-left","0","important");
+   el.style.setProperty("padding-right","0","important");
+   el.style.setProperty("margin-left","0","important");
+   el.style.setProperty("margin-right","0","important");
+   el=el.parentElement;
+  }
+ }
+ function run(){topbar();shopCta();edgeToEdge();}
+ if(document.readyState!=="loading"){run();}else{document.addEventListener("DOMContentLoaded",run);}
+ window.addEventListener("load",edgeToEdge);
+})();
+</script>
