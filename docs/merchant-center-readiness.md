@@ -90,3 +90,39 @@ owner-verified facts or one-time admin actions:
 
 **Recommendation unchanged:** hold for verification, correct, then submit only with explicit
 authorization. Approval is never guaranteed.
+
+
+---
+
+## Update 2 — Merchant Center readiness pass (2026-08-05)
+
+### Blockers cleared in this pass
+| Was | Now |
+|---|---|
+| 🔴 Contact form delivered to the site-admin gmail, not the business inbox | ✅ WordPress site admin email changed to `info@kaisercontainers.de`; CF7's `[_site_admin_email]` recipient now resolves there. Enquiries reach the business without replacing the form plugin. |
+| 🔴 Price basis undeclared (hidden-cost risk) | ✅ Prices display **"zzgl. Versandkosten"** linked to the shipping policy (German PAngV). Tax calculation is off, so displayed prices are final prices — consistent with holding no VAT ID. No false "inkl. MwSt." claim was added. |
+| 🔴 Impressum incomplete | ✅ Responsible person, address, phone published; VAT and Handelsregister sections removed as not applicable and stated explicitly. |
+| 🔴 Placeholder text public | ✅ Zero placeholders remain on any public page. |
+| 🟡 All 20 products missing dimensions | ✅ ISO nominal external dimensions applied to 20/20, plus a readable `Abmessungen` attribute. These are the definitional specs of each named size, not estimates. |
+| 🟠 No cookie consent | ✅ Complianz activated (GDPR/TTDSG). Its wizard should still be run to tune categories. |
+| 🟡 Feed lacked dimensions | ✅ Feed regenerated with `product_length/width/height` and `shipping_label`. |
+
+### Still open
+1. **Fake `+357` phone in the raw theme template.** Hidden by CSS and stripped from the DOM by
+   JS, so visitors never see it, but the string remains in the served HTML source. Requires a
+   theme-file edit (instructions supplied to the owner).
+2. **`itemCondition` absent from Product JSON-LD.** The host WAF rejects any payload resembling
+   schema manipulation. Condition is present on-page and in the feed, which is Merchant
+   Center's primary source.
+3. **Delivery pricing.** Only store pickup is configured; freight cost is quoted individually.
+   Keep the Versand policy, checkout and Merchant Center shipping settings consistent with that.
+4. **Business registration.** Owner has stated the business is not yet registered and has
+   decided to keep checkout active. Recorded here once as an accepted business decision.
+5. **Real store photography** for the About/store sections.
+6. **LiteSpeed → Toolbox → Purge All** so visitors receive the current HTML.
+
+### Status
+**Ready after minor corrections** for the technical/on-site criteria: business identity, contact
+routes, policies, price transparency, availability, condition, product data and structured data
+are in place and mutually consistent. Item 4 above is a business-side matter outside the
+website build. Submit only with explicit authorization; approval is never guaranteed.
