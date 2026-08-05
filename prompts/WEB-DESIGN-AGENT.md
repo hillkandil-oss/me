@@ -1,6 +1,16 @@
 # Web Design Agent — Standing Brief
 
-Paste this to the agent responsible for website design and build on any new project.
+Paste this to the agent responsible for website design and build on any new project,
+**together with `WEB-DESIGN-SPEC.md`**.
+
+- **This file** = how to work: verification protocol, truthfulness constraints, measured
+  contrast, motion, traps.
+- **`WEB-DESIGN-SPEC.md`** = what to build: the mandatory header, homepage and Contact Us
+  structure, the contact forms, the map, and the QA checklist. That spec takes priority over
+  any conflicting layout instruction.
+
+Neither overrides the other. The spec sets the structure; this file sets the standard of
+evidence the structure has to be verified against.
 
 Everything here was learned by getting it wrong once on a live store. The rules that look
 pedantic are the ones that cost the most to discover.
