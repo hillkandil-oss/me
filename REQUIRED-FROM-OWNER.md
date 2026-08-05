@@ -10,10 +10,10 @@ Legend: 🔴 blocks publication · 🟠 blocks a specific page/feature · 🟡 i
 |---|---|---|---|
 | 1 | **Store phone number** | Header, footer, contact, schema, feed | ✅ **+49 201 49869542** applied site-wide (note: 0201 is the *Essen* code, store is in Duisburg/0203 — confirm if wrong) |
 | 2 | **Responsible person / owner full name** | Impressum | ✅ **Kaiser Williams** applied |
-| 3 | **Exact street + house number** (currently only "Homberg/Ruhrort/Baerl") | Address everywhere, Maps pin, schema | ⏳ |
-| 4 | **USt-IdNr.** (VAT ID) | Impressum, invoices, feed tax | ⏳ |
-| 5 | **Handelsregisternummer + registry court** (if registered) | Impressum | ⏳ |
-| 6 | **Legal form** (e.g. Einzelunternehmen, GmbH) | Impressum, AGB | ⏳ |
+| 3 | **Address** | Address everywhere, Maps pin, schema | ✅ **Homberg/Ruhrort/Baerl, 47138 Duisburg** published as supplied by the owner |
+| 4 | **USt-IdNr.** (VAT ID) | Impressum | ✅ n/a — none held; Impressum now states this (only required if one exists) |
+| 5 | **Handelsregisternummer** | Impressum | ✅ n/a — business not registered; section removed |
+| 6 | **Legal form** | Impressum, AGB | ⏳ pending registration |
 
 ## 🔴 Commerce facts
 | # | Item | Needed for | Status |

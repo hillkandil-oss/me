@@ -13,7 +13,7 @@
   if(!mh||document.getElementById("kc-topbar")){return;}
   var bar=mk("div",null,null,null); bar.id="kc-topbar";
   var inner=mk("div","kc-topbar__inner",null,null);
-  inner.appendChild(mk("span","kc-topbar__item kc-i-phone","Anrufen: wird ergänzt",null));
+  var tel=mk("a","kc-topbar__item kc-i-phone","Anrufen: +49 201 49869542","tel:+4920149869542");inner.appendChild(tel);
   inner.appendChild(mk("a","kc-topbar__item kc-i-mail","info@kaisercontainers.de","mailto:info@kaisercontainers.de"));
   inner.appendChild(mk("span","kc-topbar__item kc-i-clock","Mo–Sa: 08:00–18:30 Uhr",null));
   var dir=mk("a","kc-topbar__item kc-i-pin kc-sep","47138 Duisburg · Route planen","https://maps.app.goo.gl/k4JZCaARe1ZPu5WUA");
@@ -118,7 +118,43 @@
    if((sub[s].value||"").toLowerCase().indexOf("submit")>-1){sub[s].value="Nachricht senden";}
   }
  }
- function run(){germanForm();reveal();stickyHeader();dropDemoBar();topbar();shopCta();edgeToEdge();}
+ function isProductPage(){
+  return document.body && document.body.className.indexOf("single-product")>-1;
+ }
+ function productCondition(){
+  var t=(document.body.textContent||"");
+  if(t.indexOf("Gebraucht")>-1||t.indexOf("gebraucht")>-1){return "UsedCondition";}
+  return "NewCondition";
+ }
+ /* Brief section 17: shipping, pickup, availability and returns on every product page */
+ function productInfo(){
+  if(!isProductPage()||document.querySelector(".kc-prod-info")){return;}
+  var host=document.querySelector(".summary.entry-summary")||document.querySelector(".summary");
+  if(!host){return;}
+  function li(parent,txt){var e=document.createElement("li");e.appendChild(document.createTextNode(txt));parent.appendChild(e);return e;}
+  function link(parent,txt,href){
+   var a=document.createElement("a");a.setAttribute("href",href);
+   a.appendChild(document.createTextNode(txt));parent.appendChild(a);
+   parent.appendChild(document.createTextNode(" "));return a;}
+  var box=document.createElement("div");box.className="kc-prod-info";
+  var h=document.createElement("h3");
+  h.appendChild(document.createTextNode("Versand, Abholung & Verfügbarkeit"));box.appendChild(h);
+  var ul=document.createElement("ul");
+  li(ul,"Online- und Ladenverfügbarkeit können abweichen. Bitte kontaktieren Sie uns vor einem Besuch, um die Verfügbarkeit zu bestätigen.");
+  li(ul,"Bearbeitungszeit: 0–1 Werktage · Lieferung: 2–5 Werktage (deutschlandweit).");
+  li(ul,"Abholung nach Absprache an unserem Standort in Duisburg.");
+  li(ul,"Zahlung per Banküberweisung.");
+  li(ul,"14 Tage gesetzliches Widerrufsrecht, zusätzlich 30 Tage freiwillige Rückgabe.");
+  box.appendChild(ul);
+  var p=document.createElement("p");p.className="kc-prod-info__links";
+  link(p,"Versand & Lieferung","/versand/");
+  link(p,"Widerruf & Rückgabe","/widerruf/");
+  link(p,"Zahlung","/zahlung/");
+  link(p,"Kontakt","/kontakt/");
+  box.appendChild(p);
+  host.appendChild(box);
+ }
+ function run(){productInfo();germanForm();reveal();stickyHeader();dropDemoBar();topbar();shopCta();edgeToEdge();}
  if(document.readyState!=="loading"){run();}else{document.addEventListener("DOMContentLoaded",run);}
  window.addEventListener("load",edgeToEdge);
 })();
