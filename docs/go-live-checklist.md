@@ -57,3 +57,16 @@ Flip it live in this order once the owner facts are confirmed and placeholders a
 - [ ] Google Map loads on Kontakt page as final section; Route-planen link works
 - [ ] LocalBusiness + Product schema validate (see task #8)
 - [ ] No 〔BITTE BESTÄTIGEN〕 markers remain anywhere public
+
+## F. Cache (important — read before "nothing changed")
+LiteSpeed serves a full-page cache. After any CSS/JS/widget/content change the
+public URL can keep serving **stale HTML** (`x-litespeed-cache: hit`) even though
+the change is saved. Symptom: the site looks unchanged while a cache-busted URL
+(`/?nc=123`) shows the new version.
+
+**Correct purge:** WordPress admin -> **LiteSpeed Cache -> Toolbox -> Purge All**.
+Then hard-refresh the browser (Ctrl/Cmd+Shift+R) to clear the local browser cache.
+
+**Do NOT purge by deactivating the LiteSpeed plugin.** This site does not cope
+without the cache: deactivating it made pages time out until the plugin was
+re-activated. Re-saving a single page also purges just that page's cache.
