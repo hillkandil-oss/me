@@ -272,4 +272,82 @@ input:focus,textarea:focus,select:focus{border-color:var(--kc-corten);box-shadow
 .kc-pay .kc-pay--sepa{background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MCAyNiIgZmlsbD0ibm9uZSI+PHJlY3QgeD0iMC42IiB5PSIwLjYiIHdpZHRoPSIzOC44IiBoZWlnaHQ9IjI0LjgiIHJ4PSIzLjQiIGZpbGw9IiMzMTQwNEMiIHN0cm9rZT0iIzRBNUM2QiIgc3Ryb2tlLXdpZHRoPSIxLjIiLz48cGF0aCBkPSJNOSAxMGgxNm0wIDAtMy41LTMuNU0yNSAxMGwtMy41IDMuNSIgc3Ryb2tlPSIjRThBNTgzIiBzdHJva2Utd2lkdGg9IjEuNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHBhdGggZD0iTTMxIDE2SDE1bTAgMCAzLjUtMy41TTE1IDE2bDMuNSAzLjUiIHN0cm9rZT0iI0U4QTU4MyIgc3Ryb2tlLXdpZHRoPSIxLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==');}
 .kc-footer__brand h3{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
 @media(max-width:560px){.kc-footer__logo{width:190px;height:38px;}}
+
+/* ===================== APPLE-DESIGN PASS ===================== */
+/* §1 Response: feedback on pointer-DOWN, not release. Instant, then settle. */
+.kc-btn:active,.button:active,button:active,.woocommerce a.button:active,
+.wpcf7-form input[type="submit"]:active,.kc-footer__cta:active{
+ transform:scale(.97) !important;transition:transform 100ms ease-out !important;}
+.kc-cat:active,.woocommerce ul.products li.product:active{
+ transform:scale(.985) translateY(-2px) !important;transition:transform 100ms ease-out !important;}
+#kc-topbar .kc-topbar__item:active{opacity:.7;transition:opacity 90ms ease-out;}
+.kc-faq summary:active{opacity:.75;transition:opacity 90ms ease-out;}
+/* generous hit targets + no tap-highlight flash */
+.kc-btn,.button,.wpcf7-form input[type="submit"]{min-height:44px;-webkit-tap-highlight-color:transparent;}
+#kc-topbar .kc-topbar__item{padding-block:4px;-webkit-tap-highlight-color:transparent;}
+
+/* §15 Typography: tracking is size-specific; leading inverse to size. */
+h1,.kc-hero h1{letter-spacing:-.025em;line-height:1.06;font-optical-sizing:auto;text-wrap:balance;}
+h2{letter-spacing:-.018em;line-height:1.12;text-wrap:balance;}
+h3{letter-spacing:-.012em;line-height:1.2;}
+h4,h5,h6{letter-spacing:-.006em;}
+body,p,li{letter-spacing:0;}
+p{line-height:1.62;text-wrap:pretty;}
+.kc-topbar__item,.kc-badge,.kc-pay__label{letter-spacing:.01em;}  /* small text: slight positive */
+.kc-hero p,.kc-lead{line-height:1.55;}
+
+/* §12 Materials: the sticky header is a real translucent layer, not an opaque strip. */
+.main-header.kc-stuck{
+ background:rgba(255,255,255,.72) !important;
+ backdrop-filter:blur(20px) saturate(180%);
+ -webkit-backdrop-filter:blur(20px) saturate(180%);
+ border-top:1px solid rgba(255,255,255,.5);
+ box-shadow:none !important;}
+/* §12 Scroll edge effect instead of a hard divider */
+.main-header.kc-stuck:after{content:"";position:absolute;left:0;right:0;bottom:-18px;height:18px;
+ pointer-events:none;background:linear-gradient(to bottom,rgba(26,29,33,.10),transparent);}
+.main-header{transition:background 240ms ease,backdrop-filter 240ms ease;}
+/* §12 Vibrancy: text over the translucent bar stays legible */
+.main-header.kc-stuck .main-menu a,.main-header.kc-stuck .navigation>li>a{
+ color:var(--kc-ink) !important;font-weight:650;}
+
+/* §11 Frame smoothness: hint only where motion is imminent */
+.kc-rv,.kc-cat,.woocommerce ul.products li.product,.kc-btn{will-change:transform,opacity;}
+.kc-rv.is-in{will-change:auto;}
+
+/* §7 Reversible transitions mirror their easing (out ≠ in, but symmetric) */
+.kc-cat,.woocommerce ul.products li.product{transition-timing-function:cubic-bezier(.16,1,.3,1);}
+.kc-cat:hover,.woocommerce ul.products li.product:hover{transition-timing-function:cubic-bezier(.32,.72,0,1);}
+
+/* §14 Reduced motion = gentler, NOT dead. Replace the earlier blanket kill. */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;animation-iteration-count:1 !important;
+    scroll-behavior:auto !important;}
+  /* keep short opacity/colour feedback: it aids comprehension */
+  .kc-btn,.button,.woocommerce a.button,.kc-cat,.woocommerce ul.products li.product,
+  .wpcf7-form input,.wpcf7-form textarea,.wpcf7-form select,#kc-topbar .kc-topbar__item{
+    transition:opacity 160ms ease,background-color 160ms ease,border-color 160ms ease !important;}
+  .kc-cat:hover,.woocommerce ul.products li.product:hover,
+  .kc-btn:hover,.button:hover{transform:none !important;}
+  .kc-rv{opacity:1 !important;transform:none !important;}
+  .kc-hero:after{animation:none !important;}
+}
+/* §14 Translucency and contrast preferences */
+@media (prefers-reduced-transparency: reduce){
+  .main-header.kc-stuck{background:#fff !important;backdrop-filter:none !important;
+   -webkit-backdrop-filter:none !important;border-bottom:1px solid var(--kc-line);}
+  .main-header.kc-stuck:after{display:none;}
+}
+@media (prefers-contrast: more){
+  .wpcf7-form input,.wpcf7-form textarea,.wpcf7-form select{border-color:#5B6670 !important;border-width:2px !important;}
+  .kc-cat,.woocommerce ul.products li.product{border-color:#5B6670 !important;}
+  .kc-muted,.kc-pay__label{color:#3A444C !important;}
+  .main-header.kc-stuck{background:#fff !important;backdrop-filter:none !important;}
+}
+
+/* §16 Craft: focus is always visible and consistent (keyboard wayfinding) */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,
+textarea:focus-visible,summary:focus-visible{
+ outline:2px solid var(--kc-corten) !important;outline-offset:3px;border-radius:4px;}
 </style>
