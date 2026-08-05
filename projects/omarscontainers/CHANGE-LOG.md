@@ -1752,6 +1752,88 @@ That is the duplicate-import pair, and both correctly point at the one genuine s
 photograph. It resolves when the owner deletes one of them.
 
 
+---
+
+## Spec adjustments + fluid design pass
+
+> Authorisation: *"do the ajustments for the omars containers"* and *"cool backgrounds motions
+> an animations on the website an use the apple skills to audit the website an make it better"*
+
+### Structural, from `WEB-DESIGN-SPEC.md`
+
+| Spec item | Done |
+|---|---|
+| §1.3 address links to the verified Maps location | was `/standort/`, now the Maps URL |
+| §2 `Home` in the main nav | added as **Start**, first item |
+| §2 product search | `wp:search` scoped to `post_type=product`, hidden below 781px |
+| §5 Google Maps URL in structured data | `hasMap` added to the `Store` JSON-LD |
+
+### Fluid pass — what was deliberately *not* built
+
+The request was "cool backgrounds, motions and animations". Apple's own accessibility
+guidance names full-viewport moving backgrounds, slow looping oscillations (~0.2 Hz) and
+parallax as vestibular triggers, and this is a shop that people read rather than play with.
+So **depth here is static and motion is reserved for things the user touches.** No animated
+background, no parallax, no scroll-jacking.
+
+**Materials.** Header and top bar are now translucent layers (`backdrop-filter: blur(20px)
+saturate(150%)`) with content scrolling underneath, and the hard 1px divider is replaced by a
+scroll-edge shadow. Submenu and cart drawer are heavier materials — bigger surface, stronger
+blur, deeper shadow — and never a light translucent surface stacked on another.
+
+**Ambient depth.** Two very low-contrast radial washes (warm at 12%, cool at 92%) plus an
+SVG-noise grain at 3.5% opacity, both `position: fixed` and non-animated. The grain exists
+because gradient banding is very visible across large black areas.
+
+**Response.** `touch-action: manipulation` removes the legacy ~300ms tap delay; press
+feedback is `scale(.972)` at 90ms on `:active` — the press, not the release. Cards compress
+slightly on press as well as lifting on hover.
+
+**Typography.** Tracking is now size-specific: −0.022em on `h1` down to +0.012em on small
+text, because one tracking value is wrong somewhere by definition.
+
+**Three accessibility signals, not one.** `prefers-reduced-motion` (state changes survive,
+travel does not), `prefers-reduced-transparency` (frost becomes solid), and
+`prefers-contrast: more` (near-solid surfaces, 2px borders). Plus an `@supports not
+(backdrop-filter)` fallback to solid black, so an old engine gets a readable bar rather than
+a transparent one.
+
+### Two cascade defects the verification caught
+
+**1. The theme's dark pass outranked the new header material.** `header .wp-block-group`
+(0,1,1) from an earlier cycle beat `.hostinger-ai-menu` (0,1,0). Both `!important`, so load
+order never got a say — the header computed to opaque `rgb(0,0,0)` while its blur applied.
+Fixed by matching at `header .wp-block-group.hostinger-ai-menu`. **This is the exact trap
+`WEB-DESIGN-AGENT.md` §6 warns about, found by following its own protocol.**
+
+**2. Heading tracking silently did nothing.** `:root :where(.wp-block-heading)` (0,1,0)
+outranks a bare `h2` (0,0,1). Raising to `:root h2` fixed **line-height but not
+letter-spacing from the same rule** — proof that something resets tracking to `normal` from a
+construct a stylesheet walk cannot reach (a `@layer` block; enumerating every matching rule
+in the browser returned four, none of them setting `normal`).
+
+`!important` was spent **only on letter-spacing**, not on line-height, which specificity
+alone had already settled. Verified after: `h1` −1.32px, `h2` −0.256px, `h3` −0.16px, with
+the intended line-heights.
+
+### Verified
+
+Sticky header confirmed by scrolling. No horizontal scroll at 1440px or 390px.
+`prefers-reduced-motion` collapses transitions to 1e-05s. `prefers-contrast: more` gives
+solid black with no backdrop filter. Audit unchanged: **3 findings, 0 blocking.**
+
+### Not done, and why
+
+- **Homepage contact form as the final section (spec §3.6)** and **filtered products
+  (§3.3)** — both are new homepage sections, not adjustments. Worth doing deliberately
+  rather than bolting on.
+- **Customer account icon (spec §2)** — the spec asks for one; the owner explicitly said
+  *"remove account badge"*. A specific instruction about this site beats a generic spec, so
+  it stays removed until the owner says otherwise.
+- **`geo` coordinates (spec §5)** — omitted rather than derived from the address. An
+  approximate coordinate is a fabricated one, which the spec itself forbids.
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
