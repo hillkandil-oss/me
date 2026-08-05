@@ -62,3 +62,11 @@ template, so it remains in the raw HTML source.
 header template in a child theme (or via Hostinger File Manager) to delete that block,
 or replace the values with the real store phone once confirmed. Fabricated contact
 details are a Merchant Center misrepresentation risk.
+
+## ⚠️ Contact form must be configured in wp-admin (CF7 REST does not persist)
+Contact Form 7's REST endpoint returns success but discards writes, and its post type is
+not in the WP REST API. The form is therefore still CF7's **English default**, and it emails
+the **site-admin address instead of info@kaisercontainers.de**.
+
+Styling + German labels are applied automatically; the fields, recipient and confirmation
+mail must be pasted in once. Full copy-paste instructions: `docs/contact-form-setup.md`.

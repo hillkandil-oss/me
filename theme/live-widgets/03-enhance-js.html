@@ -1,4 +1,4 @@
-<!-- LIVE widget custom_html-4 (footer-sidebar) -->
+<!-- LIVE widget custom_html-4 -->
 <script>
 (function(){
  function mk(tag,cls,txt,href){
@@ -91,7 +91,34 @@
   }
   window.addEventListener("scroll",onScroll,{passive:true});onScroll();
  }
- function run(){reveal();stickyHeader();dropDemoBar();topbar();shopCta();edgeToEdge();}
+
+ function germanForm(){
+  var map={"your name":"Vollständiger Name (Pflichtfeld)","your email":"E-Mail-Adresse (Pflichtfeld)",
+           "subject":"Betreff (Pflichtfeld)","your message (optional)":"Ihre Nachricht",
+           "your message":"Ihre Nachricht"};
+  var ph={"your-name":"Max Mustermann","your-email":"name@beispiel.de",
+          "your-subject":"Worum geht es?","your-message":"Wie können wir Ihnen helfen?"};
+  var labels=document.querySelectorAll(".wpcf7-form label");
+  for(var i=0;i<labels.length;i++){
+   var lab=labels[i];
+   for(var n=0;n<lab.childNodes.length;n++){
+    var node=lab.childNodes[n];
+    if(node.nodeType===3){
+     var key=node.nodeValue.replace(/\s+/g," ").trim().toLowerCase();
+     if(map[key]){node.nodeValue=map[key];}
+    }
+   }
+  }
+  for(var k in ph){
+   var el=document.querySelector('.wpcf7-form [name="'+k+'"]');
+   if(el&&!el.getAttribute("placeholder")){el.setAttribute("placeholder",ph[k]);}
+  }
+  var sub=document.querySelectorAll('.wpcf7-form input[type="submit"]');
+  for(var s=0;s<sub.length;s++){
+   if((sub[s].value||"").toLowerCase().indexOf("submit")>-1){sub[s].value="Nachricht senden";}
+  }
+ }
+ function run(){germanForm();reveal();stickyHeader();dropDemoBar();topbar();shopCta();edgeToEdge();}
  if(document.readyState!=="loading"){run();}else{document.addEventListener("DOMContentLoaded",run);}
  window.addEventListener("load",edgeToEdge);
 })();
