@@ -411,4 +411,42 @@ html,body{max-width:100%;overflow-x:hidden;}
 }
 /* the theme's own footer wrapper must not re-add gutters */
 .footer-sidebar,.footer-widget,#footer,.footer{max-width:100% !important;padding-left:0 !important;padding-right:0 !important;}
+
+/* ===== category cards: identical image shape + even card heights ===== */
+.kc-grid--4,.kc-grid--3,.kc-grid--2{align-items:stretch !important;}
+.kc-cat{display:flex !important;flex-direction:column !important;height:100% !important;
+ padding:0 !important;overflow:hidden !important;}
+.kc-cat__img{
+ width:100% !important;
+ height:220px !important;          /* fixed height => every image identical, whatever the source */
+ aspect-ratio:auto !important;
+ object-fit:cover !important;
+ object-position:center center !important;
+ display:block !important;
+ border-radius:0 !important;
+ margin:0 !important;
+ max-width:none !important;
+ transition:transform .45s cubic-bezier(.16,1,.3,1);}
+.kc-cat:hover .kc-cat__img{transform:scale(1.06);}
+.kc-cat h3{margin:14px 18px 4px !important;font-size:1.1rem !important;}
+.kc-cat span{display:block !important;margin:0 18px 18px !important;margin-top:auto !important;
+ padding-top:4px;}
+@media (max-width:900px){ .kc-cat__img{height:200px !important;} }
+@media (max-width:560px){ .kc-cat__img{height:190px !important;}
+  .kc-cat h3{margin:12px 14px 4px !important;} .kc-cat span{margin:0 14px 14px !important;} }
+
+/* ===== product grids: uniform image shape + aligned rows ===== */
+.woocommerce ul.products{align-items:stretch !important;}
+.woocommerce ul.products li.product{display:flex !important;flex-direction:column !important;}
+.woocommerce ul.products li.product a img,
+.woocommerce ul.products li.product img.attachment-woocommerce_thumbnail{
+ width:100% !important;height:230px !important;object-fit:cover !important;
+ object-position:center center !important;display:block !important;margin:0 0 12px !important;
+ border-radius:4px !important;aspect-ratio:auto !important;}
+.woocommerce ul.products li.product .price{margin-top:auto !important;}
+.woocommerce ul.products li.product .button{width:100%;text-align:center;}
+@media (max-width:900px){.woocommerce ul.products li.product a img{height:210px !important;}}
+@media (max-width:560px){.woocommerce ul.products li.product a img{height:200px !important;}}
+/* single product gallery image kept natural, not cropped */
+.woocommerce div.product .woocommerce-product-gallery img{height:auto !important;object-fit:contain !important;}
 </style>
