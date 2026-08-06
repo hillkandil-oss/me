@@ -179,7 +179,38 @@
   wrap.appendChild(f); wrap.appendChild(a);
   host.appendChild(wrap);
  }
- function run(){headerTools();productInfo();germanForm();reveal();stickyHeader();dropDemoBar();topbar();shopCta();edgeToEdge();}
+
+ function readItemsInCart(){
+  var all=document.cookie?document.cookie.split("; "):[];
+  for(var i=0;i<all.length;i++){
+   var kv=all[i].split("=");
+   if(kv[0]==="woocommerce_items_in_cart"||kv[0]==="woocommerce_cart_items"){
+    var n=parseInt(kv[1],10);
+    if(!isNaN(n)){return n;}
+   }
+  }
+  return 0;
+ }
+ function paintCart(){
+  var badge=document.querySelector(".kc-cart__count");
+  if(!badge){return;}
+  var n=readItemsInCart();
+  while(badge.firstChild){badge.removeChild(badge.firstChild);}
+  badge.appendChild(document.createTextNode(String(n)));
+  badge.setAttribute("data-count",String(n));
+  var link=document.querySelector(".kc-cart");
+  if(link){link.setAttribute("aria-label", n===1?"Warenkorb, 1 Artikel":("Warenkorb, "+n+" Artikel"));}
+ }
+ function watchCart(){
+  paintCart();
+  if(window.jQuery){
+   window.jQuery(document.body).on("added_to_cart removed_from_cart updated_cart_totals wc_fragments_refreshed",function(){
+    setTimeout(paintCart,120);
+   });
+  }
+  window.addEventListener("pageshow",paintCart);
+ }
+ function run(){watchCart();headerTools();productInfo();germanForm();reveal();stickyHeader();dropDemoBar();topbar();shopCta();edgeToEdge();}
  if(document.readyState!=="loading"){run();}else{document.addEventListener("DOMContentLoaded",run);}
  window.addEventListener("load",edgeToEdge);
 })();
