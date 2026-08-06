@@ -1,4 +1,4 @@
-<!-- LIVE widget custom_html-4 -->
+<!-- LIVE custom_html-4 -->
 <script>
 (function(){
  function mk(tag,cls,txt,href){
@@ -154,7 +154,32 @@
   box.appendChild(p);
   host.appendChild(box);
  }
- function run(){productInfo();germanForm();reveal();stickyHeader();dropDemoBar();topbar();shopCta();edgeToEdge();}
+
+ function headerTools(){
+  var host=document.querySelector(".main-header .outer-box")||document.querySelector(".main-header .header-lower");
+  if(!host||document.querySelector(".kc-tools")){return;}
+  var wrap=document.createElement("div"); wrap.className="kc-tools";
+  var f=document.createElement("form");
+  f.className="kc-search"; f.setAttribute("role","search");
+  f.setAttribute("method","get"); f.setAttribute("action","/");
+  var inp=document.createElement("input");
+  inp.setAttribute("type","search"); inp.setAttribute("name","s");
+  inp.setAttribute("placeholder","Container suchen \u2026");
+  inp.setAttribute("aria-label","Container suchen");
+  var pt=document.createElement("input");
+  pt.setAttribute("type","hidden"); pt.setAttribute("name","post_type"); pt.setAttribute("value","product");
+  var btn=document.createElement("button");
+  btn.setAttribute("type","submit"); btn.className="kc-search__btn"; btn.setAttribute("aria-label","Suchen");
+  f.appendChild(inp); f.appendChild(pt); f.appendChild(btn);
+  var a=document.createElement("a");
+  a.className="kc-cart"; a.setAttribute("href","/cart/"); a.setAttribute("aria-label","Warenkorb");
+  var b=document.createElement("span");
+  b.className="kc-cart__count"; b.setAttribute("data-count","0");
+  a.appendChild(b);
+  wrap.appendChild(f); wrap.appendChild(a);
+  host.appendChild(wrap);
+ }
+ function run(){headerTools();productInfo();germanForm();reveal();stickyHeader();dropDemoBar();topbar();shopCta();edgeToEdge();}
  if(document.readyState!=="loading"){run();}else{document.addEventListener("DOMContentLoaded",run);}
  window.addEventListener("load",edgeToEdge);
 })();

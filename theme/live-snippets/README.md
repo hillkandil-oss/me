@@ -1,7 +1,5 @@
 # Live PHP snippets (Code Snippets plugin)
 
-Mirrored from kaisercontainers.de. Edit there, then re-export.
-
 | id | name | scope | state |
 |---|---|---|---|
 | 1 | Make upload filenames lowercase | global | inactive |
@@ -14,3 +12,4 @@ Mirrored from kaisercontainers.de. Edit there, then re-export.
 | 8 | kaisercontainers – Preishinweis: zzgl. Versandkosten | front-end | active |
 | 9 | kaisercontainers – Complianz configuration (one-time) | single-use | inactive |
 | 10 | kaisercontainers – viewport meta (mobile rendering) | front-end | active |
+| 11 | kaisercontainers – replace theme logo with brand logo | front-end | active |
