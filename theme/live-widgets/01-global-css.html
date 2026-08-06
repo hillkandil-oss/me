@@ -550,4 +550,23 @@ a.kc-cat:hover::after{width:78px !important;}
 .kc-cart__count[data-count="0"]{display:none !important;}
 
 .logo-box img,.logo img,.nav-logo img,.main-header .logo-box a img{max-height:52px !important;width:auto !important;height:auto !important;content:normal !important;}
+
+/* ===== brand the theme's own buttons + size the logo ===== */
+.theme-btn,.theme-btn-eight,.theme-btn-one,.theme-btn-two,.main-header .theme-btn,
+a.theme-btn,button.theme-btn{
+ background:var(--kc-corten) !important;background-image:none !important;
+ border-color:var(--kc-corten) !important;color:#fff !important;
+ border-radius:6px !important;font-family:"Archivo",sans-serif !important;
+ font-weight:700 !important;letter-spacing:.01em !important;text-transform:none !important;
+ box-shadow:none !important;transition:background .2s ease,transform .18s ease !important;}
+.theme-btn:hover,a.theme-btn:hover,.theme-btn-eight:hover{
+ background:var(--kc-corten7) !important;border-color:var(--kc-corten7) !important;
+ color:#fff !important;transform:translateY(-2px);}
+.theme-btn:active,a.theme-btn:active{transform:scale(.97) !important;}
+/* theme accent colour used elsewhere (icons, hovers, bars) */
+.main-menu .navigation > li > a:hover,.main-menu .navigation > li.current > a{color:var(--kc-corten) !important;}
+/* logo a touch larger and crisp */
+.logo-box img,.logo img,.nav-logo img,.main-header .logo-box a img{
+ max-height:56px !important;min-width:190px !important;width:auto !important;height:auto !important;}
+@media (max-width:782px){.logo-box img,.logo img{max-height:44px !important;min-width:150px !important;}}
 </style>
