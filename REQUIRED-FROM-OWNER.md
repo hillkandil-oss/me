@@ -71,3 +71,24 @@ the **site-admin address instead of info@kaisercontainers.de**.
 
 Styling + German labels are applied automatically; the fields, recipient and confirmation
 mail must be pasted in once. Full copy-paste instructions: `docs/contact-form-setup.md`.
+
+
+---
+
+## Status snapshot (2026-08-06) — verified live
+
+**Resolved and live:** store phone, Impressum owner name, published address (as supplied),
+condition on all 20 products, ISO dimensions, price transparency note, contact-form recipient,
+cookie consent, viewport meta, brand logo and favicon, header search + cart, and the removal of
+every fabricated string the external audit found (`+357` phone, `House 35 R/A, Street`,
+Mustermann, beispiel.de, English demo labels).
+
+**Still needed from the owner**
+| Item | Why it matters |
+|---|---|
+| **Gewerbeanmeldung / business registration** | Google verifies merchant identity; this is the main remaining rejection risk |
+| **Street + house number** | Strengthens verification and the map pin; the district address is used consistently for now |
+| **Genuine reviews** (Google Customer Reviews / Trustpilot) | Trust signal. Never to be fabricated |
+| **Photographs of the premises** | Product photography is real and in use; no premises photo exists |
+| **Freight cost basis** | Pickup is configured; delivery is quoted individually |
+| **Rank Math wizard + permalink flush** | Enables `/sitemap_index.xml` and per-page SEO titles |

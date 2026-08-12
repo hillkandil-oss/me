@@ -126,3 +126,41 @@ authorization. Approval is never guaranteed.
 routes, policies, price transparency, availability, condition, product data and structured data
 are in place and mutually consistent. Item 4 above is a business-side matter outside the
 website build. Submit only with explicit authorization; approval is never guaranteed.
+
+
+---
+
+## Update 3 — final state (2026-08-06)
+
+An external GMC audit (`docs/gmc-audit-fixlist.pdf`) checked the **public HTML with grep** and
+found demo content that earlier CSS/JS fixes had only hidden. That gap is now closed at the
+output level, so what crawlers receive is clean rather than visually masked.
+
+### Everything previously listed as open is now resolved
+| Item | Resolution |
+|---|---|
+| Fabricated `+357` phone in raw HTML | ✅ 0 occurrences — PHP output filter |
+| Fabricated `House 35 R/A, Street` address (theme footer, every page) | ✅ 0 occurrences — replaced with the real Duisburg address |
+| `itemCondition` absent from Product JSON-LD | ✅ present — added via PHP snippet after the WAF blocked the JS route |
+| Contact form recipient | ✅ `info@kaisercontainers.de` |
+| Price basis / hidden-cost risk | ✅ `zzgl. Versandkosten` on every price |
+| Cookie consent | ✅ Complianz active, EU/prior opt-in, no statistics or ad cookies declared |
+| Placeholder text anywhere public | ✅ 0 |
+| English demo UI strings | ✅ 0 |
+| Missing viewport meta (site rendered at desktop width on phones) | ✅ added |
+
+### Status
+**The website meets the on-site Merchant Center criteria.** Business identity, contact routes,
+policies, price transparency, availability, condition, product data and structured data are in
+place, mutually consistent, and free of fabricated content.
+
+### The remaining risk is not a website problem
+The business is **not yet registered** (no Gewerbeanmeldung, no VAT ID) and the published
+address is a district rather than a street. Google verifies merchant identity, so submission
+can still fail on that basis regardless of site quality — and a rejection attaches to the
+domain, making later approval harder. The owner has been informed and has decided to keep
+checkout active; that is recorded here once as an accepted business decision.
+
+### Recommendation
+Register the business and obtain a publishable street address before submitting. Submit only
+with explicit authorization, on the live domain. **Approval is never guaranteed.**
