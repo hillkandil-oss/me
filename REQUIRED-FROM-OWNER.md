@@ -20,7 +20,7 @@ Legend: 🔴 blocks publication · 🟠 blocks a specific page/feature · 🟡 i
 |---|---|---|---|
 | 7 | **Container condition** — confirmed **new + used both sold** | Product labels, feed `condition` | ✅ confirmed |
 | 8 | **Prices net or gross?** (B2B container sales are often net + 19% VAT) | Price display, checkout, feed | ⏳ |
-| 9 | **Real shipping costs** for containers (heavy freight — flat, by zone, or on request?) | Cart, checkout, Versand policy, feed | ⏳ |
+| 9 | **Shipping cost** | Cart, checkout, Versand policy, feed | ✅ **290,00 € flat rate** (Spedition, deutschlandweit); Abholung Duisburg kostenlos — applied everywhere |
 | 10 | **Warranty / Gewährleistung terms** | Warranty policy, product pages | ⏳ |
 | 11 | **Store-pickup details** — address/hours/prep/ID/holding period for collection | Pickup section, checkout | ⏳ (pickup = YES confirmed; details needed) |
 
@@ -90,5 +90,5 @@ Mustermann, beispiel.de, English demo labels).
 | **Street + house number** | Strengthens verification and the map pin; the district address is used consistently for now |
 | **Genuine reviews** (Google Customer Reviews / Trustpilot) | Trust signal. Never to be fabricated |
 | **Photographs of the premises** | Product photography is real and in use; no premises photo exists |
-| **Freight cost basis** | Pickup is configured; delivery is quoted individually |
+| ~~Freight cost basis~~ | ✅ resolved — 290,00 € flat rate configured and consistent |
 | **Rank Math wizard + permalink flush** | Enables `/sitemap_index.xml` and per-page SEO titles |
