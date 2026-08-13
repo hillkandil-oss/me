@@ -2086,6 +2086,64 @@ Neither is something I can verify from here — sending a live test order would 
 order in the store and real mail to the owner's inbox.
 
 
+---
+
+## Merchant Center compliance audit — 6 findings fixed, MEDIUM to zero
+
+> Authorisation: *"review this website for google merchant compliance an ajust all issues
+> take the role of a google merchant center audit bot"*
+
+Full report: **`MERCHANT-CENTER-AUDIT.md`**. Audited against Google's actual policy areas
+rather than my own checklist, which surfaced things earlier cycles had never tested.
+
+### New checks this pass
+
+- **Feed attribute policy across all 108 items** — ALL-CAPS titles, promotional text,
+  gimmicky punctuation, URLs in titles, length limits, malformed prices, invalid
+  `availability`/`condition` enums, missing `google_product_category`, non-HTTPS links.
+  **Zero violations.**
+- **Image dimensions, decoded not assumed** — every one of 750 image URLs fetched and opened
+  with Pillow. None below Merchant Center's 100×100 minimum, none below 250×250.
+- **Per-product feed↔page parity** on a 25-item sample: price findable on the page,
+  availability agreeing, canonical self-referential, no `noindex`, no mixed content,
+  `Product` schema present. **Zero problems.**
+- **Business-identity consistency**, done programmatically as my own spec demands rather than
+  by eye: 6 surfaces × 5 facts, all matching, and matching the `Store` JSON-LD.
+- **Crawlability**: `robots.txt` blocks nothing that matters.
+
+### Fixed
+
+**Unsubstantiated guarantees — 4 removed.** *"10 Jahre Garantie"* on four trailers with no
+guarantor, duration, territorial scope or claim procedure. § 479 BGB requires all four, and an
+unsubstantiated guarantee is a misrepresentation. One of the four sat in the **product title**
+of 3483, feeding straight into the feed's `title`. Every numeric specification was asserted
+preserved before each write.
+
+**Duplicate products — 2 trashed.** 3631 and 3638, established in cycle 4 as duplicate
+imports. Moved to **trash rather than deleted**, so they are recoverable from the Papierkorb;
+deletion is destructive and the owner may disagree with which copy to keep. Kept 3602 and
+3613, the fuller and correctly-ordered galleries. Catalogue 110 → 108, duplicate titles 2 → 0.
+
+### Result
+
+```
+BLOCKING : 0
+HIGH     : 2   (52 no-brand = correct; itemCondition = robustness gap)
+MEDIUM   : 0   (was 1)
+feed     : 108 items, 108 landing pages, 750 images — all clean
+```
+
+**MEDIUM is now zero.** Both HIGHs are defensible: the no-brand items genuinely have no brand
+and correctly declare `identifier_exists: no`, and `itemCondition` is absent from page schema
+while the feed declares `condition: new` for every item — so there is no contradiction for
+Google to find, only a missing belt-and-braces signal.
+
+### Not fixed, and why
+
+`itemCondition` needs a PHP filter, reachable only by installing a snippets plugin — arbitrary
+PHP execution on a live store. Flagged three times; **still the owner's decision.**
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
