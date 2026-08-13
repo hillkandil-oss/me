@@ -164,3 +164,24 @@ checkout active; that is recorded here once as an accepted business decision.
 ### Recommendation
 Register the business and obtain a publishable street address before submitting. Submit only
 with explicit authorization, on the live domain. **Approval is never guaranteed.**
+
+
+---
+
+## Update 4 — German locale + checkout verification (2026-08-06)
+
+Two findings from testing the purchase path rather than page status codes:
+
+1. **Footer links were not clickable.** Hit-testing showed the theme's footer widget grid
+   columns overlaying the real footer, so clicks landed on an invisible wrapper. All policy
+   and shop links were affected. Fixed by neutralising the wrappers and lifting the footer's
+   stacking layer; all 11 links now register clicks.
+2. **The site was still running in `en_US`.** `html lang="en-US"`, checkout fields in English
+   ("First name"), and "Add to cart" throughout — on a store whose feed targets Germany. A
+   page/feed language mismatch is a Merchant Center risk and poor UX for German buyers.
+   Fixed by installing the de_DE language pack and the plugin/theme translation packs through
+   PHP, which the REST API could not do.
+
+**Verified after the fix:** `html lang="de"`, "In den Warenkorb" x16 on the shop, checkout
+renders "Vorname" and offers Überweisung, and cart/checkout/account are correctly excluded
+from page caching (`cache-control: no-cache`) while the homepage is cached.

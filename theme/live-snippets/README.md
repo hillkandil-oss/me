@@ -14,3 +14,5 @@
 | 10 | kaisercontainers – viewport meta (mobile rendering) | front-end | active |
 | 11 | kaisercontainers – replace theme logo with brand logo | front-end | active |
 | 12 | kaisercontainers – homepage meta description (DE) | front-end | active |
+| 13 | kaisercontainers – install German language pack (one-time) | single-use | inactive |
+| 14 | kaisercontainers – install plugin/theme translations (one-time) | single-use | inactive |
