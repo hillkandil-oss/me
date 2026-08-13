@@ -2144,6 +2144,71 @@ Google to find, only a missing belt-and-braces signal.
 PHP execution on a live store. Flagged three times; **still the owner's decision.**
 
 
+---
+
+## German button labels — a stopgap, tested in a browser before it shipped
+
+> Authorisation: *"change the button to german"*
+
+### The block cannot do it
+
+Checked the block registry before assuming: neither `woocommerce/product-button` nor
+`woocommerce/add-to-cart-form` exposes a text attribute. The label comes from WooCommerce's
+translatable string, so the only real fixes are the language pack (not reachable over REST) or
+a PHP filter (needs a snippets plugin).
+
+### What was built instead
+
+`theme/de-strings.js`, a small runtime relabeller in the footer, covering **34 strings** plus
+three "Showing 1–16 of 110 results" patterns. Deliberate design choices:
+
+- **Exact whole-string matches only.** A product description containing the word *Total* is
+  never touched.
+- **Rewrites the real text node**, not a CSS `::after` overlay. A CSS overlay would show German
+  to sighted users while screen readers still announced *"Add to cart"* — worse than leaving it
+  in English.
+- **`value` attributes deliberately excluded.** On a form control `value` is submitted data,
+  not a label; rewriting it could change what the server receives.
+- **Idempotent and self-disabling.** Once the language pack is installed there are no English
+  strings left to match and it becomes a no-op. It does not need removing.
+- Wrapped in `try/catch` at every entry point, with a `MutationObserver` for the AJAX-rendered
+  mini-cart and product grids.
+
+### It shipped broken, and the browser caught it
+
+First deployment produced `Invalid or unexpected token` on the live page. **WordPress escapes
+the logical-AND operator to a numeric HTML entity inside a `wp:html` block**, so
+`n.nodeValue && n.nodeValue.trim()` became `n.nodeValue &#038;&#038; …` and the script died at
+parse time. Diffed the deployed copy against source to find it — a single operator, one line.
+
+Rewritten with sequential guards instead. The file now contains **zero** occurrences of that
+operator, asserted before every deploy, and the deployed copy contains **zero** entity escapes.
+
+*(The first fix attempt also failed its own assertion, because the comment explaining the rule
+contained the operator it was warning about.)*
+
+### Verified
+
+Tested in Chromium against **real pages fetched from the live site**, before and after deploy:
+
+| Page | English left | Script errors |
+|---|---|---|
+| `/shop/` | none | none |
+| `/product/container-pool-12m-x-2-8m/` | none | none |
+| `/cart/` | none | none |
+| `/` | none | none |
+
+`Add to cart` → **In den Warenkorb** · `Sort by popularity` → **Nach Beliebtheit sortieren** ·
+`Showing 1–16 of 110 results` → **Ergebnisse 1–16 von 110** · `Subtotal` → **Zwischensumme**.
+
+### This is a patch, not localisation
+
+It covers the strings a customer actually sees. It does **not** fix `<html lang="en-US">`,
+`og:locale: en_US` or `inLanguage: en-US` — those are in the structured data Google reads and
+only the real language pack changes them. **The one click in Settings → General is still the
+correct fix**, and this becomes inert the moment it is done.
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
