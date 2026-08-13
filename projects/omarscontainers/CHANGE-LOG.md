@@ -1894,6 +1894,82 @@ spec's business-consistency section lists social profiles among the surfaces tha
 so real ones are worth having — placeholder ones were worse than none.
 
 
+---
+
+## Flat-rate shipping €170 → €300, and a placeholder audit
+
+> Authorisation: *"add 300euros as flat rate shipping in the website an replace all
+> placeholder text with real information"*
+
+### Shipping
+
+The WooCommerce cost field is **net**. Entering `300` would have charged the customer
+**€357.00**. This is the same trap that charged €202.30 when `170` was entered early in the
+project.
+
+```
+300.00 / 1.19 = 252.10 net    →    252.10 × 1.19 = 300.00 gross
+```
+
+Verified against a real cart rather than by reading the setting:
+
+```
+shipping (net) 252.10 + tax 47.90 = GROSS 300.00
+TOTAL          16,100.00 EUR   (15,800.00 product + 300.00 shipping)
+```
+
+**8 references in page copy** updated across `/`, `/shop/`, `/ueber-uns/`, `/agb/`,
+`/zahlungsarten/`, `/versand-und-lieferung/`. Feed rebuilt: every item now carries
+`DE:::300.00 EUR`. The one remaining `170` in the feed is a product weight (`1700 kg`), not a
+shipping value.
+
+### Placeholder audit — 16 found, not the 2 being tracked
+
+Only the Impressum and `/standort/` were on the radar. A full sweep of every page, post and
+template part found **16**, of which **4 are false positives** — HTML form `placeholder`
+attributes carrying real German values (`Vor- und Nachname`, `Produkte suchen…`). Those are
+correct and stay.
+
+**12 real placeholders remain.** One was fixable from facts the owner has since supplied:
+
+| Page | Was | Now |
+|---|---|---|
+| `/datenschutz/` | `[BESTÄTIGEN: Vollständiger Firmenname und Vertretungsberechtigter]` | Omar Peters, Einzelunternehmen, trading as omarscontainers.de, full address, phone, e-mail — **matching the Impressum exactly**, which is what DSGVO Art. 13 requires of the controller identity |
+
+### The other 11 cannot be filled without information only the owner has
+
+Each names a specific fact, and **not one can be invented** — that is the whole point of the
+marker. Grouped by what is actually needed:
+
+**Blocks a sale** — `/zahlungsarten/`: bank account holder, IBAN, BIC, bank name.
+
+**A yes/no would close it** — `/impressum/`: USt-IdNr., required only *sofern vorhanden*; if
+none was issued the section is deleted rather than filled.
+
+**Facts about the business** — `/ueber-uns/`: founding year, history, team size *(if there is
+no notable history, the section is removed, not invented)*; how goods are sourced.
+`/gewaehrleistung/`: who gives the 10-year warranty on the four trailers and on what terms
+(§ 479 BGB governs the wording). `/rueckgabe-erstattung/`: excluded items and any restocking
+fee. `/versand-und-lieferung/`: what the delivery site must provide — access, crane, who
+unloads. `/standort/`: access, parking, accessibility.
+
+**Photographs** — `/ueber-uns/` and `/standort/` both ask for real photographs of the Essen
+site. Stock imagery is explicitly excluded: on a location page it reads as "our yard" and is a
+misrepresentation.
+
+**Needs a lawyer** — `/agb/`: legal review of the terms. `/widerrufsrecht/`: whether
+custom-built containers fall under the § 312g Abs. 2 Nr. 1 BGB exemption.
+
+**Needs a decision first** — `/datenschutz/`: the list of cookies and third-party services can
+only be finalised once the tools in use are chosen.
+
+### Note
+
+`/shop/` page content is **not rendered** — WooCommerce uses the `archive-product` template,
+which has no page-content block. The intro written there, including its shipping price, has
+never been visible to a customer. Updated for consistency, but it is dead copy.
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
