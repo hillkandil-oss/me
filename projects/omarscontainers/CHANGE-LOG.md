@@ -1970,6 +1970,73 @@ which has no page-content block. The intro written there, including its shipping
 never been visible to a customer. Updated for consistency, but it is dead copy.
 
 
+---
+
+## All placeholders removed — and one of them was load-bearing
+
+> Authorisation: *"no for all an delete the section ... i want this website compliance for
+> google merchant center"*
+
+**14 placeholders removed across 10 pages**, plus 3 headings left standing empty behind them.
+Verified across 13 live pages: zero `[BESTÄTIGEN]`, zero `trans-` tokens, zero
+*"Dieser Platzhalter"* notes.
+
+A heading with nothing under it implies the content exists and is merely unstated, so orphaned
+headings went with their placeholders — `Registereintrag`, `Umsatzsteuer-Identifikationsnummer`
+and one on `/versand-und-lieferung/`. Pages re-read afterwards and each still has a coherent
+section structure.
+
+**Two placeholder styles existed.** The first pass matched only the light-theme
+`background:#fff8e1` variant and reported `/ueber-uns/` as clean when it held three in a
+dark-theme `#2A1F05` variant. Generalised to match any `<p>` containing the marker regardless
+of styling, then re-swept. *A pattern that finds nothing is not evidence of nothing.*
+
+### The one that mattered: `/zahlungsarten/` now makes a promise the store cannot keep
+
+The removed marker there asked for the bank details. Underneath it, the page says:
+
+> *"Überweisung (Vorkasse) – Sie erhalten nach Abschluss der Bestellung unsere Bankverbindung
+> sowie Ihre Bestellnummer als Verwendungszweck."*
+
+Checked against WooCommerce immediately after:
+
+```
+bacs enabled         : True
+bacs account_details : EMPTY
+bacs instructions    : EMPTY
+```
+
+**The customer receives no bank details, because there are none configured.** Before, the page
+carried a visible marker admitting the gap. Now it carries a clean sentence stating something
+untrue. Removing the placeholder did not fix the problem — it hid it, and converted an honest
+admission into a false statement.
+
+This is the opposite of what the instruction was for. Merchant Center's Misrepresentation
+policy is precisely about a site claiming something it does not deliver, and a reviewer
+testing checkout reaches an order confirmation with nowhere to send money.
+
+Only two honest resolutions exist, and both are the owner's:
+
+1. **Add the bank details** — account holder, IBAN, BIC, bank name. The page then becomes true.
+2. **Disable the payment method** so the store cannot take orders it cannot be paid for.
+
+I have done neither: (1) needs facts I do not have, and (2) would stop the store selling
+entirely, which is a business decision rather than a compliance fix.
+
+### Also still live, and unaffected by placeholder removal
+
+**"10 Jahre Garantie" remains in four trailer products.** The marker asking who grants it is
+gone, but the claim is not. § 479 BGB requires an advertised guarantee to state the guarantor,
+duration, territorial scope and how to claim. As written it does none of that. Either confirm
+the guarantor and terms so it can be worded properly, or the claim should come out of the four
+descriptions. Removing a genuine guarantee would harm the buyer, so this was not done
+unilaterally.
+
+`/agb/` and `/widerrufsrecht/` no longer display the note saying they are drafts needing legal
+review. **They still are.** The note was owner-facing advice sitting on a customer-facing page,
+so removing it was right — but the review remains outstanding.
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
