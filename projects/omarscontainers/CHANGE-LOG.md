@@ -2037,6 +2037,55 @@ review. **They still are.** The note was owner-facing advice sitting on a custom
 so removing it was right — but the review remains outstanding.
 
 
+---
+
+## Bank details by e-mail — page and order e-mail now agree
+
+> Authorisation: *"the bank details will be sent via email"*
+
+That resolves the false statement flagged in the previous entry. `/zahlungsarten/` says the
+customer receives the bank details after ordering; if they are sent manually by e-mail, the
+sentence is true. Manual, but honest.
+
+**The order e-mail did not say the same thing.** WooCommerce's `bacs` gateway had both
+`account_details` and `instructions` empty, so the confirmation e-mail carried an empty bank
+section — the page promised details, the e-mail delivered a blank. Set `instructions` to state
+the process in the owner's own terms:
+
+> *"Sie erhalten unsere Bankverbindung sowie Ihre Bestellnummer als Verwendungszweck in Kürze
+> per E-Mail. Bitte überweisen Sie den Rechnungsbetrag erst nach Erhalt dieser E-Mail. Ihre
+> Bestellung wird nach Zahlungseingang bearbeitet."*
+
+Nothing invented — it restates what the owner said, and it now appears on the thank-you page
+and in the confirmation e-mail, so page and e-mail agree.
+
+### This makes e-mail delivery load-bearing, and it is unverified
+
+The whole payment path now depends on one e-mail arriving. Checked:
+
+```
+from_address : info@omarscontainers.de
+from_name    : omarscontainers
+SMTP plugin  : none — WordPress is using PHP mail()
+```
+
+`mail()` from a shared host, with no authenticated sender, no SPF/DKIM alignment guaranteed,
+is routinely rejected or spam-filed by Gmail, Outlook and GMX — the three providers most
+German buyers use. **If that e-mail does not arrive, the customer has ordered and has no way
+to pay, and neither party finds out.** Before, an empty bank section was at least visibly
+empty; now the failure is silent.
+
+Two owner actions, both small:
+
+1. **Place a real test order** and confirm the confirmation e-mail arrives in an inbox, not a
+   spam folder.
+2. **Install and configure an SMTP plugin** so mail is sent authenticated rather than through
+   `mail()`.
+
+Neither is something I can verify from here — sending a live test order would generate a real
+order in the store and real mail to the owner's inbox.
+
+
 ## Verified during this session, no change required
 
 - **Sale pricing is genuine.** 9 of 116 products are discounted, 6.8%–38.7%, no uniform
