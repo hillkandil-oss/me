@@ -603,4 +603,20 @@ a.theme-btn,button.theme-btn{
   .kc-footer li a,.kc-footer li a::before{transition:none !important;transform:none !important;}
   .kc-footer li a:hover{background-size:calc(100% - 14px) 1px !important;}
 }
+
+/* ===== FIX: theme widget columns were overlaying the footer and eating clicks ===== */
+/* the CSS-only and JS-only widgets still occupy grid columns; neutralise them */
+.footer-sidebar .widget_custom_html,.footer-sidebar .widget_text,
+#footer .widget_custom_html,#footer .widget_text,
+.footer .widget_custom_html,.footer .widget_text{
+ float:none !important;width:100% !important;max-width:100% !important;
+ flex:0 0 100% !important;padding:0 !important;margin:0 !important;
+ position:static !important;}
+/* lift the real footer above any sibling wrapper */
+.kc-footer{position:relative !important;z-index:20 !important;}
+.kc-footer *{position:relative;}
+.kc-footer a{position:relative !important;z-index:21 !important;pointer-events:auto !important;}
+/* wrappers that carry only <style>/<script> must never capture pointer events */
+.footer-sidebar .widget_custom_html:empty,
+.footer-sidebar .widget_text:empty{pointer-events:none !important;display:none !important;}
 </style>
