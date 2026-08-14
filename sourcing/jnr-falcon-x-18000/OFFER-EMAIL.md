@@ -2,9 +2,11 @@
 
 Reply to a bulk-purchase inquiry. Plain-text version below; formatted version in `offer-email.html`.
 
-> **Before sending — set your prices.** The tier table carries *suggested* selling prices, not final ones.
-> They are built on a landed cost of roughly **$6.00–$7.60/unit** (see `README.md` §4) at a ~25–30% gross
-> margin. Replace every `$` figure with your own numbers, and delete this box.
+> **Before sending — check your prices.** The tier table was halved on request and now runs
+> **$4.75 → $3.75/unit**. That is *below* the $6.00–$7.60 landed cost benchmarked in `README.md` §4,
+> i.e. a loss of roughly $2–$4 per unit unless your actual cost basis is lower than the published
+> wholesale pricing found in that research. Confirm against your own cost before sending, and delete
+> this box.
 
 ---
 
@@ -58,11 +60,11 @@ Minimum 10 pcs per flavour. Mixed cartons available.
 
 | Quantity | Price per unit | Price per box of 10 |
 |---|---|---|
-| 50 – 199 pcs | **$9.50** | $95.00 |
-| 200 – 499 pcs | **$8.90** | $89.00 |
-| 500 – 999 pcs | **$8.40** | $84.00 |
-| 1,000 – 1,999 pcs | **$7.95** | $79.50 |
-| 2,000 pcs and above | **$7.50** | $75.00 |
+| 50 – 199 pcs | **$4.75** | $47.50 |
+| 200 – 499 pcs | **$4.45** | $44.50 |
+| 500 – 999 pcs | **$4.20** | $42.00 |
+| 1,000 – 1,999 pcs | **$3.98** | $39.80 |
+| 2,000 pcs and above | **$3.75** | $37.50 |
 
 - Minimum order quantity: **50 pcs**
 - Prices quoted **[EXW / FOB / DDP — specify]**, in **USD**, valid **30 days** from the date of this email
