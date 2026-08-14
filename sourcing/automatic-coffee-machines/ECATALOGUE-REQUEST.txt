@@ -1,19 +1,20 @@
-Subject: Sourcing Automatic Coffee Machines from China - Request for E-Catalogue,
-         Wholesale Pricing & Product Images
+Subject: Sourcing Automatic Coffee Machines from China - Request for
+         E-Catalogue, Wholesale Pricing & Product Images
 
 To: [supplier sales contact]
 
 
 Dear [Name / Sales Team],
 
-My name is [Name], [title] at [Company] ([website]), based in [country]. We are
-sourcing fully automatic coffee machines for [our retail network / our vending and
-unattended-retail operation / distribution in [market]] and are building a supplier
-shortlist for a first order this quarter, with recurring volume to follow.
+My name is [Name], [title] at [Company] ([website]), based in [country]. We
+are sourcing fully automatic coffee machines for [our retail network / our
+vending and unattended-retail operation / distribution in [market]] and are
+building a supplier shortlist for a first order this quarter, with recurring
+volume to follow.
 
-Your company was shortlisted on the strength of [your product range / your OEM
-capability / your certifications]. Could you please send your current e-catalogue
-and price list, together with the information below.
+Your company was shortlisted on the strength of [your product range / your
+OEM capability / your certifications]. Could you please send your current
+e-catalogue and price list, together with the information below.
 
 
 ------------------------------------------------------------------
@@ -26,8 +27,8 @@ Please send your latest e-catalogue as a PDF, covering:
  - Self-service and vending coffee machines, if you produce them
  - For each model: model number, capacity in cups per day, drink varieties,
    dimensions, net weight, rated power, voltage and frequency, boiler type and
-   capacity, pump type, grinder type, water supply (mains or tank), milk system,
-   canister count and volume, screen size, and cleaning system
+   capacity, pump type, grinder type, water supply (mains or tank), milk
+   system, canister count and volume, screen size, and cleaning system
 
 We are particularly interested in the [countertop bean-to-cup / floor-standing
 self-service] category in the [$X - $Y] range.
@@ -64,28 +65,29 @@ Please confirm in writing:
  - Whether each model is available in our voltage and frequency, or is
    220-240 V / 50 Hz only
  - The plug type supplied
- - Any price difference or additional lead time for the correct voltage version
+ - Any price difference or extra lead time for the correct voltage version
  - For higher-power commercial units, the electrical connection required
    (single phase, amperage, dedicated circuit)
 
-We cannot proceed with machines that are not supplied at the correct voltage for
-our market, so please treat this as a qualifying question.
+We cannot proceed with machines that are not supplied at the correct voltage
+for our market, so please treat this as a qualifying question.
 
 
 ------------------------------------------------------------------
 4. CERTIFICATIONS
 ------------------------------------------------------------------
 
-Please send certificate PDFs, including the certificate numbers and the exact model
-numbers they cover:
+Please send certificate PDFs, including the certificate numbers and the exact
+model numbers they cover:
 
  - Electrical safety: [UL / ETL for North America] [or: CE, CB for Europe]
  - Commercial sanitation: NSF, if you hold it
  - Food-contact compliance for all wetted parts (FDA or EU 1935/2004)
  - Any other marks: CQC, EAC, UKCA, RoHS, ISO 9001
 
-Please note we cannot accept CCC as evidence of compliance for our market, and a
-certificate covering a different model in the same family is not sufficient.
+Please note we cannot accept CCC as evidence of compliance for our market,
+and a certificate covering a different model in the same family is not
+sufficient.
 
 
 ------------------------------------------------------------------
@@ -112,7 +114,8 @@ certificate covering a different model in the same family is not sufficient.
  - Warranty period, what it covers, and who pays freight on warranty parts
  - Priced spare-parts list: brew group, grinder burrs, pump, boiler, valves,
    seals, touchscreen - and confirmed parts availability period
- - After-sales and technical support arrangements, and whether training is provided
+ - After-sales and technical support arrangements, and whether training is
+   provided
 
 
 ------------------------------------------------------------------
@@ -130,15 +133,15 @@ certificate covering a different model in the same family is not sufficient.
 
 We would like to purchase one sample unit of your recommended model at our
 voltage, before committing to volume. Please quote the sample price including
-courier to [destination], and confirm whether the sample cost is credited against
-the first bulk order.
+courier to [destination], and confirm whether the sample cost is credited
+against the first bulk order.
 
 
 ------------------------------------------------------------------
 
-Please send the catalogue and pricing to this address. If it is easier to discuss
-first, I am available on [phone / WhatsApp / WeChat] and can take a call at
-[time window, with time zone].
+Please send the catalogue and pricing to this address. If it is easier to
+discuss first, I am available on [phone / WhatsApp / WeChat] and can take a
+call at [time window, with time zone].
 
 We aim to shortlist suppliers within [two weeks] and place the sample order
 immediately after, so a prompt reply is appreciated.
