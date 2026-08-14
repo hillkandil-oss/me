@@ -1,0 +1,174 @@
+Subject: Sourcing Automatic Coffee Machines from China - Request for E-Catalogue,
+         Wholesale Pricing & Product Images
+
+To: [supplier sales contact]
+
+
+Dear [Name / Sales Team],
+
+My name is [Name], [title] at [Company] ([website]), based in [country]. We are
+sourcing fully automatic coffee machines for [our retail network / our vending and
+unattended-retail operation / distribution in [market]] and are building a supplier
+shortlist for a first order this quarter, with recurring volume to follow.
+
+Your company was shortlisted on the strength of [your product range / your OEM
+capability / your certifications]. Could you please send your current e-catalogue
+and price list, together with the information below.
+
+
+------------------------------------------------------------------
+1. E-CATALOGUE AND PRODUCT RANGE
+------------------------------------------------------------------
+
+Please send your latest e-catalogue as a PDF, covering:
+
+ - Fully automatic bean-to-cup machines for [commercial / office / home] use
+ - Self-service and vending coffee machines, if you produce them
+ - For each model: model number, capacity in cups per day, drink varieties,
+   dimensions, net weight, rated power, voltage and frequency, boiler type and
+   capacity, pump type, grinder type, water supply (mains or tank), milk system,
+   canister count and volume, screen size, and cleaning system
+
+We are particularly interested in the [countertop bean-to-cup / floor-standing
+self-service] category in the [$X - $Y] range.
+
+
+------------------------------------------------------------------
+2. WHOLESALE PRICING
+------------------------------------------------------------------
+
+Please quote unit price at the following quantities, so we can compare tiers:
+
+ - 1 unit (sample)
+ - 10 units
+ - 24 units
+ - 50 units
+ - 100 units
+
+For each tier please state:
+
+ - Price basis: EXW, FOB [port], CIF [our port] - ideally all three
+ - Currency and how long the quotation remains valid
+ - Minimum order quantity per model
+ - Whether the price includes packaging and export documentation
+
+
+------------------------------------------------------------------
+3. VOLTAGE AND ELECTRICAL SPECIFICATION  ** IMPORTANT **
+------------------------------------------------------------------
+
+Our market operates on [120 V / 60 Hz - USA] [or: 220-240 V / 50 Hz].
+
+Please confirm in writing:
+
+ - Whether each model is available in our voltage and frequency, or is
+   220-240 V / 50 Hz only
+ - The plug type supplied
+ - Any price difference or additional lead time for the correct voltage version
+ - For higher-power commercial units, the electrical connection required
+   (single phase, amperage, dedicated circuit)
+
+We cannot proceed with machines that are not supplied at the correct voltage for
+our market, so please treat this as a qualifying question.
+
+
+------------------------------------------------------------------
+4. CERTIFICATIONS
+------------------------------------------------------------------
+
+Please send certificate PDFs, including the certificate numbers and the exact model
+numbers they cover:
+
+ - Electrical safety: [UL / ETL for North America] [or: CE, CB for Europe]
+ - Commercial sanitation: NSF, if you hold it
+ - Food-contact compliance for all wetted parts (FDA or EU 1935/2004)
+ - Any other marks: CQC, EAC, UKCA, RoHS, ISO 9001
+
+Please note we cannot accept CCC as evidence of compliance for our market, and a
+certificate covering a different model in the same family is not sufficient.
+
+
+------------------------------------------------------------------
+5. PRODUCT IMAGES AND MEDIA
+------------------------------------------------------------------
+
+ - High-resolution product photographs of each model, white background plus
+   in-situ, with written permission to use them in our own catalogues, website
+   and advertising
+ - Real photographs of an actual production unit, not renders or composites
+ - A short video of the machine completing a full drink cycle
+ - Dimensional drawings, and the user and service manuals in English
+
+
+------------------------------------------------------------------
+6. TERMS
+------------------------------------------------------------------
+
+ - Payment terms accepted (we work on 30% deposit / 70% against copy of B/L,
+   or an irrevocable LC)
+ - Production lead time in and out of peak season
+ - Loading port, carton dimensions, gross and net weight per unit, and units
+   per 20 ft and 40 ft container
+ - Warranty period, what it covers, and who pays freight on warranty parts
+ - Priced spare-parts list: brew group, grinder burrs, pump, boiler, valves,
+   seals, touchscreen - and confirmed parts availability period
+ - After-sales and technical support arrangements, and whether training is provided
+
+
+------------------------------------------------------------------
+7. OEM / ODM
+------------------------------------------------------------------
+
+ - Do you offer OEM or ODM, and at what minimum quantity
+ - Scope available: logo, housing colour, screen UI, drink menu, packaging
+ - Tooling or setup cost and lead time, if any
+
+
+------------------------------------------------------------------
+8. SAMPLE
+------------------------------------------------------------------
+
+We would like to purchase one sample unit of your recommended model at our
+voltage, before committing to volume. Please quote the sample price including
+courier to [destination], and confirm whether the sample cost is credited against
+the first bulk order.
+
+
+------------------------------------------------------------------
+
+Please send the catalogue and pricing to this address. If it is easier to discuss
+first, I am available on [phone / WhatsApp / WeChat] and can take a call at
+[time window, with time zone].
+
+We aim to shortlist suppliers within [two weeks] and place the sample order
+immediately after, so a prompt reply is appreciated.
+
+Kind regards,
+
+[Name]
+[Title], [Company]
+[Phone / WhatsApp / WeChat]
+[Email]
+[Website]
+[Company address]
+
+
+==================================================================
+SUPPLIER COMPARISON LOG - for internal use, delete before sending
+==================================================================
+
+Send to all five, then fill this in as replies arrive.
+
+  1. Suzhou Dr. Coffee System Technology - Suzhou, Jiangsu
+  2. Guangzhou Jetinno Intelligent Equipment - Huangpu, Guangzhou
+  3. Ningbo Merol Coffee Machine - Ningbo, Zhejiang
+  4. Colet / Ningbo Hawk Electrical Appliance - Ningbo, Zhejiang
+  5. Guangdong Gemilai Intelligent Technology - Guangdong
+
+  Supplier | Model | FOB unit @10 | @50 | Our voltage? | UL/ETL | NSF |
+  Lead time | Warranty | Spare parts list | Sample price | Notes
+
+Compare on LANDED cost per unit - FOB price plus freight, duty, Section 301,
+certification cost and any voltage surcharge - not on the quoted unit price.
+A machine that cannot be certified or supplied at our voltage is not a
+cheaper option; it is not an option.
