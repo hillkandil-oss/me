@@ -1,0 +1,79 @@
+category,brand,model,supplier,province,price_usd_low,price_usd_high,moq,moq_unit,notes
+Portable,Good Seller,5V USB lithium battery portable single-serve,Good Seller Co. Ltd,Zhejiang,16.50,18.00,1000,pcs,
+Portable,Woma,Portable mini automatic espresso capsule compatible,Lu'an Woma Import and Export Co. Ltd,Anhui,15.50,18.00,10,pcs,lowest published price in dataset
+Portable,Xinyuan,TK03 portable electric espresso,Zhongshan Xinyuan Silicone Rubber Co. Ltd,Guangdong,40.00,55.00,1,pc,
+Pod/Drip,Ultron,Automatic 0.8L coffee maker for pods,Ultron Technology (Foshan) Co. Ltd,Guangdong,48.89,51.33,500,pcs,
+Pod/Drip,Sinolink,12-cup automatic grind-and-brew programmable drip,Ningbo Sinolink Appliance Co. Ltd,Zhejiang,55.00,55.00,500,pcs,
+Pod/Drip,Liyyou,Professional commercial fully automatic,Ningbo Liyyou Group Co. Ltd,Zhejiang,58.00,59.00,200,pcs,
+Pod/Drip,Yicheng,Commercial cappuccino capsule machine,Ningbo Yicheng Technology Co. Ltd,Zhejiang,80.00,80.00,2000,pcs,
+Pod/Drip,Careforcafe,Auto-filling Americano 1.5gal digital drip brewer,Guangdong Careforcafe Coffee Equipment Co. Ltd,Guangdong,379.00,579.00,5,pcs,
+Semi-auto espresso,Excellence Group,Italian semi-auto espresso with grinder,Guangdong Excellence Group Intelligent Technology Co. Ltd,Guangdong,64.00,66.00,500,pcs,
+Semi-auto espresso,Mielux,3-in-1 grinder + espresso + steam,Jiangmen Mielux Intelligent and Technology Co. Ltd,Guangdong,98.00,98.00,350,pcs,
+Semi-auto espresso,Excellence Group,Electric semi-auto espresso grinder home,Guangdong Excellence Group Intelligent Technology Co. Ltd,Guangdong,102.00,108.00,500,pcs,
+Semi-auto espresso,Galileo,Countertop semi-auto espresso steam wand,Hangzhou Galileo Technology Co. Ltd,Zhejiang,148.00,198.00,50,pcs,
+Semi-auto espresso,Kaesid,Automatic espresso with adjustable grinder,Kaesid Kitchen Equipment (Shenzhen) Co. Ltd,Guangdong,50.00,220.00,1,pc,wide range - confirm spec
+Semi-auto espresso,Gemilai,CRM3605 / CRM3200 series,Guangdong Gemilai Intelligent Technology Co. Ltd,Guangdong,,,,,quote on request; 800W 1.7L 15bar 58mm PID
+Semi-auto espresso,Careforcafe,Triple boiler 2-group 9bar rotary pump,Guangdong Careforcafe Coffee Equipment Co. Ltd,Guangdong,749.00,1299.00,10,pcs,
+Semi-auto espresso,Yishan,Triple boiler 2-group 9bar rotary pump,Shenzhen Yishan Partners Trading Co. Ltd,Guangdong,788.00,1478.00,1,pc,
+Semi-auto espresso,Dongyi Yangshan,2-group dual boiler stainless with milk frother,Dongyi Yangshan Mechanical Equipment Co. Ltd,Guangdong,819.00,1298.00,1,pc,
+Semi-auto espresso,Jieguan,Italian 2-group barista commercial semi-auto,Guangdong Jieguan Kitchen Equipment Manufacturing Co. Ltd,Guangdong,1650.00,1650.00,1,pc,
+Home bean-to-cup,Wasai,Bean-to-cup coffee machine,Ningbo Wasai Home Appliances Co. Ltd,Zhejiang,74.00,74.00,1000,pcs,WARNING likely not a true bean-to-cup at this price - verify
+Home bean-to-cup,Longbank,WiFi 9-in-1 Italian espresso with grinder,Ningbo Longbank Intelligence Appliance Co. Ltd,Zhejiang,134.00,155.00,300,pcs,
+Home bean-to-cup,Wasai,Fully automatic with semiconductor milk container,Ningbo Wasai Home Appliances Co. Ltd,Zhejiang,243.00,272.00,1,pc,best low-commitment entry
+Home bean-to-cup,,Commercial/home bean-to-cup cappuccino,Alibaba listing,,280.00,380.00,1,pc,
+Home bean-to-cup,Good Seller,One-touch cappuccino automatic espresso,Good Seller Co. Ltd,Zhejiang,280.00,320.00,30,pcs,
+Home bean-to-cup,Good Seller,3-variety fully automatic espresso maker,Good Seller Co. Ltd,Zhejiang,408.00,428.00,10,pcs,
+Home bean-to-cup,Dr. Coffee,H1 steam rod home,Suzhou Dr. Coffee System Technology Co. Ltd,Jiangsu,799.00,799.00,1,pc,
+Home bean-to-cup,Dr. Coffee,C11 (L) home bean-to-cup,Suzhou Dr. Coffee System Technology Co. Ltd,Jiangsu,800.00,850.00,1,pc,
+Home bean-to-cup,Dr. Coffee,F09 super-automatic espresso,Suzhou Dr. Coffee System Technology Co. Ltd,Jiangsu,800.00,900.00,1,pc,
+Home bean-to-cup,Dr. Coffee,C12 4L tank,Suzhou Dr. Coffee System Technology Co. Ltd,Jiangsu,880.00,950.00,1,pc,
+Home bean-to-cup,Dr. Coffee,H2-B / H2-Cw household bean-to-cup,Suzhou Dr. Coffee System Technology Co. Ltd,Jiangsu,899.00,899.00,1,pc,
+Commercial bean-to-cup,GGMGASTRO,Professional automatic commercial touchscreen,GGMGASTRO,Shandong,731.50,736.00,10,pcs,BEST commercial bean-to-cup price
+Commercial bean-to-cup,Yile,Premium bean-to-cup with cloud features,Hangzhou Yile Shangyun Robot Technology Co. Ltd,Zhejiang,1000.00,1040.00,1,pc,
+Commercial bean-to-cup,Dr. Coffee,F11 entry commercial,Suzhou Dr. Coffee System Technology Co. Ltd,Jiangsu,1130.00,1130.00,1,pc,
+Commercial bean-to-cup,SWF,F11 Big automatic bean-to-cup,Wuxi SWF Intelligent Technology Co. Ltd,Jiangsu,1200.00,1300.00,1,pc,
+Commercial bean-to-cup,Evoacas,Table-top bean-to-cup,Guangzhou Evoacas Intelligent Equipment Co. Ltd,Guangdong,1300.00,1300.00,1,pc,
+Commercial bean-to-cup,Dr. Coffee,F12 fully automatic espresso maker,Suzhou Dr. Coffee System Technology Co. Ltd,Jiangsu,1340.00,1340.00,1,pc,
+Commercial bean-to-cup,Yile,Le307A table-top with cloud service,Hangzhou Yile Shangyun Robot Technology Co. Ltd,Zhejiang,1450.00,1515.00,1,pc,
+Commercial bean-to-cup,Dr. Coffee,M12 Big Plus hotel,Suzhou Dr. Coffee System Technology Co. Ltd,Jiangsu,1880.00,2440.00,2,pcs,
+Commercial bean-to-cup,Dr. Coffee,Minibar / Minibar S1,Suzhou Dr. Coffee System Technology Co. Ltd,Jiangsu,1900.00,2200.00,1,pc,220V 50Hz EU plug
+Commercial bean-to-cup,Dr. Coffee,Coffeebar auto milk-system cleaning,Suzhou Dr. Coffee System Technology Co. Ltd,Jiangsu,2400.00,2500.00,1,pc,
+Commercial bean-to-cup,Jetinno,JL23-ES4C with flavour station,Guangzhou Jetinno Intelligent Equipment Co. Ltd,Guangdong,2452.00,2724.00,10,sets,2724 at 24-49 sets; 2452 at 50+; CE CB
+Commercial bean-to-cup,Dr. Coffee,Coffeeexpress commercial,Suzhou Dr. Coffee System Technology Co. Ltd,Jiangsu,2700.00,2700.00,1,pc,
+Commercial bean-to-cup,Jetinno,JL38A with chocolate bin,Guangzhou Jetinno Intelligent Equipment Co. Ltd,Guangdong,2726.00,3028.00,24,pcs,CE approved
+Commercial bean-to-cup,Evoacas,Self-service free-standing for hospitals,Guangzhou Evoacas Intelligent Equipment Co. Ltd,Guangdong,2800.00,3000.00,1,pc,
+Commercial bean-to-cup,Dr. Coffee,F2-H commercial 4L tank,Suzhou Dr. Coffee System Technology Co. Ltd,Jiangsu,3200.00,3700.00,1,pc,
+Commercial bean-to-cup,Dr. Coffee,F100-MP commercial espresso,Suzhou Dr. Coffee System Technology Co. Ltd,Jiangsu,3250.00,3250.00,1,pc,
+Commercial bean-to-cup,Dr. Coffee,F100 professional with powder,Suzhou Dr. Coffee System Technology Co. Ltd,Jiangsu,3300.00,3300.00,1,pc,
+Commercial bean-to-cup,Nantian,Commercial project espresso equipment,Guangzhou Nantian Sources Co. Ltd,Guangdong,3998.00,3998.00,1,pc,
+Commercial bean-to-cup,Dr. Coffee,F2-Plus large volume gas station,Suzhou Dr. Coffee System Technology Co. Ltd,Jiangsu,4500.00,4550.00,1,pc,
+Commercial bean-to-cup,Jetinno,JL33A,Guangzhou Jetinno Intelligent Equipment Co. Ltd,Guangdong,5000.00,5500.00,,,
+Commercial bean-to-cup,Dr. Coffee,F3plus / F3plus-T CVS flagship,Suzhou Dr. Coffee System Technology Co. Ltd,Jiangsu,7000.00,7200.00,1,pc,
+Vending,Yiso,19-inch screen vending machine with stand,Henan Yiso Intelligent Technology Co. Ltd,Henan,666.00,700.00,1,unit,BEST vending price at MOQ 1
+Vending,Yile,Le-Vending button-control fresh grind with cup dispenser,Hangzhou Yile Shangyun Robot Technology Co. Ltd,Zhejiang,850.00,900.00,4,pcs,
+Vending,Yile,Factory-price fresh ground vending,Hangzhou Yile Shangyun Robot Technology Co. Ltd,Zhejiang,900.00,900.00,1,pc,
+Vending,Jetinno,JL31b,Guangzhou Jetinno Intelligent Equipment Co. Ltd,Guangdong,1000.00,1100.00,,,
+Vending,Evoacas,Table-top bean-to-cup vending,Guangzhou Evoacas Intelligent Equipment Co. Ltd,Guangdong,1300.00,1300.00,1,pc,
+Vending,Xiwang,21.5-inch touchscreen 24h commercial vending,Henan Xiwang Machinery Equipment Co. Ltd,Henan,2100.00,2550.00,1,pc,
+Vending,Yile,Le308b 22-inch touchscreen fresh ground,Hangzhou Yile Shangyun Robot Technology Co. Ltd,Zhejiang,2150.00,2250.00,1,pc,
+Vending,Upus,24h WiFi coffee and hot chocolate vending,Shenzhen Upus Technology Co. Ltd,Guangdong,2299.00,2299.00,1,set,customisable
+Vending,TCN,OEM/ODM fresh robot coffee vending bean-to-cup,Hunan TCN Vending Machine Co. Ltd,Hunan,2426.00,2426.00,3,pcs,
+Vending,TCN,OEM Italy fully automatic bean-to-cup vending,Hunan TCN Vending Machine Co. Ltd,Hunan,2480.00,2780.00,3,pcs,
+Vending,Yile,Two-hopper freshly ground with fresh milk,Hangzhou Yile Shangyun Robot Technology Co. Ltd,Zhejiang,2500.00,2800.00,1,pc,
+Vending,Jetinno,JL300 floor-standing 21.5-inch touch,Guangzhou Jetinno Intelligent Equipment Co. Ltd,Guangdong,,,,,quote on request; 150kg 2800W CB CE CQC EAC
+Vending,Jetinno,JL220 / JL500,Guangzhou Jetinno Intelligent Equipment Co. Ltd,Guangdong,,,,,quote on request
+Vending,IMT,21.5-inch advanced vending,Guangzhou IMT Technology Co. Ltd,Guangdong,3717.20,4081.63,1,pc,
+Vending,Haha Zero Beast,Food and drinks AI vending,Shenzhen Haha Zero Beast Technology Co. Ltd,Guangdong,4299.00,4799.00,1,pc,
+Vending,Yile,Le308g hot/iced with cup dispenser,Hangzhou Yile Shangyun Robot Technology Co. Ltd,Zhejiang,4700.00,4800.00,1,pc,
+Vending,Future Smart,Energy-saving office vending customised,Guangzhou Future Smart Manufacturing Co. Ltd,Guangdong,5288.00,5888.00,1,pc,
+Vending,Sindron,Ice-cube cold drink coffee vending,Guangdong Sindron Intelligent Technology Co. Ltd,Guangdong,8988.00,9268.00,1,set,
+Vending,Kungfu Koala,18L robotic-arm dispensing coffee/ice-cream,Guangdong Kungfu Koala Industrial Co. Ltd,Guangdong,11280.00,11800.00,1,pc,CE certified
+Consumer brand,HiBREW,Multi-capsule universal system,HiBREW,,,,,,retail brand - distribution not FOB
+Consumer brand,WPM / Welhome,Machines grinders milk steamers,Welhome,,,,,,est 1995; first machine KD-210 in 2005
+Consumer brand,DONLIM,Coffee makers and kettles,Guangdong Xinbao Electric Co. Ltd,Guangdong,,,,,est 1995; 95% export; major OEM base
+Consumer brand,Barsetto,Consumer espresso,,,,,,,AliExpress/Amazon
+Consumer brand,Gevi,Consumer espresso,,,,,,,AliExpress/Amazon
+Manufacturer,Merol,Full automatic range OEM/ODM,Ningbo Merol Coffee Machine Co. Ltd,Zhejiang,,,,,est 2005; 22000 sqm; 100k units/month
+Manufacturer,Colet,Office and professional automatics,Ningbo Hawk Electrical Appliance Co. Ltd,Zhejiang,,,,,~15 years; chocolate function models
+Manufacturer,Wanshida,Coffee machines,Wanshida Coffee Machine (Hangzhou) Co. Ltd,Zhejiang,,,,,pricing not published
+Manufacturer,Kolice,Coffee/vending equipment,Kolice,,,,,,pricing not published

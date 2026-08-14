@@ -27,6 +27,10 @@ no telemetry and no serviceable parts channel.
 
 ## 2. Competitive price benchmark
 
+> **Full catalogue:** `CATALOGUE.md` carries the complete market sweep — **43 brands, 42 suppliers,
+> 66 priced models** across 7 categories, with the best price per unit identified for each. The same
+> data is in `catalogue.csv` for sorting. The tables below are the condensed view.
+
 Verified published listings, grouped by category:
 
 ### A. Entry home/office bean-to-cup
@@ -165,9 +169,9 @@ broker before placing the order.
 ## 8. Next step
 
 `ECATALOGUE-REQUEST.txt` is a ready-to-send email requesting the e-catalogue, tiered pricing,
-full specifications, certifications, voltage options and real product photography. Send it to all
-five suppliers in §3 the same day so the replies are comparable, then log them in the comparison
-table at the bottom of that file.
+full specifications, certifications, voltage options and real product photography. Send it the same
+day to everyone on the shortlist at the end of `CATALOGUE.md` so the replies are comparable, then log
+them in the comparison table at the bottom of the request file.
 
 ---
 
