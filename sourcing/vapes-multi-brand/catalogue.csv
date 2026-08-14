@@ -1,0 +1,70 @@
+brand,model,puffs,price_per_unit_usd,units_per_display,box_price_usd,cost_400pcs_usd,source,notes
+Lost Mary,MT15000 Turbo,15000,7.00,5,35.00,2800.00,Get Glass,cheapest verified core seller
+Elf Bar,BC Pro 40K,40000,7.20,5,36.00,2880.00,EZPuff,CLEARANCE price - not a repeatable cost basis
+Adjust,MyRusher 40K,40000,7.50,5,37.50,3000.00,Get Glass,
+Geek Bar,Pulse 15K,15000,8.30,5,41.50,3320.00,Wisemen,best price-to-demand combination
+Lost Mary,MT35000 Turbo,35000,9.50,5,47.50,3800.00,Get Glass,same SKU is 16.80 at EZPuff
+Geek Bar,Pulse 15K,15000,10.00,5,50.00,4000.00,Get Glass,20% above Wisemen for same SKU
+Geek Bar,Pulse 2,25000,11.00,5,55.00,4400.00,Get Glass,
+Foger,Bit 35K,35000,11.00,5,55.00,4400.00,Get Glass,
+Rinnbar,50K,50000,11.00,5,54.99,4400.00,Wisemen,
+Geek Bar,Pulse X,25000,12.00,5,60.00,4800.00,Get Glass,
+Foger,Switch Pro 30K Kit,30000,12.00,5,59.99,4800.00,Wisemen,Get Glass lists 60.00 per box - confirm display size
+Geek Bar,Pulse X2,50000,13.00,5,65.00,5200.00,Get Glass,
+RAZ,RX 50K,50000,16.49,5,82.45,6596.00,EZPuff,reduced from 97.45
+Lost Mary,MT35000 Turbo,35000,16.80,5,83.99,6720.00,EZPuff,77% above Get Glass for same SKU
+Geek Bar,CLR 50K,50000,17.00,5,85.00,6800.00,EZPuff,
+Foger,Switch Pro Pods,30000,47.50,1,47.50,,Get Glass,pods only - not a complete device
+JNR,Falcon X 18K,18000,6.00,10,,2400.00,China FOB,factory direct low end - see ../jnr-falcon-x-18000/
+JNR,Falcon X 18K,18000,7.60,10,,3040.00,China FOB,factory direct high end
+Elf Bar,BC5000,5000,,10,49.99,,EZPuff,10-pack 49.99-119.99 depending on promotion
+Lost Mary,MO5000,5000,,10,50.00,,EZPuff,10-pack 50-115 depending on promotion
+Geek Bar,Pulse X Platinum,25000,,,,,Wisemen,price on account approval
+Geek Bar,Skyview 25K,25000,,,,,Wisemen,price on account approval
+Geek Bar,Clio Platinum 50K,50000,,,,,distributor,price on request
+Geek Bar,Mate 60K,60000,,,,,Wisemen,price on account approval
+Geek Bar,Lush 20K,20000,,,,,distributor,Digiflavor collaboration
+Geek Bar,Digiflavor BRK 20K,20000,,,,,Wisemen,price on account approval
+Lost Mary,MO20000 Pro,20000,,,,,distributor,price on request
+Lost Mary,Ultrasonic 35K,35000,,,,,distributor,price on request
+Lost Mary,NERA Fullview 70K,70000,,,,,distributor,price on request
+Elf Bar,VPR Ultra 7000,7000,,,,,Vape702USA,price on request
+RAZ,TN9000,9000,,,,,distributor,price on request
+RAZ,LTX DC25000,25000,,,,,distributor,price on request
+Off-Stamp,SW9000,9000,,,,,distributor,magnetic reusable battery dock
+Off-Stamp,SW16000,16000,,,,,distributor,price on request
+Off-Stamp,X-Cube,,,,,,distributor,price on request
+Vozol,Rave 50K,50000,,,,,distributor,price on request
+Vozol,Mega 50K,50000,,,,,distributor,price on request
+Funky Republic,Ti7000,7000,,,,,Vape702USA,top-6 seller by volume
+Sea,XS 15000,15000,,,,,distributor,compact device
+Oxbar,full range,,,,,,distributor,price on request
+Fume,full range,,,,,,distributor,price on request
+Breeze,Breeze Pro,,,,,,Golden Eagle,price on request
+Al Fakher,full range,,,,,,multiple,price on request
+Tyson 2.0,full range,,,,,,Golden Eagle,price on request
+Mr. Fog,full range,,,,,,Golden Eagle,price on request
+Myle,full range,,,,,,Mega Vape USA,price on request
+HQD,full range,,,,,,distributor,price on request
+Air Bar,full range,,,,,,distributor,price on request
+Kado Bar,full range,,,,,,distributor,price on request
+Esco Bar,full range,,,,,,Golden Eagle,price on request
+Flum,full range,,,,,,distributor,price on request
+North,full range,,,,,,Golden Eagle,price on request
+South,full range,,,,,,Mega Vape USA,price on request
+Velocity,full range,,,,,,Mega Vape USA,price on request
+Chris Brown,collab range,,,,,,Mega Vape USA,price on request
+Snoop Dogg,collab range,,,,,,Get Glass,price on request
+Juul,closed pod system,,,,,,Golden Eagle,FDA-authorized products exist in this line
+Vuse,closed pod system,,,,,,Golden Eagle,FDA-authorized products exist in this line
+SMOK,devices and pods,,,,,,Golden Eagle,hardware
+Geekvape,devices and pods,,,,,,Golden Eagle,hardware
+Voopoo,devices and pods,,,,,,Golden Eagle,hardware
+Uwell,devices and pods,,,,,,Golden Eagle,hardware
+Vaporesso,devices and pods,,,,,,KangerWholesale,hardware
+Lost Vape,devices and pods,,,,,,distributor,hardware
+Pod Juice,e-liquid,,,,,,KangerWholesale,e-liquid
+Jam Monster,e-liquid,,,,,,KangerWholesale,e-liquid
+Candy King,e-liquid,,,,,,KangerWholesale,e-liquid
+Reds Apple,e-liquid,,,,,,KangerWholesale,e-liquid
+Air Factory,e-liquid,,,,,,KangerWholesale,e-liquid
