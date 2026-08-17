@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Supply Offer ASM-Q-2026-0817 — Mini &amp; Midi Excavators 5–8 t</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root{
+    --ink:#101828;
+    --muted:#667085;
+    --line:#e4e7ec;
+    --accent:#0b4f6c;
+    --accent-soft:#f2f7f9;
+    --warn:#fff8e6;
+    --warn-line:#d9a300;
+    --t1:#0e7490;
+    --t2:#2563eb;
+    --t3:#7c3aed;
+    --t4:#b45309;
+  }
+
+  html,body{ background:#fff; }
+  body{
+    width:210mm;
+    font-family:"Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif;
+    color:var(--ink);
+    font-size:9.5pt;
+    line-height:1.4;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .sheet{ position:relative; width:210mm; height:297mm; padding:11mm 14mm 16mm; overflow:hidden; }
+  .sheet + .sheet{ page-break-before:always; }
+
+  /* ---------- header ---------- */
+  .top{ display:flex; justify-content:space-between; align-items:flex-start; gap:10mm; }
+  .brand-mark{ display:flex; align-items:center; gap:4mm; }
+  .logo{
+    width:14mm; height:14mm; border-radius:3mm; background:var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:14pt; font-weight:700;
+  }
+  .brand-name{ font-size:15pt; font-weight:700; letter-spacing:.4px; }
+  .brand-sub{ font-size:7.5pt; color:var(--muted); letter-spacing:1.6px; text-transform:uppercase; margin-top:1mm; }
+
+  .doc-title{ text-align:right; }
+  .doc-title h1{ font-size:17pt; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:var(--accent); }
+  .doc-title .sub{ font-size:8.5pt; color:var(--muted); margin-top:1mm; letter-spacing:.4px; }
+  .doc-meta{ margin-top:2.5mm; font-size:8.5pt; }
+  .doc-meta div{ display:flex; justify-content:flex-end; gap:5mm; }
+  .doc-meta span.k{ color:var(--muted); }
+  .doc-meta span.v{ font-weight:600; min-width:32mm; text-align:right; }
+
+  .rule{ height:2px; background:var(--accent); margin-top:4mm; }
+
+  h2.sec{
+    font-size:7.5pt; text-transform:uppercase; letter-spacing:1.4px; color:var(--accent);
+    font-weight:700; padding-bottom:1.5mm; border-bottom:1px solid var(--line); margin:5mm 0 2.5mm;
+  }
+
+  /* ---------- parties ---------- */
+  .parties{ display:flex; gap:6mm; margin-top:4mm; }
+  .party{ flex:1; border:1px solid var(--line); border-radius:2mm; padding:3.5mm; }
+  .party h3{ font-size:7pt; text-transform:uppercase; letter-spacing:1.4px; color:var(--muted); font-weight:700; margin-bottom:2mm; }
+  .party .name{ font-size:10.5pt; font-weight:700; margin-bottom:1.5mm; }
+  .party p{ font-size:8.5pt; color:#344054; }
+  .party .contact{ margin-top:2mm; font-size:8pt; color:var(--muted); }
+  .ph{ color:#98a2b3; font-weight:400; font-style:italic; }
+
+  /* ---------- callouts ---------- */
+  .scope{ background:var(--accent-soft); border-left:3px solid var(--accent); padding:3.5mm 4mm; border-radius:0 1.5mm 1.5mm 0; margin-top:4mm; font-size:9pt; }
+  .scope b{ display:block; margin-bottom:1mm; }
+
+  .notice{ background:var(--warn); border:1px solid var(--warn-line); border-radius:1.5mm; padding:3mm 3.5mm; font-size:8.5pt; margin-top:4mm; }
+  .notice b{ display:block; margin-bottom:1mm; }
+
+  /* ---------- generic table ---------- */
+  table{ width:100%; border-collapse:collapse; }
+  thead th{
+    background:var(--accent); color:#fff; font-size:7pt; text-transform:uppercase; letter-spacing:1px;
+    padding:2.2mm 2.5mm; text-align:left; font-weight:700;
+  }
+  thead th.num{ text-align:right; }
+  tbody td{ padding:1.6mm 2.5mm; border-bottom:1px solid var(--line); font-size:8.5pt; vertical-align:top; }
+  tbody td.num{ text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  tbody tr.tier td{
+    background:#f8fafc; font-size:7pt; font-weight:700; text-transform:uppercase; letter-spacing:1.1px;
+    padding:1.7mm 2.5mm; border-bottom:1px solid var(--line);
+  }
+  .dot{ display:inline-block; width:2mm; height:2mm; border-radius:50%; margin-right:2mm; vertical-align:middle; }
+  .brand{ font-weight:700; }
+  .models{ color:#344054; }
+  .price{ font-weight:700; }
+
+  /* ---------- volume tiers ---------- */
+  .tiers{ display:flex; gap:3mm; margin-top:3mm; }
+  .tier-card{ flex:1; border:1px solid var(--line); border-radius:2mm; padding:3mm; text-align:center; }
+  .tier-card .qty{ font-size:8pt; color:var(--muted); }
+  .tier-card .off{ font-size:13pt; font-weight:700; color:var(--accent); margin-top:1mm; }
+  .tier-card .note{ font-size:7pt; color:var(--muted); margin-top:1mm; }
+
+  /* ---------- two-column blocks ---------- */
+  .cols{ display:flex; gap:8mm; }
+  .col{ flex:1; }
+  .kv{ display:flex; gap:3mm; font-size:8.5pt; padding:0.9mm 0; }
+  .kv .k{ color:var(--muted); min-width:30mm; }
+  .kv .v{ font-weight:600; word-break:break-word; }
+
+  ul.list{ margin-left:4mm; }
+  ul.list li{ font-size:8.5pt; padding:0.7mm 0; }
+
+  /* ---------- signature / stamp ---------- */
+  .signoff{ margin-top:10mm; display:flex; justify-content:space-between; align-items:flex-end; }
+  .sig-col{ width:70mm; position:relative; }
+  .sig-art{ position:absolute; bottom:6mm; left:2mm; }
+  .sig-line{ border-top:1px solid var(--ink); padding-top:2mm; }
+  .sig-line .role{ font-size:9pt; font-weight:700; }
+  .sig-line .sub{ font-size:8pt; color:var(--muted); }
+  .stamp-col{ width:52mm; display:flex; justify-content:center; }
+  .stamp{ transform:rotate(-13deg); opacity:.88; }
+
+  /* ---------- footer ---------- */
+  .sheet-foot{
+    position:absolute; left:14mm; right:14mm; bottom:7mm;
+    border-top:1px solid var(--line); padding-top:2.5mm;
+    display:flex; justify-content:space-between; font-size:7pt; color:var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================ PAGE 1 ============================ -->
+<div class="sheet">
+
+  <div class="top">
+    <div class="brand-mark">
+      <div class="logo">A</div>
+      <div>
+        <div class="brand-name">ASMIN ApS</div>
+        <div class="brand-sub">Trading &amp; Distribution</div>
+      </div>
+    </div>
+    <div class="doc-title">
+      <h1>Supply Offer</h1>
+      <div class="sub">Mini &amp; midi excavators · 5–8 tonne class</div>
+      <div class="doc-meta">
+        <div><span class="k">Offer No.</span><span class="v">ASM-Q-2026-0817</span></div>
+        <div><span class="k">Date of issue</span><span class="v">17 August 2026</span></div>
+        <div><span class="k">Valid until</span><span class="v">16 September 2026</span></div>
+        <div><span class="k">Currency</span><span class="v">USD</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="rule"></div>
+
+  <div class="parties">
+    <div class="party">
+      <h3>Supplier</h3>
+      <div class="name">ASMIN ApS</div>
+      <p>Brydes Allé 36<br>DK-2300 København S<br>Denmark</p>
+      <div class="contact">Tel: +45 65 74 14 71<br>Email: info@asminaps.com</div>
+    </div>
+    <div class="party">
+      <h3>Prepared for</h3>
+      <div class="name ph">[Buyer company name]</div>
+      <p class="ph">[Street address]<br>[Postcode, city]<br>[Country]</p>
+      <div class="contact ph">Attn: [Contact name]<br>Email: [email address]</div>
+    </div>
+  </div>
+
+  <div class="scope">
+    <b>Scope — long-term equipment supply</b>
+    ASMIN ApS offers continuous supply of new 5–8 tonne midi excavators across all major manufacturing
+    origins: Chinese value brands, Korean, Japanese and European/North American premium marques.
+    Pricing below is structured for repeat and framework offtake rather than single-unit sale.
+  </div>
+
+  <div class="notice">
+    <b>Important — indicative pricing, not a firm offer</b>
+    The unit prices in this document are indicative market ranges for new machines in standard
+    specification, quoted FOB port of origin. They are provided to establish budget and brand direction.
+    Firm prices are issued per order against a current factory quotation and depend on final
+    specification, order volume, emission standard, destination and prevailing FX. Ranges do not include
+    freight, insurance, duties, VAT or local homologation.
+  </div>
+
+  <h2 class="sec">Long-term volume structure</h2>
+  <div class="tiers">
+    <div class="tier-card">
+      <div class="qty">1 – 4 units</div>
+      <div class="off">List</div>
+      <div class="note">Spot order</div>
+    </div>
+    <div class="tier-card">
+      <div class="qty">5 – 9 units</div>
+      <div class="off">−3%</div>
+      <div class="note">Per shipment</div>
+    </div>
+    <div class="tier-card">
+      <div class="qty">10 – 24 units</div>
+      <div class="off">−6%</div>
+      <div class="note">Consolidated</div>
+    </div>
+    <div class="tier-card">
+      <div class="qty">25 – 49 units</div>
+      <div class="off">−8%</div>
+      <div class="note">Scheduled release</div>
+    </div>
+    <div class="tier-card">
+      <div class="qty">50+ / annual</div>
+      <div class="off">−10%</div>
+      <div class="note">Priority allocation</div>
+    </div>
+  </div>
+
+  <h2 class="sec">Commercial summary</h2>
+  <div class="cols">
+    <div class="col">
+      <div class="kv"><span class="k">Equipment class</span><span class="v">Midi excavators, 5.5 – 8.6 t operating weight</span></div>
+      <div class="kv"><span class="k">Condition</span><span class="v">New, factory build, current model year</span></div>
+      <div class="kv"><span class="k">Brands offered</span><span class="v">23 marques across 4 origin tiers</span></div>
+      <div class="kv"><span class="k">Indicative price band</span><span class="v">USD 26,000 – 150,000 per unit</span></div>
+      <div class="kv"><span class="k">Incoterms</span><span class="v">FOB origin; CIF / DAP on request</span></div>
+    </div>
+    <div class="col">
+      <div class="kv"><span class="k">Minimum order</span><span class="v">1 unit; framework from 10 units p.a.</span></div>
+      <div class="kv"><span class="k">Lead time</span><span class="v">30 – 150 days by brand and tier</span></div>
+      <div class="kv"><span class="k">Warranty</span><span class="v">12 months / 2,000 hours, manufacturer standard</span></div>
+      <div class="kv"><span class="k">Emission spec</span><span class="v">EU Stage V, EPA Tier 4F or non-regulated</span></div>
+      <div class="kv"><span class="k">Offer validity</span><span class="v">30 days from date of issue</span></div>
+    </div>
+  </div>
+
+  <h2 class="sec">Standard scope of supply</h2>
+  <div class="cols">
+    <div class="col">
+      <ul class="list">
+        <li>Standard digging bucket and cutting edge</li>
+        <li>Rubber or steel tracks to buyer's choice</li>
+        <li>Enclosed cabin with heating and air conditioning</li>
+        <li>Dozer blade, boom swing, auxiliary hydraulic circuit</li>
+      </ul>
+    </div>
+    <div class="col">
+      <ul class="list">
+        <li>Mechanical or hydraulic quick coupler (option)</li>
+        <li>Operator and workshop manuals, CE declaration</li>
+        <li>Starter spare parts and filter kit (option)</li>
+        <li>Factory commissioning and operator briefing (option)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sheet-foot">
+    <span>ASMIN ApS · Brydes Allé 36 · DK-2300 København S · Denmark</span>
+    <span>info@asminaps.com · +45 65 74 14 71</span>
+    <span>Offer ASM-Q-2026-0817 · Page 1 of 3</span>
+  </div>
+</div>
+
+<!-- ============================ PAGE 2 ============================ -->
+<div class="sheet">
+
+  <div class="top">
+    <div class="brand-mark">
+      <div class="logo">A</div>
+      <div>
+        <div class="brand-name">ASMIN ApS</div>
+        <div class="brand-sub">Trading &amp; Distribution</div>
+      </div>
+    </div>
+    <div class="doc-title">
+      <h1>Price Schedule</h1>
+      <div class="sub">All available brands · 5–8 t · indicative FOB, USD</div>
+    </div>
+  </div>
+  <div class="rule"></div>
+
+  <table style="margin-top:5mm">
+    <thead>
+      <tr>
+        <th style="width:30mm">Brand</th>
+        <th>Representative models</th>
+        <th class="num" style="width:24mm">Op. weight</th>
+        <th class="num" style="width:17mm">Engine</th>
+        <th class="num" style="width:33mm">Indicative unit price</th>
+        <th class="num" style="width:20mm">Lead time</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr class="tier"><td colspan="6" style="color:var(--t1)"><span class="dot" style="background:var(--t1)"></span>Tier 1 — China · best competitive pricing, highest availability</td></tr>
+      <tr><td class="brand">SANY</td><td class="models">SY60C / SY75C / SY80U</td><td class="num">6.0 – 8.0 t</td><td class="num">42–48 kW</td><td class="num price">28,000 – 42,000</td><td class="num">30–45 d</td></tr>
+      <tr><td class="brand">XCMG</td><td class="models">XE60DA / XE75DA / XE80</td><td class="num">6.0 – 8.0 t</td><td class="num">43–50 kW</td><td class="num price">29,000 – 43,000</td><td class="num">30–45 d</td></tr>
+      <tr><td class="brand">LiuGong</td><td class="models">9057E / 9075E / 9080E</td><td class="num">5.7 – 8.0 t</td><td class="num">41–48 kW</td><td class="num price">30,000 – 44,000</td><td class="num">35–50 d</td></tr>
+      <tr><td class="brand">Zoomlion</td><td class="models">ZE60E / ZE75E</td><td class="num">6.0 – 7.5 t</td><td class="num">42–47 kW</td><td class="num price">28,000 – 41,000</td><td class="num">30–45 d</td></tr>
+      <tr><td class="brand">Sunward</td><td class="models">SWE60E / SWE80E</td><td class="num">6.0 – 8.0 t</td><td class="num">40–48 kW</td><td class="num price">27,000 – 40,000</td><td class="num">30–45 d</td></tr>
+      <tr><td class="brand">Yuchai</td><td class="models">YC60 / YC75 / YC80</td><td class="num">6.0 – 8.0 t</td><td class="num">40–47 kW</td><td class="num price">26,000 – 39,000</td><td class="num">30–45 d</td></tr>
+
+      <tr class="tier"><td colspan="6" style="color:var(--t2)"><span class="dot" style="background:var(--t2)"></span>Tier 2 — Korea · mid-market, strong resale</td></tr>
+      <tr><td class="brand">Hyundai CE</td><td class="models">R60CR-9 / R80CR-9</td><td class="num">6.0 – 8.0 t</td><td class="num">43–44 kW</td><td class="num price">45,000 – 62,000</td><td class="num">45–60 d</td></tr>
+      <tr><td class="brand">Develon</td><td class="models">DX63-3 / DX80R-7 (ex-Doosan)</td><td class="num">6.3 – 8.2 t</td><td class="num">43–48 kW</td><td class="num price">48,000 – 66,000</td><td class="num">45–60 d</td></tr>
+
+      <tr class="tier"><td colspan="6" style="color:var(--t3)"><span class="dot" style="background:var(--t3)"></span>Tier 3 — Japan · premium reliability, highest residual value</td></tr>
+      <tr><td class="brand">Kubota</td><td class="models">U55-4 / KX057-5 / KX080-4</td><td class="num">5.5 – 8.2 t</td><td class="num">34–48 kW</td><td class="num price">72,000 – 95,000</td><td class="num">60–90 d</td></tr>
+      <tr><td class="brand">Yanmar</td><td class="models">ViO55-6 / SV60 / ViO80-1</td><td class="num">5.5 – 8.0 t</td><td class="num">35–46 kW</td><td class="num price">70,000 – 92,000</td><td class="num">60–90 d</td></tr>
+      <tr><td class="brand">Takeuchi</td><td class="models">TB260 / TB280FR / TB290</td><td class="num">5.9 – 8.6 t</td><td class="num">35–48 kW</td><td class="num price">75,000 – 98,000</td><td class="num">60–90 d</td></tr>
+      <tr><td class="brand">Komatsu</td><td class="models">PC55MR-5 / PC78US-11</td><td class="num">5.5 – 7.9 t</td><td class="num">34–43 kW</td><td class="num price">78,000 – 105,000</td><td class="num">60–90 d</td></tr>
+      <tr><td class="brand">Kobelco</td><td class="models">SK55SRX-7 / SK75SR-7</td><td class="num">5.5 – 7.5 t</td><td class="num">30–41 kW</td><td class="num price">76,000 – 99,000</td><td class="num">60–90 d</td></tr>
+      <tr><td class="brand">Hitachi</td><td class="models">ZX55U-6 / ZX65USB-6</td><td class="num">5.5 – 6.5 t</td><td class="num">29–41 kW</td><td class="num price">74,000 – 96,000</td><td class="num">60–90 d</td></tr>
+
+      <tr class="tier"><td colspan="6" style="color:var(--t4)"><span class="dot" style="background:var(--t4)"></span>Tier 4 — Europe &amp; North America · premium, dealer-supported</td></tr>
+      <tr><td class="brand">Caterpillar</td><td class="models">305.5 / 306 / 307.5 / 308</td><td class="num">5.6 – 8.5 t</td><td class="num">33–48 kW</td><td class="num price">85,000 – 125,000</td><td class="num">60–120 d</td></tr>
+      <tr><td class="brand">JCB</td><td class="models">55Z-2 / 67C-2 / 86C-2</td><td class="num">5.6 – 8.6 t</td><td class="num">35–48 kW</td><td class="num price">80,000 – 110,000</td><td class="num">60–120 d</td></tr>
+      <tr><td class="brand">Volvo CE</td><td class="models">ECR58 / EC60E / ECR88D</td><td class="num">5.8 – 8.6 t</td><td class="num">35–48 kW</td><td class="num price">82,000 – 112,000</td><td class="num">60–120 d</td></tr>
+      <tr><td class="brand">Bobcat</td><td class="models">E55 / E60 / E85</td><td class="num">5.5 – 8.5 t</td><td class="num">35–48 kW</td><td class="num price">78,000 – 105,000</td><td class="num">60–100 d</td></tr>
+      <tr><td class="brand">Wacker Neuson</td><td class="models">ET65 / EZ80</td><td class="num">6.0 – 8.2 t</td><td class="num">43–48 kW</td><td class="num price">80,000 – 102,000</td><td class="num">60–100 d</td></tr>
+      <tr><td class="brand">CASE CE</td><td class="models">CX57C / CX60C / CX75C</td><td class="num">5.7 – 7.5 t</td><td class="num">35–43 kW</td><td class="num price">76,000 – 100,000</td><td class="num">60–100 d</td></tr>
+      <tr><td class="brand">New Holland</td><td class="models">E57C / E75C</td><td class="num">5.7 – 7.5 t</td><td class="num">35–43 kW</td><td class="num price">75,000 – 98,000</td><td class="num">60–100 d</td></tr>
+      <tr><td class="brand">Hidromek</td><td class="models">HMK 60 SR</td><td class="num">6.0 t</td><td class="num">43 kW</td><td class="num price">60,000 – 80,000</td><td class="num">60–90 d</td></tr>
+      <tr><td class="brand">Mecalac</td><td class="models">6MCR / 8MCR</td><td class="num">6.3 – 8.5 t</td><td class="num">46–55 kW</td><td class="num price">110,000 – 150,000</td><td class="num">90–150 d</td></tr>
+    </tbody>
+  </table>
+
+  <div class="notice" style="margin-top:4mm">
+    <b>Reading this schedule</b>
+    Ranges span the lightest to the heaviest model listed for each brand and reflect standard versus
+    high specification. Tier 1 pricing assumes non-regulated or EU Stage V engines built for export;
+    Tier 3 and Tier 4 pricing assumes full EU Stage V or EPA Tier 4 Final compliance, which is the main
+    driver of the gap between tiers.
+  </div>
+
+  <div class="sheet-foot">
+    <span>ASMIN ApS · Brydes Allé 36 · DK-2300 København S · Denmark</span>
+    <span>info@asminaps.com · +45 65 74 14 71</span>
+    <span>Offer ASM-Q-2026-0817 · Page 2 of 3</span>
+  </div>
+</div>
+
+<!-- ============================ PAGE 3 ============================ -->
+<div class="sheet">
+
+  <div class="top">
+    <div class="brand-mark">
+      <div class="logo">A</div>
+      <div>
+        <div class="brand-name">ASMIN ApS</div>
+        <div class="brand-sub">Trading &amp; Distribution</div>
+      </div>
+    </div>
+    <div class="doc-title">
+      <h1>Terms</h1>
+      <div class="sub">Payment, delivery and framework conditions</div>
+    </div>
+  </div>
+  <div class="rule"></div>
+
+  <h2 class="sec">Payment terms</h2>
+  <div class="cols">
+    <div class="col">
+      <div class="kv"><span class="k">Spot orders</span><span class="v">30% deposit against proforma, 70% against copy B/L</span></div>
+      <div class="kv"><span class="k">Framework orders</span><span class="v">30% on release, 70% before each shipment</span></div>
+      <div class="kv"><span class="k">Orders &gt; USD 250k</span><span class="v">Irrevocable L/C at sight, confirmed</span></div>
+      <div class="kv"><span class="k">Currency</span><span class="v">USD; EUR on request at spot rate</span></div>
+    </div>
+    <div class="col">
+      <div class="kv"><span class="k">Beneficiary</span><span class="v">Putro Tatjana</span></div>
+      <div class="kv"><span class="k">IBAN</span><span class="v">BE54 9058 6681 0797</span></div>
+      <div class="kv"><span class="k">BIC / SWIFT</span><span class="v">TRWIBEB1XXX</span></div>
+      <div class="kv"><span class="k">Bank</span><span class="v">Wise Europe SA, Rue du Trône 100,<br>1050 Brussels, Belgium</span></div>
+    </div>
+  </div>
+
+  <h2 class="sec">Delivery and logistics</h2>
+  <div class="cols">
+    <div class="col">
+      <div class="kv"><span class="k">Incoterms</span><span class="v">FOB port of origin (default)</span></div>
+      <div class="kv"><span class="k">Alternatives</span><span class="v">CIF, CFR or DAP quoted on request</span></div>
+      <div class="kv"><span class="k">Shipment</span><span class="v">RoRo or 40' flat rack / open top</span></div>
+    </div>
+    <div class="col">
+      <div class="kv"><span class="k">Loading</span><span class="v">1 unit per 40' FR up to 8 t class</span></div>
+      <div class="kv"><span class="k">Documents</span><span class="v">Invoice, packing list, B/L, CoO, CE / EPA</span></div>
+      <div class="kv"><span class="k">Inspection</span><span class="v">SGS or buyer's agent at buyer's cost</span></div>
+    </div>
+  </div>
+
+  <h2 class="sec">Framework supply conditions</h2>
+  <ul class="list">
+    <li>Volume discounts apply to the aggregate units released under a signed 12-month framework, not per shipment, so committed volume is rewarded even when drawn down in small lots.</li>
+    <li>Prices are held for the framework period against a fixed specification; changes in emission standard, factory list price or FX beyond ±5% are passed through and notified in advance.</li>
+    <li>Allocation priority and reserved production slots apply from 25 units per year, which materially shortens lead time in constrained periods.</li>
+    <li>Spare parts availability and consumable kits are quoted alongside each release; parts pricing is held for the framework period.</li>
+    <li>Brand substitution within the same tier may be offered where a factory slot is unavailable, subject to buyer's written acceptance.</li>
+  </ul>
+
+  <h2 class="sec">Notes and qualifications</h2>
+  <ul class="list">
+    <li>All prices are indicative ranges, exclusive of freight, insurance, duty, VAT and local registration or homologation.</li>
+    <li>This document is an offer to discuss terms, not a binding contract. A binding sale arises only on a countersigned order confirmation or proforma invoice.</li>
+    <li>Technical data is taken from manufacturer literature and may differ by market and model year; final specification is confirmed per order.</li>
+    <li>Title to goods passes on receipt of payment in full.</li>
+  </ul>
+
+  <div class="signoff">
+    <div class="sig-col">
+      <svg class="sig-art" width="62mm" height="20mm" viewBox="0 0 240 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 56 C 26 12, 40 8, 44 22 C 48 36, 30 58, 26 46 C 22 34, 42 20, 62 34 C 76 44, 66 58, 74 52 C 84 45, 88 22, 100 20 C 110 18, 104 46, 116 46 C 128 46, 130 20, 142 22 C 152 24, 144 52, 158 48 C 172 44, 176 18, 190 24 C 202 29, 190 50, 206 44 C 218 39, 224 26, 232 30"
+              stroke="#12305e" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M18 64 C 70 70, 150 66, 214 56" stroke="#12305e" stroke-width="1.6" stroke-linecap="round" opacity=".75"/>
+      </svg>
+      <div class="sig-line">
+        <div class="role">Authorised signatory</div>
+        <div class="sub">For and on behalf of ASMIN ApS</div>
+      </div>
+    </div>
+
+    <div class="stamp-col">
+      <svg class="stamp" width="31mm" height="31mm" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <path id="arcTop" d="M 100,100 m -72,0 a 72,72 0 1,1 144,0" fill="none"/>
+          <path id="arcBottom" d="M 100,100 m -66,0 a 66,66 0 1,0 132,0" fill="none"/>
+        </defs>
+        <circle cx="100" cy="100" r="88" fill="none" stroke="#1e40af" stroke-width="5"/>
+        <circle cx="100" cy="100" r="80" fill="none" stroke="#1e40af" stroke-width="1.8"/>
+        <circle cx="100" cy="100" r="52" fill="none" stroke="#1e40af" stroke-width="1.8"/>
+        <text fill="#1e40af" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1.6">
+          <textPath href="#arcTop" startOffset="50%" text-anchor="middle">ASMIN ApS · KØBENHAVN</textPath>
+        </text>
+        <text fill="#1e40af" font-family="Helvetica, Arial, sans-serif" font-size="9.5" font-weight="700" letter-spacing="1.6">
+          <textPath href="#arcBottom" startOffset="50%" text-anchor="middle">TRADING &amp; DISTRIBUTION</textPath>
+        </text>
+        <text x="100" y="94" text-anchor="middle" fill="#1e40af" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="1.8">APPROVED</text>
+        <line x1="70" y1="104" x2="130" y2="104" stroke="#1e40af" stroke-width="1.5"/>
+        <text x="100" y="119" text-anchor="middle" fill="#1e40af" font-family="Helvetica, Arial, sans-serif" font-size="11.5" letter-spacing="1">17 AUG 2026</text>
+        <text x="100" y="72" text-anchor="middle" fill="#1e40af" font-family="Helvetica, Arial, sans-serif" font-size="13">★ ★ ★</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="sheet-foot">
+    <span>ASMIN ApS · Brydes Allé 36 · DK-2300 København S · Denmark</span>
+    <span>info@asminaps.com · +45 65 74 14 71</span>
+    <span>Offer ASM-Q-2026-0817 · Page 3 of 3</span>
+  </div>
+</div>
+
+</body>
+</html>
