@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Proforma Invoice ASM-2026-0817 — ASMIN ApS</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root{
+    --ink:#101828;
+    --muted:#667085;
+    --line:#e4e7ec;
+    --accent:#0b4f6c;
+    --accent-soft:#f2f7f9;
+    --stamp:#1e40af;
+  }
+
+  html,body{ background:#ffffff; }
+  body{
+    width:210mm; min-height:297mm;
+    font-family:"Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif;
+    color:var(--ink);
+    font-size:9.5pt;
+    line-height:1.4;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .sheet{ padding:9mm 14mm 5mm; position:relative; }
+
+  /* ---------- header ---------- */
+  .top{ display:flex; justify-content:space-between; align-items:flex-start; gap:12mm; }
+  .brand-mark{ display:flex; align-items:center; gap:4mm; }
+  .logo{
+    width:15mm; height:15mm; border-radius:3mm;
+    background:var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-size:15pt; font-weight:700; letter-spacing:.5px;
+  }
+  .brand-name{ font-size:16pt; font-weight:700; letter-spacing:.4px; }
+  .brand-sub{ font-size:8pt; color:var(--muted); letter-spacing:1.6px; text-transform:uppercase; margin-top:1mm; }
+
+  .doc-title{ text-align:right; }
+  .doc-title h1{ font-size:19pt; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--accent); }
+  .doc-meta{ margin-top:3mm; font-size:9pt; }
+  .doc-meta div{ display:flex; justify-content:flex-end; gap:5mm; }
+  .doc-meta span.k{ color:var(--muted); }
+  .doc-meta span.v{ font-weight:600; min-width:32mm; text-align:right; }
+
+  .rule{ height:2px; background:var(--accent); margin:4mm 0 0; }
+  .rule.thin{ height:1px; background:var(--line); }
+
+  /* ---------- parties ---------- */
+  .parties{ display:flex; gap:6mm; margin-top:4mm; }
+  .party{ flex:1; border:1px solid var(--line); border-radius:2mm; padding:3.5mm; }
+  .party h2{
+    font-size:7.5pt; text-transform:uppercase; letter-spacing:1.4px;
+    color:var(--muted); font-weight:700; margin-bottom:2.5mm;
+  }
+  .party .name{ font-size:11pt; font-weight:700; margin-bottom:1.5mm; }
+  .party p{ font-size:9pt; color:#344054; }
+  .party .contact{ margin-top:2.5mm; font-size:8.5pt; color:var(--muted); }
+
+  /* ---------- table ---------- */
+  table{ width:100%; border-collapse:collapse; margin-top:4mm; }
+  thead th{
+    background:var(--accent); color:#fff;
+    font-size:8pt; text-transform:uppercase; letter-spacing:1.1px;
+    padding:2.6mm 3.5mm; text-align:left; font-weight:700;
+  }
+  thead th.num{ text-align:right; }
+  tbody td{ padding:3mm 3.5mm; border-bottom:1px solid var(--line); vertical-align:top; font-size:9.5pt; }
+  tbody td.num{ text-align:right; font-variant-numeric:tabular-nums; }
+  .item-name{ font-weight:700; font-size:10pt; }
+  .item-desc{ color:var(--muted); font-size:8.5pt; margin-top:1mm; }
+
+  /* ---------- totals ---------- */
+  .totals-wrap{ display:flex; justify-content:space-between; align-items:flex-start; gap:8mm; margin-top:3mm; }
+  .note-box{ flex:1; font-size:8.5pt; color:var(--muted); border:1px dashed var(--line); border-radius:2mm; padding:3.5mm; }
+  .note-box b{ color:var(--ink); display:block; font-size:8pt; text-transform:uppercase; letter-spacing:1.2px; margin-bottom:2mm; }
+  .note-box li{ margin-left:4mm; padding:.7mm 0; }
+  .totals{ width:78mm; flex:none; }
+  .totals .row{ display:flex; justify-content:space-between; padding:2.2mm 4mm; font-size:9.5pt; }
+  .totals .row span:last-child{ font-variant-numeric:tabular-nums; font-weight:600; }
+  .totals .row.muted span{ color:var(--muted); font-weight:500; }
+  .totals .grand{
+    display:flex; justify-content:space-between; align-items:center;
+    background:var(--accent); color:#fff; padding:3.5mm 4mm; border-radius:1.5mm; margin-top:1.5mm;
+  }
+  .totals .grand .lbl{ font-size:9pt; text-transform:uppercase; letter-spacing:1.2px; font-weight:700; }
+  .totals .grand .amt{ font-size:14pt; font-weight:700; font-variant-numeric:tabular-nums; }
+  .amount-words{ margin-top:2.5mm; font-size:8.5pt; color:var(--muted); text-align:right; font-style:italic; }
+
+  /* ---------- info blocks ---------- */
+  .blocks{ display:flex; gap:8mm; margin-top:4mm; }
+  .block{ flex:1; }
+  .block h3{
+    font-size:7.5pt; text-transform:uppercase; letter-spacing:1.4px;
+    color:var(--accent); font-weight:700; padding-bottom:1.5mm;
+    border-bottom:1px solid var(--line); margin-bottom:3mm;
+  }
+  .kv{ display:flex; gap:3mm; font-size:9pt; padding:0.85mm 0; }
+  .kv .k{ color:var(--muted); min-width:31mm; }
+  .kv .v{ font-weight:600; word-break:break-word; }
+
+  .terms-box{ background:var(--accent-soft); border-left:3px solid var(--accent); padding:4mm; border-radius:0 1.5mm 1.5mm 0; font-size:9pt; }
+  .terms-box strong{ display:block; margin-bottom:1.5mm; }
+
+  /* ---------- signature / stamp ---------- */
+  .signoff{ margin-top:9mm; display:flex; justify-content:space-between; align-items:flex-end; }
+  .sig-col{ width:70mm; position:relative; }
+  .sig-art{ position:absolute; bottom:6mm; left:2mm; }
+  .sig-line{ border-top:1px solid var(--ink); padding-top:2mm; }
+  .sig-line .role{ font-size:9pt; font-weight:700; }
+  .sig-line .sub{ font-size:8pt; color:var(--muted); }
+
+  .stamp-col{ width:52mm; display:flex; justify-content:center; }
+  .stamp{ transform:rotate(-13deg); opacity:.88; }
+
+  .foot{ margin-top:3mm; border-top:1px solid var(--line); padding-top:3mm; display:flex; justify-content:space-between; font-size:7.5pt; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <!-- HEADER -->
+  <div class="top">
+    <div class="brand-mark">
+      <div class="logo">A</div>
+      <div>
+        <div class="brand-name">ASMIN ApS</div>
+        <div class="brand-sub">Trading &amp; Distribution</div>
+      </div>
+    </div>
+    <div class="doc-title">
+      <h1>Proforma Invoice</h1>
+      <div class="doc-meta">
+        <div><span class="k">Invoice No.</span><span class="v">ASM-2026-0817</span></div>
+        <div><span class="k">Date of issue</span><span class="v">17 August 2026</span></div>
+        <div><span class="k">Valid until</span><span class="v">31 August 2026</span></div>
+        <div><span class="k">Currency</span><span class="v">USD</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="rule"></div>
+
+  <!-- PARTIES -->
+  <div class="parties">
+    <div class="party">
+      <h2>Seller / Exporter</h2>
+      <div class="name">ASMIN ApS</div>
+      <p>Brydes Allé 36<br>DK-2300 København S<br>Denmark</p>
+      <div class="contact">Tel: +45 65 74 14 71<br>Email: info@asminaps.com</div>
+    </div>
+    <div class="party">
+      <h2>Buyer / Consignee</h2>
+      <div class="name">Stanly Sabbe</div>
+      <p>Derde Lanciersstraat 76<br>8940 Geluwe<br>Belgium</p>
+      <div class="contact">Tel: +32 468 06 00 35<br>Email: Stanlysabbe@icloud.com</div>
+    </div>
+  </div>
+
+  <!-- LINE ITEMS -->
+  <table>
+    <thead>
+      <tr>
+        <th style="width:8mm">#</th>
+        <th>Description of goods</th>
+        <th class="num" style="width:22mm">Qty</th>
+        <th class="num" style="width:28mm">Unit price</th>
+        <th class="num" style="width:30mm">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>
+          <div class="item-name">JNR Falcon X 18000</div>
+          <div class="item-desc">Model: Falcon X 18000 &nbsp;·&nbsp; Packing: retail units &nbsp;·&nbsp; Condition: new, factory sealed</div>
+        </td>
+        <td class="num">50 pcs</td>
+        <td class="num">$4.75</td>
+        <td class="num">$237.50</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- TOTALS -->
+  <div class="totals-wrap">
+    <div class="note-box">
+      <b>Notes</b>
+      <ul>
+        <li>Prices are quoted in USD and cover the goods listed above only.</li>
+        <li>Goods remain the property of ASMIN ApS until payment is received in full.</li>
+        <li>Please quote payment reference <strong>ASM-2026-0817</strong> with your transfer. Valid until 31 August 2026.</li>
+      </ul>
+    </div>
+    <div class="totals">
+      <div class="row"><span>Subtotal</span><span>$237.50</span></div>
+      <div class="row muted"><span>Discount</span><span>$0.00</span></div>
+      <div class="row muted"><span>Freight / handling</span><span>Included</span></div>
+      <div class="row muted"><span>VAT</span><span>$0.00</span></div>
+      <div class="grand">
+        <span class="lbl">Total due</span>
+        <span class="amt">USD 237.50</span>
+      </div>
+      <div class="amount-words">Two hundred thirty-seven US dollars and fifty cents only</div>
+    </div>
+  </div>
+
+  <!-- PAYMENT + DELIVERY -->
+  <div class="blocks">
+    <div class="block">
+      <h3>Bank details</h3>
+      <div class="kv"><span class="k">Beneficiary</span><span class="v">Putro Tatjana</span></div>
+      <div class="kv"><span class="k">IBAN</span><span class="v">BE54 9058 6681 0797</span></div>
+      <div class="kv"><span class="k">BIC / SWIFT</span><span class="v">TRWIBEB1XXX</span></div>
+      <div class="kv"><span class="k">Bank</span><span class="v">Wise Europe SA</span></div>
+      <div class="kv"><span class="k">Bank address</span><span class="v">Rue du Trône 100, 3rd floor,<br>1050 Brussels, Belgium</span></div>
+      <div class="kv"><span class="k">Payment reference</span><span class="v">ASM-2026-0817</span></div>
+    </div>
+    <div class="block">
+      <h3>Payment &amp; delivery terms</h3>
+      <div class="terms-box">
+        <strong>100% deposit against invoice — USD 237.50</strong>
+        Payable upon delivery in the Netherlands.
+      </div>
+      <div class="kv" style="margin-top:3mm"><span class="k">Place of delivery</span><span class="v">Netherlands</span></div>
+      <div class="kv"><span class="k">Goods</span><span class="v">JNR Falcon X 18000 — 50 pcs</span></div>
+      <div class="kv"><span class="k">Country of origin</span><span class="v">As per shipping documents</span></div>
+    </div>
+  </div>
+
+  <!-- SIGNATURE + STAMP -->
+  <div class="signoff">
+    <div class="sig-col">
+      <svg class="sig-art" width="62mm" height="20mm" viewBox="0 0 240 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 56 C 26 12, 40 8, 44 22 C 48 36, 30 58, 26 46 C 22 34, 42 20, 62 34 C 76 44, 66 58, 74 52 C 84 45, 88 22, 100 20 C 110 18, 104 46, 116 46 C 128 46, 130 20, 142 22 C 152 24, 144 52, 158 48 C 172 44, 176 18, 190 24 C 202 29, 190 50, 206 44 C 218 39, 224 26, 232 30"
+              stroke="#12305e" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M18 64 C 70 70, 150 66, 214 56" stroke="#12305e" stroke-width="1.6" stroke-linecap="round" opacity=".75"/>
+      </svg>
+      <div class="sig-line">
+        <div class="role">Authorised signatory</div>
+        <div class="sub">For and on behalf of ASMIN ApS</div>
+      </div>
+    </div>
+
+    <div class="stamp-col">
+      <svg class="stamp" width="31mm" height="31mm" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <path id="arcTop" d="M 100,100 m -72,0 a 72,72 0 1,1 144,0" fill="none"/>
+          <path id="arcBottom" d="M 100,100 m -66,0 a 66,66 0 1,0 132,0" fill="none"/>
+        </defs>
+        <circle cx="100" cy="100" r="88" fill="none" stroke="#1e40af" stroke-width="5"/>
+        <circle cx="100" cy="100" r="80" fill="none" stroke="#1e40af" stroke-width="1.8"/>
+        <circle cx="100" cy="100" r="52" fill="none" stroke="#1e40af" stroke-width="1.8"/>
+        <text fill="#1e40af" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1.6">
+          <textPath href="#arcTop" startOffset="50%" text-anchor="middle">ASMIN ApS · KØBENHAVN</textPath>
+        </text>
+        <text fill="#1e40af" font-family="Helvetica, Arial, sans-serif" font-size="9.5" font-weight="700" letter-spacing="1.6">
+          <textPath href="#arcBottom" startOffset="50%" text-anchor="middle">TRADING &amp; DISTRIBUTION</textPath>
+        </text>
+        <text x="100" y="94" text-anchor="middle" fill="#1e40af" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="1.8">APPROVED</text>
+        <line x1="70" y1="104" x2="130" y2="104" stroke="#1e40af" stroke-width="1.5"/>
+        <text x="100" y="119" text-anchor="middle" fill="#1e40af" font-family="Helvetica, Arial, sans-serif" font-size="11.5" letter-spacing="1">17 AUG 2026</text>
+        <text x="100" y="72" text-anchor="middle" fill="#1e40af" font-family="Helvetica, Arial, sans-serif" font-size="13">★ ★ ★</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>ASMIN ApS · Brydes Allé 36 · DK-2300 København S · Denmark</span>
+    <span>info@asminaps.com · +45 65 74 14 71</span>
+    <span>Invoice ASM-2026-0817 · Page 1 of 1</span>
+  </div>
+
+</div>
+</body>
+</html>
